@@ -1,2 +1,2 @@
-# Website
-Welkom bij de repository van onze studieverenigingswebsite! Je kunt hier de broncode bekijken, meehelpen aan de ontwikkeling, problemen rapporteren en nieuwe ideeën voorstellen. Bedankt voor je interesse en bijdrage aan onze website!
+# Studievereniging Website
+Deze repository bevat de code voor de website van studievereniging NULL. De website dient als een online platform voor onze vereniging en biedt speciale content voor onze leden en informatie over evenementen, partners en meer.
