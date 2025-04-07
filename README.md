@@ -14,7 +14,7 @@ Zorg ervoor dat je de volgende software op je systeem hebt geïnstalleerd:
 Volg deze stappen om het project lokaal te draaien:
 
 1. Clone het project
-2. Navigeer in je terminal naar de directory /svnull
+2. Navigeer in je terminal naar de directory ```/svnull```
 3. Maak een eigen ```.csv``` bestand aan, hiervoor kan de ```.env.example``` worden gekopieerd.
 4. Installeer de packages: ```npm install```
 5. Start de development omgeving even kort om de database automatisch aan te maken ```npm run dev```
@@ -113,7 +113,7 @@ De kosten hiervan kunnen sterk variëren, maar lopen al snel op naar ***€10–
 
 ## Screenshots
 
-Hieronder volgen ook screenshots van deze implementatie voor het gemak (Hierbij is een pagina genaamd 'test' aangemaakt, met een header en een content block):
+Hieronder volgen ook screenshots van deze implementatie voor het gemak (Hierbij is een pagina genaamd 'test' aangemaakt, met een hero en een content block):
 
 ***Homepagina***
 ![image](https://github.com/user-attachments/assets/fea9e923-f614-43b3-9cfa-ccb3d094e980)
