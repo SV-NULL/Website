@@ -66,6 +66,11 @@ Next.js configuratiebestand.
 
 Projectconfiguratie en scripts.
 
+## Hoe de inhoud wordt geladen
+De inhoud van de website wordt geschreven in Markdown en opgeslagen in de map ```content/.``` De metadata (zoals titel en datum) wordt uit de YAML frontmatter gelezen en samen met de inhoud omgezet naar HTML met behulp van remark.
+
+Voor activiteiten wordt automatisch elke ```.md``` file in ```content/activiteiten/``` ingelezen, zodat je eenvoudig nieuwe activiteiten kunt toevoegen door daar een bestand toe te voegen.
+
 ## Screenshots
 
 Hieronder volgen ook screenshots van deze implementatie voor het gemak:
