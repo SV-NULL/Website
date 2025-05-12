@@ -1,46 +1,79 @@
-import { getHomePageContent } from '@/lib/content';
+import { getHomePageContent, getUpcomingCalendarItems } from "@/lib/content";
+import CTA from "@/app/components/CTA";
+import DropdownList from "@/app/components/DropdownList";
 
 export default function HomePage() {
-  const { title, subtitle, values, gallery, content } = getHomePageContent();
+  const home = getHomePageContent();
+  const upcomingActivities = getUpcomingCalendarItems(2);
 
   return (
-    <main className="min-h-screen px-4 py-8">
+    <main className="space-y-16 px-4 py-8 max-w-5xl mx-auto">
+
       {/* Hero */}
-      <section className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-2">{title}</h1>
-        <h2 className="text-xl text-gray-600">{subtitle}</h2>
+      <section className="text-center py-16">
+        <h1 className="text-5xl font-bold">{home.title}</h1>
+        <p className="text-xl mt-4">{home.subtitle}</p>
+        <div className="mt-6 text-lg font-semibold">
+          {/* Simpele roterende woorden placeholder */}
+          <span className="text-gray-500 italic">
+            {home.rotatingWords.join(" • ")}
+          </span>
+        </div>
       </section>
 
-      {/* Values */}
-      <section className="mb-12">
-        <h3 className="text-2xl font-semibold mb-4">Onze Waardes</h3>
-        <ul className="flex flex-col md:flex-row justify-center gap-4 mt-4">
-          {values.map((value, index) => (
-            <li key={index} className="bg-yellow-400 p-4 rounded shadow">
-              {value.title}
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* Gallery */}
-      <section className="my-16 text-center">
-        <h3 className="text-2xl font-semibold mb-6">Sfeerimpressie</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {gallery.map((src, index) => (
-            <img
-              key={index}
-              src={src}
-              alt={`Sfeerfoto ${index + 1}`}
-              className="rounded-lg shadow"
-            />
+      {/* Onze waardes */}
+      <section>
+        <h2 className="text-3xl font-bold mb-4">{home.valuesTitle}</h2>
+        <p className="mb-6">{home.valuesText}</p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {home.values.map((value, index) => (
+            <div key={index} className="p-4 border rounded text-center">
+              <div className="text-4xl mb-2">{value.icon}</div>
+              <h3 className="font-semibold">{value.title}</h3>
+            </div>
           ))}
         </div>
       </section>
 
-      <section className="text-center text-gray-500 max-w-xl mx-auto mt-12">
-        <p>{content}</p>
+      {/* Galerij */}
+      <section>
+        <h2 className="text-3xl font-bold mb-4">Sfeerimpressie</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {home.gallery.map((img, idx) => (
+            <figure key={idx} className="text-center">
+              <img
+                src={img.src}
+                alt={img.caption}
+                className="rounded shadow w-full h-auto"
+              />
+              <figcaption className="text-sm mt-2 text-gray-600">{img.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
       </section>
+
+      {/* Aankomende activiteiten */}
+      <DropdownList
+        title="Kalender"
+        items={upcomingActivities}
+        footer={
+        <div className="mt-6 text-center">
+          <a
+            href="/kalender"
+            className="inline-block bg-black text-white px-6 py-2 rounded hover:bg-gray-800 transition"
+          >
+            Bekijk alle activiteiten
+          </a>
+        </div>
+        }
+      />
+
+      {/* CTA - Waarom lid worden */}
+      <CTA
+        title={home.ctaTitle}
+        text={home.ctaText}
+        button={home.ctaButton}
+      />
     </main>
   );
 }

@@ -1,11 +1,11 @@
 import { getPartnerItems } from '@/lib/content';
-import DropdownListPage from '@/app/components/DropdownListPage';
+import DropdownList from '@/app/components/DropdownList';
 
 export default function PartnersPage() {
   const items = getPartnerItems();
 
    return (
-     <DropdownListPage
+     <DropdownList
        title="Onze Partners"
        items={items}
        footer={

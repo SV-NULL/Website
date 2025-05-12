@@ -9,8 +9,15 @@ import matter from 'gray-matter';
 export interface HomePageContent {
   title: string;
   subtitle: string;
-  values: { title: string }[];
-  gallery: string[];
+  rotatingWords: string[];
+  valuesTitle: string;
+  valuesText: string;
+  values: { title: string; icon: string }[];
+  gallery: { src: string; caption: string }[];
+  upcomingActivities: string[];
+  ctaTitle: string;
+  ctaText: string;
+  ctaButton: { text: string; href: string };
   content: string;
 }
 
@@ -26,14 +33,14 @@ export function getHomePageContent(): HomePageContent {
 }
 
 //
-// ─── DROPDOWN ITEMS (ACTIVITEITEN, PARTNERS, ETC.) ───────────────────────────
+// ─── DROPDOWN ITEMS (KALENDER, PARTNERS, ETC.) ───────────────────────────
 //
 
 export interface DropdownItem {
   title: string;
   subtitle: string;
   image: string;
-  category?: string;
+  date?: string;
   content: string;
 }
 
@@ -50,18 +57,31 @@ function loadMarkdownItems(folder: string): DropdownItem[] {
       title: data.title,
       subtitle: data.subtitle,
       image: data.image,
-      category: data.category ?? null,
+      date: data.date ?? null,
       content,
     };
   });
 }
 
-// Specifiek voor activiteiten
+// Alle kalender items (unsorted)
 export function getCalendarItems(): DropdownItem[] {
-  return loadMarkdownItems('calendar');
+  return loadMarkdownItems('kalender');
 }
 
-// Specifiek voor partners (hergebruikt zelfde structuur)
+// Alleen de eerstvolgende X activiteiten
+export function getUpcomingCalendarItems(count: number): DropdownItem[] {
+  const allItems = getCalendarItems()
+    .filter((item) => item.date)
+    .sort((a, b) => {
+      const dateA = new Date(a.date!);
+      const dateB = new Date(b.date!);
+      return dateA.getTime() - dateB.getTime();
+    });
+
+  return allItems.slice(0, count);
+}
+
+// Partners
 export function getPartnerItems(): DropdownItem[] {
   return loadMarkdownItems('partners');
 }

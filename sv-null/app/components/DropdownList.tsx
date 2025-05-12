@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { DropdownItem } from '@/lib/content';
 
-export default function DropdownListPage({
+export default function DropdownList({
   items,
   title,
   footer,

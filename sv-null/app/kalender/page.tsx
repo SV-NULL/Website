@@ -1,11 +1,11 @@
-import DropdownListPage from '@/app/components/DropdownListPage';
+import DropdownList from '@/app/components/DropdownList';
 import { getCalendarItems } from '@/lib/content';
 
 export default function CalendarPage() {
   const items = getCalendarItems();
 
   return (
-    <DropdownListPage
+    <DropdownList
       title="Kalender"
       items={items}
       footer={
