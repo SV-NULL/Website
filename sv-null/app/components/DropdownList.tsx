@@ -15,7 +15,7 @@ export default function DropdownList({
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8">
+    <div className="mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">{title}</h1>
       <div className="space-y-4">
         {items.map((item, i) => (
