@@ -3,36 +3,6 @@ import path from 'path';
 import matter from 'gray-matter';
 
 //
-// ─── HOMEPAGE ────────────────────────────────────────────────────────────────
-//
-
-export interface HomePageContent {
-  title: string;
-  subtitle: string;
-  rotatingWords: string[];
-  valuesTitle: string;
-  valuesText: string;
-  values: { title: string; icon: string }[];
-  gallery: { src: string; caption: string }[];
-  upcomingActivities: string[];
-  ctaTitle: string;
-  ctaText: string;
-  ctaButton: { text: string; href: string };
-  content: string;
-}
-
-export function getHomePageContent(): HomePageContent {
-  const filePath = path.join(process.cwd(), 'content', 'home.md');
-  const fileContent = fs.readFileSync(filePath, 'utf-8');
-  const { data, content } = matter(fileContent);
-
-  return {
-    ...(data as Omit<HomePageContent, 'content'>),
-    content,
-  };
-}
-
-//
 // ─── DROPDOWN ITEMS (KALENDER, PARTNERS, ETC.) ───────────────────────────
 //
 
