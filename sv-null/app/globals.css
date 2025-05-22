@@ -24,3 +24,21 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fdc700
+}
+
+ul {
+  list-style-type: circle;
+  padding-left: 30px;
+}
+li {
+  margin: 0.5rem 0;
+}

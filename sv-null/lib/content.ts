@@ -55,3 +55,52 @@ export function getUpcomingCalendarItems(count: number): DropdownItem[] {
 export function getPartnerItems(): DropdownItem[] {
   return loadMarkdownItems('partners');
 }
+
+//
+// ─── VACATURES ───────────────────────────
+//
+export interface VacatureItem {
+  title: string;
+  company: string;
+  type: string;
+  logo: string;
+  applyUrl: string;
+  content: string;
+  slug: string;
+}
+
+export function getVacatureItems(): VacatureItem[] {
+  const dir = path.join(process.cwd(), 'content', 'vacatures');
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir).map((file) => {
+    const filePath = path.join(dir, file);
+    const md = fs.readFileSync(filePath, 'utf-8');
+    const { data, content } = matter(md);
+    const slug = file.replace(/\.md$/, '');
+    return {
+      title: data.title,
+      company: data.company,
+      type: data.type,
+      logo: data.logo,
+      applyUrl: data.applyUrl,
+      content,
+      slug,
+    };
+  });
+}
+
+export function getVacatureBySlug(slug: string): VacatureItem | null {
+  const filePath = path.join(process.cwd(), 'content', 'vacatures', `${slug}.md`);
+  if (!fs.existsSync(filePath)) return null;
+  const md = fs.readFileSync(filePath, 'utf-8');
+  const { data, content } = matter(md);
+  return {
+    title: data.title,
+    company: data.company,
+    type: data.type,
+    logo: data.logo,
+    applyUrl: data.applyUrl,
+    content,
+    slug,
+  };
+}
