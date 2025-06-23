@@ -164,3 +164,23 @@ export function getBestuurBySlug(slug: string): ListItem | null {
     members: data.members ?? [],
   };
 }
+
+export function getCommissieItems(): ListItem[] {
+  return loadListItems('commissies');
+}
+
+export function getCommissieBySlug(slug: string): ListItem | null {
+  const filePath = path.join(process.cwd(), 'content', 'commissies', `${slug}.md`);
+  if (!fs.existsSync(filePath)) return null;
+  const fileContent = fs.readFileSync(filePath, 'utf8');
+  const { data, content } = matter(fileContent);
+
+  return {
+    title: data.title,
+    subtitle: data.subtitle,
+    image: data.image,
+    slug,
+    content,
+    members: data.members ?? [],
+  };
+}

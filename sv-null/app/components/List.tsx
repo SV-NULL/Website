@@ -6,16 +6,18 @@ import { ListItem } from '@/lib/content';
 export default function List({
   items,
   title,
+  basePath,
 }: {
   items: ListItem[];
   title: string;
+  basePath: string;
 }) {
   return (
     <div className="mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">{title}</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {items.map((item) => (
-          <Link key={item.slug} href={`/bestuur/${item.slug}`}>
+          <Link key={item.slug} href={`/${basePath}/${item.slug}`}>
             <div className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer">
               <img
                 src={item.image}

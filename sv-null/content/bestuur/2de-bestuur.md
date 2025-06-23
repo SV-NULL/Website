@@ -1,7 +1,7 @@
 ---
 title: 2de Bestuur
 subtitle: 2024-2025
-image: /images/bestuur/2de-bestuur.jpg
+image: /images/bestuur/2de-bestuur/2de-bestuur.jpg
 members:
   - name: Robin Heikamp
     role: Voorzitter

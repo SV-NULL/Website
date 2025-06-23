@@ -1,7 +1,7 @@
 ---
 title: 1ste Bestuur
 subtitle: 2022-2024
-image: /images/bestuur/1ste-bestuur.jpg
+image: /images/bestuur/1ste-bestuur/1ste-bestuur.jpg
 members:
   - name: Twan Meurs
     role: Voorzitter
