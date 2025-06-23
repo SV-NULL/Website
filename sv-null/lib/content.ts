@@ -109,12 +109,20 @@ export function getVacatureBySlug(slug: string): VacatureItem | null {
 // ─── LIST ITEMS (Bestuur, Commissies) ───────────────────────────
 //
 
+export interface Member {
+  name: string;
+  role: string;
+  date: string;
+  image: string;
+}
+
 export interface ListItem {
   title: string;
   subtitle: string;
   image: string;
   slug: string;
   content: string;
+  members?: Member[];
 }
 
 function loadListItems(folder: string): ListItem[] {
@@ -153,5 +161,6 @@ export function getBestuurBySlug(slug: string): ListItem | null {
     image: data.image,
     slug,
     content,
+    members: data.members ?? [],
   };
 }

@@ -2,7 +2,7 @@
 title: "Frontend Developer bij BedrijfX"
 company: "BedrijfX"
 type: "stage" # bijbaan | stage | full-time
-logo: "/images/vacatures/logo.png"
+logo: "/images/logo.png"
 applyUrl: "mailto:test@bedrijf.nl"
 ---
 
