@@ -56,10 +56,8 @@ export default function VacatureList({ vacatures }: { vacatures: VacatureItem[] 
       {/* Load more */}
       {visibleCount < filtered.length && (
         <div className="text-center mt-6">
-          <button
-            className="px-4 py-2 bg-yellow-400 rounded"
-            onClick={() => setVisibleCount((prev) => prev + 5)}
-          >
+          <button className="px-4 py-2 bg-yellow-400 rounded"
+                  onClick={() => setVisibleCount((prev) => prev + 5)}>
             Laad meer
           </button>
         </div>
