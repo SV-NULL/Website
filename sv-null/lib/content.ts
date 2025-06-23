@@ -104,3 +104,54 @@ export function getVacatureBySlug(slug: string): VacatureItem | null {
     slug,
   };
 }
+
+//
+// ─── LIST ITEMS (Bestuur, Commissies) ───────────────────────────
+//
+
+export interface ListItem {
+  title: string;
+  subtitle: string;
+  image: string;
+  slug: string;
+  content: string;
+}
+
+function loadListItems(folder: string): ListItem[] {
+  const dir = path.join(process.cwd(), 'content', folder);
+  const files = fs.existsSync(dir) ? fs.readdirSync(dir) : [];
+
+  return files.map((filename) => {
+    const filePath = path.join(dir, filename);
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+    const { data, content } = matter(fileContent);
+    const slug = filename.replace(/\.md$/, '');
+
+    return {
+      title: data.title,
+      subtitle: data.subtitle,
+      image: data.image,
+      slug,
+      content,
+    };
+  });
+}
+
+export function getBestuurItems(): ListItem[] {
+  return loadListItems('bestuur');
+}
+
+export function getBestuurBySlug(slug: string): ListItem | null {
+  const filePath = path.join(process.cwd(), 'content', 'bestuur', `${slug}.md`);
+  if (!fs.existsSync(filePath)) return null;
+  const fileContent = fs.readFileSync(filePath, 'utf8');
+  const { data, content } = matter(fileContent);
+
+  return {
+    title: data.title,
+    subtitle: data.subtitle,
+    image: data.image,
+    slug,
+    content,
+  };
+}
