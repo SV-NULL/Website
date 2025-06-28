@@ -17,7 +17,7 @@ export default function VacatureList({ vacatures }: { vacatures: VacatureItem[] 
   return (
     <>
       {/* Filter buttons */}
-      <div className="flex gap-4 mb-6">
+      <div className="py-8 flex gap-4 mb-6">
         {['all', 'bijbaan', 'stage', 'full-time'].map((type) => (
           <button
             key={type}

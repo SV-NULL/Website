@@ -34,11 +34,3 @@ h2 {
   font-weight: bold;
   color: #fdc700
 }
-
-ul {
-  list-style-type: circle;
-  padding-left: 30px;
-}
-li {
-  margin: 0.5rem 0;
-}

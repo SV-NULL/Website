@@ -13,7 +13,7 @@ export default async function VacatureDetailPage({ params }: { params: Promise<{
   if (!vacature) return <p>Vacature niet gevonden</p>;
 
   return (
-    <main className="p-8 max-w-3xl mx-auto space-y-6">
+    <div className="py-8">
       <div className="flex items-center gap-4">
         <img src={vacature.logo} alt={vacature.company} className="w-24 h-24 object-contain" />
         <div>
@@ -23,6 +23,6 @@ export default async function VacatureDetailPage({ params }: { params: Promise<{
       </div>
       <Markdown>{vacature.content}</Markdown>
       <CTA title="Solliciteer nu" text="Klik op de knop om direct te solliciteren" button={{ text: 'Solliciteer', href: vacature.applyUrl }} />
-    </main>
+    </div>
   );
 }

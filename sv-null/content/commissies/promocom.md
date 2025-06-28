@@ -2,6 +2,7 @@
 title: Promotie Commissie
 subtitle: 4 leden
 image: /images/commissies/promocom/logo-paars.png
+startDate: # Leeg laten, enkel bij bestuur invullen
 members:
 #   - name: Twan Meurs
 #     role: Voorzitter

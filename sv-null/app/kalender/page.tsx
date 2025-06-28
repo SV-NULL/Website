@@ -6,7 +6,7 @@ export default function CalendarPage() {
   const items = getCalendarItems();
 
   return (
-    <main className="p-8 max-w-4xl mx-auto space-y-8">
+    <div className="py-8">
       <DropdownList
         title="Kalender"
         items={items}
@@ -18,6 +18,6 @@ export default function CalendarPage() {
           />
         }
       />
-    </main>
+      </div>
   );
 }

@@ -13,18 +13,20 @@ export default function List({
   basePath: string;
 }) {
   return (
-    <div className="mx-auto px-4 py-8">
+    <div className="py-8">
       <h1 className="text-3xl font-bold mb-6">{title}</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {items.map((item) => (
           <Link key={item.slug} href={`/${basePath}/${item.slug}`}>
             <div className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer">
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-opacity-40 flex flex-col justify-end p-4 text-white">
+              <div className="aspect-video w-full overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="absolute inset-0 bg-opacity-25 flex flex-col justify-end p-4 text-white">
                 <h2 className="text-xl font-semibold">{item.title}</h2>
                 <p className="text-sm">{item.subtitle}</p>
               </div>

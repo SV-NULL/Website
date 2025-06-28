@@ -6,7 +6,6 @@ export default function PartnersPage() {
   const items = getPartnerItems();
 
    return (
-    <main className="p-8 max-w-4xl mx-auto space-y-8">
       <DropdownList
         title="Onze Partners"
         items={items}
@@ -18,6 +17,5 @@ export default function PartnersPage() {
           />
         }
       />
-     </main>
    );
  }

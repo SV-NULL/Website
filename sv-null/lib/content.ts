@@ -122,6 +122,7 @@ export interface ListItem {
   image: string;
   slug: string;
   content: string;
+  startDate?: Date; // Enkel voor bestuur
   members?: Member[];
 }
 
@@ -140,13 +141,18 @@ function loadListItems(folder: string): ListItem[] {
       subtitle: data.subtitle,
       image: data.image,
       slug,
+      startDate: data.startDate ? new Date(data.startDate) : undefined,
       content,
     };
   });
 }
 
 export function getBestuurItems(): ListItem[] {
-  return loadListItems('bestuur');
+  return loadListItems('bestuur').sort((a, b) => {
+    const dateA = new Date((a as any).startDate ?? 0);
+    const dateB = new Date((b as any).startDate ?? 0);
+    return dateB.getTime() - dateA.getTime();
+  });
 }
 
 export function getBestuurBySlug(slug: string): ListItem | null {
