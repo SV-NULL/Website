@@ -6,7 +6,7 @@ export default function HomePage() {
   const upcomingActivities = getUpcomingCalendarItems(2);
 
   return (
-    <main className="space-y-16 px-4 py-8 max-w-5xl mx-auto">
+    <main className="space-y-16 py-8">
 
       {/* Hero */}
       <section className="text-center py-16">

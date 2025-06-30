@@ -33,12 +33,10 @@ function loadMarkdownItems(folder: string): DropdownItem[] {
   });
 }
 
-// Alle kalender items (unsorted)
 export function getCalendarItems(): DropdownItem[] {
   return loadMarkdownItems('kalender');
 }
 
-// Alleen de eerstvolgende X activiteiten
 export function getUpcomingCalendarItems(count: number): DropdownItem[] {
   const allItems = getCalendarItems()
     .filter((item) => item.date)
@@ -51,7 +49,6 @@ export function getUpcomingCalendarItems(count: number): DropdownItem[] {
   return allItems.slice(0, count);
 }
 
-// Partners
 export function getPartnerItems(): DropdownItem[] {
   return loadMarkdownItems('partners');
 }

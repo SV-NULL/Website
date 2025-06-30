@@ -13,7 +13,7 @@ export default function Members({ members }: { members: Member[] }) {
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
       {members.map((member, i) => (
         <div key={i} className="flex flex-col items-center text-center p-4 h-full">
-          <div className="w-48 aspect-square mb-4 overflow-hidden rounded-full">
+          <div className="w-72 aspect-square mb-4 overflow-hidden rounded-full">
             <img
               src={member.image}
               alt={member.name}

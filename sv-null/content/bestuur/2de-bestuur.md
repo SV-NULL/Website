@@ -25,9 +25,8 @@ members:
     date: 2022-2024
     image: /images/bestuur/2ste-bestuur/
 ---
-qwe
-<!-- Geïnspireerd door wat onze oprichters neer hebben gezet, nemen wij met enthousiasme het stokje over komend jaar. We zullen voor jullie klaarstaan en blijven werken aan het door laten groeien van de studievereniging.
+Geïnspireerd door wat onze oprichters neer hebben gezet, nemen wij met enthousiasme het stokje over komend jaar. We zullen voor jullie klaarstaan en blijven werken aan het door laten groeien van de studievereniging.
 <br>
 <br>
 Mocht je enige vragen hebben of ons willen leren kennen,
-schiet ons gerust even aan! -->
+schiet ons gerust even aan!
