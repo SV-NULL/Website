@@ -7,23 +7,23 @@ members:
   - name: Robin Heikamp
     role: Voorzitter
     date: 2022-2024
-    image: /images/logo.png
+    image: /images/bestuur/2de-bestuur/Robin.jpg
   - name: Daan Ravenhorst
     role: Vicevoorzitter
     date: 2022-2024
-    image: /images/bestuur/2ste-bestuur/
+    image: /images/bestuur/2de-bestuur/Daan.jpg
   - name: Anne-Wil van de Burgt
     role: Secretaris
     date: 2022-2024
-    image: /images/bestuur/2ste-bestuur/
+    image: /images/bestuur/2de-bestuur/Iris.jpg
   - name: Iris Reitsma
     role: Penningmeester
     date: 2022-2024
-    image: /images/bestuur/2ste-bestuur/
+    image: /images/bestuur/2de-bestuur/Anne-Wil.jpg
   - name: Wilke van de Kamp
     role: PR
     date: 2022-2024
-    image: /images/bestuur/2ste-bestuur/
+    image: /images/bestuur/2de-bestuur/wilke.jpg
 ---
 Geïnspireerd door wat onze oprichters neer hebben gezet, nemen wij met enthousiasme het stokje over komend jaar. We zullen voor jullie klaarstaan en blijven werken aan het door laten groeien van de studievereniging.
 <br>
