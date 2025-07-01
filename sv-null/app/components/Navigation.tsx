@@ -27,8 +27,8 @@ export default function Navigation() {
     {
       name: 'Opleiding',
       sub: [
-        { name: 'Vakken', href: '/opleiding/vakken' },
-        { name: 'Studentenwelzijn', href: '/opleiding/studentenwelzijn' },
+        { name: 'Vakken', href: '/vakken' },
+        { name: 'Studentenwelzijn', href: '/studentenwelzijn' },
       ],
       href: '/opleiding/vakken',
     },
