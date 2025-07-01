@@ -12,9 +12,9 @@ export default function Footer() {
           <h3 className="text-xl font-semibold mb-4">Socials</h3>
           <div className="flex space-x-4">
             {[
-              { icon: <Instagram />, href: '#' },
-              { icon: <Linkedin />, href: '#' },
-              { icon: <Github />, href: '#' },
+              { icon: <Instagram />, href: 'https://www.instagram.com/s.v.null/' },
+              { icon: <Linkedin />, href: 'https://www.linkedin.com/company/studievereniging-null' },
+              { icon: <Github />, href: 'https://github.com/SV-NULL' },
             ].map((item, idx) => (
               <a
                 key={idx}
@@ -66,6 +66,9 @@ export default function Footer() {
           </address>
         </div>
       </div>
+      <p className='text-center text-gray-500 py-4 '>
+        Copyright © 2025 Studievereniging NULL
+      </p>
     </footer>
   );
 }

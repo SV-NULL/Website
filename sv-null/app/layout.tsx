@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import React from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Footer from "./components/Footer"; // importeer footer
+import Footer from "./components/Footer";
+import Navigation from "./components/Navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Studievereniging Null",
-  description: "De studievereniging voor HBO-ICT aan de Christelijke Hogeschool Ede",
+  description: "De studievereniging voor HBO-ICT aan de Christelijke Hogeschool Ede (CHE)",
 };
 
 export default function RootLayout({
@@ -26,6 +27,7 @@ export default function RootLayout({
   return (
     <html lang="nl">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}>
+        <Navigation />
         <main className="container mx-auto p-8 flex-grow">
           {children}
         </main>
