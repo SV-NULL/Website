@@ -7,7 +7,9 @@ import React from 'react';
 export default function Footer() {
   return (
     <footer className="mt-16">
-      <div className="container mx-auto p-8 grid grid-cols-1 sm:grid-cols-3 gap-8">
+      {/* Twee opties voor de footer: in het midden geschaald of de volledige breedte. Nu is er gekozen voor in het midden geschaald */}
+      <div className="max-w-4xl mx-auto p-8 grid grid-cols-1 sm:grid-cols-3 gap-8">
+      {/* <div className="container mx-auto p-8 grid grid-cols-1 sm:grid-cols-3 gap-8"> */}
         <div>
           <h3 className="text-xl font-semibold mb-4">Socials</h3>
           <div className="flex space-x-4">
