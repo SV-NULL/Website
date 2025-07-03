@@ -187,3 +187,54 @@ export function getCommissieBySlug(slug: string): ListItem | null {
     members: data.members ?? [],
   };
 }
+
+//
+// ─── Vakken ─────────────────────────────────────────────────
+//
+
+export interface VakkenItem {
+  title: string;
+  subtitle: string;
+  description: string;
+  courses: {
+    semester: number;
+    expertise?: string | null;
+    name: string;
+    details: string;
+    resources: string[];
+  }[];
+}
+
+export function getVakkenItems(): { slug: string; data: VakkenItem }[] {
+  const dir = path.join(process.cwd(), 'content', 'vakken');
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir)
+    .filter((file) => file.endsWith('.md'))
+    .map((file) => {
+      const filePath = path.join(dir, file);
+      const md = fs.readFileSync(filePath, 'utf-8');
+      const { data, content } = matter(md);
+      return {
+        slug: file.replace(/\.md$/, ''),
+        data: {
+          title: data.title,
+          subtitle: data.subtitle || '',
+          description: data.description || content.trim(),
+          courses: data.courses,
+        },
+      };
+    });
+}
+
+export function getVakkenBySlug(slug: string): VakkenItem | null {
+  const filePath = path.join(process.cwd(), 'content', 'vakken', `${slug}.md`);
+  if (!fs.existsSync(filePath)) return null;
+  const md = fs.readFileSync(filePath, 'utf-8');
+  const { data, content } = matter(md);
+  return {
+    title: data.title,
+    subtitle: data.subtitle || '',
+    description: data.description || content.trim(),
+    courses: data.courses,
+  };
+}
