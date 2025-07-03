@@ -1,26 +1,33 @@
-// File: components/Navigation.tsx
 'use client';
 
-import { useState, Fragment } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, Transition } from '@headlessui/react';
-import { XIcon, AlignJustify, ChevronDownIcon, ChevronRight } from 'lucide-react';
+import {
+  XIcon,
+  AlignJustify,
+  ChevronDownIcon,
+  ChevronRight,
+} from 'lucide-react';
 
 export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
   const navItems = [
     {
       name: 'Vereniging',
       sub: [
-        { name: 'Word lid', href: '/lid-worden' },
+        { name: 'Word lid', href: '/word-lid' },
         { name: 'Bestuur', href: '/bestuur' },
         { name: 'Commissies', href: '/commissies' },
         { name: 'Over ons', href: '/over-ons' },
       ],
-      // Optional fallback href for parent
       href: '/bestuur',
     },
     { name: 'Kalender', href: '/kalender' },
@@ -69,11 +76,12 @@ export default function Navigation() {
               return item.sub ? (
                 <Menu key={idx} as="div" className="relative inline-block text-left">
                   <Menu.Button
-                    className={`inline-flex items-center px-3 py-2 transition-colors ${
+                    className={`inline-flex items-center px-3 py-2 transition-colors cursor-pointer ${
                       parentActive ? 'text-yellow-400' : 'hover:text-yellow-400'
                     }`}
                   >
-                    {item.name} <ChevronDownIcon className="w-4 h-4 ml-1" />
+                    {item.name}
+                    <ChevronDownIcon className="w-4 h-4 ml-1" />
                   </Menu.Button>
                   <Transition
                     as={Fragment}
@@ -84,7 +92,7 @@ export default function Navigation() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute mt-2 w-44 bg-black text-white shadow-lg ring-1 ring-gray-700 focus:outline-none rounded-md overflow-hidden">
+                    <Menu.Items className="absolute mt-2 w-44 bg-black text-white shadow-lg ring-1 ring-gray-700 focus:outline-none rounded-md overflow-hidden z-50">
                       {item.sub.map((subItem, sidx) => (
                         <Menu.Item key={sidx}>
                           {({ active }) => (
@@ -98,7 +106,7 @@ export default function Navigation() {
                                   : 'hover:text-yellow-400'
                               }`}
                             >
-                            {subItem.name}
+                              {subItem.name}
                             </Link>
                           )}
                         </Menu.Item>
@@ -110,8 +118,10 @@ export default function Navigation() {
                 <Link
                   key={idx}
                   href={item.href}
-                  className={`px-3 py-2 transition-colors ${
-                    isActive(item.href) ? 'text-yellow-400' : 'hover:text-yellow-400'
+                  className={`px-3 py-2 transition-colors cursor-pointer ${
+                    isActive(item.href)
+                      ? 'text-yellow-400'
+                      : 'hover:text-yellow-400'
                   }`}
                 >
                   {item.name}
@@ -152,7 +162,8 @@ export default function Navigation() {
                       parentActive ? 'text-yellow-400' : 'hover:text-yellow-400'
                     }`}
                   >
-                    {item.name} <ChevronDownIcon className="w-4 h-4" />
+                    {item.name}
+                    <ChevronDownIcon className="w-4 h-4" />
                   </summary>
                   <div className="pl-4 bg-black">
                     {item.sub.map((subItem, sidx) => (

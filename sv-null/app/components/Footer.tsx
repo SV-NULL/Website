@@ -21,9 +21,9 @@ export default function Footer() {
               <a
                 key={idx}
                 href={item.href}
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-yellow-400 hover:text-black transition-colors"
+                className="group w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-yellow-400 transition-colors"
               >
-                {React.cloneElement(item.icon, { className: 'w-5 h-5 text-white' })}
+                {React.cloneElement(item.icon, { className: 'w-5 h-5 text-white group-hover:text-black' })}
               </a>
             ))}
           </div>
@@ -38,7 +38,7 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="/documents" className="flex items-center hover:text-yellow-500">
+              <a href="/verenigingsdocumenten" className="flex items-center hover:text-yellow-500">
                 <ChevronRight className="w-5 h-5 mr-2" /> Verenigingsdocumenten
               </a>
             </li>

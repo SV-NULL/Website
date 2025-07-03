@@ -1,0 +1,58 @@
+// File: app/documents/page.tsx
+'use client';
+
+import { FileTextIcon } from 'lucide-react';
+
+const documents = [
+  {
+    name: 'AVG‑beleid',
+    file: '/documents/AVG_beleid.pdf',
+  },
+  {
+    name: 'Huisregels',
+    file: '/documents/Huisregels.pdf',
+  },
+  {
+    name: 'Reglement Algemene Vergadering',
+    file: '/documents/Reglement_Algemene_Vergadering.pdf',
+  },
+  {
+    name: 'Reglement Bestuursvergadering',
+    file: '/documents/Reglement_Bestuursvergadering.pdf',
+  },
+  {
+    name: 'Sollicitatie & Verkiezingsreglement',
+    file: '/documents/Sollicitatie_Verkiezings_reglement.pdf',
+  },
+];
+
+export default function VerenigingsdocumentenPage() {
+  return (
+    <main className="px-6 py-12 max-w-4xl mx-auto space-y-8">
+      <section className="text-center">
+        <h1 className="text-4xl font-bold mb-4">Verenigingsdocumenten</h1>
+        <p className="mb-6 text-gray-300">
+          Hieronder vind je belangrijke documenten zoals statuten, huisregels en
+          het AVG‑beleid.
+        </p>
+      </section>
+
+      <section className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {documents.map((doc) => (
+          <a
+            key={doc.file}
+            href={doc.file}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center space-x-4 p-4 bg-gray-900 hover:bg-yellow-400 rounded-lg transition-colors"
+          >
+            <FileTextIcon className="w-6 h-6 text-yellow-400 group-hover:text-black flex-shrink-0" />
+            <span className="font-medium text-white group-hover:text-black">
+              {doc.name}
+            </span>
+          </a>
+        ))}
+      </section>
+    </main>
+  );
+}
