@@ -5,8 +5,6 @@ Deze repository bevat de website van Studievereniging NULL, gebouwd met **Next.j
 1. **Pages gehost via Markdown + SSG**
 2. **One-off pagina’s** (hardcoded React/TSX)
 
----
-
 ## 📁 Mappenstructuur
 
 ```
@@ -38,7 +36,6 @@ Deze repository bevat de website van Studievereniging NULL, gebouwd met **Next.j
 └─ package.json        # Dependencies en scripts
 ```
 
----
 
 ## ⚡ SSG-pagina’s via Markdown
 
@@ -53,7 +50,6 @@ De volgende secties worden volledig opgebouwd via **Static Site Generation** doo
 
 Plaats nieuwe content door een `.md`-bestand toe te voegen onder de overeenkomstige submap in `/content`.
 
----
 
 ## 📄 One-off Pagina’s
 
@@ -71,7 +67,6 @@ Gebruik een one-off React pagina als:
 * De layout en logica uniek zijn
 * Geen herhaalbare Markdown-structuur past
 
----
 
 ## 🚀 Starten & Ontwikkelen
 
@@ -86,7 +81,10 @@ Gebruik een one-off React pagina als:
 * `build`: bouwt de site voor productie
 * `start`: serveert de productie-build
 
----
+
+## 🌐 Deployment
+De main branch wordt automatisch gedeployed op Netlify. Bij elke push naar main wordt de site live bijgewerkt.
+
 
 ## 🛠️ Tips
 
@@ -94,4 +92,4 @@ Gebruik een one-off React pagina als:
 * **Component library**: herbruik UI in `/app/components`
 * **Styling**: gebruik Tailwind-utility classes in JSX
 
-Vragen? Bel of mail de webdeveloper!
+
