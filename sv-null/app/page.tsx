@@ -1,9 +1,16 @@
-import DropdownList from "@/app/components/DropdownList";
-import CTA from "@/app/components/CTA";
-import { getUpcomingCalendarItems } from "@/lib/content";
+import DropdownList from '@/app/components/DropdownList';
+import CTA from '@/app/components/CTA';
+import { getUpcomingCalendarItems } from '@/lib/content';
+import Gallery, { GalleryImage } from '../app/components/Gallery';
 
 export default function HomePage() {
   const upcomingActivities = getUpcomingCalendarItems(2);
+
+    const gallery: GalleryImage[] = [
+    { src: '/images/home/frankrijk-2023.jpg', alt: 'Frankrijkreis 2023', caption: 'Frankrijkreis 2023' },
+    { src: '/images/home/chipsoft-2024.jpg', alt: 'Chipsoft Pubquiz 2024', caption: 'Chipsoft Pubquiz 2024' },
+    { src: '/images/home/4ps-2022.jpg',    alt: '4PS Wiskeyproeverij 2023', caption: '4PS Wiskeyproeverij 2023' },
+  ];
 
   return (
     <main className="space-y-16 py-8">
@@ -47,22 +54,11 @@ export default function HomePage() {
         }
       />
 
+      {/* Sfeerimpressie als gallery */}
       <section>
         <h2 className="text-3xl font-bold mb-4">Sfeerimpressie</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <figure className="text-center">
-            <img src="/images/home/sfeerfoto-1.png" alt="Frankrijkreis 2024" className="rounded shadow w-full"/>
-            <figcaption className="text-sm mt-2 text-gray-600">Frankrijkreis 2024</figcaption>
-          </figure>
-          <figure className="text-center">
-            <img src="/images/home/sfeerfoto-1.png" alt="3e Blokborrel 2025" className="rounded shadow w-full"/>
-            <figcaption className="text-sm mt-2 text-gray-600">3e Blokborrel 2025</figcaption>
-          </figure>
-          <figure className="text-center">
-            <img src="/images/home/sfeerfoto-1.png" alt="Lezing AI & Tech" className="rounded shadow w-full"/>
-            <figcaption className="text-sm mt-2 text-gray-600">Lezing AI & Tech</figcaption>
-          </figure>
-        </div>
+        {/* Gebruik hier de client-Gallery */}
+        <Gallery images={gallery} />
       </section>
 
       {/* Waarom lid worden */}

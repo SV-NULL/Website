@@ -26,7 +26,7 @@ export default function List({
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <div className="absolute inset-0 bg-opacity-25 flex flex-col justify-end p-4 text-white">
+              <div className="absolute inset-0 bg-opacity-25 flex flex-col justify-end p-4 text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                 <h2 className="text-xl font-semibold">{item.title}</h2>
                 <p className="text-sm">{item.subtitle}</p>
               </div>
