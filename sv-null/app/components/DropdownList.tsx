@@ -18,7 +18,7 @@ export default function DropdownList({
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-6">{title}</h1>
+      <h2 className="text-3xl font-bold mb-6">{title}</h2>
 
       <div className="space-y-4">
         {items.map((item, i) => {
@@ -37,7 +37,7 @@ export default function DropdownList({
               {/* Header */}
               <div className="flex items-center justify-between px-4 py-3">
                 <div>
-                  <h2 className="text-xl font-semibold">{item.title}</h2>
+                  <h3 className="text-2xl font-semibold">{item.title}</h3>
                   <p className="text-sm text-gray-400">{item.subtitle}</p>
                 </div>
                 <div className="text-yellow-400">

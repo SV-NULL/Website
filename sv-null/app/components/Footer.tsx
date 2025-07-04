@@ -31,23 +31,17 @@ export default function Footer() {
 
         <div>
           <h3 className="text-xl font-semibold mb-4">Informatie</h3>
-          <ul className="list-none space-y-3 text-gray-400">
-            <li>
+          <div className='space-y-3'>
               <a href="/statuten" className="flex items-center hover:text-yellow-500">
                 <ChevronRight className="w-5 h-5 mr-2" /> Statuten
               </a>
-            </li>
-            <li>
               <a href="/verenigingsdocumenten" className="flex items-center hover:text-yellow-500">
                 <ChevronRight className="w-5 h-5 mr-2" /> Verenigingsdocumenten
               </a>
-            </li>
-            <li>
               <a href="/privacy-cookies" className="flex items-center hover:text-yellow-500">
                 <ChevronRight className="w-5 h-5 mr-2" /> Privacy & Cookies
               </a>
-            </li>
-          </ul>
+              </div>
         </div>
 
         <div>

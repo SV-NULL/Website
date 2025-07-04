@@ -16,7 +16,6 @@ export default function VacatureList({ vacatures }: { vacatures: VacatureItem[] 
 
   return (
     <>
-      {/* Filter buttons */}
       <div className="py-8 flex gap-4 mb-6">
         {['all', 'bijbaan', 'stage', 'full-time'].map((type) => (
           <button
@@ -32,8 +31,7 @@ export default function VacatureList({ vacatures }: { vacatures: VacatureItem[] 
         ))}
       </div>
 
-      {/* Vacature blocks */}
-      <div className="grid grid-cols-1 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
         {visible.map((v) => (
           <div
             key={v.slug}
@@ -46,14 +44,13 @@ export default function VacatureList({ vacatures }: { vacatures: VacatureItem[] 
               className="w-16 h-16 object-contain"
             />
             <div>
-              <h2 className="text-xl font-semibold">{v.title}</h2>
+              <h3 className="text-2xl font-semibold">{v.title}</h3>
               <p className="text-sm text-gray-600">{v.company} · {v.type}</p>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Load more */}
       {visibleCount < filtered.length && (
         <div className="text-center mt-6">
           <button className="px-4 py-2 bg-yellow-400 rounded"
@@ -63,7 +60,6 @@ export default function VacatureList({ vacatures }: { vacatures: VacatureItem[] 
         </div>
       )}
 
-      {/* CTA */}
       <div className="mt-12">
         <CTA
           title="Vacature plaatsen?"

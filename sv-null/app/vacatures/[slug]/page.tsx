@@ -22,7 +22,7 @@ export default async function VacatureDetailPage({ params }: { params: Promise<{
         </div>
       </div>
       <Markdown>{vacature.content}</Markdown>
-      <CTA title="Solliciteer nu" text="Klik op de knop om direct te solliciteren" button={{ text: 'Solliciteer', href: vacature.applyUrl }} />
+      <CTA title="Interesse?" text="Klik op de knop hieronder om te soliciteren op de positie" button={{ text: 'Solliciteer', href: vacature.applyUrl }} />
     </div>
   );
 }

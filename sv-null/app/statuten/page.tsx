@@ -1,6 +1,6 @@
 export default function StatutenPage() {
   return (
-    <section className="space-y-4">
+    <div className="space-y-4 py-8">
       <h1 className="text-4xl font-bold mb-6">Statuten</h1>
 
     <h2 className="text-2xl">Artikel 1 – Naam en zetel</h2>
@@ -427,6 +427,6 @@ export default function StatutenPage() {
         wet of met de statuten en mag geen bepaling bevatten die bij statuten behoren te worden geregeld.</p>
 
     <p className="text-gray-500">Laatst gewijzigd op: 29/11/2022</p>
-    </section>
+    </div>
     );
 }

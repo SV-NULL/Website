@@ -1,6 +1,6 @@
 export default function WordLidPage() {
   return (
-    <section>
+    <div className="py-8">
       <h1 className="text-4xl font-bold mb-6">Word Lid</h1>
       <p className="mb-4">
         Bij NULL maak je direct kennis met een hechte groep mede-ICT-studenten en krijg je toegang tot gezellige activiteiten, inspirerende lezingen en toffe evenementen, vaak in samenwerking met interessante bedrijven. 
@@ -10,6 +10,6 @@ export default function WordLidPage() {
       <p>
         Hier een form :)
       </p>
-    </section>
+    </div>
     );
 }

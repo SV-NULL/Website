@@ -27,13 +27,11 @@ Bevat herbruikbare componenten zoals:
 * Navbar.tsx — Navigatiecomponent bovenaan de pagina.
 
 ```/lib```
-Bevat hulpfuncties en logica, zoals:
-* markdown.ts — Leest en verwerkt Markdown-bestanden met metadata.
-* activiteiten.ts — Logica voor het ophalen en tonen van activiteiten.
+Bevat content.ts voor het lezen en verwerken van de markdown bestanden.
 
 ```/pages```
 
-Bevat de Next.js pagina’s (routes):
+Bevat de Next.js pagina’s:
 * index.tsx — Homepagina
 * activiteiten.tsx — Overzicht van alle activiteiten
 * activiteiten/[slug].tsx — Detailpagina voor een activiteit
@@ -42,12 +40,11 @@ Bevat de Next.js pagina’s (routes):
 ```/content```
 
 Bevat alle .md bestanden die gebruikt worden als inhoud voor de website:
-* home.md — Inhoud voor de homepagina
 * activiteiten/ — Map met één .md bestand per activiteit (bijv. introductie.md, borrel.md, etc.)
 
 ```/public```
 
-Voor statische bestanden (zoals afbeeldingen of logo's).
+Voor statische bestanden (zoals afbeeldingen of bestanden).
 
 ```/styles```
 

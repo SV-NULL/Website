@@ -3,7 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 
 //
-// ─── DROPDOWN ITEMS (KALENDER, PARTNERS, ETC.) ───────────────────────────
+// ─── DROPDOWN ITEMS (KALENDER) ───────────────────────────
 //
 
 export interface DropdownItem {
@@ -14,7 +14,7 @@ export interface DropdownItem {
   content: string;
 }
 
-function loadMarkdownItems(folder: string): DropdownItem[] {
+function loadDropDownItems(folder: string): DropdownItem[] {
   const dir = path.join(process.cwd(), 'content', folder);
   const files = fs.existsSync(dir) ? fs.readdirSync(dir) : [];
 
@@ -34,7 +34,7 @@ function loadMarkdownItems(folder: string): DropdownItem[] {
 }
 
 export function getCalendarItems(): DropdownItem[] {
-  return loadMarkdownItems('kalender');
+  return loadDropDownItems('kalender');
 }
 
 export function getUpcomingCalendarItems(count: number): DropdownItem[] {
@@ -49,8 +49,40 @@ export function getUpcomingCalendarItems(count: number): DropdownItem[] {
   return allItems.slice(0, count);
 }
 
-export function getPartnerItems(): DropdownItem[] {
-  return loadMarkdownItems('partners');
+
+//
+// ─── PARTNERS ───────────────────────────
+//
+
+export interface PartnerItem {
+  title: string;
+  subtitle: string;
+  image: string;
+  content: string;
+  website?: string;
+}
+
+function loadPartnerItems(folder: string): PartnerItem[] {
+  const dir = path.join(process.cwd(), 'content', folder);
+  const files = fs.existsSync(dir) ? fs.readdirSync(dir) : [];
+
+  return files.map((filename) => {
+    const filePath = path.join(dir, filename);
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+    const { data, content } = matter(fileContent);
+
+    return {
+      title: data.title,
+      subtitle: data.subtitle,
+      image: data.image,
+      content,
+      website: data.website || '',
+    };
+  });
+}
+
+export function getPartnerItems(): PartnerItem[] {
+  return loadPartnerItems('partners');
 }
 
 //
