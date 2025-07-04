@@ -1,69 +1,97 @@
-# Studievereniging Website
+# Studievereniging NULL Website
 
-Dit project is een statische website voor een studievereniging, gebouwd met **Next.js** en **TailwindCSS**. De website bevat verschillende pagina's, zoals een homepagina, activiteitenpagina, detailpagina's en een contactpagina. De inhoud wordt dynamisch geladen uit Markdown-bestanden.
+Deze repository bevat de website van Studievereniging NULL, gebouwd met **Next.js** (13+) en **TailwindCSS**. De site onderscheidt:
 
-## Vereisten
+1. **Pages gehost via Markdown + SSG**
+2. **One-off pagina’s** (hardcoded React/TSX)
 
-Zorg ervoor dat je de volgende software op je systeem hebt geïnstalleerd:
+---
 
-- [Node.js](https://nodejs.org/) (versie 14 of hoger)
-- [npm](https://www.npmjs.com/)
+## 📁 Mappenstructuur
 
-## Installatie
+```
+/ (root)
+├─ app/                # Next.js 13+ "app router"
+│  ├─ components/      # UI-componenten (CTA, cards, navbar, etc.)
+│  ├─ layout.tsx       # Algemene layout voor alle pagina's
+│  ├─ page.tsx         # Homepagina
+│  └─ ...              # Pagina’s (SGG of hardcoded)
+│
+├─ content/            # Markdown-content voor SSG-pagina’s
+│  ├─ bestuur/         # MD-bestanden voor besturen
+│  ├─ commissies/      # MD-bestanden voor commissies
+│  ├─ kalender/        # Activiteiten
+│  ├─ partners/        # Partnerinfo
+│  ├─ vacatures/       # Stage-/vacaturepagina’s
+│  └─ vakken/          # Jaar-1.md t/m Jaar-4.md (cursusdata)
+│
+├─ lib/                # Data-loaders en frontmatter-parsing
+│  └─ content.ts       # `getXXXItems()` en `getXXXBySlug()` functies
+│
+├─ public/             # Statische assets (afbeeldingen en documenten)
+│
+├─ styles/             # Globale styles en Tailwind-configuratie
+│  └─ globals.css      # Base styles + Tailwind imports
+│
+├─ tailwind.config.js  # TailwindCSS configuratie
+├─ next.config.js      # Next.js configuratie
+└─ package.json        # Dependencies en scripts
+```
 
-Volg deze stappen om het project lokaal te draaien:
+---
 
-1. Clone het project
-2. Navigeer in je terminal naar de directory /svnull
-3. Installeer de packages: ```npm install```
-4. Start de development omgeving ```npm run dev```
-5. Bekijk de site op http://localhost:3000
+## ⚡ SSG-pagina’s via Markdown
 
-## Codebase structuur
-De codebase is als volgt opgebouwd:
+De volgende secties worden volledig opgebouwd via **Static Site Generation** door MD-bestanden in `/content`:
 
-```/components```
-Bevat herbruikbare componenten zoals:
-* Navbar.tsx — Navigatiecomponent bovenaan de pagina.
+* **Bestuur**: `getBestuurItems()`, `getBestuurBySlug()`
+* **Commissies**: `getCommissieItems()`, `getCommissieBySlug()`
+* **Kalender**: `getCalendarItems()`, `getUpcomingCalendarItems()`
+* **Partners**: `getPartnerItems()`, `PartnerFlippingCard` voor presentatie
+* **Vacatures**: `getVacatureItems()`, `getVacatureBySlug()`
+* **Vakken**: `getVakkenItems()`, `getVakkenBySlug()`
 
-```/lib```
-Bevat content.ts voor het lezen en verwerken van de markdown bestanden.
+Plaats nieuwe content door een `.md`-bestand toe te voegen onder de overeenkomstige submap in `/content`.
 
-```/pages```
+---
 
-Bevat de Next.js pagina’s:
-* index.tsx — Homepagina
-* activiteiten.tsx — Overzicht van alle activiteiten
-* activiteiten/[slug].tsx — Detailpagina voor een activiteit
-* contact.tsx — Contactpagina
+## 📄 One-off Pagina’s
 
-```/content```
+Deze pagina’s worden niet via Markdown gegenereerd, maar in `app/` als individuele React-componenten:
 
-Bevat alle .md bestanden die gebruikt worden als inhoud voor de website:
-* activiteiten/ — Map met één .md bestand per activiteit (bijv. introductie.md, borrel.md, etc.)
+* Home (`app/page.tsx`)
+* Over ons, Word lid, Contact, Studentenwelzijn, etc.
+* Vakken overzicht: `app/vakken/page.tsx`
+* Andere content die niet in de generieke SSG-flow past.
 
-```/public```
+### Wanneer hardcoded?
 
-Voor statische bestanden (zoals afbeeldingen of bestanden).
+Gebruik een one-off React pagina als:
 
-```/styles```
+* De layout en logica uniek zijn
+* Geen herhaalbare Markdown-structuur past
 
-Bevat globale stijlen en Tailwind-configuratie:
-* globals.css — Globale Tailwind-imports en basisstijlen
+---
 
-```tailwind.config.js```
+## 🚀 Starten & Ontwikkelen
 
-TailwindCSS configuratie.
+1. Clone de repo
+2. `npm install`
+3. `npm run dev`
+4. Open [http://localhost:3000](http://localhost:3000)
 
-```next.config.js```
+### Scripts
 
-Next.js configuratiebestand.
+* `dev`: draait de development server
+* `build`: bouwt de site voor productie
+* `start`: serveert de productie-build
 
-```package.json```
+---
 
-Projectconfiguratie en scripts.
+## 🛠️ Tips
 
-## Hoe de inhoud wordt geladen
-De inhoud van de website wordt geschreven in Markdown en opgeslagen in de map ```content/.``` De metadata (zoals titel en datum) wordt uit de YAML frontmatter gelezen en samen met de inhoud omgezet naar HTML met behulp van remark.
+* **Nieuwe SSG-content**: voeg `.md` toe en rebuild
+* **Component library**: herbruik UI in `/app/components`
+* **Styling**: gebruik Tailwind-utility classes in JSX
 
-Voor activiteiten wordt automatisch elke ```.md``` file in ```content/activiteiten/``` ingelezen, zodat je eenvoudig nieuwe activiteiten kunt toevoegen door daar een bestand toe te voegen.
+Vragen? Bel of mail de webdeveloper!
