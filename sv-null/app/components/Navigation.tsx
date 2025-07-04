@@ -1,9 +1,8 @@
 'use client';
 
-import { useState, useEffect, Fragment } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, Transition } from '@headlessui/react';
 import {
   XIcon,
   AlignJustify,
@@ -67,58 +66,51 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop menu */}
-          <div className="hidden md:flex space-x-6">
+          <div className="hidden md:flex space-x-6 relative z-50">
             {navItems.map((item, idx) => {
               const parentActive =
                 isActive(item.href || '') ||
                 (item.sub ? item.sub.some((sub) => isActive(sub.href)) : false);
 
-              return item.sub ? (
-                <Menu key={idx} as="div" className="relative inline-block text-left">
-                  <Menu.Button
-                    className={`inline-flex items-center px-3 py-2 transition-colors cursor-pointer ${
-                      parentActive ? 'text-yellow-400' : 'hover:text-yellow-400'
-                    }`}
-                  >
-                    {item.name}
-                    <ChevronDownIcon className="w-4 h-4 ml-1" />
-                  </Menu.Button>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="absolute mt-2 w-44 bg-black text-white shadow-lg ring-1 ring-gray-700 focus:outline-none rounded-md overflow-hidden z-50">
+              if (item.sub) {
+                return (
+                  <div key={idx} className="relative group">
+                    <button
+                      className={`inline-flex items-center px-3 py-2 transition-colors ${
+                        parentActive
+                          ? 'text-yellow-400'
+                          : 'hover:text-yellow-400'
+                      }`}
+                    >
+                      {item.name}
+                      <ChevronDownIcon className="w-4 h-4 ml-1" />
+                    </button>
+
+                    {/* Dropdown content */}
+                    <div className="absolute left-0 top-full w-44 bg-black text-white shadow-lg ring-1 ring-gray-700 rounded-md z-50 opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none invisible group-hover:visible transition-all duration-200">
                       {item.sub.map((subItem, sidx) => (
-                        <Menu.Item key={sidx}>
-                          {({ active }) => (
-                            <Link
-                              href={subItem.href}
-                              className={`block px-4 py-2 text-sm transition-colors ${
-                                isActive(subItem.href)
-                                  ? 'bg-gray-800 text-yellow-400'
-                                  : active
-                                  ? 'bg-gray-800 text-white'
-                                  : 'hover:text-yellow-400'
-                              }`}
-                            >
-                              {subItem.name}
-                            </Link>
-                          )}
-                        </Menu.Item>
+                        <Link
+                          key={sidx}
+                          href={subItem.href}
+                          className={`block px-4 py-2 text-sm transition-colors ${
+                            isActive(subItem.href)
+                              ? 'bg-gray-800 text-yellow-400'
+                              : 'hover:bg-gray-800 hover:text-white'
+                          }`}
+                        >
+                          {subItem.name}
+                        </Link>
                       ))}
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
-              ) : (
+                    </div>
+                  </div>
+                );
+              }
+
+              return (
                 <Link
                   key={idx}
                   href={item.href}
-                  className={`px-3 py-2 transition-colors cursor-pointer ${
+                  className={`px-3 py-2 transition-colors ${
                     isActive(item.href)
                       ? 'text-yellow-400'
                       : 'hover:text-yellow-400'
@@ -159,11 +151,16 @@ export default function Navigation() {
                 <details key={idx} className="group bg-black">
                   <summary
                     className={`flex justify-between items-center px-3 py-2 cursor-pointer transition-colors ${
-                      parentActive ? 'text-yellow-400' : 'hover:text-yellow-400'
+                      parentActive
+                        ? 'text-yellow-400'
+                        : 'hover:text-yellow-400'
                     }`}
                   >
                     {item.name}
-                    <ChevronDownIcon className="w-4 h-4" />
+                    <span className="ml-2">
+                      <ChevronDownIcon className="w-4 h-4 group-open:hidden inline" />
+                      <ChevronDownIcon className="w-4 h-4 rotate-180 group-open:inline hidden" />
+                    </span>
                   </summary>
                   <div className="pl-4 bg-black">
                     {item.sub.map((subItem, sidx) => (
@@ -187,7 +184,9 @@ export default function Navigation() {
                   key={idx}
                   href={item.href}
                   className={`block px-3 py-2 transition-colors ${
-                    isActive(item.href) ? 'text-yellow-400' : 'hover:text-yellow-400'
+                    isActive(item.href)
+                      ? 'text-yellow-400'
+                      : 'hover:text-yellow-400'
                   }`}
                 >
                   {item.name}

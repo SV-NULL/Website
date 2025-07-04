@@ -22,9 +22,11 @@ export default async function VakkenDetailPage({
             {c.expertise ? `  (${c.expertise}) ` : ' '}
             {c.name}
           </h2>
-          <p className="mt-2">
+          <p className="mt-4">
             {c.details}
             <br />
+          </p>
+          <p className="mt-4">
             <span className="font-semibold">Handige bronnen of advies:</span>
           </p>
           <ul className="list-disc pl-6 mt-1">
