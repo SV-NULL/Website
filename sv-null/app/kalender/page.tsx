@@ -14,7 +14,7 @@ export default function CalendarPage() {
         footer={
           <CTA
             title="Ook een idee voor een activiteit?"
-            text="Het bestuur is constant bezig met het organiseren van leuke activiteiten. Heb je zelf een leuk idee? Laat het ons weten!"
+            text="Het bestuur is constant bezig met het organiseren van leuke activiteiten. Heb jij een leuk idee? Laat het ons weten!"
             button={null}
           />
         }

@@ -15,11 +15,11 @@ members:
   - name: Anne-Wil van de Burgt
     role: Secretaris
     date: 2022-2024
-    image: /images/bestuur/2de-bestuur/Iris.jpg
+    image: /images/bestuur/2de-bestuur/Anne-Wil.jpg
   - name: Iris Reitsma
     role: Penningmeester
     date: 2022-2024
-    image: /images/bestuur/2de-bestuur/Anne-Wil.jpg
+    image: /images/bestuur/2de-bestuur/Iris.jpg
   - name: Wilke van de Kamp
     role: PR
     date: 2022-2024

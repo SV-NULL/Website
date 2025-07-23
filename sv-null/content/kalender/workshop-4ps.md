@@ -5,6 +5,6 @@ image: # Moet nog toegevoegd worden in bestanden
 date: 2026-01 # Even random voor nu
 ---
 
-Weer organiseren wij een leuke activiteit met 4PS!
+Weer organiseren wij een leuke activiteit met 4PS! Deze activiteit is in de vorm van een workshop over o.a. AI en Business Central.
 
-Deze activiteit is in de vorm van een workshop over o.a. AI en Business Central.
+Binnenkort horen jullie meer!
