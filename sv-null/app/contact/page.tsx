@@ -53,7 +53,7 @@ export default function ContactPage() {
 
         <button
           type="submit"
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 rounded shadow"
+          className="w-full bg-yellow-500 hover:bg-yellow-600 text-black text-lg font-semibold py-3 rounded shadow mt-2"
         >
           Verstuur Bericht
         </button>
