@@ -2,6 +2,7 @@ import DropdownList from '@/app/components/DropdownList';
 import CTA from '@/app/components/CTA';
 import { getPartnerItems, getUpcomingCalendarItems } from '@/lib/content';
 import Gallery, { GalleryImage } from '../app/components/Gallery';
+import { Users, RocketIcon, BookOpen } from 'lucide-react';
 
 export default function HomePage() {
   const upcomingActivities = getUpcomingCalendarItems(2);
@@ -20,24 +21,45 @@ export default function HomePage() {
       <section className="text-center py-16">
         <h1 className="text-5xl font-bold">SV. NULL</h1>
         <p className="text-xl mt-4">De studievereniging voor HBO-ICT op de CHE</p>
-        <div className="mt-6 text-lg font-semibold text-gray-500 italic">
+        <div className="mt-6 text-lg font-semibold text-yellow-400 italic">
           Community • Connectie met bedrijven • Borrels • Lezingen • Reizen
         </div>
       </section>
 
       <section>
         <h2 className="text-3xl font-bold mb-4">Onze waardes</h2>
-        <p className="mb-6">Als studievereniging staan wij voor verbinding, groei en ondernemerschap.</p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="p-4 border rounded text-center">
-            <div className="text-4xl mb-2">🤝</div><h3 className="font-semibold">Networking</h3>
-          </div>
-          <div className="p-4 border rounded text-center">
-            <div className="text-4xl mb-2">🚀</div><h3 className="font-semibold">Undertaking</h3>
-          </div>
-          <div className="p-4 border rounded text-center">
-            <div className="text-4xl mb-2">📚</div><h3 className="font-semibold">Lifelong Learning</h3>
-          </div>
+        <p className="mb-6 text-gray-300">
+          Als studievereniging staan wij voor verbinding, groei en ondernemerschap.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {[
+            { icon: <Users className="w-16 h-16 text-yellow-400" />, label: 'Networking' },
+            { icon: <RocketIcon className="w-16 h-16 text-yellow-400" />, label: 'Undertaking' },
+            { icon: <BookOpen className="w-16 h-16 text-yellow-400" />, label: 'Lifelong Learning' },
+          ].map(({ icon, label }) => (
+            <div
+              key={label}
+              className="text-center py-6"
+            >
+              <div className="inline-flex items-center justify-center w-32 h-32 mx-auto mb-4 rounded-full bg-gray-800">
+                {icon}
+              </div>
+              <h3 className="text-xl font-semibold text-white">
+                {label.split(' ').map((word, wi) => (
+                  <span key={wi}>
+                    {word.split('').map((ch, ci) => {
+                      // eerste letter van élk woord geel
+                      const isFirst = ci === 0;
+                      return isFirst
+                        ? <span key={ci} className="text-yellow-400 text-2xl">{ch}</span>
+                        : ch;
+                    })}
+                    {wi < label.split(' ').length - 1 && ' '}
+                  </span>
+                ))}
+              </h3>
+            </div>
+          ))}
         </div>
       </section>
 
