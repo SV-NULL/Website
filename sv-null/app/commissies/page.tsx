@@ -10,7 +10,7 @@ export default function CommissiesPage() {
     <List items={items} title="Commissies" basePath='commissies'/>
     <CTA
       title="Lid worden van een commissie?"
-      text="Neem contact met ons op met de commissievoorzitter via Whatsapp of Discord. Hopelijk tot snel!"
+      text="Neem contact met ons op met de voorzitter van de commissie via Whatsapp of Discord. Hopelijk tot snel!"
       button={null}
     />
     </div>

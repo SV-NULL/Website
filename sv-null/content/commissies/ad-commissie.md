@@ -13,4 +13,4 @@ members:
     image: /images/commissies/leden/Timo.jpg
 ---
 
-De borrelcommisie van s.v. NULL! Wij verzorgen alle blokborrels, en staan daar klaar voor jou ;)
+De borrelcommisie van SV. NULL! Wij verzorgen alle blokborrels, en staan daar klaar voor jou ;)

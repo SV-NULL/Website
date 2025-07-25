@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Studievereniging Null",
+  title: "SV. NULL",
   description: "De studievereniging voor HBO-ICT aan de Christelijke Hogeschool Ede (CHE)",
 };
 
