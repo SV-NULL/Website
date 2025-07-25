@@ -43,6 +43,7 @@ export default function Navigation() {
       sub: [
         { name: 'Huidige partners', href: '/partners' },
         { name: 'Vacatures', href: '/vacatures' },
+        { name: 'Partner worden', href: '/partner-worden' },
       ],
       href: '/partners',
     },

@@ -1,16 +1,18 @@
 import DropdownList from '@/app/components/DropdownList';
 import CTA from '@/app/components/CTA';
-import { getUpcomingCalendarItems } from '@/lib/content';
+import { getPartnerItems, getUpcomingCalendarItems } from '@/lib/content';
 import Gallery, { GalleryImage } from '../app/components/Gallery';
 
 export default function HomePage() {
   const upcomingActivities = getUpcomingCalendarItems(2);
 
-    const gallery: GalleryImage[] = [
+  const gallery: GalleryImage[] = [
     { src: '/images/home/frankrijk-2023.jpg', alt: 'Frankrijkreis 2023', caption: 'Frankrijkreis 2023' },
     { src: '/images/home/chipsoft-2024.jpg', alt: 'Chipsoft Pubquiz 2024', caption: 'Chipsoft Pubquiz 2024' },
     { src: '/images/home/4ps-2022.jpg',    alt: '4PS Wiskeyproeverij 2023', caption: '4PS Wiskeyproeverij 2023' },
   ];
+
+  const partners = getPartnerItems();
 
   return (
     <main className="space-y-16 py-8">
@@ -67,6 +69,25 @@ export default function HomePage() {
         text="Community, connecties met bedrijven, borrels, leerzame activiteiten, commissies en meer!"
         button={{ text: "Word lid van s.v.NULL", href: "/lid-worden" }}
       />
+
+      {/* Nieuwe sectie: Onze partners */}
+      <section className="py-12 text-white">
+        <h2 className="text-3xl font-bold mb-6">Onze partners</h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {partners.map((partner, index) => (
+            <div key={index} className="p-4 rounded-lg text-center border border-gray-700">
+              <img src={partner.image} alt={partner.title} className="mx-auto mb-4 h-16" />
+            </div>
+          ))}
+        </div>
+        </section>
+        {/* CTA: partner worden */}
+          <CTA
+            title="Ook partner worden?"
+            text="Sluit je aan bij SV. NULL en vergroot jouw zichtbaarheid bij HBO-ICT studenten."
+            button={{ text: 'Word partner', href: '/partner-worden' }}
+          />
 
     </main>
   );
