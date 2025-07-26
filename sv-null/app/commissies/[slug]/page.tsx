@@ -1,6 +1,6 @@
 import { getCommissieBySlug } from '@/lib/content';
 import { notFound } from 'next/navigation';
-import Members from '../../components/Members';
+import Members from '@/components/Members';
 
 export default async function CommissieDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { VacatureItem } from '@/lib/content';
 import { useRouter } from 'next/navigation';
-import CTA from '@/app/components/CTA';
+import CTA from '@/components/CTA';
 
 export default function VacatureList({ vacatures }: { vacatures: VacatureItem[] }) {
   const [filter, setFilter] = useState<string>('all');

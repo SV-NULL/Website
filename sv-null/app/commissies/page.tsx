@@ -1,6 +1,6 @@
 import { getCommissieItems } from '@/lib/content';
-import List from '../components/List';
-import CTA from '../components/CTA';
+import List from '@/components/List';
+import CTA from '@/components/CTA';
 
 export default function CommissiesPage() {
   const items = getCommissieItems();

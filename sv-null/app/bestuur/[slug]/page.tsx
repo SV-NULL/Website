@@ -1,7 +1,6 @@
-// File: app/bestuur/[slug]/page.tsx
 import { getBestuurBySlug } from '@/lib/content';
 import { notFound } from 'next/navigation';
-import Members from '../../components/Members';
+import Members from '@/components/Members';
 
 export default async function BestuurDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

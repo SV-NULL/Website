@@ -1,5 +1,5 @@
 import { getVacatureItems, VacatureItem } from '@/lib/content';
-import VacatureList from '@/app/components/VacatureList';
+import VacatureList from '@/components/VacatureList';
 
 export default function VacaturesPage() {
   const vacatures: VacatureItem[] = getVacatureItems();

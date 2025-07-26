@@ -1,4 +1,3 @@
-// File: components/Members.tsx
 'use client';
 
 interface Member {

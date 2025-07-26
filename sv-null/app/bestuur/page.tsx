@@ -1,5 +1,5 @@
-import CTA from '../components/CTA';
-import List from '../components/List';
+import CTA from '@/components/CTA';
+import List from '@/components/List';
 import { getBestuurItems } from '@/lib/content';
 
 export default function BestuurPage() {

@@ -1,6 +1,6 @@
 import { getPartnerItems } from '@/lib/content';
-import PartnerFlippingCard from '@/app/components/PartnerFlippingCard';
-import CTA from '@/app/components/CTA';
+import PartnerFlippingCard from '@/components/PartnerFlippingCard';
+import CTA from '@/components/CTA';
 
 export default function PartnersPage() {
   const items = getPartnerItems();

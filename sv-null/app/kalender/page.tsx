@@ -1,5 +1,5 @@
-import DropdownList from '@/app/components/DropdownList';
-import CTA from '@/app/components/CTA';
+import DropdownList from '@/components/DropdownList';
+import CTA from '@/components/CTA';
 import { getCalendarItems } from '@/lib/content';
 
 export default function CalendarPage() {

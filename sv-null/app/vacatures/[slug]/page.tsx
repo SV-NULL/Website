@@ -1,6 +1,6 @@
 import { getVacatureBySlug, getVacatureItems } from '@/lib/content';
 import Markdown from 'react-markdown';
-import CTA from '@/app/components/CTA';
+import CTA from '@/components/CTA';
 
 export async function generateStaticParams() {
   const items = getVacatureItems();

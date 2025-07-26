@@ -1,7 +1,7 @@
-import DropdownList from '@/app/components/DropdownList';
-import CTA from '@/app/components/CTA';
+import DropdownList from '@/components/DropdownList';
+import CTA from '@/components/CTA';
 import { getPartnerItems, getUpcomingCalendarItems } from '@/lib/content';
-import Gallery, { GalleryImage } from '../app/components/Gallery';
+import Gallery, { GalleryImage } from '@/components/Gallery';
 import { Users, RocketIcon, BookOpen } from 'lucide-react';
 
 export default function HomePage() {
