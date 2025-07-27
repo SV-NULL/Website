@@ -1,18 +1,14 @@
 ---
 title: Activiteiten Commissie
-subtitle: ~ leden
+subtitle: ?? leden
 image: /images/commissies/logos/logo-blauw.png
 members:
   - name: ??
-    role: Voorzitter Introweek commissie
+    role: Voorzitter Activiteiten commissie
     date: 01-09-2023
     image: /images/logo.png
   - name: ??
-    role: Lid Introweek commissie
-    date: 01-09-2023
-    image: /images/logo.png
-  - name: ??
-    role: Lid Introweek commissie
+    role: Lid Activiteiten commissie
     date: 01-09-2023
     image: /images/logo.png
 ---

@@ -1,6 +1,6 @@
 ---
 title: Website Commissie
-subtitle: 8 leden
+subtitle: 9 leden
 image: /images/commissies/logos/logo-groen.png
 members:
   - name: Menno Jak
@@ -31,6 +31,10 @@ members:
     role: Lid Website commissie
     date: 01-09-2024
     image: /images/commissies/leden/Robin.jpg
+  - name: Daan Ravenhorst
+    role: Lid Website commissie
+    date: 01-09-2024
+    image: /images/commissies/leden/Daan.jpg
   - name: Ben Vos
     role: Lid Website commissie
     date: 01-09-2024
