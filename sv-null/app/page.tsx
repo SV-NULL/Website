@@ -90,7 +90,7 @@ export default function HomePage() {
       <CTA
         title="Waarom lid worden?"
         text="Community, connecties met bedrijven, borrels, leerzame activiteiten, commissies en meer!"
-        button={{ text: "Word lid van NULL", href: "/lid-worden" }}
+        button={{ text: "Word lid van NULL", href: "/word-lid" }}
       />
 
       <section className="py-12 text-white">
