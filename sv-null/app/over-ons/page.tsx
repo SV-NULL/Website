@@ -6,7 +6,7 @@ export default function OverOnsPage() {
     <div>
       <PageTitle
         title="Over ons"
-        subtitle="Leer meer over onze SV. NULL, onze missie, visie en geschiedenis."
+        subtitle="Leer meer over de missie, visie, geschiedenis en toekomst van SV. NULL."
       />
 
     <div className="flex flex-col sm:grid sm:grid-cols-2">

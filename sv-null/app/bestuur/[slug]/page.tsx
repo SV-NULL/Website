@@ -1,6 +1,7 @@
 import { getBestuurBySlug } from '@/lib/content';
 import { notFound } from 'next/navigation';
 import Members from '@/components/Members';
+import PageTitle from '@/components/PageTitle';
 
 export default async function BestuurDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -8,12 +9,15 @@ export default async function BestuurDetailPage({ params }: { params: Promise<{ 
   if (!bestuur) return notFound();
 
   return (
-      <div className="py-8">
-        <h1 className="text-3xl font-bold mb-2">{bestuur.title}</h1>
-        <p className="text-gray-600 mb-6">{bestuur.subtitle}</p>
+      <div className="grid">
+
+        <PageTitle
+          title={bestuur.title}
+          subtitle={"Studiejaar " + bestuur.subtitle}
+        />
 
         <div
-          className="w-full mb-8 space-auto prose"
+          className="max-w-4xl mx-auto mb-8"
           dangerouslySetInnerHTML={{ __html: bestuur.content }}
         />
 

@@ -2,15 +2,21 @@
 
 import { useFormState } from 'react-dom';
 import { contactVerzenden } from './actions';
+import PageTitle from '@/components/PageTitle';
 
 export default function ContactPage() {
   const [state, formAction] = useFormState(contactVerzenden, { success: false });
 
   return (
-    <div className="py-12 px-4 max-w-2xl mx-auto text-white">
-      <h1 className="text-4xl font-bold mb-6">Contact</h1>
-      <p className="mb-6 text-gray-300">
-        Heb je vragen, suggesties of wil je kennismaken? Laat hieronder je bericht achter. We nemen zo snel mogelijk contact met je op.
+    <div className="px-4 max-w-4xl mx-auto text-white">
+      <PageTitle
+        title="Contact"
+        subtitle="Heb je vragen, suggesties of wil je kennismaken? Laat hieronder je bericht achter. We nemen zo snel mogelijk contact met je op."
+      />
+
+      <p className="text-sm text-gray-400 mb-6">
+        Met het versturen van dit formulier accepteer je onze{" "}
+        <a href="/privacy-cookies" className="underline text-yellow-400">Algemene Voorwaarden</a>.
       </p>
 
       {state.success && (
@@ -19,7 +25,7 @@ export default function ContactPage() {
         </div>
       )}
 
-      <form action={formAction} className="space-y-6">
+      <form action={formAction} className="space-y-6 max-w-4xl mx-auto">
         <div className="grid md:grid-cols-2 gap-4">
           <input
             name="naam"

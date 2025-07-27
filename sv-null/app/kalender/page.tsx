@@ -1,15 +1,18 @@
 import DropdownList from '@/components/DropdownList';
 import CTA from '@/components/CTA';
 import { getCalendarItems } from '@/lib/content';
+import PageTitle from '@/components/PageTitle';
 
 export default function CalendarPage() {
   const items = getCalendarItems();
 
   return (
-    <div className="py-8">
-      <h1 className="text-3xl font-bold mb-6">Kalender</h1>
+    <div>
+      <PageTitle
+        title="Kalender"
+        subtitle="Bekijk onze aankomende activiteiten en evenementen en plan ze in je agenda!"
+      />
       <DropdownList
-        title=""
         items={items}
         footer={
           <CTA

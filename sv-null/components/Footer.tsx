@@ -32,13 +32,13 @@ export default function Footer() {
         <div>
           <h3 className="text-xl font-semibold mb-4">Informatie</h3>
           <div className='space-y-3'>
-              <a href="/statuten" className="flex items-center hover:text-yellow-500">
+              <a href="/statuten" className="flex items-center hover:text-yellow-400">
                 <ChevronRight className="w-5 h-5 mr-2" /> Statuten
               </a>
-              <a href="/verenigingsdocumenten" className="flex items-center hover:text-yellow-500">
+              <a href="/verenigingsdocumenten" className="flex items-center hover:text-yellow-400">
                 <ChevronRight className="w-5 h-5 mr-2" /> Verenigingsdocumenten
               </a>
-              <a href="/privacy-cookies" className="flex items-center hover:text-yellow-500">
+              <a href="/privacy-cookies" className="flex items-center hover:text-yellow-400">
                 <ChevronRight className="w-5 h-5 mr-2" /> Privacy & Cookies
               </a>
               </div>
@@ -55,7 +55,7 @@ export default function Footer() {
             </div>
             <div className="flex items-center">
               <Mail className="w-5 h-5 mr-2" />
-              <a href="mailto:svnull@che.nl" className="hover:text-yellow-500">
+              <a href="mailto:svnull@che.nl" className="hover:text-yellow-400">
                 svnull@che.nl
               </a>
             </div>

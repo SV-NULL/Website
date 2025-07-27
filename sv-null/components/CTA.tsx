@@ -13,7 +13,7 @@ export default function CTA({ title, text, button }: CTAProps) {
       <h3 className="text-xl font-bold">{title}</h3>
       <p>{text}</p>
       {button && (
-        <a href={button.href} className="inline-block px-4 py-2 bg-yellow-400 text-black rounded hover:bg-yellow-300 transition-colors">
+        <a href={button.href} className="inline-block px-4 py-2 bg-yellow-400 text-black rounded hover:bg-yellow-500 transition-colors">
           {button.text}
         </a>
       )}

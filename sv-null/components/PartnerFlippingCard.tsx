@@ -34,7 +34,7 @@ export default function PartnerFlippingCard({ item }: PartnerFlippingCardProps) 
         )}
       >
 
-        <div className="absolute inset-0 backface-hidden rounded-lg overflow-hidden shadow-lg flex items-center justify-center">
+        <div className="absolute inset-0 backface-hidden rounded-lg overflow-hidden shadow-lg flex items-center justify-center bg-black p-6">
           <img
             src={item.image}
             alt={item.title}
@@ -44,10 +44,9 @@ export default function PartnerFlippingCard({ item }: PartnerFlippingCardProps) 
 
         <div className="absolute inset-0 rotate-y-180 backface-hidden bg-black text-white rounded-lg shadow-lg p-6 flex flex-col justify-between">
           <div>
-            <h3 className="text-xl font-semibold">{item.title}</h3>
-            {item.subtitle && (
-              <p className="text-sm text-gray-400 mb-2">{item.subtitle}</p>
-            )}
+            <h2 className="font-bold text-white">
+              {item.title}
+            </h2>
             <p className="text-gray-200 line-clamp-5 whitespace-pre-line">
               {item.content}
             </p>

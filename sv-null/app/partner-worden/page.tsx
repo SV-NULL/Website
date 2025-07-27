@@ -1,18 +1,39 @@
 'use client';
 
+import PageTitle from '@/components/PageTitle';
 import { partnerAanvraagVerzenden } from './actions';
 
 export default function PartnerWordenPage() {
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12 text-white">
-      <h1 className="text-4xl font-bold mb-4">Partner worden</h1>
+    <div className="px-4 max-w-4xl mx-auto text-white">
+      <PageTitle
+        title="Partner Worden"
+        subtitle="Interesse in een samenwerking met SV. NULL? We horen graag van je!"
+      />
+
       <p className="text-gray-300 mb-6">
-        Wil je samenwerken met studievereniging NULL? We staan open voor
-        partnerschappen met bedrijven die studenten willen inspireren, motiveren
-        of ondersteunen in hun ICT-ontwikkeling. Vul onderstaand formulier in en we nemen spoedig contact met je op.
+        Wij staan open voor samenwerkingen met bedrijven die onze studenten willen inspireren, uitdagen en ondersteunen in hun ontwikkeling tot ICT-professionals. 
+        Als partner van SV. NULL krijg je de kans om direct in contact te komen met gemotiveerde studenten van de opleiding HBO-ICT aan de CHE.
       </p>
 
-      <form action={partnerAanvraagVerzenden} method="POST" className="space-y-4">
+      <ul className="text-gray-300 list-disc list-inside mb-6 space-y-2">
+        <li><span className="text-white font-semibold">Toegang tot jong talent:</span> presenteer je organisatie aan toekomstige ICT-professionals.</li>
+        <li><span className="text-white font-semibold">Workshops & Lezingen:</span> geef inhoudelijke sessies en deel jouw expertise.</li>
+        <li><span className="text-white font-semibold">Netwerk- en borrelmomenten:</span> ontmoet studenten in een informele setting.</li>
+        <li><span className="text-white font-semibold">Zichtbaarheid:</span> vergroot je merkbekendheid binnen onze community.</li>
+        <li><span className="text-white font-semibold">Samen bouwen aan de toekomst:</span> draag bij aan de ontwikkeling van ICT op de CHE.</li>
+      </ul>
+
+      <p className="text-gray-300 mb-6">
+        Vul het formulier hieronder in en vertel ons meer over jouw organisatie en hoe jij een bijdrage wilt leveren. We nemen snel contact met je op!
+      </p>
+
+      <p className="text-sm text-gray-400 mb-6">
+        Met het versturen van dit formulier accepteer je onze{" "}
+        <a href="/privacy-cookies" className="underline text-yellow-400">Algemene Voorwaarden</a>.
+      </p>
+
+      <form action={partnerAanvraagVerzenden} method="POST" className="space-y-4 mt-8">
         <input
           name="bedrijfsnaam"
           placeholder="Bedrijfsnaam"

@@ -20,7 +20,7 @@ export default function Members({ members }: { members: Member[] }) {
             />
           </div>
           <h3 className="text-lg font-semibold mt-auto">{member.name}</h3>
-          <p className="text-sm text-gray-600">{member.role}</p>
+          <p className="text-sm text-yellow-400">{member.role}</p>
           <p className="text-xs text-gray-400">{member.date}</p>
         </div>
       ))}

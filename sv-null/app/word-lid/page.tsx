@@ -1,25 +1,31 @@
+import PageTitle from '@/components/PageTitle';
 import { aanmeldingVerzenden } from './actions';
 
 export default function WordLidPage() {
   return (
-    <div className="py-8 px-4 max-w-3xl mx-auto text-white">
-      <h1 className="text-4xl font-bold mb-6">Word Lid</h1>
+    <div className="px-4 max-w-4xl mx-auto text-white">
+      <PageTitle
+        title="Word lid"
+        subtitle="Bekijk hoe je lid wordt van SV. NULL en wat je kunt verwachten."
+      />
 
       <p className="mb-4 text-gray-300">
         Bij NULL maak je direct kennis met een hechte groep mede-ICT-studenten en krijg je toegang tot gezellige activiteiten, inspirerende lezingen en toffe evenementen.
-        Werk samen aan studie- of hobbyprojecten, breid je netwerk uit en beslis mee over wat we als vereniging ondernemen.
+        Werk samen aan studie- of hobbyprojecten, breid je netwerk uit en beslis mee over wat wij als vereniging ondernemen.
         Onze kernwaarden: <b>Networking</b>, <b>Undertaking</b> en <b>Lifelong Learning</b>!
       </p>
 
       <p className="text-sm text-gray-400 mb-6">
         Met het versturen van dit formulier accepteer je onze{" "}
-        <a href="/voorwaarden" className="underline text-yellow-400">voorwaarden</a> en het{" "}
-        <a href="/avg" className="underline text-yellow-400">AVG-beleid</a>.
+        <a href="/privacy-cookies" className="underline text-yellow-400">Algemene Voorwaarden</a> en het{" "}
+        <a href="/privacy-cookies" className="underline text-yellow-400">AVG-beleid</a>.
       </p>
 
       <form action={aanmeldingVerzenden} className="space-y-6">
         {/* Algemene informatie */}
-        <h2 className="text-xl font-semibold">Algemene informatie</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+          Algemene informatie
+        </h2>
         <div className="grid md:grid-cols-2 gap-4">
           <input name="voornaam" placeholder="Voornaam" required className="form-input" />
           <input name="achternaam" placeholder="Achternaam" required className="form-input" />
@@ -32,7 +38,9 @@ export default function WordLidPage() {
         </div>
 
         {/* Studentinformatie */}
-        <h2 className="text-xl font-semibold">Studentinformatie</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+          Studentinformatie
+        </h2>
         <div className="grid md:grid-cols-2 gap-4">
           <input name="che-email" type="email" placeholder="CHE e-mailadres" required className="form-input" />
           <select name="startjaar" required className="form-input">
@@ -47,7 +55,9 @@ export default function WordLidPage() {
         </div>
 
         {/* Contributie */}
-        <h2 className="text-xl font-semibold">Contributie</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+          Contributie
+        </h2>
         <p className="text-sm text-gray-400">
           Lid worden van NULL kost €10 per schooljaar of €30 voor je hele studie. Je krijgt na inschrijving een betaalverzoek.
         </p>

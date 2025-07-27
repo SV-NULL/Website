@@ -1,18 +1,29 @@
+import PageTitle from "@/components/PageTitle";
+
 export default function StatutenPage() {
   return (
-    <div className="space-y-4 py-8">
-      <h1 className="text-4xl font-bold mb-6">Statuten</h1>
+    <div className="space-y-4">
+     <PageTitle
+        title="Statuten"
+        subtitle="Lees hier de statuten van SV. NULL. Deze bevatten de formele regels en richtlijnen die onze vereniging bestuurt."
+      />
 
-    <h2 className="text-2xl">Artikel 1 – Naam en zetel</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+        Artikel 1 – Naam en zetel
+    </h2>
     <p>De vereniging draagt de naam: Studievereniging NULL</p>
     <p>De vereniging is gevestigd in de gemeente Ede.</p>
 
-    <h2 className="text-2xl">Artikel 2 – Doel</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+        Artikel 2 – Doel
+    </h2>
     <p>De vereniging heeft als doel: het verbinden van kennis en kunde van “ICT”-studenten aan de te Ede
         gevestigde Christelijke Hogeschool Ede (CHE) - met adres Oude Kerkweg 100, 6717 JS Ede- met het
         bedrijfsleven om daarbij kennis en vaardigheden uit te wisselen waaronder ook het opdoen van
         werkervaring, en het verrichten van al wat hiermee verband houdt of daartoe bevorderlijk kan zijn.</p>
-    <h2 className="text-2xl">Artikel 3 – Lidmaatschap</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+        Artikel 3 – Lidmaatschap
+    </h2>
     <ol className="list-decimal pl-10">
         <li>Lid van de vereniging kunnen zijn: natuurlijke personen die "ICT" student zijn aan de CHE, die het
             doel en de statuten van de vereniging onderschrijven en daadwerkelijk willen meewerken aan de
@@ -40,7 +51,9 @@ export default function StatutenPage() {
         </li>
     </ol>
 
-    <h2 className="text-2xl">Artikel 4 – Einde lidmaatschap</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-8 sm:underline-offset-12 decoration-yellow-400">
+        Artikel 4 – Einde lidmaatschap
+    </h2>
     <p>Het lidmaatschap eindigt door:</p>
     <ol className="list-decimal pl-10">
         <li>het overlijden van het lid;</li>
@@ -87,7 +100,9 @@ export default function StatutenPage() {
         bericht van ontzetting wordt niet voldaan als de opzegging of het bericht van ontzetting uitsluitend
         elektronisch is gecommuniceerd.</p>
 
-    <h2 className="text-2xl">Artikel 5 – Aspirant-leden</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+        Artikel 5 – Aspirant-leden
+    </h2>
     <ol className="list-decimal pl-10">
         <li>De algemene vergadering kan besluiten tot het instellen van het aspirant-lidmaatschap.
             Aspirant-leden zijn geen lid, hebben geen stemrecht, maar kunnen wel deelnemen aan activiteiten van
@@ -106,7 +121,9 @@ export default function StatutenPage() {
         </li>
     </ol>
 
-    <h2 className="text-2xl">Artikel 6 – Donateurs</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+        Artikel 6 – Donateurs
+    </h2>
     <p>Donateurs zijn zij, die door het bestuur als zodanig zijn toegelaten. Er kunnen verschillende categorieën
         donateurs zijn. Donateurs zijn gebonden aan de statuten, reglementen en besluiten van de vereniging. Zij
         hebben alleen toegang tot de algemene vergadering als die vergadering dat besluit. Zij hebben daar geen
@@ -116,7 +133,9 @@ export default function StatutenPage() {
         verschuldigd. De secretaris houdt een register bij waarin de namen en adressen van de donateurs zijn
         vermeld.</p>
 
-    <h2 className="text-2xl">Artikel 7 – Contributie van de leden</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-8 sm:underline-offset-12 decoration-yellow-400">
+        Artikel 7 – Contributie van de leden
+    </h2>
     <p>De leden betalen een jaarlijkse contributie, waarvan de hoogte wordt vastgesteld door de algemene
         vergadering. De leden kunnen daarbij in categorieën worden ingedeeld die een verschillende contributie
         betalen. Het bestuur is bevoegd om, wegens bijzondere omstandigheden, een lid geheel of gedeeltelijk
@@ -124,7 +143,9 @@ export default function StatutenPage() {
         besluiten dat de jaarlijkse contributie in gedeelten kan worden betaald en kan daaraan voorwaarden
         verbinden.</p>
 
-    <h2 className="text-2xl">Artikel 8 – Bestuur: samenstelling en benoeming</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-8 sm:underline-offset-12 decoration-yellow-400">
+        Artikel 8 – Bestuur: samenstelling en benoeming
+    </h2>
     <p>De vereniging wordt bestuurd door een bestuur dat bestaat uit ten minste drie natuurlijke personen. De
         algemene vergadering stelt het aantal bestuursleden vast. Het bestuur heeft een voorzitter (praeses),
         secretaris (ab actis) en penningmeester (questor). Het bestuur voorziet zelf in de verdeling van de
@@ -156,7 +177,9 @@ export default function StatutenPage() {
         </li>
     </ol>
 
-    <h2 className="text-2xl">Artikel 9 – Bestuur: einde functie, schorsing</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-8 sm:underline-offset-12 decoration-yellow-400">
+        Artikel 9 – Bestuur: einde functie, schorsing
+    </h2>
     <p>Een bestuurslidmaatschap eindigt:</p>
     <ol className="list-decimal pl-10">
         <li>door aftreden van een bestuurslid;</li>
@@ -182,7 +205,9 @@ export default function StatutenPage() {
         gesteld zich in de betreffende algemene vergadering te verantwoorden en kan zich daarin door een
         raadsman laten bijstaan.</p>
 
-    <h2 className="text-2xl">Artikel 10 – Bestuur: bijeenroeping, vergadering, besluitvorming</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-8 sm:underline-offset-12 decoration-yellow-400">
+        Artikel 10 – Bestuur: bijeenroeping, vergadering, besluitvorming
+    </h2>
     <p>Iedere bestuurder is bevoegd een vergadering van het bestuur bijeen te roepen. De bijeenroeping van de
         vergaderingen van het bestuur vindt schriftelijk plaats, met inachtneming van een termijn van ten minste
         zeven dagen, de dag van bijeenroeping en die van de vergadering niet meegerekend, onder opgave van de
@@ -200,7 +225,9 @@ export default function StatutenPage() {
         genomen met volstrekte meerderheid van de uitgebrachte stemmen. Bij staking van stemmen is de stem van
         de voorzitter doorslaggevend.</p>
 
-    <h2 className="text-2xl">Artikel 11 – Bestuur: leiding van de vergadering, notulen, besluitvorming buiten vergadering</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-8 sm:underline-offset-12 decoration-yellow-400">
+        Artikel 11 – Bestuur: leiding van de vergadering, notulen, besluitvorming buiten vergadering
+    </h2>
     <p>De voorzitter leidt de vergaderingen van het bestuur; bij zijn afwezigheid voorziet de vergadering zelf
         in haar leiding. De voorzitter van de vergadering bepaalt de wijze waarop de stemmingen in de
         vergadering worden gehouden. Het in de vergadering uitgesproken oordeel van de voorzitter van de
@@ -222,7 +249,9 @@ export default function StatutenPage() {
         De Raad van Advies kent haar eigen leden. Als de Raad van Advies geen leden kent, worden nieuwe leden
         door het bestuur aangewezen.</p>
 
-    <h2 className="text-2xl">Artikel 12 – Bestuur: taken en bevoegdheden</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-8 sm:underline-offset-12 decoration-yellow-400">
+        Artikel 12 – Bestuur: taken en bevoegdheden
+    </h2>
     <p>Het bestuur is belast met het besturen van de vereniging. Iedere bestuurder is tegenover de vereniging
         verplicht tot een behoorlijke vervulling van de hem opgedragen taak. Het bestuur is verplicht van de
         vermogenstoestand van de vereniging en van alles met betrekking tot de werkzaamheden van de vereniging,
@@ -241,7 +270,9 @@ export default function StatutenPage() {
         algemene vergadering wordt onmiddellijk aan het bestuur medegedeeld. Op het ontbreken van deze
         goedkeuring kan tegen en door derden geen beroep worden gedaan.</p>
 
-    <h2 className="text-2xl">Artikel 13 – Vertegenwoordiging</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-8 sm:underline-offset-12 decoration-yellow-400">
+        Artikel 13 – Vertegenwoordiging
+    </h2>
     <p>Tot vertegenwoordiging van de vereniging zijn bevoegd;</p>
     <ol className="list-decimal pl-10">
         <li>het gehele bestuur samen;</li>
@@ -256,7 +287,9 @@ export default function StatutenPage() {
         waarin de vereniging een tegenstrijdig belang heeft met een of meer bestuurders kan de algemene
         vergadering een of meer personen aanwijzen om de vereniging te vertegenwoordigen.</p>
 
-    <h2 className="text-2xl">Artikel 14 – Verslaggeving en verantwoording</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-8 sm:underline-offset-12 decoration-yellow-400">
+        Artikel 14 – Verslaggeving en verantwoording
+    </h2>
     <p>Het boekjaar van de vereniging loopt van één September tot en met éénendertig augustus. Het bestuur
         brengt op een algemene vergadering binnen zes maanden na afloop van het boekjaar, verlening van deze
         termijn door de algemene vergadering uitgezonderd, een bestuursverslag uit over de gang van zaken in de
@@ -280,7 +313,9 @@ export default function StatutenPage() {
         hem daarmee afgelegde rekening en verantwoording. In een vergadering te houden vóór de afloop van het
         boekjaar stelt het bestuur een begroting van de baten en lasten van het volgende boekjaar vast.</p>
 
-    <h2 className="text-2xl">Artikel 15 – De algemene vergadering: bevoegdheid en jaarvergadering</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-8 sm:underline-offset-12 decoration-yellow-400">
+        Artikel 15 – De algemene vergadering: bevoegdheid en jaarvergadering
+    </h2>
     <p>Aan de algemene vergadering komen in de vereniging alle bevoegdheden toe, die niet door de wet of de
         statuten aan het bestuur zijn opgedragen. Jaarlijks, uiterlijk zes maanden na afloop van het boekjaar,
         wordt een algemene vergadering – de jaarvergadering – gehouden. In de jaarvergadering komen onder meer
@@ -296,7 +331,7 @@ export default function StatutenPage() {
             vergadering de begroting voor het komende boekjaar ter goedkeuring voor.
         </li>
     </ol>
-    <h2 className="text-2xl">Artikel 16 – De algemene vergadering: oproeping</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-8 sm:underline-offset-12 decoration-yellow-400">Artikel 16 – De algemene vergadering: oproeping</h2>
     <p>De algemene vergadering wordt bijeengeroepen door het bestuur. Een aantal leden, samen bevoegd tot het
         uitbrengen van ten minste een tiende deel van de stemmen, kan het bestuur schriftelijk verzoeken een
         algemene vergadering bijeen te roepen binnen vier werken na dat verzoek. Als het bestuur niet binnen
@@ -314,7 +349,9 @@ export default function StatutenPage() {
         van de vergadering niet meegerekend. Naast de plaats, datum en tijd van de vergadering, moet de
         oproeping een agenda bevatten waaruit blijkt welke onderwerpen aan de orde worden gesteld.</p>
 
-    <h2 className="text-2xl">Artikel 17 – De algemene vergadering: toegang en stemrecht</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-8 sm:underline-offset-12 decoration-yellow-400">
+        Artikel 17 – De algemene vergadering: toegang en stemrecht
+    </h2>
     <p>Toegang tot de algemene vergadering hebben alle niet-geschorste leden van het bestuur en van de
         vereniging. De vergadering kan besluiten ook andere personen tot (een deel van) de vergadering toe te
         laten. Geschorste leden en leden van wie het lidmaatschap is opgezegd of die uit het lidmaatschap zijn
@@ -325,7 +362,9 @@ export default function StatutenPage() {
         Aan de eis van schriftelijkheid van de volmacht wordt voldaan als de volmacht elektronisch is
         vastgelegd.</p>
 
-    <h2 className="text-2xl">Artikel 18 – De algemene vergadering: besluitvorming</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-8 sm:underline-offset-12 decoration-yellow-400">
+        Artikel 18 – De algemene vergadering: besluitvorming
+    </h2>
     <p>Voor zover in deze statuten niet anders is bepaald, wordt een besluit genomen met volstrekte meerderheid
         van stemmen van de in de vergadering aanwezige en vertegenwoordigde leden, ongeacht hun aantal. Blanco
         en ongeldige stemmen tellen niet mee voor de besluitvorming maar tellen wel mee voor het bepalen van een
@@ -354,7 +393,9 @@ export default function StatutenPage() {
         besluiten worden genomen over alle aan de orde komende onderwerpen, ook al is het onderwerp niet of niet
         op de voorgeschreven wijze bij de oproeping aangekondigd of heeft de oproeping niet op rechtsgeldige
         wijze plaatsgevonden.</p>
-    <h2 className="text-2xl">Artikel 19 – De algemene vergadering: leiding en notulen</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-8 sm:underline-offset-12 decoration-yellow-400">
+        Artikel 19 – De algemene vergadering: leiding en notulen
+    </h2>
     <p>Een algemene vergadering wordt geleid door de voorzitter van de vereniging. Ontbreekt de voorzitter, dan
         wijst het bestuur een ander bestuurslid aan als voorzitter van de vergadering. Wordt ook op deze wijze
         niet in het voorzitterschap voorzien, dan voorziet de vergadering zelf in haar leiding. Van het
@@ -362,7 +403,9 @@ export default function StatutenPage() {
         vergadering daartoe aangewezen persoon notulen gehouden, die door de voorzitter en de notulist door
         ondertekening worden vastgesteld.</p>
 
-    <h2 className="text-2xl">Artikel 20 – Statutenwijziging</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-8 sm:underline-offset-12 decoration-yellow-400">
+        Artikel 20 – Statutenwijziging
+    </h2>
     <p>De statuten van de vereniging kunnen worden gewijzigd door een besluit van de algemene vergadering.
         Wanneer aan de algemene vergadering een voorstel tot wijziging van de statuten zal worden gedaan, moet
         dat steeds bij de oproeping tot de algemene vergadering worden vermeld. Degene die de oproeping tot de
@@ -384,13 +427,17 @@ export default function StatutenPage() {
         afschrift van de akte van wijziging en een doorlopende tekst van de gewijzigde statuten moeten worden
         neergelegd bij het handelsregister.</p>
 
-    <h2 className="text-2xl">Artikel 21 – Fusie, splitsing, omzetting</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-8 sm:underline-offset-12 decoration-yellow-400">
+        Artikel 21 – Fusie, splitsing, omzetting
+    </h2>
     <p>Op een besluit van de algemene vergadering tot fusie of splitsing in de zin van titel 7 van Boek 2
         Burgerlijk Wetboek en op een besluit van de algemene vergadering tot omzetting van de vereniging in een
         andere rechtsvorm overeenkomstige artikel 2:18 Burgerlijke Wetboek, is het bepaalde in het vorige
         artikel zoveel mogelijk van overeenkomstige toepassing, onverminderd de eisen van de wet.</p>
 
-    <h2 className="text-2xl">Artikel 22 – Ontbinding</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+        Artikel 22 – Ontbinding
+    </h2>
     <p>De vereniging kan worden ontbonden door een besluit van de algemene vergadering. Het in deze statuten
         bepaalde over een besluit tot statutenwijziging is van overeenkomstige toepassing op een besluit tot
         ontbinding. Bij het besluit tot ontbinding wordt de bestemming van een eventueel batig liquidatiesaldo
@@ -407,7 +454,9 @@ export default function StatutenPage() {
         <li>een daartoe strekkende rechterlijke uitspraak in de bij de wet genoemde gevallen.</li>
     </ol>
 
-    <h2 className="text-2xl">Artikel 23 – Vereffening</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+        Artikel 23 – Vereffening
+    </h2>
     <p>Het bestuur is belast met de vereffening van het vermogen van de vereniging, voor zover bij het
         ontbindingsbesluit geen ander vereffenaar(s) is (zijn) aangewezen. Na het besluit tot ontbinding bevindt
         de vereniging zich in liquidatie. De vereniging blijft na haar ontbinding voortbestaan als en voor zover
@@ -420,7 +469,9 @@ export default function StatutenPage() {
         baten meer aanwezig zijn. De vereniging houdt bij vereffening op te bestaan op het tijdstip waarop de
         vereffening eindigt. De vereffenaars doen daarvan opgave aan het handelsregister.</p>
 
-    <h2 className="text-2xl">Artikel 24 – Reglementen</h2>
+    <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+        Artikel 24 – Reglementen
+        </h2>
     <p>De algemene vergadering kan een of meer reglementen vaststellen. Een reglement kan nadere regels geven
         over onder meer het lidmaatschap, de introductie van nieuwe leden, de contributie, de werkzaamheden van
         het bestuur, werkgroepen of commissies, de vergaderingen. Een reglement mag niet in strijd zijn met de

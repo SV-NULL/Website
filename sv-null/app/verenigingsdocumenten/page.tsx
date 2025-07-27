@@ -1,6 +1,7 @@
 // File: app/documents/page.tsx
 'use client';
 
+import PageTitle from '@/components/PageTitle';
 import { FileTextIcon } from 'lucide-react';
 
 const documents = [
@@ -28,16 +29,14 @@ const documents = [
 
 export default function VerenigingsdocumentenPage() {
   return (
-    <main className="px-6 py-12 max-w-4xl mx-auto space-y-8">
-      <section className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Verenigingsdocumenten</h1>
-        <p className="mb-6 text-gray-300">
-          Hieronder vind je belangrijke documenten zoals statuten, huisregels en
-          het AVG‑beleid.
-        </p>
-      </section>
+    <main className="space-y-8">
+     <PageTitle
+        title="Verenigings- documenten"
+        subtitle="Hieronder vind je belangrijke documenten zoals statuten, huisregels en
+          het AVG‑beleid."
+      />
 
-      <section className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <section className=" grid grid-cols-1 sm:grid-cols-2 gap-6">
         {documents.map((doc) => (
           <a
             key={doc.file}

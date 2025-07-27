@@ -7,19 +7,15 @@ import clsx from 'clsx';
 
 export default function DropdownList({
   items,
-  title,
   footer,
 }: {
   items: DropdownItem[];
-  title: string;
   footer?: React.ReactNode;
 }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <div>
-      <h2 className="text-3xl font-bold mb-6">{title}</h2>
-
       <div className="space-y-4">
         {items.map((item, i) => {
           const isOpen = openIndex === i;
@@ -38,9 +34,9 @@ export default function DropdownList({
               <div className="flex items-center justify-between px-4 py-3">
                 <div>
                   <h3 className="text-2xl font-semibold">{item.title}</h3>
-                  <p className="text-sm text-gray-400">{item.subtitle}</p>
+                  <p className="text-sm text-yellow-400">{item.subtitle}</p>
                 </div>
-                <div className="text-yellow-400">
+                <div className="text-white">
                   {isOpen ? <ChevronUp /> : <ChevronDown />}
                 </div>
               </div>

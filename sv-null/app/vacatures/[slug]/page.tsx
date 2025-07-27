@@ -1,6 +1,7 @@
 import { getVacatureBySlug, getVacatureItems } from '@/lib/content';
 import Markdown from 'react-markdown';
 import CTA from '@/components/CTA';
+import PageTitle from '@/components/PageTitle';
 
 export async function generateStaticParams() {
   const items = getVacatureItems();
@@ -13,7 +14,11 @@ export default async function VacatureDetailPage({ params }: { params: Promise<{
   if (!vacature) return <p>Vacature niet gevonden</p>;
 
   return (
-    <div className="py-8">
+    <div>
+      <PageTitle
+        title={`Vacature ${vacature.company}`} 
+        subtitle="Bekijk de details van deze vacature en solliciteer direct."
+      />
       <div className="flex items-center gap-4">
         <img src={vacature.logo} alt={vacature.company} className="w-24 h-24 object-contain" />
         <div>
@@ -22,7 +27,10 @@ export default async function VacatureDetailPage({ params }: { params: Promise<{
         </div>
       </div>
       <Markdown>{vacature.content}</Markdown>
-      <CTA title="Interesse?" text="Klik op de knop hieronder om te soliciteren op de positie" button={{ text: 'Solliciteer', href: vacature.applyUrl }} />
+      <CTA 
+        title="Interesse?" 
+        text={`Ben je enthousiast over deze vacature bij ${vacature.company}? Soliciteer nu!`} 
+        button={{ text: 'Soliciteren', href: vacature.applyUrl }} />
     </div>
   );
 }
