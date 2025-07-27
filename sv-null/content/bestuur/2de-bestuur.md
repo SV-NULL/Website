@@ -18,7 +18,7 @@ members:
     image: /images/bestuur/2de-bestuur/Anne-Wil.jpg
   - name: Iris Reitsma
     role: Penningmeester
-    date: 2024-2025 Jun
+    date: 2024 - Jun 2025
     image: /images/bestuur/2de-bestuur/Iris.jpg
   - name: Wilke van de Kamp
     role: PR
