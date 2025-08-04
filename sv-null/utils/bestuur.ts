@@ -1,7 +1,7 @@
 import { bestuur } from "@/content/bestuur";
 
 export const getBestuur = () => {
-  return bestuur.reverse();
+  return [...bestuur].reverse();
 };
 
 export const getBestuurById = (id: string) => {
