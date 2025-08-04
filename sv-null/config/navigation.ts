@@ -1,4 +1,5 @@
-import { NavItem } from "@/types/image";
+import { NavItem, SocialNavItem } from "@/types/image";
+import { Github, Instagram, Linkedin } from "lucide-react";
 
 export const navItems: NavItem[] = [
   {
@@ -30,4 +31,31 @@ export const navItems: NavItem[] = [
     ],
   },
   { name: "Contact", href: "/contact" },
+];
+
+export const footerNavItems: NavItem[] = [
+  {
+    name: "Statuten",
+    href: "/statuten",
+  },
+  {
+    name: "Verenigingsdocumenten",
+    href: "/verenigingsdocumenten",
+  },
+  {
+    name: "Privacy & Cookies",
+    href: "/privacy-cookies",
+  },
+];
+
+export const footerSocalNavItems: SocialNavItem[] = [
+  {
+    icon: Instagram,
+    href: "https://www.instagram.com/s.v.null/",
+  },
+  {
+    icon: Linkedin,
+    href: "https://www.linkedin.com/company/studievereniging-null",
+  },
+  { icon: Github, href: "https://github.com/SV-NULL" },
 ];
