@@ -3,3 +3,9 @@ export type Image = {
   alt?: string;
   isPriority?: boolean;
 };
+
+export type NavItem = {
+  name: string;
+  href: string;
+  sub?: NavItem[];
+};

@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
-import React from "react";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import Navigation from "@/components/navigation/Navigation";
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import React from "react";
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,7 +17,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "SV. NULL",
-  description: "De studievereniging voor HBO-ICT aan de Christelijke Hogeschool Ede (CHE)",
+  description:
+    "De studievereniging voor HBO-ICT aan de Christelijke Hogeschool Ede (CHE)",
 };
 
 export default function RootLayout({
@@ -25,11 +26,11 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="nl">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
+      >
         <Navigation />
-        <main className="container mx-auto p-8 flex-grow">
-          {children}
-        </main>
+        <main className="container mx-auto p-8 flex-grow">{children}</main>
         <Footer />
       </body>
     </html>
