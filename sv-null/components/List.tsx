@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { ListItem } from '@/lib/content';
+import { ListItem } from "@/lib/content";
+import Link from "next/link";
 
 export default function List({
   items,
@@ -9,12 +9,11 @@ export default function List({
   basePath,
 }: {
   items: ListItem[];
-  line: Boolean;
+  line: boolean;
   basePath: string;
 }) {
   return (
     <div className="py-8">
-
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {items.map((item) => (
           <Link key={item.slug} href={`/${basePath}/${item.slug}`}>
@@ -27,9 +26,13 @@ export default function List({
                 />
               </div>
               <div className="absolute inset-0 bg-opacity-25 flex flex-col justify-end p-4 text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-                <h2 className={line === true
-                  ? "text-white underline underline-offset-12 decoration-yellow-400"
-                  : "text-white"}>
+                <h2
+                  className={
+                    line === true
+                      ? "text-white underline underline-offset-12 decoration-yellow-400"
+                      : "text-white"
+                  }
+                >
                   {item.title}
                 </h2>
                 <p className="text-sm">{item.subtitle}</p>
