@@ -4,6 +4,7 @@ import Gallery, { GalleryImage } from "@/components/Gallery";
 import { getPartnerItems, getUpcomingCalendarItems } from "@/lib/content";
 import { BookOpen, RocketIcon, Users } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HomePage() {
   const upcomingActivities = getUpcomingCalendarItems(2);
@@ -95,12 +96,12 @@ export default function HomePage() {
         items={upcomingActivities}
         footer={
           <div className="text-center">
-            <a
+            <Link
               href="/kalender"
               className="inline-block bg-yellow-400 text-black px-5 py-2 rounded font-medium hover:bg-yellow-500"
             >
               Bekijk alle activiteiten
-            </a>
+            </Link>
           </div>
         }
       />

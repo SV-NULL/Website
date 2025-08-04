@@ -25,7 +25,7 @@ export default function VakkenPage() {
           ga je specialiseren en studeer je af binnen één van deze profielen:
           DEV, BIT of UX.
         </p>
-        <a href="/images/vakken/curriculum.jpg" target="_blank">
+        <Link href="/images/vakken/curriculum.jpg" target="_blank">
           <Image
             src="/images/vakken/curriculum.jpg"
             alt="Vakken overzicht"
@@ -33,7 +33,7 @@ export default function VakkenPage() {
             width={1117}
             height={789}
           />
-        </a>
+        </Link>
       </section>
 
       <section className="mt-12">

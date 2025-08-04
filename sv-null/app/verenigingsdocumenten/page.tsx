@@ -1,36 +1,37 @@
 // File: app/documents/page.tsx
-'use client';
+"use client";
 
-import PageTitle from '@/components/PageTitle';
-import { FileTextIcon } from 'lucide-react';
+import PageTitle from "@/components/PageTitle";
+import { FileTextIcon } from "lucide-react";
+import Link from "next/link";
 
 const documents = [
   {
-    name: 'AVG‑beleid',
-    file: '/documents/AVG_beleid.pdf',
+    name: "AVG‑beleid",
+    file: "/documents/AVG_beleid.pdf",
   },
   {
-    name: 'Huisregels',
-    file: '/documents/Huisregels.pdf',
+    name: "Huisregels",
+    file: "/documents/Huisregels.pdf",
   },
   {
-    name: 'Reglement Algemene Vergadering',
-    file: '/documents/Reglement_Algemene_Vergadering.pdf',
+    name: "Reglement Algemene Vergadering",
+    file: "/documents/Reglement_Algemene_Vergadering.pdf",
   },
   {
-    name: 'Reglement Bestuursvergadering',
-    file: '/documents/Reglement_Bestuursvergadering.pdf',
+    name: "Reglement Bestuursvergadering",
+    file: "/documents/Reglement_Bestuursvergadering.pdf",
   },
   {
-    name: 'Sollicitatie & Verkiezingsreglement',
-    file: '/documents/Sollicitatie_Verkiezings_reglement.pdf',
+    name: "Sollicitatie & Verkiezingsreglement",
+    file: "/documents/Sollicitatie_Verkiezings_reglement.pdf",
   },
 ];
 
 export default function VerenigingsdocumentenPage() {
   return (
     <main className="space-y-8">
-     <PageTitle
+      <PageTitle
         title="Verenigings- documenten"
         subtitle="Hieronder vind je belangrijke documenten zoals statuten, huisregels en
           het AVG‑beleid."
@@ -38,7 +39,7 @@ export default function VerenigingsdocumentenPage() {
 
       <section className=" grid grid-cols-1 sm:grid-cols-2 gap-6">
         {documents.map((doc) => (
-          <a
+          <Link
             key={doc.file}
             href={doc.file}
             target="_blank"
@@ -49,7 +50,7 @@ export default function VerenigingsdocumentenPage() {
             <span className="font-medium text-white group-hover:text-black">
               {doc.name}
             </span>
-          </a>
+          </Link>
         ))}
       </section>
     </main>

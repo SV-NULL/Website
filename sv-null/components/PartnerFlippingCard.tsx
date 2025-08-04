@@ -3,6 +3,7 @@
 import { PartnerItem } from "@/lib/content";
 import clsx from "clsx";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 interface PartnerFlippingCardProps {
@@ -54,14 +55,14 @@ export default function PartnerFlippingCard({
             </p>
           </div>
           {item.website && (
-            <a
+            <Link
               href={item.website}
               target="_blank"
               rel="noopener"
               className="mt-4 inline-block px-3 py-1 text-sm bg-yellow-400 text-black font-medium rounded hover:bg-yellow-500 transition"
             >
               Bekijk website
-            </a>
+            </Link>
           )}
         </div>
       </div>
