@@ -1,9 +1,10 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { DropdownItem } from '@/lib/content';
-import { ChevronDown, ChevronUp } from 'lucide-react';
-import clsx from 'clsx';
+import { DropdownItem } from "@/lib/content";
+import clsx from "clsx";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 
 export default function DropdownList({
   items,
@@ -24,9 +25,11 @@ export default function DropdownList({
             <div
               key={i}
               className={clsx(
-                'border border-gray-700 rounded-lg shadow-md transition-all cursor-pointer',
-                'bg-gray-800 text-white',
-                isOpen ? 'ring-2 ring-yellow-400' : 'hover:ring-1 hover:ring-yellow-500'
+                "border border-gray-700 rounded-lg shadow-md transition-all cursor-pointer",
+                "bg-gray-800 text-white",
+                isOpen
+                  ? "ring-2 ring-yellow-400"
+                  : "hover:ring-1 hover:ring-yellow-500"
               )}
               onClick={() => setOpenIndex(isOpen ? null : i)}
             >
@@ -44,22 +47,26 @@ export default function DropdownList({
               {/* Content */}
               <div
                 className={clsx(
-                  'overflow-hidden transition-all duration-300',
-                  isOpen ? 'max-h-screen p-4 pt-0' : 'max-h-0'
+                  "overflow-hidden transition-all duration-300",
+                  isOpen ? "max-h-screen p-4 pt-0" : "max-h-0"
                 )}
               >
                 {isOpen && (
                   <div className="flex flex-col-reverse md:flex-row gap-6 items-start">
-                    <div className={item.image ? 'md:w-1/2' : 'w-full'}>
-                      <p className="text-gray-200 whitespace-pre-line">{item.content}</p>
+                    <div className={item.image ? "md:w-1/2" : "w-full"}>
+                      <p className="text-gray-200 whitespace-pre-line">
+                        {item.content}
+                      </p>
                     </div>
 
                     {item.image && (
                       <div className="md:w-1/2">
-                        <img
+                        <Image
                           src={item.image}
                           alt={item.title}
                           className="rounded-lg w-full object-cover"
+                          width={710}
+                          height={400}
                         />
                       </div>
                     )}

@@ -1,13 +1,14 @@
-import Link from 'next/link';
-import { getVakkenItems } from '@/lib/content';
-import PageTitle from '@/components/PageTitle';
+import PageTitle from "@/components/PageTitle";
+import { getVakkenItems } from "@/lib/content";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function VakkenPage() {
   const vakken = getVakkenItems();
 
   return (
     <div>
-     <PageTitle
+      <PageTitle
         title="Vakken"
         subtitle="Bekijk alle vakken die je krijgt tijdens je studie, met toelichting en tips van (oud)leden."
       />
@@ -17,14 +18,20 @@ export default function VakkenPage() {
           Curriculum overzicht
         </h2>
         <p>
-          Hieronder vind je het volledige overzicht van het curriculum. De eerste twee jaar van de opleiding zijn breed opgezet, met vakken binnen de lijnen Development (DEV), Business & IT (BIT) en User Experience (UX), én een individuele stage.  
-          In het derde en vierde jaar ga je specialiseren en studeer je af binnen één van deze profielen: DEV, BIT of UX.
+          Hieronder vind je het volledige overzicht van het curriculum. De
+          eerste twee jaar van de opleiding zijn breed opgezet, met vakken
+          binnen de lijnen Development (DEV), Business & IT (BIT) en User
+          Experience (UX), én een individuele stage. In het derde en vierde jaar
+          ga je specialiseren en studeer je af binnen één van deze profielen:
+          DEV, BIT of UX.
         </p>
         <a href="/images/vakken/curriculum.jpg" target="_blank">
-          <img
+          <Image
             src="/images/vakken/curriculum.jpg"
             alt="Vakken overzicht"
             className="w-full max-w-2xl mx-auto mt-6 rounded-lg shadow-md hover:opacity-80 transition"
+            width={1117}
+            height={789}
           />
         </a>
       </section>
@@ -34,7 +41,8 @@ export default function VakkenPage() {
           Vakken per studiejaar
         </h2>
         <p>
-          Hier vind per studiejaar een overzicht van de vakken die je kunt verwachten.
+          Hier vind per studiejaar een overzicht van de vakken die je kunt
+          verwachten.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
           {vakken.map(({ slug, data }) => (
