@@ -1,27 +1,27 @@
-"use client";
-
-import { ListItem } from "@/lib/content";
+import { ListItem } from "@/types/common";
+import Image from "next/image";
 import Link from "next/link";
 
-export default function List({
-  items,
-  line,
-  basePath,
-}: {
+type Props = {
   items: ListItem[];
-  line: boolean;
   basePath: string;
-}) {
+  line?: boolean;
+};
+
+export default function List({ items, basePath, line = false }: Props) {
   return (
     <div className="py-8">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {items.map((item) => (
-          <Link key={item.slug} href={`/${basePath}/${item.slug}`}>
+          <Link key={item.id} href={`/${basePath}/${item.id}`}>
             <div className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer">
               <div className="aspect-video w-full overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.title}
+                <Image
+                  priority={item.image.isPriority || false}
+                  src={item.image.src}
+                  alt={item.image.alt || item.title}
+                  width={464}
+                  height={261}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
