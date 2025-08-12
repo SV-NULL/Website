@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
 import PageTitle from "@/components/PageTitle";
-import { Bold } from "lucide-react";
+import Link from "next/link";
 
 export default function PrivacyCookiesPage() {
   return (
     <main className="px-6 mx-auto space-y-8">
-     <PageTitle
+      <PageTitle
         title="Privacy & Cookies"
         subtitle="Lees hier ons privacybeleid en cookiegebruik."
       />
@@ -16,16 +16,30 @@ export default function PrivacyCookiesPage() {
           Algemene voorwaarden
         </h2>
         <p className="text-gray-300">
-          Wanneer je een formulier verstuurt — zoals bij “Word lid”, “Partner worden” of “Contact” — geef je toestemming om de ingevulde gegevens te gebruiken voor de afhandeling van je bericht of aanvraag.
+          Wanneer je een formulier verstuurt — zoals bij “Word lid”, “Partner
+          worden” of “Contact” — geef je toestemming om de ingevulde gegevens te
+          gebruiken voor de afhandeling van je bericht of aanvraag.
         </p>
         <p className="text-gray-300">
-          We gebruiken deze gegevens alleen voor dat doel en bewaren ze niet langer dan nodig. De informatie wordt niet gedeeld met derden, tenzij dit nodig is om je verzoek te verwerken.
+          We gebruiken deze gegevens alleen voor dat doel en bewaren ze niet
+          langer dan nodig. De informatie wordt niet gedeeld met derden, tenzij
+          dit nodig is om je verzoek te verwerken.
         </p>
         <p className="text-gray-300">
-          Bij het <b>Word lid‑formulier</b> valt dit onder ons <a href="/verenigingsdocumenten" className="text-yellow-400 underline">AVG‑beleid</a>, waarin staat hoe we omgaan met gegevens van leden.
+          Bij het <b>Word lid‑formulier</b> valt dit onder ons{" "}
+          <Link
+            href="/verenigingsdocumenten"
+            className="text-yellow-400 underline"
+          >
+            AVG‑beleid
+          </Link>
+          , waarin staat hoe we omgaan met gegevens van leden.
         </p>
         <p className="text-gray-300">
-          Bij andere formulieren valt de verwerking <b>niet onder</b> dat ledenbeleid en blijven jouw gegevens beschermd volgens bovenstaande voorwaarden. Door het formulier te verzenden ga je akkoord met deze voorwaarden.
+          Bij andere formulieren valt de verwerking <b>niet onder</b> dat
+          ledenbeleid en blijven jouw gegevens beschermd volgens bovenstaande
+          voorwaarden. Door het formulier te verzenden ga je akkoord met deze
+          voorwaarden.
         </p>
       </section>
 
@@ -34,7 +48,14 @@ export default function PrivacyCookiesPage() {
           AVG‑beleid
         </h2>
         <p className="text-gray-300">
-          Ons volledige AVG‑beleid lees je bij de <a href="/verenigingsdocumenten" className="text-yellow-400 underline">Verenigingsdocumenten</a>.
+          Ons volledige AVG‑beleid lees je bij de{" "}
+          <Link
+            href="/verenigingsdocumenten"
+            className="text-yellow-400 underline"
+          >
+            Verenigingsdocumenten
+          </Link>
+          .
         </p>
       </section>
 
@@ -43,11 +64,17 @@ export default function PrivacyCookiesPage() {
           Cookies
         </h2>
         <p className="text-gray-300">
-          Deze Next.js‑site is volledig statisch en kent geen inlogfunctie. We plaatsen daarom <strong>geen tracking‑ of analytische cookies</strong>.
-          Enige cookie die mogelijk wordt gebruikt, is een technisch noodzakelijke cookie van Next.js voor bijvoorbeeld afbeelding optimalisatie of preview‑functionaliteit—maar ook deze data wordt niet opgeslagen of doorgegeven.
+          Deze Next.js‑site is volledig statisch en kent geen inlogfunctie. We
+          plaatsen daarom <strong>geen tracking‑ of analytische cookies</strong>
+          . Enige cookie die mogelijk wordt gebruikt, is een technisch
+          noodzakelijke cookie van Next.js voor bijvoorbeeld afbeelding
+          optimalisatie of preview‑functionaliteit—maar ook deze data wordt niet
+          opgeslagen of doorgegeven.
         </p>
         <p className="text-gray-300">
-          Mochten we ooit third‑party integraties toevoegen (zoals Google Analytics), dan zullen we gebruikers expliciet informeren en om toestemming vragen.
+          Mochten we ooit third‑party integraties toevoegen (zoals Google
+          Analytics), dan zullen we gebruikers expliciet informeren en om
+          toestemming vragen.
         </p>
       </section>
 
@@ -56,12 +83,18 @@ export default function PrivacyCookiesPage() {
           Contact
         </h2>
         <p className="text-gray-300">
-          Voor vragen over privacy of cookies kun je contact opnemen via <a href="/contact" className="text-yellow-400 underline">Contact</a>.
+          Voor vragen over privacy of cookies kun je contact opnemen via{" "}
+          <Link href="/contact" className="text-yellow-400 underline">
+            Contact
+          </Link>
+          .
         </p>
       </section>
 
       <p className="text-gray-500">
-        Laatst gewijzigd op: 27/07/2025. De privacyverklaring (AVG) is ongewijzigd, het cookiebeleid is aangepast en algemene voorwaarden zijn toegevoegd.
+        Laatst gewijzigd op: 27/07/2025. De privacyverklaring (AVG) is
+        ongewijzigd, het cookiebeleid is aangepast en algemene voorwaarden zijn
+        toegevoegd.
       </p>
     </main>
   );

@@ -1,11 +1,14 @@
-'use client';
+"use client";
 
-import { useFormState } from 'react-dom';
-import { contactVerzenden } from './actions';
-import PageTitle from '@/components/PageTitle';
+import PageTitle from "@/components/PageTitle";
+import Link from "next/link";
+import { useFormState } from "react-dom";
+import { contactVerzenden } from "./actions";
 
 export default function ContactPage() {
-  const [state, formAction] = useFormState(contactVerzenden, { success: false });
+  const [state, formAction] = useFormState(contactVerzenden, {
+    success: false,
+  });
 
   return (
     <div className="px-4 max-w-4xl mx-auto text-white">
@@ -16,7 +19,10 @@ export default function ContactPage() {
 
       <p className="text-sm text-gray-400 mb-6">
         Met het versturen van dit formulier accepteer je onze{" "}
-        <a href="/privacy-cookies" className="underline text-yellow-400">Algemene Voorwaarden</a>.
+        <Link href="/privacy-cookies" className="underline text-yellow-400">
+          Algemene Voorwaarden
+        </Link>
+        .
       </p>
 
       {state.success && (

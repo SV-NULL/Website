@@ -1,6 +1,7 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
+import { Image } from "@/types/image";
+import fs from "fs";
+import matter from "gray-matter";
+import path from "path";
 
 //
 // ─── DROPDOWN ITEMS (KALENDER) ───────────────────────────
@@ -15,12 +16,12 @@ export interface DropdownItem {
 }
 
 function loadDropDownItems(folder: string): DropdownItem[] {
-  const dir = path.join(process.cwd(), 'content', folder);
+  const dir = path.join(process.cwd(), "content", folder);
   const files = fs.existsSync(dir) ? fs.readdirSync(dir) : [];
 
   return files.map((filename) => {
     const filePath = path.join(dir, filename);
-    const fileContent = fs.readFileSync(filePath, 'utf8');
+    const fileContent = fs.readFileSync(filePath, "utf8");
     const { data, content } = matter(fileContent);
 
     return {
@@ -35,18 +36,17 @@ function loadDropDownItems(folder: string): DropdownItem[] {
 
 export function getCalendarItems(): DropdownItem[] {
   return loadDropDownItems('kalender')
-    .filter((item) => item.date) // Alleen met datum
+    .filter((item) => item.date)
     .sort((a, b) => {
       const dateA = new Date(a.date as string).getTime();
       const dateB = new Date(b.date as string).getTime();
-      return dateA - dateB; // Oplopend
+      return dateA - dateB;
     });
 }
 
 export function getUpcomingCalendarItems(count: number): DropdownItem[] {
   return getCalendarItems().slice(0, count);
 }
-
 
 //
 // ─── PARTNERS ───────────────────────────
@@ -61,12 +61,12 @@ export interface PartnerItem {
 }
 
 function loadPartnerItems(folder: string): PartnerItem[] {
-  const dir = path.join(process.cwd(), 'content', folder);
+  const dir = path.join(process.cwd(), "content", folder);
   const files = fs.existsSync(dir) ? fs.readdirSync(dir) : [];
 
   return files.map((filename) => {
     const filePath = path.join(dir, filename);
-    const fileContent = fs.readFileSync(filePath, 'utf8');
+    const fileContent = fs.readFileSync(filePath, "utf8");
     const { data, content } = matter(fileContent);
 
     return {
@@ -74,13 +74,13 @@ function loadPartnerItems(folder: string): PartnerItem[] {
       subtitle: data.subtitle,
       image: data.image,
       content,
-      website: data.website || '',
+      website: data.website || "",
     };
   });
 }
 
 export function getPartnerItems(): PartnerItem[] {
-  return loadPartnerItems('partners');
+  return loadPartnerItems("partners");
 }
 
 //
@@ -97,13 +97,13 @@ export interface VacatureItem {
 }
 
 export function getVacatureItems(): VacatureItem[] {
-  const dir = path.join(process.cwd(), 'content', 'vacatures');
+  const dir = path.join(process.cwd(), "content", "vacatures");
   if (!fs.existsSync(dir)) return [];
   return fs.readdirSync(dir).map((file) => {
     const filePath = path.join(dir, file);
-    const md = fs.readFileSync(filePath, 'utf-8');
+    const md = fs.readFileSync(filePath, "utf-8");
     const { data, content } = matter(md);
-    const slug = file.replace(/\.md$/, '');
+    const slug = file.replace(/\.md$/, "");
     return {
       title: data.title,
       company: data.company,
@@ -117,9 +117,14 @@ export function getVacatureItems(): VacatureItem[] {
 }
 
 export function getVacatureBySlug(slug: string): VacatureItem | null {
-  const filePath = path.join(process.cwd(), 'content', 'vacatures', `${slug}.md`);
+  const filePath = path.join(
+    process.cwd(),
+    "content",
+    "vacatures",
+    `${slug}.md`
+  );
   if (!fs.existsSync(filePath)) return null;
-  const md = fs.readFileSync(filePath, 'utf-8');
+  const md = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(md);
   return {
     title: data.title,
@@ -146,7 +151,7 @@ export interface Member {
 export interface ListItem {
   title: string;
   subtitle: string;
-  image: string;
+  image: Image;
   slug: string;
   content: string;
   startDate?: Date; // Enkel voor bestuur
@@ -154,14 +159,14 @@ export interface ListItem {
 }
 
 function loadListItems(folder: string): ListItem[] {
-  const dir = path.join(process.cwd(), 'content', folder);
+  const dir = path.join(process.cwd(), "content", folder);
   const files = fs.existsSync(dir) ? fs.readdirSync(dir) : [];
 
   return files.map((filename) => {
     const filePath = path.join(dir, filename);
-    const fileContent = fs.readFileSync(filePath, 'utf8');
+    const fileContent = fs.readFileSync(filePath, "utf8");
     const { data, content } = matter(fileContent);
-    const slug = filename.replace(/\.md$/, '');
+    const slug = filename.replace(/\.md$/, "");
 
     return {
       title: data.title,
@@ -175,7 +180,7 @@ function loadListItems(folder: string): ListItem[] {
 }
 
 export function getBestuurItems(): ListItem[] {
-  return loadListItems('bestuur').sort((a, b) => {
+  return loadListItems("bestuur").sort((a, b) => {
     const dateA = new Date((a as any).startDate ?? 0);
     const dateB = new Date((b as any).startDate ?? 0);
     return dateB.getTime() - dateA.getTime();
@@ -183,9 +188,9 @@ export function getBestuurItems(): ListItem[] {
 }
 
 export function getBestuurBySlug(slug: string): ListItem | null {
-  const filePath = path.join(process.cwd(), 'content', 'bestuur', `${slug}.md`);
+  const filePath = path.join(process.cwd(), "content", "bestuur", `${slug}.md`);
   if (!fs.existsSync(filePath)) return null;
-  const fileContent = fs.readFileSync(filePath, 'utf8');
+  const fileContent = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(fileContent);
 
   return {
@@ -199,13 +204,18 @@ export function getBestuurBySlug(slug: string): ListItem | null {
 }
 
 export function getCommissieItems(): ListItem[] {
-  return loadListItems('commissies');
+  return loadListItems("commissies");
 }
 
 export function getCommissieBySlug(slug: string): ListItem | null {
-  const filePath = path.join(process.cwd(), 'content', 'commissies', `${slug}.md`);
+  const filePath = path.join(
+    process.cwd(),
+    "content",
+    "commissies",
+    `${slug}.md`
+  );
   if (!fs.existsSync(filePath)) return null;
-  const fileContent = fs.readFileSync(filePath, 'utf8');
+  const fileContent = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(fileContent);
 
   return {
@@ -236,19 +246,20 @@ export interface VakkenItem {
 }
 
 export function getVakkenItems(): { slug: string; data: VakkenItem }[] {
-  const dir = path.join(process.cwd(), 'content', 'vakken');
+  const dir = path.join(process.cwd(), "content", "vakken");
   if (!fs.existsSync(dir)) return [];
-  return fs.readdirSync(dir)
-    .filter((file) => file.endsWith('.md'))
+  return fs
+    .readdirSync(dir)
+    .filter((file) => file.endsWith(".md"))
     .map((file) => {
       const filePath = path.join(dir, file);
-      const md = fs.readFileSync(filePath, 'utf-8');
+      const md = fs.readFileSync(filePath, "utf-8");
       const { data, content } = matter(md);
       return {
-        slug: file.replace(/\.md$/, ''),
+        slug: file.replace(/\.md$/, ""),
         data: {
           title: data.title,
-          subtitle: data.subtitle || '',
+          subtitle: data.subtitle || "",
           description: data.description || content.trim(),
           courses: data.courses,
         },
@@ -257,13 +268,13 @@ export function getVakkenItems(): { slug: string; data: VakkenItem }[] {
 }
 
 export function getVakkenBySlug(slug: string): VakkenItem | null {
-  const filePath = path.join(process.cwd(), 'content', 'vakken', `${slug}.md`);
+  const filePath = path.join(process.cwd(), "content", "vakken", `${slug}.md`);
   if (!fs.existsSync(filePath)) return null;
-  const md = fs.readFileSync(filePath, 'utf-8');
+  const md = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(md);
   return {
     title: data.title,
-    subtitle: data.subtitle || '',
+    subtitle: data.subtitle || "",
     description: data.description || content.trim(),
     courses: data.courses,
   };
