@@ -12,7 +12,7 @@ export default function PrivacyCookiesPage() {
       />
 
       <section className="space-y-4">
-        <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+        <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-8 sm:underline-offset-12 decoration-yellow-400">
           Algemene voorwaarden
         </h2>
         <p className="text-gray-300">

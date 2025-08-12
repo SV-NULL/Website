@@ -34,19 +34,17 @@ function loadDropDownItems(folder: string): DropdownItem[] {
 }
 
 export function getCalendarItems(): DropdownItem[] {
-  return loadDropDownItems('kalender');
+  return loadDropDownItems('kalender')
+    .filter((item) => item.date) // Alleen met datum
+    .sort((a, b) => {
+      const dateA = new Date(a.date as string).getTime();
+      const dateB = new Date(b.date as string).getTime();
+      return dateA - dateB; // Oplopend
+    });
 }
 
 export function getUpcomingCalendarItems(count: number): DropdownItem[] {
-  const allItems = getCalendarItems()
-    .filter((item) => item.date)
-    .sort((a, b) => {
-      const dateA = new Date(a.date!);
-      const dateB = new Date(b.date!);
-      return dateA.getTime() - dateB.getTime();
-    });
-
-  return allItems.slice(0, count);
+  return getCalendarItems().slice(0, count);
 }
 
 

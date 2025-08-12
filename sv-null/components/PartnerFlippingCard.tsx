@@ -34,7 +34,7 @@ export default function PartnerFlippingCard({ item }: PartnerFlippingCardProps) 
         )}
       >
 
-        <div className="absolute inset-0 backface-hidden rounded-lg overflow-hidden shadow-lg flex items-center justify-center bg-black p-6">
+        <div className="absolute inset-0 backface-hidden rounded-lg overflow-hidden shadow-lg flex items-center justify-center bg-gray-900 p-6">
           <img
             src={item.image}
             alt={item.title}
@@ -42,7 +42,7 @@ export default function PartnerFlippingCard({ item }: PartnerFlippingCardProps) 
           />
         </div>
 
-        <div className="absolute inset-0 rotate-y-180 backface-hidden bg-black text-white rounded-lg shadow-lg p-6 flex flex-col justify-between">
+        <div className="absolute inset-0 rotate-y-180 backface-hidden bg-gray-900 text-white rounded-lg shadow-lg p-6 flex flex-col justify-between">
           <div>
             <h2 className="font-bold text-white">
               {item.title}
