@@ -38,7 +38,7 @@ export default function PartnerFlippingCard({
         )}
       >
 
-        <div className="absolute inset-0 backface-hidden rounded-lg overflow-hidden shadow-lg flex items-center justify-center bg-gray-900 p-6">
+        <div className="absolute inset-0 backface-hidden rounded-lg overflow-hidden shadow-lg flex items-center justify-center border border-gray-700 p-6">
           <Image
             src={item.image}
             alt={item.title}
@@ -48,10 +48,10 @@ export default function PartnerFlippingCard({
           />
         </div>
 
-        <div className="absolute inset-0 rotate-y-180 backface-hidden bg-gray-900 text-white rounded-lg shadow-lg p-6 flex flex-col justify-between">
+        <div className="absolute inset-0 rotate-y-180 backface-hidden border border-gray-700 text-white rounded-lg shadow-lg p-6 flex flex-col justify-between">
           <div>
             <h2 className="font-bold text-white">{item.title}</h2>
-            <p className="text-gray-200 line-clamp-5 whitespace-pre-line">
+            <p className="text-gray-200 line-clamp-5 whitespace-pre-line text-sm lg:text-base">
               {item.content}
             </p>
           </div>
