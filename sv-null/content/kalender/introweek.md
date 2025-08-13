@@ -1,7 +1,7 @@
 ---
 title: "Introweek"
 subtitle: "01/08/2025"
-image: "/images/kalender/introweek.png"
+image: "/images/kalender/introweek.jpg"
 date: 2025-09-01
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Workshop 4PS"
 subtitle: "TBD"
-image: # Moet nog toegevoegd worden in bestanden
+image: "/images/kalender/4ps-activiteit.jpg"
 date: 2025-10 # Even random voor nu
 ---
 
