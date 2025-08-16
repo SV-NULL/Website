@@ -73,10 +73,14 @@ export default function VacatureList({
       {visibleCount < filtered.length && (
         <div className="text-center mt-6">
           <button
-            className="px-4 py-2 bg-yellow-400 rounded"
+            className="inline-block px-6 py-2.5 rounded-xl font-medium
+            bg-yellow-400 text-black border-2 border-yellow-400
+            hover:bg-transparent hover:text-yellow-400
+            active:bg-transparent active:text-yellow-400
+            transition-all duration-300"
             onClick={() => setVisibleCount((prev) => prev + 5)}
           >
-            Laad meer
+            Laad meer...
           </button>
         </div>
       )}

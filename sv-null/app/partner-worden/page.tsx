@@ -102,12 +102,18 @@ export default function PartnerWordenPage() {
           className="w-full p-3 rounded border border-gray-700 bg-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
         ></textarea>
 
-        <button
-          type="submit"
-          className="w-full bg-yellow-500 hover:bg-yellow-600 text-black text-lg font-semibold py-3 rounded shadow mt-2"
-        >
-          Verstuur aanvraag
-        </button>
+        <div className="pt-6 text-center">
+          <button
+            type="submit"
+            className="px-16 py-3 rounded-xl font-semibold w-full md:w-fit
+              bg-yellow-400 text-black border-2 border-yellow-400
+              hover:bg-transparent hover:text-yellow-400
+              active:bg-transparent active:text-yellow-400
+              transition-all duration-300"
+          >
+            Verstuur aanvraag
+          </button>
+        </div>
       </form>
     </div>
   );

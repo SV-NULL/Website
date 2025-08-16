@@ -12,10 +12,10 @@ export default function CommissiesPage() {
         title="Commissies"
         subtitle="Ontdek de verschillende commissies binnen SV. NULL en hun impact op onze vereniging."
       />
-      <List items={commissies} line={true} basePath="commissies" />
+      <List items={commissies} line={false} basePath="commissies" />
       <CTA
         title="Lid worden van een commissie?"
-        text="Neem contact met ons op met de voorzitter van de commissie via Whatsapp of Discord. Hopelijk tot snel!"
+        text="Neem contact op met de voorzitter van de commissie via Whatsapp of Discord. Hopelijk tot snel!"
         button={null}
       />
     </div>

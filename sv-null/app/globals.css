@@ -29,14 +29,7 @@ body {
 }
 .transform-style-preserve-3d {
   transform-style: preserve-3d;
-}
-
-h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  padding-top: 1rem;
-}
+} 
 
 ul {
   list-style:circle;
@@ -58,4 +51,34 @@ li {
     transform: translateX(0);
     opacity: 1;
   }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes chevron-bounce {
+  0%, 100% { transform: translateY(0); color: #facc15; } /* geel */
+  50% { transform: translateY(5px); color: #f59e0b; } /* iets donkerder geel/oranje */
+}
+
+.animate-chevron {
+  animation: chevron-bounce 1.5s infinite ease-in-out;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  50.01%, 100% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-start infinite;
 }

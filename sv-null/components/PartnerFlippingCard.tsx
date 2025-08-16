@@ -38,7 +38,7 @@ export default function PartnerFlippingCard({
         )}
       >
 
-        <div className="absolute inset-0 backface-hidden rounded-lg overflow-hidden shadow-lg flex items-center justify-center bg-gray-900 p-6">
+        <div className="absolute inset-0 backface-hidden rounded-lg overflow-hidden shadow-lg flex items-center justify-center bg-neutral-900 p-6">
           <Image
             src={item.image}
             alt={item.title}
@@ -48,10 +48,10 @@ export default function PartnerFlippingCard({
           />
         </div>
 
-        <div className="absolute inset-0 rotate-y-180 backface-hidden bg-gray-900 text-white rounded-lg shadow-lg p-6 flex flex-col justify-between">
+        <div className="absolute inset-0 rotate-y-180 backface-hidden bg-neutral-900 text-white rounded-lg shadow-lg p-6 flex flex-col justify-between">
           <div>
-            <h2 className="font-bold text-white">{item.title}</h2>
-            <p className="text-gray-200 line-clamp-5 whitespace-pre-line">
+            <h2 className="font-bold text-white text-2xl">{item.title}</h2>
+            <p className="text-gray-200 whitespace-pre-line text-sm lg:text-lg">
               {item.content}
             </p>
           </div>
@@ -60,11 +60,16 @@ export default function PartnerFlippingCard({
               href={item.website}
               target="_blank"
               rel="noopener"
-              className="mt-4 inline-block px-3 py-1 text-sm bg-yellow-400 text-black font-medium rounded hover:bg-yellow-500 transition"
+              onClick={(e) => e.stopPropagation()}
+              className="w-fit inline-block px-6 py-2.5 rounded-xl
+                bg-yellow-400 text-black border-2 border-yellow-400
+                hover:bg-transparent hover:text-yellow-400
+                active:bg-transparent active:text-yellow-400
+                transition-all duration-300 text-sm text-center align-center"
             >
               Bekijk website
             </Link>
-          )}
+            )}
         </div>
       </div>
     </div>

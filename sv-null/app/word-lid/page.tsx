@@ -33,7 +33,7 @@ export default function WordLidPage() {
 
       <form action={aanmeldingVerzenden} className="space-y-6">
         {/* Algemene informatie */}
-        <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+        <h2 className="text-2xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
           Algemene informatie
         </h2>
         <div className="grid md:grid-cols-2 gap-4">
@@ -87,7 +87,7 @@ export default function WordLidPage() {
         </div>
 
         {/* Studentinformatie */}
-        <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+        <h2 className="text-2xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
           Studentinformatie
         </h2>
         <div className="grid md:grid-cols-2 gap-4">
@@ -110,7 +110,7 @@ export default function WordLidPage() {
         </div>
 
         {/* Contributie */}
-        <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+        <h2 className="text-2xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
           Contributie
         </h2>
         <p className="text-sm text-gray-400">
@@ -132,12 +132,18 @@ export default function WordLidPage() {
         </div>
 
         {/* Versturen */}
-        <button
-          type="submit"
-          className="w-full bg-yellow-500 hover:bg-yellow-600 text-black text-lg font-semibold py-3 rounded shadow mt-4"
-        >
-          Aanmelden
-        </button>
+        <div className="pt-6 text-center">
+          <button
+            type="submit"
+            className="px-16 py-3 rounded-xl font-semibold w-full md:w-fit
+              bg-yellow-400 text-black border-2 border-yellow-400
+              hover:bg-transparent hover:text-yellow-400
+              active:bg-transparent active:text-yellow-400
+              transition-all duration-300"
+          >
+            Aanmelden
+          </button>
+        </div>
       </form>
     </div>
   );

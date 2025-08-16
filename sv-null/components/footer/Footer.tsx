@@ -12,9 +12,9 @@ export default function Footer() {
             <Link
               key={item.href}
               href={item.href}
-              className="group w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-yellow-400 transition-colors"
+              className="group w-10 h-10 flex items-center justify-center rounded-full bg-neutral-800 hover:bg-yellow-400 active:bg-yellow-400 transition-colors"
             >
-              <item.icon className="w-5 h-5 text-white group-hover:text-black" />
+              <item.icon className="w-5 h-5 text-white group-hover:text-black group-active:text-black" />
             </Link>
           ))}
         </FooterSection>
@@ -24,7 +24,7 @@ export default function Footer() {
             <Link
               key={item.href}
               href={item.href}
-              className="flex items-center hover:text-yellow-400"
+              className="flex items-center hover:text-yellow-400 active:text-yellow-400"
             >
               <ChevronRight className="w-5 h-5 mr-2" /> {item.name}
             </Link>
@@ -44,7 +44,7 @@ export default function Footer() {
           </div>
           <div className="flex items-center">
             <Mail className="w-5 h-5 mr-2" />
-            <Link href="mailto:svnull@che.nl" className="hover:text-yellow-400">
+            <Link href="mailto:svnull@che.nl" className="hover:text-yellow-400 active:text-yellow-400">
               svnull@che.nl
             </Link>
           </div>

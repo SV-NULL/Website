@@ -18,7 +18,7 @@ export default function Navigation() {
   }, [pathname]);
 
   return (
-    <nav className="bg-black text-white border-b border-gray-800">
+    <nav className="bg-black text-white border-b border-neutral-800">
       <div className="container mx-auto px-8">
         <div className="flex items-center justify-between h-24">
           <Link href="/" className="flex-shrink-0">
@@ -55,7 +55,7 @@ export default function Navigation() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden bg-black text-white border-t border-gray-800">
+        <div className="md:hidden bg-black text-white border-t border-neutral-800">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navItems.map((item, idx) => (
               <MobileNavItem key={idx} item={item} />

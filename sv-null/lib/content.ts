@@ -1,50 +1,49 @@
 import { Image } from "@/types/image";
-import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
+import fs from "fs";
 
 //
-// ─── DROPDOWN ITEMS (KALENDER) ───────────────────────────
+// ─── KALENDER ───────────────────────────
 //
 
-export interface DropdownItem {
+export interface ActivityItem {
   title: string;
-  subtitle: string;
-  image: string;
-  date?: string;
+  image?: string;
+  date?: string;          
+  notDetermined?: boolean;// optional: show "TBD" in UI if true 
   content: string;
 }
 
-function loadDropDownItems(folder: string): DropdownItem[] {
-  const dir = path.join(process.cwd(), "content", folder);
+/** Load markdown files from content/<folder> and map to ActivityItem */
+function loadActivityItems(folder: string): ActivityItem[] {
+  const dir = path.join(process.cwd(), 'content', folder);
   const files = fs.existsSync(dir) ? fs.readdirSync(dir) : [];
 
-  return files.map((filename) => {
-    const filePath = path.join(dir, filename);
-    const fileContent = fs.readFileSync(filePath, "utf8");
-    const { data, content } = matter(fileContent);
+  return files
+    .filter((f) => f.endsWith('.md'))
+    .map((filename) => {
+      const filePath = path.join(dir, filename);
+      const fileContent = fs.readFileSync(filePath, 'utf8');
+      const { data, content } = matter(fileContent);
 
-    return {
-      title: data.title,
-      subtitle: data.subtitle,
-      image: data.image,
-      date: data.date ?? null,
-      content,
-    };
-  });
-}
-
-export function getCalendarItems(): DropdownItem[] {
-  return loadDropDownItems('kalender')
-    .filter((item) => item.date)
-    .sort((a, b) => {
-      const dateA = new Date(a.date as string).getTime();
-      const dateB = new Date(b.date as string).getTime();
-      return dateA - dateB;
+      return {
+        title: data.title ?? filename.replace(/\.md$/, ''),
+        image: data.image ?? undefined,
+        date: data.date ?? undefined,
+        notDetermined: data.notDetermined === true || data.notDetermined === 'true',
+        content: content ?? '',
+      } as ActivityItem;
     });
 }
 
-export function getUpcomingCalendarItems(count: number): DropdownItem[] {
+export function getCalendarItems(): ActivityItem[] {
+  return loadActivityItems('kalender')
+    .filter((item) => item.date && !Number.isNaN(Date.parse(item.date)))
+    .sort((a, b) => Date.parse(a.date!) - Date.parse(b.date!));
+}
+
+export function getUpcomingCalendarItems(count: number): ActivityItem[] {
   return getCalendarItems().slice(0, count);
 }
 
