@@ -19,7 +19,7 @@ export default async function VacatureDetailPage({
   if (!vacature) return <p>Vacature niet gevonden</p>;
 
   return (
-    <div>
+    <div className="container mx-auto px-8">
       <PageTitle
         title={`Vacature ${vacature.company}`}
         subtitle="Bekijk de details van deze vacature en solliciteer direct."

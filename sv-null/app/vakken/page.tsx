@@ -7,7 +7,7 @@ export default function VakkenPage() {
   const vakken = getVakkenItems();
 
   return (
-    <div>
+    <div className="container mx-auto px-8 space-y-4">
       <PageTitle
         title="Vakken"
         subtitle="Bekijk alle vakken die je krijgt tijdens je studie, met toelichting en tips van (oud)leden."

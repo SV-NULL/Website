@@ -27,7 +27,7 @@ export default function StudentenwelzijnPage() {
   ];
 
   return (
-    <main className="space-y-12">
+    <div className="container mx-auto px-8 space-y-4">
       <PageTitle
         title="StudentenWelzijn"
         subtitle="StudentenWelzijn is de plek waar je als student aanklopt met je (hulp)vraag wat betreft je studie. Zij denken met je mee en koppelen je aan de juiste persoon of dienst."
@@ -53,6 +53,6 @@ export default function StudentenwelzijnPage() {
           </Link>
         ))}
       </section>
-    </main>
+    </div>
   );
 }

@@ -4,7 +4,7 @@ import { aanmeldingVerzenden } from "./actions";
 
 export default function WordLidPage() {
   return (
-    <div className="px-4 max-w-4xl mx-auto text-white">
+    <div className="px-8 max-w-4xl mx-auto text-white">
       <PageTitle
         title="Word lid"
         subtitle="Bekijk hoe je lid wordt van SV. NULL en wat je kunt verwachten."

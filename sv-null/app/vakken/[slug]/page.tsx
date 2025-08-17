@@ -12,7 +12,7 @@ export default async function VakkenDetailPage({
   if (!vak) return notFound();
 
   return (
-    <div className="px-6 space-y-8">
+    <div className="container mx-auto px-8 space-y-4">
       <PageTitle
         title={vak.title}
         subtitle={"Dit studiejaar staat in het teken van: " + vak.subtitle}

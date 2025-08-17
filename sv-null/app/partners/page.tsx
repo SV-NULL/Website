@@ -7,7 +7,7 @@ export default function PartnersPage() {
   const items = getPartnerItems();
 
   return (
-    <div className="px-6 max-w-6xl mx-auto space-y-12">
+    <div className="mx-auto px-8 space-y-4 max-w-6xl">
       <PageTitle
         title="Partners"
         subtitle="Maak kennis met onze gewaardeerde partners die SV. NULL ondersteunen."

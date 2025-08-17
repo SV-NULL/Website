@@ -30,7 +30,7 @@ const documents = [
 
 export default function VerenigingsdocumentenPage() {
   return (
-    <main className="space-y-8">
+    <div className="container mx-auto px-8 space-y-4">
       <PageTitle
         title="Verenigings- documenten"
         subtitle="Hieronder vind je belangrijke documenten zoals statuten, huisregels en
@@ -53,6 +53,6 @@ export default function VerenigingsdocumentenPage() {
           </Link>
         ))}
       </section>
-    </main>
+    </div>
   );
 }

@@ -6,7 +6,7 @@ import { partnerAanvraagVerzenden } from "./actions";
 
 export default function PartnerWordenPage() {
   return (
-    <div className="px-4 max-w-4xl mx-auto text-white">
+    <div className="px-8 max-w-4xl mx-auto text-white">
       <PageTitle
         title="Partner Worden"
         subtitle="Interesse in een samenwerking met SV. NULL? We horen graag van je!"

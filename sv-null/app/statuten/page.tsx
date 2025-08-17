@@ -2,7 +2,7 @@ import PageTitle from "@/components/PageTitle";
 
 export default function StatutenPage() {
   return (
-    <div className="space-y-4">
+    <div className="container mx-auto px-8 space-y-4">
      <PageTitle
         title="Statuten"
         subtitle="Lees hier de statuten van SV. NULL. Deze bevatten de formele regels en richtlijnen die onze vereniging bestuurt."

@@ -11,7 +11,7 @@ export default function ContactPage() {
   });
 
   return (
-    <div className="px-4 max-w-4xl mx-auto text-white">
+    <div className="px-8 max-w-4xl mx-auto text-white">
       <PageTitle
         title="Contact"
         subtitle="Heb je vragen, suggesties of wil je kennismaken? Laat hieronder je bericht achter. We nemen zo snel mogelijk contact met je op."

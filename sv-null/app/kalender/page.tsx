@@ -1,4 +1,3 @@
-import DropdownList from '@/components/DropdownList';
 import CTA from '@/components/CTA';
 import { getCalendarItems } from '@/lib/content';
 import PageTitle from '@/components/PageTitle';
@@ -8,7 +7,7 @@ export default function CalendarPage() {
   const items = getCalendarItems();
 
   return (
-    <div className='mx-auto max-w-4xl'>
+    <div className='mx-auto max-w-4xl px-8 space-y-4'>
       <PageTitle
         title="Kalender"
         subtitle="Bekijk onze aankomende activiteiten en evenementen en plan ze in je agenda!"

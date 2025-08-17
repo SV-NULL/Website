@@ -3,7 +3,7 @@ import { Bold } from "lucide-react";
 
 export default function OverOnsPage() {
   return (
-    <div>
+    <div className="container mx-auto px-8 space-y-4">
       <PageTitle
         title="Over ons"
         subtitle="Leer meer over de missie, visie, geschiedenis en toekomst van SV. NULL."

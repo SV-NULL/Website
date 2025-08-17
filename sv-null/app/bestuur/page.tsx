@@ -7,7 +7,7 @@ export default function BestuurPage() {
   const bestuur = getBestuur();
 
   return (
-    <div>
+    <div className="container mx-auto px-8 space-y-4">
       <PageTitle
         title="Besturen"
         subtitle="Leer onze bestuursleden kennen en ontdek hun rol binnen SV. NULL."

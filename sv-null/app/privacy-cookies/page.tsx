@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function PrivacyCookiesPage() {
   return (
-    <main className="px-6 mx-auto space-y-8">
+    <main className="container mx-auto px-8 space-y-4">
       <PageTitle
         title="Privacy & Cookies"
         subtitle="Lees hier ons privacybeleid en cookiegebruik."

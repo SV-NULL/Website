@@ -7,7 +7,7 @@ export default function CommissiesPage() {
   const commissies = getCommissies();
 
   return (
-    <div>
+    <div className="container mx-auto px-8 space-y-4">
       <PageTitle
         title="Commissies"
         subtitle="Ontdek de verschillende commissies binnen SV. NULL en hun impact op onze vereniging."

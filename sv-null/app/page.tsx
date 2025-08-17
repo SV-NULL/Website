@@ -14,36 +14,33 @@ export default function HomePage() {
 
   return (
     <main>
-      <section className="text-center h-screen flex-row -mb-40">
+      <section className="text-center h-screen flex-row -mb-32 px-8">
         <h1 className="pt-48 text-4xl sm:text-7xl font-bold justify-center">
           Wij zijn studievereniging <br />
           <span className="text-yellow-400">NULL</span>
         </h1>
-          <div className="mt-6 inline-block overflow-hidden">
-            <RotatingText />
-          </div>
 
-            {/* Scroll down indicator */}
-            <a
-              href="#next-section"
-              className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center space-y-1"
-            >
-              <svg
-                className="w-6 h-6 text-yellow-400 animate-chevron delay-200"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </a>
+        <div className="mt-6 inline-block overflow-hidden">
+          <RotatingText />
+        </div>
+        
+        <a
+          href="#next-section"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center space-y-1"
+        >
+          <svg
+            className="w-6 h-6 text-yellow-400 animate-chevron delay-200"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
       </section>
 
-      <section
-        id="next-section"
-        className="w-screen relative left-1/2 right-1/2 -ml-[50.5vw] -mr-[50.5vw] border-y border-neutral-800 bg-neutral-900 py-12"
-      >
+      <section id="next-section" className="bg-neutral-900 border-y border-neutral-800 py-12">
         <div className="max-w-6xl mx-auto px-8 py-8 text-center">
           <h2 className="text-5xl font-bold mb-4 text-white">
             Een vereniging die ergens voor staat
@@ -89,7 +86,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="max-w-4xl mx-auto my-24">
+      <section className="max-w-4xl mx-auto my-24 px-8">
         <p className="text-center text-yellow-600 text-xl sm:text-2xl">Kalender</p>
         <h2 className="text-center text-5xl font-bold text-yellow-400 mb-16">
           Komende activiteiten
@@ -109,13 +106,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-neutral-900 w-screen relative left-1/2 right-1/2 -ml-[50.5vw] -mr-[50.5vw] py-12 border-y border-neutral-800">
-        <div className="max-w-6xl mx-auto px-8 pt-8 pb-8">
+    <section className="bg-neutral-900 border-y border-neutral-800 py-12">
+      <div className="max-w-6xl mx-auto px-8">
         <Gallery/>
         </div>
       </section>
 
-      <section className="max-w-4xl mx-auto my-24">
+      <section className="max-w-4xl mx-auto my-24 px-8">
         <p className="text-center text-yellow-600 text-xl sm:text-2xl">Lid worden</p>
         <h2 className="text-center text-5xl font-bold text-yellow-400 mb-12">
           Maak het beste van jouw studietijd!
@@ -137,8 +134,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-neutral-900 w-screen relative left-1/2 right-1/2 -ml-[50.5vw] -mr-[50.5vw] py-12 border-y border-neutral-800">
-        <div className="max-w-4xl mx-auto px-8 pt-8 pb-8">
+      <section className="bg-neutral-900 border-y border-neutral-800 py-12">
+        <div className="max-w-4xl mx-auto px-8 my-16">
           <h2 className="text-5xl font-bold text-center mb-16">
             Onze partners
           </h2>
