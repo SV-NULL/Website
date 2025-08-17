@@ -17,7 +17,7 @@ export default function HomePage() {
 <section className="relative h-screen flex flex-col items-center justify-center text-center px-6 -mt-32">
   {/* Content in het midden */}
   <div className="flex flex-col items-center justify-center flex-grow">
-    <h1 className="text-3xl sm:text-6xl font-bold leading-tight">
+    <h1 className="text-4xl sm:text-6xl font-bold leading-tight">
       Wij zijn studievereniging <br />
       <span className="text-yellow-400">NULL</span>
     </h1>
@@ -47,7 +47,7 @@ export default function HomePage() {
 
       <section id="next-section" className="bg-neutral-900 border-y border-neutral-800 py-12">
         <div className="max-w-6xl mx-auto px-8 py-8 text-center">
-          <h2 className="text-5xl font-bold mb-4 text-white">
+          <h2 className="text-4xl font-bold mb-4 text-white">
             Een vereniging die ergens voor staat
           </h2>
           <p className="mb-20 text-gray-300 max-w-2xl mx-auto">
@@ -93,7 +93,7 @@ export default function HomePage() {
 
       <section className="max-w-4xl mx-auto my-24 px-8">
         <p className="text-center text-yellow-600 text-xl sm:text-2xl">Kalender</p>
-        <h2 className="text-center text-5xl font-bold text-yellow-400 mb-16">
+        <h2 className="text-center text-4xl font-bold text-yellow-400 mb-16">
           Komende activiteiten
         </h2>
         <ActivityGrid items={upcomingActivities}></ActivityGrid>
@@ -119,7 +119,7 @@ export default function HomePage() {
 
       <section className="max-w-4xl mx-auto my-24 px-8">
         <p className="text-center text-yellow-600 text-xl sm:text-2xl">Lid worden</p>
-        <h2 className="text-center text-5xl font-bold text-yellow-400 mb-12">
+        <h2 className="text-center text-4xl font-bold text-yellow-400 mb-12">
           Maak het beste van jouw studietijd!
         </h2>
         <p className="text-center">
@@ -141,7 +141,7 @@ export default function HomePage() {
 
       <section className="bg-neutral-900 border-y border-neutral-800 py-12">
         <div className="max-w-6xl mx-auto px-8 my-16">
-          <h2 className="text-5xl font-bold text-center mb-16">
+          <h2 className="text-4xl font-bold text-center mb-16">
             Onze partners
           </h2>
 
