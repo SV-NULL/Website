@@ -19,7 +19,7 @@ export default function ActivityGrid({
       {list.map((item, idx) => (
         <div
           key={`${item.title}-${idx}`}
-          className="relative flex flex-col sm:flex-row bg-neutral-900 rounded-xl shadow-xl"
+          className="relative flex flex-col sm:flex-row bg-neutral-900 rounded-xl shadow-xl transition-transform duration-300 hover:scale-105"
         >
           {/* Afbeelding */}
           <div

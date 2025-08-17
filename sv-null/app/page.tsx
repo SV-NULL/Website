@@ -1,38 +1,21 @@
 import ActivityGrid from "@/components/ActivityGrid";
-import Gallery, { GalleryImage } from "@/components/Gallery";
+import Gallery from "@/components/Gallery";
 import RotatingText from "@/components/RotatingText";
 import { getPartnerItems, getUpcomingCalendarItems } from "@/lib/content";
-import { BookOpen, RocketIcon, Users } from "lucide-react";
+import { BookOpen, RocketIcon, Users, Wrench } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 
 export default function HomePage() {
   const upcomingActivities = getUpcomingCalendarItems(2);
-
-  const gallery: GalleryImage[] = [
-    {
-      src: "/images/home/frankrijk-2023.jpg",
-      alt: "Frankrijkreis 2023",
-      caption: "Frankrijkreis 2023",
-    },
-    {
-      src: "/images/home/chipsoft-2024.jpg",
-      alt: "Chipsoft Pubquiz 2024",
-      caption: "Chipsoft Pubquiz 2024",
-    },
-    {
-      src: "/images/home/4ps-2022.jpg",
-      alt: "4PS Wiskeyproeverij 2023",
-      caption: "4PS Wiskeyproeverij 2023",
-    },
-  ];
 
   const partners = getPartnerItems();
 
   return (
     <main>
-      <section className="text-center h-screen -mb-32">
-        <h1 className="pt-48 text-4xl sm:text-7xl font-bold">
+      <section className="text-center h-screen flex-row -mb-32">
+        <h1 className="pt-48 text-4xl sm:text-7xl font-bold justify-center">
           Wij zijn studievereniging <br />
           <span className="text-yellow-400">NULL</span>
         </h1>
@@ -57,35 +40,49 @@ export default function HomePage() {
             </a>
       </section>
 
-      <section id="next-section" className="bg-neutral-900 w-screen relative left-1/2 right-1/2 -ml-[50.5vw] -mr-[50.5vw] border-y border-neutral-800">
-        <div className="mx-auto max-w-4xl pt-8 pb-8">
-          <h2 className="text-4xl font-bold mb-4 text-center">Onze waardes</h2>
-          <p className="mb-6 text-gray-300 text-center">
-            Als studievereniging staan wij voor verbinding, groei en
-            ondernemerschap.
+      <section
+        id="next-section"
+        className="w-screen relative left-1/2 right-1/2 -ml-[50.5vw] -mr-[50.5vw] border-y border-neutral-800 bg-neutral-900 py-12"
+      >
+        <div className="max-w-6xl mx-auto px-8 py-8 text-center">
+          <h2 className="text-5xl font-bold mb-4 text-white">
+            Een vereniging die ergens voor staat
+          </h2>
+          <p className="mb-20 text-gray-300 max-w-2xl mx-auto">
+            NULL staat voor <span className="text-yellow-400 font-semibold">Networking</span>,{' '}
+            <span className="text-yellow-400 font-semibold">Undertaking</span> en{' '}
+            <span className="text-yellow-400 font-semibold">Lifelong Learning</span>.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-16">
             {[
               {
-                icon: <Users className="w-16 h-16 text-yellow-400" />,
-                label: "Networking",
+                icon: <Users className="w-12 h-12 text-yellow-400 mb-4 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110" />,
+                title: "Networking",
+                text: "Een hechte community opbouwen en waardevolle connecties leggen met mede-studenten en het werkveld."
               },
               {
-                icon: <RocketIcon className="w-16 h-16 text-yellow-400" />,
-                label: "Undertaking",
+                icon: <RocketIcon className="w-12 h-12 text-yellow-400 mb-4 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110" />,
+                title: "Undertaking",
+                text: "Samen projecten, activiteiten en evenementen neerzetten die energie geven en inspireren."
               },
               {
-                icon: <BookOpen className="w-16 h-16 text-yellow-400" />,
-                label: "Lifelong Learning",
-              },
-            ].map(({ icon, label }) => (
-              <div key={label} className="text-center py-6">
-                <div className="inline-flex items-center justify-center w-32 h-32 mx-auto mb-4">
-                  {icon}
-                </div>
-                <h3 className="text-xl font-semibold text-white">
-                  {label}
+                icon: <BookOpen className="w-12 h-12 text-yellow-400 mb-4 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110" />,
+                title: "Lifelong Learning",
+                text: "Blijven groeien via workshops, lezingen en ervaringen die je ook later van pas komen."
+              }
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="group flex flex-col items-center text-center p-6 bg-neutral-900 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              >
+                {item.icon}
+                <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors duration-300">
+                  {item.title}
                 </h3>
+                <p className="text-gray-300 text-sm leading-relaxed max-w-xs transition-colors duration-300">
+                  {item.text}
+                </p>
               </div>
             ))}
           </div>
@@ -113,8 +110,8 @@ export default function HomePage() {
       </section>
 
       <section className="bg-neutral-900 w-screen relative left-1/2 right-1/2 -ml-[50.5vw] -mr-[50.5vw] py-12 border-y border-neutral-800">
-        <div className="max-w-4xl mx-auto px-8 pt-8 pb-8">
-        <Gallery images={gallery} />
+        <div className="max-w-6xl mx-auto px-8 pt-8 pb-8">
+        <Gallery/>
         </div>
       </section>
 
@@ -150,12 +147,13 @@ export default function HomePage() {
             {partners.map((partner, index) => (
               <div
                 key={index}
-                className="rounded-lg text-center"
+                className="rounded-lg text-center group"
               >
                 <Image
                   src={partner.image}
                   alt={partner.title}
-                  className="mx-auto mb-4 h-20 w-full object-contain"
+                  className="mx-auto mb-4 h-20 w-full object-contain 
+                            transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-lg"
                   width={400}
                   height={400}
                 />

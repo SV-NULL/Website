@@ -123,10 +123,16 @@ export default function WordLidPage() {
             <option value="10">€10 – per schooljaar</option>
             <option value="30">€30 – voor hele studie</option>
           </select>
+        </div>
+
+        <h2 className="text-2xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+          Overig
+        </h2>
+        <div className="grid md:grid-cols-2 gap-4">
           <textarea
             name="opmerkingen"
             placeholder="Opmerkingen (optioneel)"
-            rows={4}
+            rows={3}
             className="form-input md:col-span-2"
           />
         </div>
