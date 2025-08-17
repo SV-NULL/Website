@@ -41,10 +41,10 @@ li {
   position: relative;
 }
 .input {
-  @apply w-full p-2 rounded border border-gray-700 bg-black text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600;
+  @apply w-full p-2 rounded border border-neutral-700 bg-black text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600;
 }
 .form-input {
-  @apply w-full p-2 rounded border border-gray-700 bg-black text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500;
+  @apply w-full p-2 rounded border border-neutral-700 bg-black text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500;
 }
 @keyframes slideFadeIn {
   to {

@@ -13,8 +13,8 @@ export default function Navigation() {
   const pathname = usePathname();
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [openItem, setOpenItem] = useState<string | null>(null);
 
-  // Sticky scroll behavior
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -42,8 +42,7 @@ export default function Navigation() {
                   }`}
     >
       <div className="container mx-auto px-8">
-        <div className="flex items-center justify-between h-24">
-          {/* Logo */}
+        <div className="flex items-center justify-between h-25">
           <Link href="/" className="flex-shrink-0">
             <Image
               src="/images/logo-volledig.png"
@@ -54,14 +53,12 @@ export default function Navigation() {
             />
           </Link>
 
-          {/* Desktop nav */}
           <div className="hidden md:flex space-x-6 relative z-50">
             {navItems.map((item, idx) => (
               <NavItem key={idx} item={item} />
             ))}
           </div>
 
-          {/* Mobile button */}
           <div className="md:hidden">
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -89,7 +86,6 @@ export default function Navigation() {
         </div>
       </div>
 
-      {/* Mobile nav dropdown */}
       <div
         className={`md:hidden bg-black text-white border-t border-neutral-800 overflow-hidden transition-all duration-500 ease-in-out ${
           mobileOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
@@ -97,7 +93,12 @@ export default function Navigation() {
       >
         <div className="px-4 pt-2 pb-3 space-y-1">
           {navItems.map((item, idx) => (
-            <MobileNavItem key={idx} item={item} />
+            <MobileNavItem
+              key={idx}
+              item={item}
+              openItem={openItem}
+              setOpenItem={setOpenItem}
+            />
           ))}
         </div>
       </div>

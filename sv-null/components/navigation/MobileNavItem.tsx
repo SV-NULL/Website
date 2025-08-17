@@ -8,16 +8,18 @@ import { useState, useRef, useEffect } from "react";
 
 type Props = {
   item: NavItemType;
+  openItem: string | null;
+  setOpenItem: (name: string | null) => void;
 };
 
-export function MobileNavItem({ item }: Props) {
+export function MobileNavItem({ item, openItem, setOpenItem }: Props) {
   const pathname = usePathname();
   const isActive = (href: string) =>
     pathname === href || pathname?.startsWith(href + "/");
   const parentActive =
     isActive(item.href) || item.sub?.some((sub) => isActive(sub.href));
 
-  const [open, setOpen] = useState(false);
+  const open = openItem === item.name;
   const contentRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
 
@@ -31,7 +33,7 @@ export function MobileNavItem({ item }: Props) {
     return (
       <div className="bg-black">
         <button
-          onClick={() => setOpen(!open)}
+          onClick={() => setOpenItem(open ? null : item.name)}
           className={`flex justify-between items-center w-full px-3 py-2 cursor-pointer transition-colors duration-200 group ${
             parentActive ? "text-yellow-400" : "hover:text-yellow-400"
           }`}

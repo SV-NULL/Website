@@ -33,7 +33,7 @@ export default function PartnerFlippingCard({
     >
       <div
         className={clsx(
-          "relative w-full h-full transition-transform duration-500 transform-style-preserve-3d will-change-transform",
+          "relative w-full h-full transition-transform duration-600 transform-style-preserve-3d will-change-transform",
           flipped && "rotate-y-180"
         )}
       >

@@ -73,33 +73,33 @@ export default function PartnerWordenPage() {
           name="bedrijfsnaam"
           placeholder="Bedrijfsnaam"
           required
-          className="w-full p-3 rounded border border-gray-700 bg-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+          className="w-full p-3 rounded border border-neutral-700 bg-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
         />
         <input
           name="contactpersoon"
           placeholder="Contactpersoon"
           required
-          className="w-full p-3 rounded border border-gray-700 bg-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+          className="w-full p-3 rounded border border-neutral-700 bg-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
         />
         <input
           name="email"
           type="email"
           placeholder="E-mailadres"
           required
-          className="w-full p-3 rounded border border-gray-700 bg-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+          className="w-full p-3 rounded border border-neutral-700 bg-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
         />
         <input
           name="telefoon"
           type="tel"
           placeholder="Telefoonnummer"
-          className="w-full p-3 rounded border border-gray-700 bg-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+          className="w-full p-3 rounded border border-neutral-700 bg-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
         />
         <textarea
           name="bericht"
           placeholder="Vertel kort waarom je geïnteresseerd bent in een samenwerking"
           rows={4}
           required
-          className="w-full p-3 rounded border border-gray-700 bg-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+          className="w-full p-3 rounded border border-neutral-700 bg-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
         ></textarea>
 
         <div className="pt-6 text-center">

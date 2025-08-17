@@ -21,13 +21,16 @@ export default function VacatureList({
 
   return (
     <div>
-      <div className="grid grid-cols-2 gap-4 mb-6 sm:flex sm:flex-wrap">
+      <div className="flex flex-wrap justify-center gap-3 mb-16">
         {["all", "bijbaan", "stage", "full-time"].map((type) => (
           <button
             key={type}
-            className={`max-w-50 px-4 py-2 rounded ${
-              filter === type ? "bg-gray-600 text-white" : "bg-gray-900"
-            }`}
+            className={`px-5 py-2 rounded-xl font-medium transition-all duration-300
+              ${
+                filter === type
+                  ? "bg-yellow-400 text-black border-2 border-yellow-400"
+                  : "bg-neutral-900 text-white border-2 border-neutral-800 hover:border-yellow-400 hover:text-yellow-400"
+              }`}
             onClick={() => {
               setFilter(type);
               setVisibleCount(5);
@@ -41,11 +44,11 @@ export default function VacatureList({
       </div>
 
       {visible.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+        <div className="max-w-4xl mx-auto">
           {visible.map((v) => (
             <div
               key={v.slug}
-              className="border rounded p-4 flex items-center gap-4 cursor-pointer hover:border-yellow-400 hover:shadow-lg transition"
+              className="border rounded p-4 flex items-center gap-4 cursor-pointer hover:border-yellow-400 hover:shadow-lg transition mt-10"
               onClick={() => router.push(`/vacatures/${v.slug}`)}
             >
               <Image

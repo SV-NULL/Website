@@ -37,14 +37,14 @@ export default function ContactPage() {
             name="naam"
             placeholder="Naam"
             required
-            className="w-full p-3 rounded border border-gray-700 bg-black text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full p-3 rounded border border-neutral-700 bg-black text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
           />
           <input
             name="email"
             type="email"
             placeholder="E-mailadres"
             required
-            className="w-full p-3 rounded border border-gray-700 bg-black text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full p-3 rounded border border-neutral-700 bg-black text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
           />
         </div>
 
@@ -52,7 +52,7 @@ export default function ContactPage() {
           name="onderwerp"
           placeholder="Onderwerp"
           required
-          className="w-full p-3 rounded border border-gray-700 bg-black text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+          className="w-full p-3 rounded border border-neutral-700 bg-black text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
         />
 
         <textarea
@@ -60,7 +60,7 @@ export default function ContactPage() {
           placeholder="Je bericht..."
           rows={6}
           required
-          className="w-full p-3 rounded border border-gray-700 bg-black text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+          className="w-full p-3 rounded border border-neutral-700 bg-black text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
         />
 
         <div className="pt-6 text-center">

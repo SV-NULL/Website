@@ -92,7 +92,7 @@ export default function HomePage() {
           Komende activiteiten
         </h2>
         <ActivityGrid items={upcomingActivities}></ActivityGrid>
-        <div className="text-center mt-8">
+        <div className="text-center mt-12">
           <Link
             href="/kalender"
             className="inline-block px-6 py-2.5 rounded-xl font-medium
@@ -120,7 +120,7 @@ export default function HomePage() {
         <p className="text-center">
           Als lid van SV. NULL doe je mee aan toffe activiteiten, leer je bedrijven uit de IT-wereld kennen en maak je vrienden voor het leven. Van gezellige borrels tot inspirerende lezingen en leuke reizen: samen maken we van jouw studietijd een top tijd!
         </p>
-        <div className="text-center mt-6">
+        <div className="text-center mt-12">
           <Link
             href="/word-lid"
             className="inline-block px-6 py-2.5 rounded-xl font-medium
@@ -135,7 +135,7 @@ export default function HomePage() {
       </section>
 
       <section className="bg-neutral-900 border-y border-neutral-800 py-12">
-        <div className="max-w-4xl mx-auto px-8 my-16">
+        <div className="max-w-6xl mx-auto px-8 my-16">
           <h2 className="text-5xl font-bold text-center mb-16">
             Onze partners
           </h2>
@@ -158,7 +158,7 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="text-center mt-16">
+          <div className="text-center mt-12">
             <Link
               href="/partner-worden"
               className="inline-block px-6 py-2.5 rounded-xl font-medium
