@@ -45,7 +45,7 @@ export default function RotatingText() {
   }, [displayText, typing, wordIndex]);
 
   return (
-    <p className="text-gray-400 text-lg sm:text-xl text-center inline-block transition-all duration-500">
+    <p className="text-gray-400 sm:text-xl text-center inline-block transition-all duration-500">
       Dè studievereniging voor{' '}
       <span className="text-yellow-500">
         {displayText}
