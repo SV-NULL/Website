@@ -14,7 +14,7 @@ export default function HomePage() {
 
   return (
     <main>
-      <section className="text-center h-screen flex-row -mb-32">
+      <section className="text-center h-screen flex-row -mb-40">
         <h1 className="pt-48 text-4xl sm:text-7xl font-bold justify-center">
           Wij zijn studievereniging <br />
           <span className="text-yellow-400">NULL</span>
