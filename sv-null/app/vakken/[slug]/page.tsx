@@ -12,7 +12,7 @@ export default async function VakkenDetailPage({
   if (!vak) return notFound();
 
   return (
-    <div className="px-6 space-y-8">
+    <div className="container mx-auto px-8 space-y-4">
       <PageTitle
         title={vak.title}
         subtitle={"Dit studiejaar staat in het teken van: " + vak.subtitle}
@@ -21,7 +21,7 @@ export default async function VakkenDetailPage({
 
       {vak.courses.map((c, i) => (
         <section key={i}>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-8 sm:underline-offset-12 decoration-yellow-400">
+          <h2 className="text-2xl font-bold text-white underline underline-offset-8 sm:underline-offset-12 decoration-yellow-400">
             Semester {c.semester} –
             {c.expertise ? `  (${c.expertise}) ` : ' '}
             {c.name}

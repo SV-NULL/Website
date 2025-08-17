@@ -11,13 +11,17 @@ interface CTAProps {
 
 export default function CTA({ title, text, button }: CTAProps) {
   return (
-    <section className="bg-gray-900 mt-16 p-6 rounded text-center space-y-2 max-w-2xl mx-auto">
-      <h3 className="text-xl font-bold">{title}</h3>
+    <section className="bg-neutral-900 mt-16 p-6 rounded text-center space-y-2 max-w-2xl mx-auto">
+      <h3 className="text-xl font-bold text-yellow-400">{title}</h3>
       <p>{text}</p>
       {button && (
         <Link
           href={button.href}
-          className="inline-block px-4 py-2 bg-yellow-400 text-black rounded hover:bg-yellow-500 transition-colors"
+          className="mt-2 inline-block px-6 py-2.5 rounded-xl font-medium
+                    bg-yellow-400 text-black border-2 border-yellow-400
+                    hover:bg-transparent hover:text-yellow-400
+                    active:bg-transparent active:text-yellow-400
+                    transition-all duration-300"
         >
           {button.text}
         </Link>

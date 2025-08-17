@@ -4,7 +4,7 @@ import { aanmeldingVerzenden } from "./actions";
 
 export default function WordLidPage() {
   return (
-    <div className="px-4 max-w-4xl mx-auto text-white">
+    <div className="px-8 max-w-4xl mx-auto text-white">
       <PageTitle
         title="Word lid"
         subtitle="Bekijk hoe je lid wordt van SV. NULL en wat je kunt verwachten."
@@ -33,7 +33,7 @@ export default function WordLidPage() {
 
       <form action={aanmeldingVerzenden} className="space-y-6">
         {/* Algemene informatie */}
-        <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+        <h2 className="text-2xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
           Algemene informatie
         </h2>
         <div className="grid md:grid-cols-2 gap-4">
@@ -87,7 +87,7 @@ export default function WordLidPage() {
         </div>
 
         {/* Studentinformatie */}
-        <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+        <h2 className="text-2xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
           Studentinformatie
         </h2>
         <div className="grid md:grid-cols-2 gap-4">
@@ -110,7 +110,7 @@ export default function WordLidPage() {
         </div>
 
         {/* Contributie */}
-        <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+        <h2 className="text-2xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
           Contributie
         </h2>
         <p className="text-sm text-gray-400">
@@ -123,21 +123,33 @@ export default function WordLidPage() {
             <option value="10">€10 – per schooljaar</option>
             <option value="30">€30 – voor hele studie</option>
           </select>
+        </div>
+
+        <h2 className="text-2xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+          Overig
+        </h2>
+        <div className="grid md:grid-cols-2 gap-4">
           <textarea
             name="opmerkingen"
             placeholder="Opmerkingen (optioneel)"
-            rows={4}
+            rows={3}
             className="form-input md:col-span-2"
           />
         </div>
 
         {/* Versturen */}
-        <button
-          type="submit"
-          className="w-full bg-yellow-500 hover:bg-yellow-600 text-black text-lg font-semibold py-3 rounded shadow mt-4"
-        >
-          Aanmelden
-        </button>
+        <div className="pt-6 text-center">
+          <button
+            type="submit"
+            className="px-16 py-3 rounded-xl font-semibold w-full md:w-fit
+              bg-yellow-400 text-black border-2 border-yellow-400
+              hover:bg-transparent hover:text-yellow-400
+              active:bg-transparent active:text-yellow-400
+              transition-all duration-300"
+          >
+            Aanmelden
+          </button>
+        </div>
       </form>
     </div>
   );

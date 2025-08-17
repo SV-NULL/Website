@@ -1,149 +1,177 @@
-import CTA from "@/components/CTA";
-import DropdownList from "@/components/DropdownList";
-import Gallery, { GalleryImage } from "@/components/Gallery";
+import ActivityGrid from "@/components/ActivityGrid";
+import Gallery from "@/components/Gallery";
+import RotatingText from "@/components/RotatingText";
 import { getPartnerItems, getUpcomingCalendarItems } from "@/lib/content";
-import { BookOpen, RocketIcon, Users } from "lucide-react";
+import { BookOpen, RocketIcon, Users, Wrench } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 
 export default function HomePage() {
   const upcomingActivities = getUpcomingCalendarItems(2);
 
-  const gallery: GalleryImage[] = [
-    {
-      src: "/images/home/frankrijk-2023.jpg",
-      alt: "Frankrijkreis 2023",
-      caption: "Frankrijkreis 2023",
-    },
-    {
-      src: "/images/home/chipsoft-2024.jpg",
-      alt: "Chipsoft Pubquiz 2024",
-      caption: "Chipsoft Pubquiz 2024",
-    },
-    {
-      src: "/images/home/4ps-2022.jpg",
-      alt: "4PS Wiskeyproeverij 2023",
-      caption: "4PS Wiskeyproeverij 2023",
-    },
-  ];
-
   const partners = getPartnerItems();
 
   return (
-    <main className="space-y-16 py-8">
-      <section className="text-center py-16">
-        <h1 className="text-5xl font-bold">SV. NULL</h1>
-        <p className="text-xl mt-4">
-          De studievereniging voor HBO-ICT op de CHE
-        </p>
-        <div className="mt-6 text-lg font-semibold text-yellow-400 italic">
-          Community • Connectie met bedrijven • Borrels • Lezingen • Reizen
+    <main>
+      <section className="text-center h-screen flex-row -mb-32 px-8">
+        <h1 className="pt-48 text-4xl sm:text-7xl font-bold justify-center">
+          Wij zijn studievereniging <br />
+          <span className="text-yellow-400">NULL</span>
+        </h1>
+
+        <div className="mt-6 inline-block overflow-hidden">
+          <RotatingText />
         </div>
+        
+        <a
+          href="#next-section"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center space-y-1"
+        >
+          <svg
+            className="w-6 h-6 text-yellow-400 animate-chevron delay-200"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
       </section>
 
-      <section>
-        <h2 className="text-3xl font-bold mb-4">Onze waardes</h2>
-        <p className="mb-6 text-gray-300">
-          Als studievereniging staan wij voor verbinding, groei en
-          ondernemerschap.
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          {[
-            {
-              icon: <Users className="w-16 h-16 text-yellow-400" />,
-              label: "Networking",
-            },
-            {
-              icon: <RocketIcon className="w-16 h-16 text-yellow-400" />,
-              label: "Undertaking",
-            },
-            {
-              icon: <BookOpen className="w-16 h-16 text-yellow-400" />,
-              label: "Lifelong Learning",
-            },
-          ].map(({ icon, label }) => (
-            <div key={label} className="text-center py-6">
-              <div className="inline-flex items-center justify-center w-32 h-32 mx-auto mb-4 rounded-full bg-gray-800">
-                {icon}
+      <section id="next-section" className="bg-neutral-900 border-y border-neutral-800 py-12">
+        <div className="max-w-6xl mx-auto px-8 py-8 text-center">
+          <h2 className="text-5xl font-bold mb-4 text-white">
+            Een vereniging die ergens voor staat
+          </h2>
+          <p className="mb-20 text-gray-300 max-w-2xl mx-auto">
+            NULL staat voor <span className="text-yellow-400 font-semibold">Networking</span>,{' '}
+            <span className="text-yellow-400 font-semibold">Undertaking</span> en{' '}
+            <span className="text-yellow-400 font-semibold">Lifelong Learning</span>.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-16">
+            {[
+              {
+                icon: <Users className="w-12 h-12 text-yellow-400 mb-4 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110" />,
+                title: "Networking",
+                text: "Een hechte community opbouwen en waardevolle connecties leggen met mede-studenten en het werkveld."
+              },
+              {
+                icon: <RocketIcon className="w-12 h-12 text-yellow-400 mb-4 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110" />,
+                title: "Undertaking",
+                text: "Samen projecten, activiteiten en evenementen neerzetten die energie geven en inspireren."
+              },
+              {
+                icon: <BookOpen className="w-12 h-12 text-yellow-400 mb-4 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110" />,
+                title: "Lifelong Learning",
+                text: "Blijven groeien via workshops, lezingen en ervaringen die je ook later van pas komen."
+              }
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="group flex flex-col items-center text-center p-6 bg-neutral-900 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              >
+                {item.icon}
+                <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors duration-300">
+                  {item.title}
+                </h3>
+                <p className="text-gray-300 text-sm leading-relaxed max-w-xs transition-colors duration-300">
+                  {item.text}
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-white">
-                {label.split(" ").map((word, wi) => (
-                  <span key={wi}>
-                    {word.split("").map((ch, ci) => {
-                      // eerste letter van élk woord geel
-                      const isFirst = ci === 0;
-                      return isFirst ? (
-                        <span key={ci} className="text-yellow-400 text-2xl">
-                          {ch}
-                        </span>
-                      ) : (
-                        ch
-                      );
-                    })}
-                    {wi < label.split(" ").length - 1 && " "}
-                  </span>
-                ))}
-              </h3>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
-      <h2 className="text-2xl sm:text-3xl font-bold text-white">
-        Komende activiteiten
-      </h2>
-      <DropdownList
-        items={upcomingActivities}
-        footer={
-          <div className="text-center">
+      <section className="max-w-4xl mx-auto my-24 px-8">
+        <p className="text-center text-yellow-600 text-xl sm:text-2xl">Kalender</p>
+        <h2 className="text-center text-5xl font-bold text-yellow-400 mb-16">
+          Komende activiteiten
+        </h2>
+        <ActivityGrid items={upcomingActivities}></ActivityGrid>
+        <div className="text-center mt-12">
+          <Link
+            href="/kalender"
+            className="inline-block px-6 py-2.5 rounded-xl font-medium
+                      bg-yellow-400 text-black border-2 border-yellow-400
+                      hover:bg-transparent hover:text-yellow-400
+                      active:bg-transparent active:text-yellow-400
+                      transition-all duration-300"
+          >
+            Bekijk alle activiteiten
+          </Link>
+        </div>
+      </section>
+
+    <section className="bg-neutral-900 border-y border-neutral-800 py-12">
+      <div className="max-w-6xl mx-auto px-8">
+        <Gallery/>
+        </div>
+      </section>
+
+      <section className="max-w-4xl mx-auto my-24 px-8">
+        <p className="text-center text-yellow-600 text-xl sm:text-2xl">Lid worden</p>
+        <h2 className="text-center text-5xl font-bold text-yellow-400 mb-12">
+          Maak het beste van jouw studietijd!
+        </h2>
+        <p className="text-center">
+          Als lid van SV. NULL doe je mee aan toffe activiteiten, leer je bedrijven uit de IT-wereld kennen en maak je vrienden voor het leven. Van gezellige borrels tot inspirerende lezingen en leuke reizen: samen maken we van jouw studietijd een top tijd!
+        </p>
+        <div className="text-center mt-12">
+          <Link
+            href="/word-lid"
+            className="inline-block px-6 py-2.5 rounded-xl font-medium
+                      bg-yellow-400 text-black border-2 border-yellow-400
+                      hover:bg-transparent hover:text-yellow-400
+                      active:bg-transparent active:text-yellow-400
+                      transition-all duration-300"
+          >
+            Word lid
+          </Link>
+        </div>
+      </section>
+
+      <section className="bg-neutral-900 border-y border-neutral-800 py-12">
+        <div className="max-w-6xl mx-auto px-8 my-16">
+          <h2 className="text-5xl font-bold text-center mb-16">
+            Onze partners
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {partners.map((partner, index) => (
+              <div
+                key={index}
+                className="rounded-lg text-center group"
+              >
+                <Image
+                  src={partner.image}
+                  alt={partner.title}
+                  className="mx-auto mb-4 h-20 w-full object-contain 
+                            transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-lg"
+                  width={400}
+                  height={400}
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
             <Link
-              href="/kalender"
-              className="inline-block bg-yellow-400 text-black px-5 py-2 rounded font-medium hover:bg-yellow-500"
+              href="/partner-worden"
+              className="inline-block px-6 py-2.5 rounded-xl font-medium
+                        bg-yellow-400 text-black border-2 border-yellow-400
+                        hover:bg-transparent hover:text-yellow-400
+                        active:bg-transparent active:text-yellow-400
+                        transition-all duration-300"
             >
-              Bekijk alle activiteiten
+              Ook partner worden?
             </Link>
           </div>
-        }
-      />
-
-      <section>
-        <h2 className="text-2xl sm:text-3xl font-bold text-white">
-          Sfeerimpressie
-        </h2>
-        <Gallery images={gallery} />
-      </section>
-
-      <CTA
-        title="Waarom lid worden?"
-        text="Community, connecties met bedrijven, borrels, leerzame activiteiten, commissies en meer!"
-        button={{ text: "Word lid van NULL", href: "/word-lid" }}
-      />
-
-      <section className="py-12 text-white">
-        <h2 className="text-3xl font-bold mb-6">Onze partners</h2>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {partners.map((partner, index) => (
-            <div
-              key={index}
-              className="p-4 rounded-lg text-center border border-gray-700"
-            >
-              <Image
-                src={partner.image}
-                alt={partner.title}
-                className="mx-auto mb-4 h-16 w-full object-contain"
-                width={400}
-                height={400}
-              />
-            </div>
-          ))}
         </div>
       </section>
-      <CTA
-        title="Ook partner worden?"
-        text="Sluit je aan bij SV. NULL en vergroot jouw zichtbaarheid bij HBO-ICT studenten."
-        button={{ text: "Word partner", href: "/partner-worden" }}
-      />
     </main>
   );
 }

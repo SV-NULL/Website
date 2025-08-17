@@ -30,7 +30,7 @@ const documents = [
 
 export default function VerenigingsdocumentenPage() {
   return (
-    <main className="space-y-8">
+    <div className="container mx-auto px-8 space-y-4">
       <PageTitle
         title="Verenigings- documenten"
         subtitle="Hieronder vind je belangrijke documenten zoals statuten, huisregels en
@@ -44,7 +44,7 @@ export default function VerenigingsdocumentenPage() {
             href={doc.file}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center space-x-4 p-4 bg-gray-900 hover:bg-yellow-400 rounded-lg transition-colors"
+            className="group flex items-center space-x-4 p-4 bg-neutral-900 hover:bg-yellow-400 rounded-lg transition-colors"
           >
             <FileTextIcon className="w-6 h-6 text-yellow-400 group-hover:text-black flex-shrink-0" />
             <span className="font-medium text-white group-hover:text-black">
@@ -53,6 +53,6 @@ export default function VerenigingsdocumentenPage() {
           </Link>
         ))}
       </section>
-    </main>
+    </div>
   );
 }

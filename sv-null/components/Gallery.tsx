@@ -1,92 +1,38 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 
-export interface GalleryImage {
-  src: string;
-  alt: string;
-  caption: string;
-}
+const images = [
+  "./images/home/1.jpg",
+  "./images/home/2.jpg",
+  "./images/home/3.jpg",
+  "./images/home/4.jpg",
+  "./images/home/5.jpg",
+  "./images/home/6.jpg",
+  "./images/home/7.jpg",
+  "./images/home/8.jpg",
+  "./images/home/9.jpg",
 
-interface GalleryProps {
-  images: GalleryImage[];
-}
+];
 
-export default function Gallery({ images }: GalleryProps) {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [current, setCurrent] = useState(0);
-
-  const open = (i: number) => {
-    setCurrent(i);
-    setModalOpen(true);
-  };
-  const close = () => setModalOpen(false);
-  const prev = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrent((i) => (i - 1 + images.length) % images.length);
-  };
-  const next = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrent((i) => (i + 1) % images.length);
-  };
-
+export default function Gallery() {
   return (
-    <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {images.map((img, i) => (
-          <figure key={i} className="cursor-pointer">
-            <Image
-              src={img.src}
-              alt={img.alt}
-              className="w-full aspect-[16/9] object-cover object-center rounded shadow-lg"
-              onClick={() => open(i)}
-              width={480}
-              height={270}
-            />
-            <figcaption className="text-sm mt-2 text-gray-600 text-center">
-              {img.caption}
-            </figcaption>
-          </figure>
-        ))}
-      </div>
-
-      {modalOpen && (
+    <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+      {images.map((src, i) => (
         <div
-          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
-          onClick={close}
+          key={i}
+          className="overflow-hidden rounded-xl relative group break-inside-avoid"
         >
-          <button
-            className="absolute top-4 right-4 text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] text-4xl"
-            onClick={(e) => {
-              e.stopPropagation();
-              close();
-            }}
-          >
-            &times;
-          </button>
-          <button
-            className="absolute left-4 text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] text-3xl"
-            onClick={prev}
-          >
-            ‹
-          </button>
           <Image
-            src={images[current].src}
-            alt={images[current].alt}
-            className="max-w-full max-h-full object-contain rounded"
-            onClick={(e) => e.stopPropagation()}
-            width={1200}
-            height={800}
+            src={src}
+            alt={`Gallery image ${i + 1}`}
+            width={800}
+            height={600}
+            className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
           />
-          <button
-            className="absolute right-4 text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] text-3xl"
-            onClick={next}
-          >
-            ›
-          </button>
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-yellow-400/30 transition-colors duration-500" />
         </div>
-      )}
-    </>
+      ))}
+    </div>
   );
 }

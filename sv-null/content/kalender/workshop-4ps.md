@@ -1,8 +1,8 @@
 ---
 title: "Workshop 4PS"
-subtitle: "TBD"
-image: # Moet nog toegevoegd worden in bestanden
-date: 2025-10 # Even random voor nu
+date: 2025-10-01 # Even random voor nu
+notDetermined: true
+image: "/images/kalender/4ps-activiteit.jpg"
 ---
 
 Weer organiseren wij een leuke activiteit met 4PS! Deze activiteit is in de vorm van een workshop over o.a. AI en Business Central.

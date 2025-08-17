@@ -7,14 +7,14 @@ export default function VakkenPage() {
   const vakken = getVakkenItems();
 
   return (
-    <div>
+    <div className="container mx-auto px-8 space-y-4">
       <PageTitle
         title="Vakken"
         subtitle="Bekijk alle vakken die je krijgt tijdens je studie, met toelichting en tips van (oud)leden."
       />
 
       <section className="mt-12">
-        <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+        <h2 className="mb-4 text-2xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
           Curriculum overzicht
         </h2>
         <p>
@@ -29,7 +29,7 @@ export default function VakkenPage() {
           <Image
             src="/images/vakken/curriculum.jpg"
             alt="Vakken overzicht"
-            className="w-full max-w-2xl mx-auto mt-6 rounded-lg shadow-md hover:opacity-80 transition"
+            className="w-full max-w-2xl mx-auto mt-6 rounded-lg shadow-md hover:opacity-80 active:opacity-80 transition"
             width={1117}
             height={789}
           />
@@ -37,7 +37,7 @@ export default function VakkenPage() {
       </section>
 
       <section className="mt-12">
-        <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+        <h2 className="mb-4 text-2xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
           Vakken per studiejaar
         </h2>
         <p>
@@ -49,12 +49,12 @@ export default function VakkenPage() {
             <Link
               key={slug}
               href={`/vakken/${slug}`}
-              className="group bg-gray-900 hover:bg-yellow-400 transition-colors duration-300 rounded-xl p-8 text-center shadow-md"
+              className="group bg-neutral-900 hover:bg-yellow-400 active:bg-yellow-400 transition-colors duration-300 rounded-xl p-8 text-center shadow-md"
             >
-              <h2 className="text-2xl font-semibold text-yellow-400 group-hover:text-black">
+              <h2 className="text-2xl font-semibold text-yellow-400 group-hover:text-black group-active:text-black">
                 {data.title}
               </h2>
-              <p className="text-sm mt-2 text-white group-hover:text-black">
+              <p className="text-sm mt-2 text-white group-hover:text-black group-active:text-black">
                 {data.subtitle}
               </p>
             </Link>
@@ -63,7 +63,7 @@ export default function VakkenPage() {
       </section>
 
       {/* <section className="mt-12">
-        <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
+        <h2 className="text-2xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
           Algemene Tips
         </h2>
         <p className="mt-4 text-gray-300">

@@ -13,7 +13,7 @@ export default async function BestuurDetailPage({
   if (!bestuur) return notFound();
 
   return (
-    <div className="grid">
+    <div className="container mx-auto px-8 space-y-4">
       <PageTitle
         title={bestuur.title}
         subtitle={"Studiejaar " + bestuur.subtitle}

@@ -14,7 +14,7 @@ export default async function CommissieDetailPage({
   if (!commissie) return notFound();
 
   return (
-    <div>
+    <div className="container mx-auto px-8 space-y-4">
       <PageTitle title={commissie.title} subtitle={commissie.content} />
 
       {commissie.members && commissie.members.length > 0 && (

@@ -19,7 +19,7 @@ export default async function VacatureDetailPage({
   if (!vacature) return <p>Vacature niet gevonden</p>;
 
   return (
-    <div>
+    <div className="container mx-auto px-8">
       <PageTitle
         title={`Vacature ${vacature.company}`}
         subtitle="Bekijk de details van deze vacature en solliciteer direct."
@@ -39,7 +39,21 @@ export default async function VacatureDetailPage({
           </p>
         </div>
       </div>
-      <Markdown>{vacature.content}</Markdown>
+      <Markdown
+        components={{
+          h2: ({ node, ...props }) => (
+            <h2
+              className="text-2xl font-bold text-white underline underline-offset-12 decoration-yellow-400 my-6"
+              {...props}
+            />
+          ),
+          p: ({ node, ...props }) => (
+            <p className="text-gray-300 leading-relaxed mb-4" {...props} />
+          ),
+        }}
+      >
+        {vacature.content}
+      </Markdown>
       <CTA
         title="Interesse?"
         text={`Ben je enthousiast over deze vacature bij ${vacature.company}? Soliciteer nu!`}

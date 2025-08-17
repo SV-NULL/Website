@@ -27,7 +27,7 @@ export default function StudentenwelzijnPage() {
   ];
 
   return (
-    <main className="space-y-12">
+    <div className="container mx-auto px-8 space-y-4">
       <PageTitle
         title="StudentenWelzijn"
         subtitle="StudentenWelzijn is de plek waar je als student aanklopt met je (hulp)vraag wat betreft je studie. Zij denken met je mee en koppelen je aan de juiste persoon of dienst."
@@ -39,20 +39,20 @@ export default function StudentenwelzijnPage() {
             href={b.href}
             target="_blank"
             rel="noreferrer"
-            className="group flex flex-col items-center p-6 bg-gray-900 hover:bg-yellow-400 rounded-xl transition-colors"
+            className="group flex flex-col items-center p-6 bg-neutral-900 hover:bg-yellow-400 active:bg-yellow-400 rounded-xl transition-colors"
           >
-            <div className="text-yellow-400 group-hover:text-black mb-4">
+            <div className="text-yellow-400 group-hover:text-black group-active:text-black mb-4">
               {b.icon}
             </div>
-            <h2 className="text-center text-xl font-semibold group-hover:text-black mb-2">
+            <h2 className="text-center text-xl font-semibold group-hover:text-black group-active:text-black mb-2">
               {b.title}
             </h2>
-            <p className="text-center text-gray-400 group-hover:text-black">
+            <p className="text-center text-gray-400 group-hover:text-black group-active:text-black">
               {b.description}
             </p>
           </Link>
         ))}
       </section>
-    </main>
+    </div>
   );
 }
