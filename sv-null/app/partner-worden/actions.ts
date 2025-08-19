@@ -1,13 +1,13 @@
-'use server';
+"use server";
 
-import nodemailer from 'nodemailer';
+import nodemailer from "nodemailer";
 
 export async function partnerAanvraagVerzenden(formData: FormData) {
-  const bedrijfsnaam = formData.get('bedrijfsnaam');
-  const contactpersoon = formData.get('contactpersoon');
-  const email = formData.get('email');
-  const telefoon = formData.get('telefoon') || 'Niet opgegeven';
-  const bericht = formData.get('bericht');
+  const bedrijfsnaam = formData.get("bedrijfsnaam");
+  const contactpersoon = formData.get("contactpersoon");
+  const email = formData.get("email");
+  const telefoon = formData.get("telefoon") || "Niet opgegeven";
+  const bericht = formData.get("bericht");
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST!,
@@ -20,7 +20,7 @@ export async function partnerAanvraagVerzenden(formData: FormData) {
 
   await transporter.sendMail({
     from: process.env.SMTP_FROM!,
-    to: 'svnull@che.nl',
+    to: process.env.ADMIN_EMAIL!,
     subject: `Nieuwe partneraanvraag van ${bedrijfsnaam}`,
     text: `
 Bedrijf: ${bedrijfsnaam}

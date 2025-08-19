@@ -1,15 +1,15 @@
-'use server';
+"use server";
 
-import nodemailer from 'nodemailer';
+import nodemailer from "nodemailer";
 
 export async function contactVerzenden(
   _prevState: { success: boolean },
   formData: FormData
 ): Promise<{ success: boolean }> {
-  const naam = formData.get('naam');
-  const email = formData.get('email');
-  const onderwerp = formData.get('onderwerp');
-  const bericht = formData.get('bericht');
+  const naam = formData.get("naam");
+  const email = formData.get("email");
+  const onderwerp = formData.get("onderwerp");
+  const bericht = formData.get("bericht");
 
   const mailContent = `
     Nieuw contactbericht:
@@ -34,7 +34,7 @@ export async function contactVerzenden(
 
   await transporter.sendMail({
     from: `"Website contactformulier" <${process.env.SMTP_USER!}>`,
-    to: 'svnull@che.nl',
+    to: process.env.ADMIN_EMAIL!,
     subject: `Contact: ${onderwerp}`,
     text: mailContent,
   });

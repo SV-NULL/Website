@@ -44,8 +44,11 @@ export default function Footer() {
           </div>
           <div className="flex items-center">
             <Mail className="w-5 h-5 mr-2" />
-            <Link href="mailto:svnull@che.nl" className="hover:text-yellow-400 active:text-yellow-400">
-              svnull@che.nl
+            <Link
+              href={`mailto:${process.env.ADMIN_EMAIL!}`}
+              className="hover:text-yellow-400 active:text-yellow-400"
+            >
+              {process.env.ADMIN_EMAIL!}
             </Link>
           </div>
         </FooterSection>
