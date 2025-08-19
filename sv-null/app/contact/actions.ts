@@ -34,7 +34,7 @@ export async function contactVerzenden(
 
   await transporter.sendMail({
     from: `"Website contactformulier" <${process.env.SMTP_USER!}>`,
-    to: process.env.ADMIN_EMAIL!,
+    to: "svnull@che.nl",
     subject: `Contact: ${onderwerp}`,
     text: mailContent,
   });

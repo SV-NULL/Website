@@ -31,7 +31,7 @@ export class EmailService {
         name: "Studievereniging NULL",
         address: process.env.SMTP_USER!,
       },
-      to: process.env.ADMIN_EMAIL!,
+      to: "svnull@che.nl",
       subject: membershipApplicationTemplate.subject(emailData),
       text: generateEmail(membershipApplicationTemplate, emailData, "text"),
       html: generateEmail(membershipApplicationTemplate, emailData, "html"),

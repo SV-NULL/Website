@@ -20,7 +20,7 @@ export async function partnerAanvraagVerzenden(formData: FormData) {
 
   await transporter.sendMail({
     from: process.env.SMTP_FROM!,
-    to: process.env.ADMIN_EMAIL!,
+    to: "svnull@che.nl",
     subject: `Nieuwe partneraanvraag van ${bedrijfsnaam}`,
     text: `
 Bedrijf: ${bedrijfsnaam}
