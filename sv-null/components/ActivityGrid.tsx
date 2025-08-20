@@ -1,9 +1,8 @@
 // components/ActivityGrid.tsx
-'use client';
+"use client";
 
-import React from 'react';
-import { Calendar, Clock, MapPin } from 'lucide-react';
-import { ActivityItem } from '@/lib/content';
+import { ActivityItem } from "@/lib/content";
+import { Calendar } from "lucide-react";
 
 export default function ActivityGrid({
   items,
@@ -12,7 +11,7 @@ export default function ActivityGrid({
   items: ActivityItem[];
   limit?: number;
 }) {
-  const list = typeof limit === 'number' ? items.slice(0, limit) : items;
+  const list = typeof limit === "number" ? items.slice(0, limit) : items;
 
   return (
     <div className="mx-auto max-w-4xl space-y-20 sm:ml-4">
@@ -51,11 +50,11 @@ export default function ActivityGrid({
                 <Calendar className="w-4 h-4 text-yellow-400" />
                 <span>
                   {item.notDetermined ? (
-                    <span className="font-medium">TBD</span>
+                    <span className="font-medium">Nog niet bekend</span>
                   ) : item.date ? (
                     formatDate(item.date)
                   ) : (
-                    '—'
+                    "—"
                   )}
                 </span>
               </div>
@@ -78,12 +77,12 @@ export default function ActivityGrid({
 }
 
 function formatDate(d?: string) {
-  if (!d) return '';
+  if (!d) return "";
   const dt = new Date(d);
   if (Number.isNaN(dt.getTime())) return d;
-  return dt.toLocaleDateString('nl-NL', {
-    day: '2-digit',
-    month: 'short',
-    year: 'numeric',
+  return dt.toLocaleDateString("nl-NL", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
   });
 }
