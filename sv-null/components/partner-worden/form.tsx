@@ -1,18 +1,17 @@
 "use client";
 
-import { submitMembershipApplication } from "@/app/word-lid/actions";
-import { FORM_FIELDS } from "@/content/vereniging/word-lid/form";
+import { submitBecomePartnerApplication } from "@/app/partner-worden/actions";
+import { FORM_FIELDS } from "@/content/partners/partner-worden/form";
 import { useFormValidation } from "@/hooks/use-form-validation";
-import { membershipApplicationSchema } from "@/lib/validation";
+import { becomePartnerSchema } from "@/lib/validation";
 import { SubmissionResult } from "@/types/form";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import ErrorAlert from "../form/ErrorAlert";
 import FormField from "../form/FormField";
-import FormSection from "../form/FormSection";
 import SubmitButton from "../form/SubmitButton";
 
-const WordLidForm = () => {
+const PartnerWordenForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -22,18 +21,19 @@ const WordLidForm = () => {
     validateField,
     handleInputChange,
     handleInputBlur,
-  } = useFormValidation(membershipApplicationSchema);
+  } = useFormValidation(becomePartnerSchema);
 
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    console.log(e);
     e.preventDefault();
 
     setIsSubmitting(true);
     setError(null);
 
     const formData = new FormData(e.currentTarget);
-    const result: SubmissionResult = await submitMembershipApplication(
+    const result: SubmissionResult = await submitBecomePartnerApplication(
       formData
     );
 
@@ -45,7 +45,7 @@ const WordLidForm = () => {
         });
       }
     } else {
-      router.push("/word-lid/bedankt");
+      router.push("/partner-worden/bedankt");
       return;
     }
 
@@ -83,24 +83,17 @@ const WordLidForm = () => {
     <div className="mt-12">
       {error && <ErrorAlert message={error} />}
 
-      <form onSubmit={handleSubmit} className="space-y-8">
-        <FormSection title="Algemene informatie">
-          {renderFields(FORM_FIELDS.GENERAL)}
-        </FormSection>
-        <FormSection title="Studentinformatie">
-          {renderFields(FORM_FIELDS.STUDENT)}
-        </FormSection>
-        <FormSection
-          title="Contributie"
-          description="Lid worden van NULL kost €10 per schooljaar of €30 voor je hele studie. Je krijgt na inschrijving een betaalverzoek."
-        >
-          {renderFields(FORM_FIELDS.CONTRIBUTION)}
-        </FormSection>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        {renderFields(FORM_FIELDS.GENERAL)}
 
-        <SubmitButton isSubmitting={isSubmitting} />
+        <SubmitButton
+          isSubmitting={isSubmitting}
+          alternativeText="Verstuur aanvraag"
+          alternativeLoadingText="Versturen..."
+        />
       </form>
     </div>
   );
 };
 
-export default WordLidForm;
+export default PartnerWordenForm;

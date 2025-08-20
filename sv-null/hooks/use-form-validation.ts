@@ -1,23 +1,23 @@
-import { membershipApplicationSchema } from "@/lib/validation";
+import { FormValues } from "@/types/form";
 import { useCallback, useState } from "react";
+import { ZodObject } from "zod";
 
 interface ValidationState {
   fieldErrors: Record<string, string>;
   touchedFields: Set<string>;
 }
 
-export function useFormValidation() {
+export function useFormValidation(schema: ZodObject) {
   const [validationState, setValidationState] = useState<ValidationState>({
     fieldErrors: {},
     touchedFields: new Set(),
   });
+  const [formValues, setFormValues] = useState<FormValues>({});
 
   const validateField = useCallback((name: string, value: string) => {
     const fieldData = { [name]: value };
-    const result = membershipApplicationSchema
-      .pick({ [name]: true } as Parameters<
-        typeof membershipApplicationSchema.pick
-      >[0])
+    const result = schema
+      .pick({ [name]: true } as Parameters<typeof schema.pick>[0])
       .safeParse(fieldData);
 
     setValidationState((prev) => {
@@ -53,11 +53,33 @@ export function useFormValidation() {
     });
   }, []);
 
+  const handleInputChange = useCallback(
+    (name: string, value: string) => {
+      setFormValues((prev) => ({ ...prev, [name]: value }));
+
+      if (validationState.touchedFields.has(name)) {
+        validateField(name, value);
+      }
+    },
+    [validationState.touchedFields, validateField]
+  );
+
+  const handleInputBlur = useCallback(
+    (name: string, value: string) => {
+      markFieldAsTouched(name);
+      validateField(name, value);
+    },
+    [markFieldAsTouched, validateField]
+  );
+
   return {
     fieldErrors: validationState.fieldErrors,
     touchedFields: validationState.touchedFields,
+    formValues,
     validateField,
     markFieldAsTouched,
     clearValidation,
+    handleInputChange,
+    handleInputBlur,
   };
 }

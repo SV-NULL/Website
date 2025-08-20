@@ -22,3 +22,13 @@ export const membershipApplicationSchema = z.object({
 export type MembershipApplicationData = z.infer<
   typeof membershipApplicationSchema
 >;
+
+export const becomePartnerSchema = z.object({
+  companyName: z.string().min(1, "Bedrijfsnaam is verplicht"),
+  contactPerson: z.string().min(1, "Contactpersoon is verplicht"),
+  email: z.email("Ongeldig e-mailadres"),
+  phone: z.string().optional(),
+  message: z.string().min(1, "Dit veld is verplicht"),
+});
+
+export type BecomePartnerData = z.infer<typeof becomePartnerSchema>;

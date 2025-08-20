@@ -1,8 +1,14 @@
 type Props = {
   isSubmitting: boolean;
+  alternativeText?: string;
+  alternativeLoadingText?: string;
 };
 
-const SubmitButton = ({ isSubmitting }: Props) => {
+const SubmitButton = ({
+  isSubmitting,
+  alternativeText,
+  alternativeLoadingText,
+}: Props) => {
   return (
     <button
       type="submit"
@@ -12,10 +18,10 @@ const SubmitButton = ({ isSubmitting }: Props) => {
       {isSubmitting ? (
         <>
           <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
-          <span>Bezig met aanmelden...</span>
+          <span>{alternativeLoadingText || "Bezig met aanmelden..."}</span>
         </>
       ) : (
-        <span>Aanmelden</span>
+        <span>{alternativeText || "Aanmelden"}</span>
       )}
     </button>
   );

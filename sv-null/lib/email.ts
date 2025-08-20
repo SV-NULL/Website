@@ -1,11 +1,18 @@
 import { generateEmail } from "@/utils/email-templates";
 import { commonFormatters } from "@/utils/email-templates/formatters";
+import { becomePartnerApplicationTemplate } from "@/utils/email-templates/templates/become-partner-application";
 import { membershipApplicationTemplate } from "@/utils/email-templates/templates/membership-application";
 import nodemailer from "nodemailer";
 import { MailOptions } from "nodemailer/lib/sendmail-transport";
-import { MembershipApplicationData } from "./validation";
+import { BecomePartnerData, MembershipApplicationData } from "./validation";
 
-export class EmailService {
+const DEFAULT_FROM = {
+  name: "Studievereniging NULL",
+  address: process.env.SMTP_USER!,
+};
+const DEFAULT_TO = "svnull@che.nl";
+
+class EmailService {
   private transporter;
 
   constructor() {
@@ -27,11 +34,8 @@ export class EmailService {
     };
 
     const mailOptions: MailOptions = {
-      from: {
-        name: "Studievereniging NULL",
-        address: process.env.SMTP_USER!,
-      },
-      to: "svnull@che.nl",
+      from: DEFAULT_FROM,
+      to: DEFAULT_TO,
       subject: membershipApplicationTemplate.subject(emailData),
       text: generateEmail(membershipApplicationTemplate, emailData, "text"),
       html: generateEmail(membershipApplicationTemplate, emailData, "html"),
@@ -40,4 +44,19 @@ export class EmailService {
 
     return this.transporter.sendMail(mailOptions);
   }
+
+  async sendBecomePartnerApplication(data: BecomePartnerData) {
+    const mailOptions: MailOptions = {
+      from: DEFAULT_FROM,
+      to: DEFAULT_TO,
+      subject: becomePartnerApplicationTemplate.subject(data),
+      text: generateEmail(becomePartnerApplicationTemplate, data, "text"),
+      html: generateEmail(becomePartnerApplicationTemplate, data, "html"),
+      priority: "high",
+    };
+
+    return this.transporter.sendMail(mailOptions);
+  }
 }
+
+export const emailService = new EmailService();

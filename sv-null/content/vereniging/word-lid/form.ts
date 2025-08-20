@@ -1,14 +1,4 @@
-type FormField = {
-  name: string;
-  placeholder?: string;
-  required: boolean;
-  type?: string;
-  as?: "select" | "textarea";
-  options?: { value: string; label: string }[];
-  suffix?: string;
-  rows?: number;
-  className?: string;
-};
+import { FormField } from "@/types/form";
 
 export const FORM_FIELDS: Record<string, FormField[]> = {
   GENERAL: [

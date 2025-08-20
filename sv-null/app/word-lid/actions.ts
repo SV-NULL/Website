@@ -1,10 +1,8 @@
 "use server";
 
-import { EmailService } from "@/lib/email";
+import { emailService } from "@/lib/email";
 import { membershipApplicationSchema } from "@/lib/validation";
 import { createFieldErrors } from "@/utils/validation";
-
-const emailService = new EmailService();
 
 export async function submitMembershipApplication(formData: FormData) {
   const rawData = Object.fromEntries(formData.entries());
@@ -25,7 +23,7 @@ export async function submitMembershipApplication(formData: FormData) {
     console.error("Fout bij het verzenden van de e-mail:", error);
     return {
       success: false,
-      message: "Er is een fout opgetreden bij het verzenden van de e-mail.",
+      message: "Er is een fout opgetreden bij het verzenden van het formulier.",
     };
   }
 }

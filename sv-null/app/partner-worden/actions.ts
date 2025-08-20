@@ -1,35 +1,29 @@
 "use server";
 
-import nodemailer from "nodemailer";
+import { emailService } from "@/lib/email";
+import { becomePartnerSchema } from "@/lib/validation";
+import { createFieldErrors } from "@/utils/validation";
 
-export async function partnerAanvraagVerzenden(formData: FormData) {
-  const bedrijfsnaam = formData.get("bedrijfsnaam");
-  const contactpersoon = formData.get("contactpersoon");
-  const email = formData.get("email");
-  const telefoon = formData.get("telefoon") || "Niet opgegeven";
-  const bericht = formData.get("bericht");
+export async function submitBecomePartnerApplication(formData: FormData) {
+  const rawData = Object.fromEntries(formData.entries());
+  const validationResult = becomePartnerSchema.safeParse(rawData);
 
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST!,
-    port: Number(process.env.SMTP_PORT!),
-    auth: {
-      user: process.env.SMTP_USER!,
-      pass: process.env.SMTP_PASS!,
-    },
-  });
+  if (!validationResult.success) {
+    return {
+      success: false,
+      message: "Gelieve alle velden correct in te vullen.",
+      fieldErrors: createFieldErrors(validationResult.error),
+    };
+  }
 
-  await transporter.sendMail({
-    from: process.env.SMTP_FROM!,
-    to: "svnull@che.nl",
-    subject: `Nieuwe partneraanvraag van ${bedrijfsnaam}`,
-    text: `
-Bedrijf: ${bedrijfsnaam}
-Contactpersoon: ${contactpersoon}
-E-mail: ${email}
-Telefoon: ${telefoon}
-
-Bericht:
-${bericht}
-    `,
-  });
+  try {
+    await emailService.sendBecomePartnerApplication(validationResult.data);
+    return { success: true };
+  } catch (error) {
+    console.error("Fout bij het verzenden van de e-mail:", error);
+    return {
+      success: false,
+      message: "Er is een fout opgetreden bij het verzenden van het formulier.",
+    };
+  }
 }
