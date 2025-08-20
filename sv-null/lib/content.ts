@@ -1,7 +1,7 @@
 import { Image } from "@/types/image";
+import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
-import fs from "fs";
 
 //
 // ─── KALENDER ───────────────────────────
@@ -10,35 +10,36 @@ import fs from "fs";
 export interface ActivityItem {
   title: string;
   image?: string;
-  date?: string;          
-  notDetermined?: boolean;// optional: show "TBD" in UI if true 
+  date?: string;
+  notDetermined?: boolean; // optional: show "TBD" in UI if true
   content: string;
 }
 
 /** Load markdown files from content/<folder> and map to ActivityItem */
 function loadActivityItems(folder: string): ActivityItem[] {
-  const dir = path.join(process.cwd(), 'content', folder);
+  const dir = path.join(process.cwd(), "content", folder);
   const files = fs.existsSync(dir) ? fs.readdirSync(dir) : [];
 
   return files
-    .filter((f) => f.endsWith('.md'))
+    .filter((f) => f.endsWith(".md"))
     .map((filename) => {
       const filePath = path.join(dir, filename);
-      const fileContent = fs.readFileSync(filePath, 'utf8');
+      const fileContent = fs.readFileSync(filePath, "utf8");
       const { data, content } = matter(fileContent);
 
       return {
-        title: data.title ?? filename.replace(/\.md$/, ''),
+        title: data.title ?? filename.replace(/\.md$/, ""),
         image: data.image ?? undefined,
         date: data.date ?? undefined,
-        notDetermined: data.notDetermined === true || data.notDetermined === 'true',
-        content: content ?? '',
+        notDetermined:
+          data.notDetermined === true || data.notDetermined === "true",
+        content: content ?? "",
       } as ActivityItem;
     });
 }
 
 export function getCalendarItems(): ActivityItem[] {
-  return loadActivityItems('kalender')
+  return loadActivityItems("kalender")
     .filter((item) => item.date && !Number.isNaN(Date.parse(item.date)))
     .sort((a, b) => Date.parse(a.date!) - Date.parse(b.date!));
 }
@@ -63,19 +64,21 @@ function loadPartnerItems(folder: string): PartnerItem[] {
   const dir = path.join(process.cwd(), "content", folder);
   const files = fs.existsSync(dir) ? fs.readdirSync(dir) : [];
 
-  return files.map((filename) => {
-    const filePath = path.join(dir, filename);
-    const fileContent = fs.readFileSync(filePath, "utf8");
-    const { data, content } = matter(fileContent);
+  return files
+    .filter((filename) => filename.endsWith(".md"))
+    .map((filename) => {
+      const filePath = path.join(dir, filename);
+      const fileContent = fs.readFileSync(filePath, "utf8");
+      const { data, content } = matter(fileContent);
 
-    return {
-      title: data.title,
-      subtitle: data.subtitle,
-      image: data.image,
-      content,
-      website: data.website || "",
-    };
-  });
+      return {
+        title: data.title,
+        subtitle: data.subtitle,
+        image: data.image,
+        content,
+        website: data.website || "",
+      };
+    });
 }
 
 export function getPartnerItems(): PartnerItem[] {
