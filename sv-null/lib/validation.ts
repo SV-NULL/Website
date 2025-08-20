@@ -32,3 +32,12 @@ export const becomePartnerSchema = z.object({
 });
 
 export type BecomePartnerData = z.infer<typeof becomePartnerSchema>;
+
+export const contactSchema = z.object({
+  name: z.string().min(3, "Naam is verplicht"),
+  email: z.email("Ongeldig e-mailadres"),
+  subject: z.string().optional(),
+  message: z.string().min(1, "Dit veld is verplicht"),
+});
+
+export type ContactData = z.infer<typeof contactSchema>;

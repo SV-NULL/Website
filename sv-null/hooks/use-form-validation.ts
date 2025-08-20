@@ -81,5 +81,6 @@ export function useFormValidation(schema: ZodObject) {
     clearValidation,
     handleInputChange,
     handleInputBlur,
+    setFormValues,
   };
 }

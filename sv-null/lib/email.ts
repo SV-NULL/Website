@@ -1,10 +1,15 @@
 import { generateEmail } from "@/utils/email-templates";
 import { commonFormatters } from "@/utils/email-templates/formatters";
 import { becomePartnerApplicationTemplate } from "@/utils/email-templates/templates/become-partner-application";
+import { contactFormTemplate } from "@/utils/email-templates/templates/contact-form";
 import { membershipApplicationTemplate } from "@/utils/email-templates/templates/membership-application";
 import nodemailer from "nodemailer";
 import { MailOptions } from "nodemailer/lib/sendmail-transport";
-import { BecomePartnerData, MembershipApplicationData } from "./validation";
+import {
+  BecomePartnerData,
+  ContactData,
+  MembershipApplicationData,
+} from "./validation";
 
 const DEFAULT_FROM = {
   name: "Studievereniging NULL",
@@ -52,6 +57,19 @@ class EmailService {
       subject: becomePartnerApplicationTemplate.subject(data),
       text: generateEmail(becomePartnerApplicationTemplate, data, "text"),
       html: generateEmail(becomePartnerApplicationTemplate, data, "html"),
+      priority: "high",
+    };
+
+    return this.transporter.sendMail(mailOptions);
+  }
+
+  async sendContactForm(data: ContactData) {
+    const mailOptions: MailOptions = {
+      from: DEFAULT_FROM,
+      to: DEFAULT_TO,
+      subject: contactFormTemplate.subject(data),
+      text: generateEmail(contactFormTemplate, data, "text"),
+      html: generateEmail(contactFormTemplate, data, "html"),
       priority: "high",
     };
 

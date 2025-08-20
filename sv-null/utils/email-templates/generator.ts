@@ -96,7 +96,7 @@ ${steps}
         footer += `\n\n${this.replacePlaceholders(template.footer.note, data)}`;
       }
 
-      footer += `\n\n-- \nDit bericht is automatisch gegenereerd door het ${system}.`;
+      footer += `\n\n-- \nDit bericht is automatisch gegenereerd door het ${system.toLowerCase()}.`;
     }
 
     return `${header}\n\n${sections}${footer}`;
@@ -197,7 +197,7 @@ ${steps}
         ${sectionsHTML}
         ${footerHTML}
         <p style="text-align: center; color: #6b7280; font-size: 12px; margin-top: 30px;">
-            Dit bericht is automatisch gegenereerd door het ${system}.
+            Dit bericht is automatisch gegenereerd door het ${system.toLowerCase()}.
         </p>
     </div>
 </body>
