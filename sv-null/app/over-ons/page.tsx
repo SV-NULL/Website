@@ -1,60 +1,177 @@
 import PageTitle from "@/components/PageTitle";
-import { Bold } from "lucide-react";
+import { BookOpen, Lightbulb, Target, Users } from "lucide-react";
 
 export default function OverOnsPage() {
   return (
-    <div className="container mx-auto px-8 space-y-4">
+    <div className="container mx-auto px-4 lg:px-8">
       <PageTitle
         title="Over ons"
         subtitle="Leer meer over de missie, visie, geschiedenis en toekomst van SV. NULL."
       />
 
-    <div className="flex flex-col sm:grid sm:grid-cols-2">
-      <section className="bg-neutral-900 sm:bg-inherit p-6 rounded-lg sm:mb-8">
-        <h2 className="text-2xl sm:text-3xl font-bold text-yellow-400 underline underline-offset-12 decoration-neutral-900 sm:text-white sm:decoration-yellow-400">
-          Missie
-        </h2>
-        <p className="mt-4 mb-4">
-          Het verbinden van kennis en kunde van "ICT"-studenten aan de te Ede gevestigde Christelijk Hogeschool Ede (CHE) - 
-          met het bedrijfsleven om daarbij kennis en vaardigheden uit te wisselen waaronder ook het opdoen van werkervaring, 
-          en het verrichten van al wat hiermee verband houdt of daartoe bedordelijk kan zijn.
+      {/* Missie & Visie Section */}
+      <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <section className="group bg-neutral-900/50 border border-neutral-800 p-8 rounded-xl hover:bg-neutral-900/80 transition-all duration-300 hover:border-yellow-400/20">
+          <div className="flex items-center gap-3 mb-6">
+            <Target className="h-8 w-8 text-yellow-400" />
+            <h2 className="text-3xl font-bold text-yellow-400">Missie</h2>
+          </div>
+          <p className="text-gray-300 leading-relaxed">
+            et verbinden van kennis en kunde van &quot;ICT&quot;-studenten aan
+            de te Ede gevestigde Christelijk Hogeschool Ede (CHE) - met het
+            bedrijfsleven om daarbij kennis en vaardigheden uit te wisselen
+            waaronder ook het opdoen van werkervaring, en het verrichten van al
+            wat hiermee verband houdt of daartoe bedordelijk kan zijn.
           </p>
-      </section>
-      <section className="bg-inherit sm:bg-neutral-900 p-6 rounded-lg sm:mb-8">
-        <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400 sm:text-yellow-400 sm:decoration-neutral-900">
-          Visie
-        </h2>
-        <p className="mt-4 mb-4">
-          Studievereniging NULL streeft ernaar om studenten op het CHE te verbinden door hun liefde voor ICT. 
-          Bij NULL kan iedereen zichzelf zijn en zijn kennis delen met andere leden van de vereniging, 
-          zo bouwen ze sterke connecties en relaties met hun medestudenten en het bedrijfsleven.
-        </p>
-      </section>
-      <section className="bg-neutral-900 p-6 rounded-lg sm:mb-16">
-        <h2 className="text-2xl sm:text-3xl font-bold text-yellow-400">
-          Onze geschiedenis
-        </h2>
-        <p className="mt-4 mb-4"><b>Van Twijfels naar Trots: De Geboorte van SV. NULL</b></p>
-        <p className="mb-4">Onze geschiedenis begint elders, op een andere hogeschool, waar Twan de sfeer niet vond passen bij zijn visie op het studentenleven. Echter, één ding sprong eruit en liet een blijvende indruk bij hem achter - de levendige atmosfeer van hun studievereniging. Deze 2 dingen prikkelde zijn gedachten en zaaide twijfels over zijn keuze van zijn huidige hogeschool. Met een missie om zelf een verschil te maken, heeft hij uiteindelijk de sprong naar de CHE gewaagd.</p>
-        <p className="mb-4">Samen met Menno Jak, een medestudent die hij al kende en wie al een jaar op de opleiding zat, begon hij het idee om een studievereniging op te richten vorm te krijgen. Samen hebben ze plannen gesmeed en uiteindelijk de basis gelegd voor wat nu Studievereniging NULL is. In Twan's zoektocht naar gelijkgestemde studenten, vond hij medestudenten binnen zijn jaarlaag die even enthousiast waren als hij.</p>
-        <p className="mb-4">Emma de Heer, Natalia Borowczak en Kurt Verweel waren de drijvende krachten die samen met Twan en Menno het initiatief omarmden en onze droom van een studievereniging deelden. Met dit gemotiveerde team zijn we het traject ingegaan om de statuten te verkrijgen, een proces dat niet zonder uitdagingen was. Onze toewijding, tijd en moeite hebben we een stevige basis opgebouwd waarop de toekomst van Studievereniging NULL kan voortbouwen.</p>
-        <p className="mb-4">Deze prachtige basis is het resultaat van collectieve inspanningen en enthousiasme. Het is een erfenis die we trots doorgeven aan de generaties die na ons komen. Studievereniging NULL is niet alleen een plek voor activiteiten, maar een gemeenschap die groeit op de fundamenten van passie, doorzettingsvermogen en de wil om iets bijzonders te creëren.</p>
-        <p className="mb-4">De reis begon met studie twijfels, maar vandaag de dag staan we hier, verenigd door de missie om te verbinden, te delen en te versterken. Welkom bij Studievereniging NULL, waar de geschiedenis van twijfels transformeert naar een verhaal van trots en doorzettingsvermogen, dankzij de betrokkenheid van Emma de Heer, Natalia Borowczak, Kurt Verweel, Menno Jak, en Twan Meurs</p>
-      </section>
-      <section className="p-6">
-        <h2 className="text-2xl sm:text-3xl font-bold text-white underline underline-offset-12 decoration-yellow-400">
-          Onze toekomst
-        </h2>
-        <p className="mt-4 mb-4"><b>De Toekomst van SV. NULL: Samen Groeien, Innoveren en Verbinden</b></p>
-        <p className="mb-4">Met een sterke basis als fundament, kijkt Studievereniging NULL vol enthousiasme en vastberadenheid naar de toekomst. Ons doel is niet alleen om een vereniging te zijn, maar een levendige gemeenschap die blijft evolueren en bijdraagt aan de groei van elke HBO-ICT student aan de CHE.</p>
-        <p className="mb-4"><i>Innovatieve Activiteiten:</i> We streven naar een gevarieerd en innovatief scala aan activiteiten die niet alleen vermakelijk zijn, maar ook educatief en inspirerend. Workshops, lezingen, en hands-on sessies zullen de leden verrijken met praktische kennis en ervaringen die verder gaan dan het klaslokaal.</p>
-        <p className="mb-4"><i>Samenwerking met Bedrijven:</i> Het uitbreiden van onze samenwerkingen met bedrijven staat hoog op onze agenda. Door partnerships te smeden, hopen we niet alleen financiële ondersteuning te verkrijgen, maar ook deuren te openen naar stages, netwerkmogelijkheden en mogelijke toekomstige werkgevers voor onze leden.</p>
-        <p className="mb-4"><i>Community Building:</i> Studievereniging NULL wil niet alleen een plek zijn voor formele activiteiten, maar ook een bruisende community waar leden elkaar vinden voor informele bijeenkomsten, studiegroepen en gewoon gezellig samenzijn. We streven naar een sfeer waarin iedereen zich welkom voelt en waar de onderlinge steun en samenwerking floreren.</p>
-        <p className="mb-4"><i>Door Studenten Voor Studenten:</i> Het hart van Studievereniging NULL blijft de betrokkenheid van de studenten zelf. We moedigen alle leden aan om actief deel te nemen, ideeën aan te dragen en zelfs leiderschapsrollen op zich te nemen. Samen bouwen we aan een vereniging die een afspiegeling is van de diversiteit en dynamiek van de HBO-ICT gemeenschap aan de CHE.</p>
-        <p className="mb-4"><i>Continuïteit en Erfgoed:</i> We streven naar een gestage groei van onze vereniging, waarbij we niet alleen voor het heden werken maar ook een stevige fundering leggen voor de toekomstige generaties. Ons erfgoed van passie, doorzettingsvermogen en gemeenschapszin vormt de leidraad voor de koers die we willen volgen.</p>
-        <p className="mb-4">Met deze doelen voor ogen, staan we klaar om de toekomst van Studievereniging NULL samen vorm te geven. We nodigen alle HBO-ICT studenten uit om zich bij ons aan te sluiten op deze reis van groei, innovatie en verbinding. Samen creëren we een vereniging die niet alleen reflecteert wie we zijn, maar ook wie we willen worden. Welkom bij de toekomst van Studievereniging NULL!</p>
-      </section>
+        </section>
+
+        <section className="group bg-neutral-900/50 border border-neutral-800 p-8 rounded-xl hover:bg-neutral-900/80 transition-all duration-300 hover:border-yellow-400/20">
+          <div className="flex items-center gap-3 mb-6">
+            <Users className="h-8 w-8 text-yellow-400" />
+            <h2 className="text-3xl font-bold text-yellow-400">Visie</h2>
+          </div>
+          <p className="text-gray-300 leading-relaxed">
+            Studievereniging NULL streeft ernaar om studenten op het CHE te
+            verbinden door hun liefde voor ICT. Bij NULL kan iedereen zichzelf
+            zijn en zijn kennis delen met andere leden van de vereniging, zo
+            bouwen ze sterke connecties en relaties met hun medestudenten en het
+            bedrijfsleven.
+          </p>
+        </section>
       </div>
+
+      {/* Geschiedenis Section */}
+      <section className="mb-16">
+        <div className="flex items-center gap-3 mb-8">
+          <BookOpen className="h-8 w-8 text-yellow-400" />
+          <h2 className="text-4xl font-bold text-white">Onze geschiedenis</h2>
+        </div>
+
+        <div className="bg-gradient-to-r from-neutral-900/50 to-neutral-800/30 border border-neutral-700 rounded-2xl p-8 lg:p-12">
+          <h3 className="text-2xl font-bold text-yellow-400 mb-6">
+            Van Twijfels naar Trots: De Geboorte van SV. NULL
+          </h3>
+
+          <div className="space-y-6 text-gray-300 leading-relaxed">
+            <p>
+              Onze geschiedenis begint elders, op een andere hogeschool, waar
+              Twan de sfeer niet vond passen bij zijn visie op het
+              studentenleven. Echter, één ding sprong eruit en liet een
+              blijvende indruk bij hem achter - de levendige atmosfeer van hun
+              studievereniging.
+            </p>
+
+            <p>
+              Met een missie om zelf een verschil te maken, heeft hij
+              uiteindelijk de sprong naar de CHE gewaagd. Samen met Menno Jak,
+              een medestudent die hij al kende en al een jaar op de opleiding
+              zat, begon het idee om een studievereniging op te richten vorm te
+              krijgen.
+            </p>
+
+            <div className="bg-neutral-800/50 border-l-4 border-yellow-400 pl-6 py-4 my-6">
+              <p className="font-semibold text-white mb-2">De oprichters</p>
+              <p>
+                Emma de Heer, Natalia Borowczak en Kurt Verweel waren de
+                drijvende krachten die samen met Twan en Menno het initiatief
+                omarmden en onze droom van een studievereniging deelden.
+              </p>
+            </div>
+
+            <p>
+              Met dit gemotiveerde team zijn we het traject ingegaan om de
+              statuten te verkrijgen. Door onze toewijding, tijd en moeite
+              hebben we een stevige basis opgebouwd waarop de toekomst van
+              Studievereniging NULL kan voortbouwen.
+            </p>
+
+            <p>
+              Deze prachtige basis is het resultaat van collectieve inspanningen
+              en enthousiasme. Het is een erfenis die we trots doorgeven aan de
+              generaties die na ons komen. Studievereniging NULL is niet alleen
+              een plek voor activiteiten, maar een gemeenschap die groeit op de
+              fundamenten van passie, doorzettingsvermogen en de wil om iets
+              bijzonders te creëren.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Toekomst Section */}
+      <section className="mb-16">
+        <div className="flex items-center gap-3 mb-8">
+          <Lightbulb className="h-8 w-8 text-yellow-400" />
+          <h2 className="text-4xl font-bold text-white">Onze toekomst</h2>
+        </div>
+
+        <div className="bg-gradient-to-l from-neutral-900/50 to-neutral-800/30 border border-neutral-700 rounded-2xl p-8 lg:p-12">
+          <h3 className="text-2xl font-bold text-yellow-400 mb-6">
+            Samen groeien, innoveren en verbinden
+          </h3>
+
+          <p className="text-gray-300 leading-relaxed mb-8">
+            Met een sterke basis als fundament, kijkt Studievereniging NULL vol
+            enthousiasme en vastberadenheid naar de toekomst. Ons doel is niet
+            alleen om een vereniging te zijn, maar een levendige gemeenschap die
+            blijft evolueren en bijdraagt aan de groei van elke HBO-ICT student
+            aan de CHE.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-neutral-800/30 border border-neutral-600 rounded-lg p-6">
+              <h4 className="font-bold text-yellow-400 mb-3">
+                Innovatieve activiteiten
+              </h4>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                We streven naar een gevarieerd en innovatief scala aan
+                activiteiten die niet alleen vermakelijk zijn, maar ook
+                educatief en inspirerend.
+              </p>
+            </div>
+
+            <div className="bg-neutral-800/30 border border-neutral-600 rounded-lg p-6">
+              <h4 className="font-bold text-yellow-400 mb-3">
+                Samenwerking met bedrijven
+              </h4>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Door partnerships te smeden, openen we deuren naar stages,
+                netwerkmogelijkheden en toekomstige werkgevers voor onze leden.
+              </p>
+            </div>
+
+            <div className="bg-neutral-800/30 border border-neutral-600 rounded-lg p-6">
+              <h4 className="font-bold text-yellow-400 mb-3">
+                Community building
+              </h4>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Een bruisende community waar leden elkaar vinden voor informele
+                bijeenkomsten, studiegroepen en gezellig samenzijn.
+              </p>
+            </div>
+
+            <div className="bg-neutral-800/30 border border-neutral-600 rounded-lg p-6">
+              <h4 className="font-bold text-yellow-400 mb-3">
+                Door studenten voor studenten
+              </h4>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                We moedigen alle leden aan om actief deel te nemen, ideeën aan
+                te dragen en leiderschapsrollen op zich te nemen.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-neutral-600">
+            <p className="text-gray-300 leading-relaxed text-center">
+              <span className="font-semibold text-white">
+                Welkom bij de toekomst van Studievereniging NULL!
+              </span>
+              <br className="hidden sm:block" />
+              Samen creëren we een vereniging die reflecteert wie we zijn én wie
+              we willen worden.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
-    );
+  );
 }
