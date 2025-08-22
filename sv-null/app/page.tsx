@@ -1,11 +1,10 @@
-import ActivityGrid from "@/components/ActivityGrid";
+import ActivityGrid from "@/components/activity/ActivityGrid";
 import Gallery from "@/components/Gallery";
 import RotatingText from "@/components/RotatingText";
 import { getPartnerItems, getUpcomingCalendarItems } from "@/lib/content";
-import { BookOpen, RocketIcon, Users, Wrench } from "lucide-react";
+import { BookOpen, RocketIcon, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 export default function HomePage() {
   const upcomingActivities = getUpcomingCalendarItems(2);
@@ -14,65 +13,82 @@ export default function HomePage() {
 
   return (
     <main>
-<section className="relative h-screen flex flex-col items-center justify-center text-center px-6 -mt-32">
-  {/* Content in het midden */}
-  <div className="flex flex-col items-center justify-center flex-grow">
-    <h1 className="text-4xl sm:text-6xl font-bold leading-tight">
-      Wij zijn studievereniging <br />
-      <span className="text-yellow-400">NULL</span>
-    </h1>
+      <section className="relative h-screen flex flex-col items-center justify-center text-center px-6 -mt-32">
+        {/* Content in het midden */}
+        <div className="flex flex-col items-center justify-center flex-grow">
+          <h1 className="text-4xl sm:text-6xl font-bold leading-tight">
+            Wij zijn studievereniging <br />
+            <span className="text-yellow-400">NULL</span>
+          </h1>
 
-    <div className="mt-6 inline-block overflow-hidden">
-      <RotatingText />
-    </div>
-  </div>
+          <div className="mt-6 inline-block overflow-hidden">
+            <RotatingText />
+          </div>
+        </div>
 
-  {/* Chevron onderaan */}
-  <a
-    href="#next-section"
-    className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center space-y-1"
-  >
-    <svg
-      className="w-6 h-6 text-yellow-400 animate-chevron delay-200"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      viewBox="0 0 24 24"
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-    </svg>
-  </a>
-</section>
+        {/* Chevron onderaan */}
+        <a
+          href="#next-section"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center space-y-1"
+        >
+          <svg
+            className="w-6 h-6 text-yellow-400 animate-chevron delay-200"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </a>
+      </section>
 
-
-      <section id="next-section" className="bg-neutral-900 border-y border-neutral-800 py-12">
+      <section
+        id="next-section"
+        className="bg-neutral-900 border-y border-neutral-800 py-12"
+      >
         <div className="max-w-6xl mx-auto px-8 py-8 text-center">
           <h2 className="text-4xl font-bold mb-4 text-white">
             Een vereniging die ergens voor staat
           </h2>
           <p className="mb-20 text-gray-300 max-w-2xl mx-auto">
-            NULL staat voor <span className="text-yellow-400 font-semibold">Networking</span>,{' '}
-            <span className="text-yellow-400 font-semibold">Undertaking</span> en{' '}
-            <span className="text-yellow-400 font-semibold">Lifelong Learning</span>.
+            NULL staat voor{" "}
+            <span className="text-yellow-400 font-semibold">Networking</span>,{" "}
+            <span className="text-yellow-400 font-semibold">Undertaking</span>{" "}
+            en{" "}
+            <span className="text-yellow-400 font-semibold">
+              Lifelong Learning
+            </span>
+            .
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-16">
             {[
               {
-                icon: <Users className="w-12 h-12 text-yellow-400 mb-4 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110" />,
+                icon: (
+                  <Users className="w-12 h-12 text-yellow-400 mb-4 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110" />
+                ),
                 title: "Networking",
-                text: "Een hechte community opbouwen en waardevolle connecties leggen met mede-studenten en het werkveld."
+                text: "Een hechte community opbouwen en waardevolle connecties leggen met mede-studenten en het werkveld.",
               },
               {
-                icon: <RocketIcon className="w-12 h-12 text-yellow-400 mb-4 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110" />,
+                icon: (
+                  <RocketIcon className="w-12 h-12 text-yellow-400 mb-4 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110" />
+                ),
                 title: "Undertaking",
-                text: "Samen projecten, activiteiten en evenementen neerzetten die energie geven en inspireren."
+                text: "Samen projecten, activiteiten en evenementen neerzetten die energie geven en inspireren.",
               },
               {
-                icon: <BookOpen className="w-12 h-12 text-yellow-400 mb-4 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110" />,
+                icon: (
+                  <BookOpen className="w-12 h-12 text-yellow-400 mb-4 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110" />
+                ),
                 title: "Lifelong Learning",
-                text: "Blijven groeien via workshops, lezingen en ervaringen die je ook later van pas komen."
-              }
+                text: "Blijven groeien via workshops, lezingen en ervaringen die je ook later van pas komen.",
+              },
             ].map((item) => (
               <div
                 key={item.title}
@@ -92,7 +108,9 @@ export default function HomePage() {
       </section>
 
       <section className="max-w-4xl mx-auto my-24 px-8">
-        <p className="text-center text-yellow-600 text-xl sm:text-2xl">Kalender</p>
+        <p className="text-center text-yellow-600 text-xl sm:text-2xl">
+          Kalender
+        </p>
         <h2 className="text-center text-4xl font-bold text-yellow-400 mb-16">
           Komende activiteiten
         </h2>
@@ -111,19 +129,24 @@ export default function HomePage() {
         </div>
       </section>
 
-    <section className="bg-neutral-900 border-y border-neutral-800 py-12">
-      <div className="max-w-6xl mx-auto px-8">
-        <Gallery/>
+      <section className="bg-neutral-900 border-y border-neutral-800 py-12">
+        <div className="max-w-6xl mx-auto px-8">
+          <Gallery />
         </div>
       </section>
 
       <section className="max-w-4xl mx-auto my-24 px-8">
-        <p className="text-center text-yellow-600 text-xl sm:text-2xl">Lid worden</p>
+        <p className="text-center text-yellow-600 text-xl sm:text-2xl">
+          Lid worden
+        </p>
         <h2 className="text-center text-4xl font-bold text-yellow-400 mb-12">
           Maak het beste van jouw studietijd!
         </h2>
         <p className="text-center">
-          Als lid van SV. NULL doe je mee aan toffe activiteiten, leer je bedrijven uit de IT-wereld kennen en maak je vrienden voor het leven. Van gezellige borrels tot inspirerende lezingen en leuke reizen: samen maken we van jouw studietijd een top tijd!
+          Als lid van SV. NULL doe je mee aan toffe activiteiten, leer je
+          bedrijven uit de IT-wereld kennen en maak je vrienden voor het leven.
+          Van gezellige borrels tot inspirerende lezingen en leuke reizen: samen
+          maken we van jouw studietijd een top tijd!
         </p>
         <div className="text-center mt-12">
           <Link
@@ -147,10 +170,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {partners.map((partner, index) => (
-              <div
-                key={index}
-                className="rounded-lg text-center group"
-              >
+              <div key={index} className="rounded-lg text-center group">
                 <Image
                   src={partner.image}
                   alt={partner.title}

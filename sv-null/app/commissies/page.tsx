@@ -16,7 +16,6 @@ export default function CommissiesPage() {
       <CTA
         title="Lid worden van een commissie?"
         text="Neem contact op met de voorzitter van de commissie via Whatsapp of Discord. Hopelijk tot snel!"
-        button={null}
       />
     </div>
   );
