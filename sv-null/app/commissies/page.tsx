@@ -1,5 +1,5 @@
 import CTA from "@/components/CTA";
-import List from "@/components/List";
+import List from "@/components/list/List";
 import PageTitle from "@/components/PageTitle";
 import { getCommissies } from "@/utils/commisie";
 
