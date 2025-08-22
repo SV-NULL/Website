@@ -1,4 +1,4 @@
-import Members from "@/components/Members";
+import Members from "@/components/bestuur/members/Members";
 import PageTitle from "@/components/PageTitle";
 import { getCommissieById } from "@/utils/commisie";
 import { notFound } from "next/navigation";

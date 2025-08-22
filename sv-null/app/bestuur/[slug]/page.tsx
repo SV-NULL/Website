@@ -1,13 +1,13 @@
-import Members from "@/components/Members";
+import Members from "@/components/bestuur/members/Members";
 import PageTitle from "@/components/PageTitle";
 import { getBestuurById } from "@/utils/bestuur";
 import { notFound } from "next/navigation";
 
-export default async function BestuurDetailPage({
-  params,
-}: {
+type Props = {
   params: Promise<{ slug: string }>;
-}) {
+};
+
+export default async function BestuurDetailPage({ params }: Props) {
   const { slug } = await params;
   const bestuur = getBestuurById(slug);
   if (!bestuur) return notFound();
@@ -25,12 +25,10 @@ export default async function BestuurDetailPage({
       />
 
       {bestuur.members && bestuur.members.length > 0 && (
-        <div>
-          <Members
-            members={bestuur.members}
-            imageUrlPrefix={`/images/bestuur/${bestuur.id}/`}
-          />
-        </div>
+        <Members
+          members={bestuur.members}
+          imageUrlPrefix={`/images/bestuur/${bestuur.id}/`}
+        />
       )}
     </div>
   );
