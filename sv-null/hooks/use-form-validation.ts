@@ -1,3 +1,5 @@
+"use client";
+
 import { FormValues } from "@/types/form";
 import { useCallback, useState } from "react";
 import { ZodObject } from "zod";

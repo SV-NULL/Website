@@ -1,3 +1,5 @@
+import { ZodObject } from "zod";
+
 export interface SubmissionResult {
   success: boolean;
   message?: string;
@@ -18,4 +20,25 @@ export interface FormField {
   suffix?: string;
   rows?: number;
   className?: string;
+}
+
+export interface FormSectionConfig {
+  key: string;
+  title: string;
+  description?: string;
+  fields: FormField[];
+}
+
+export interface FormConfig {
+  sections: FormSectionConfig[];
+  validationSchema: ZodObject;
+  submitAction: (formData: FormData) => Promise<SubmissionResult>;
+  onSuccess?:
+    | "redirect"
+    | "show-message"
+    | ((result: SubmissionResult) => void);
+  successRedirect?: string;
+  successMessage?: string;
+  submitButtonText: string;
+  submittingText?: string;
 }
