@@ -3,11 +3,11 @@ import PageTitle from "@/components/PageTitle";
 import { getCommissieById } from "@/utils/commisie";
 import { notFound } from "next/navigation";
 
-export default async function CommissieDetailPage({
-  params,
-}: {
+type Props = {
   params: Promise<{ slug: string }>;
-}) {
+};
+
+export default async function CommissieDetailPage({ params }: Props) {
   const { slug } = await params;
 
   const commissie = getCommissieById(slug);
@@ -18,12 +18,10 @@ export default async function CommissieDetailPage({
       <PageTitle title={commissie.title} subtitle={commissie.content} />
 
       {commissie.members && commissie.members.length > 0 && (
-        <div>
-          <Members
-            members={commissie.members}
-            imageUrlPrefix="/images/commissies/leden/"
-          />
-        </div>
+        <Members
+          members={commissie.members}
+          imageUrlPrefix="/images/commissies/leden/"
+        />
       )}
     </div>
   );
