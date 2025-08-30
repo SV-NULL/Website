@@ -1,7 +1,7 @@
 ---
 title: "Workshop 4PS"
-date: 2025-10-01 # Even random voor nu
-notDetermined: true
+date: 2025-10-14
+notDetermined: false
 image: "/images/kalender/4ps-activiteit.jpg"
 ---
 

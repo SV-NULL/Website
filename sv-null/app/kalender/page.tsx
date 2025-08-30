@@ -1,10 +1,10 @@
 import ActivityGrid from "@/components/activity/ActivityGrid";
 import CTA from "@/components/CTA";
 import PageTitle from "@/components/PageTitle";
-import { getCalendarItems } from "@/lib/content";
+import { getCalendarItemsUpcoming } from "@/lib/content";
 
 export default function CalendarPage() {
-  const items = getCalendarItems();
+  const items = getCalendarItemsUpcoming();
 
   return (
     <div className="mx-auto max-w-4xl px-8 space-y-4">

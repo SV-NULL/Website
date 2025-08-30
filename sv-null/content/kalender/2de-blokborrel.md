@@ -1,7 +1,7 @@
 ---
-title: "2de Blokborrel"
-date: 2026-01-01 # Even random voor nu
-notDetermined: true
+title: "2de blokborrel"
+date: 2026-02-06
+notDetermined: false
 image: "/images/kalender/blokborrel-2.jpg"
 ---
 

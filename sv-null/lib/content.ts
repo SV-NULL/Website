@@ -44,6 +44,16 @@ export function getCalendarItems(): ActivityItem[] {
     .sort((a, b) => Date.parse(a.date!) - Date.parse(b.date!));
 }
 
+export function getCalendarItemsUpcoming(): ActivityItem[] {
+  const startOfToday = new Date();
+  startOfToday.setHours(0, 0, 0, 0);
+
+  return loadActivityItems("kalender")
+    .filter((item) => item.date && !Number.isNaN(Date.parse(item.date)))
+    .sort((a, b) => Date.parse(a.date!) - Date.parse(b.date!))
+    .filter((item) => Date.parse(item.date!) >= startOfToday.getTime());
+}
+
 export function getUpcomingCalendarItems(count: number): ActivityItem[] {
   return getCalendarItems().slice(0, count);
 }

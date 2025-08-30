@@ -1,7 +1,7 @@
 ---
-title: "3de Blokborrel"
-date: 2026-04-01 # Even random voor nu
-notDetermined: true
+title: "3de blokborrel"
+date: 2026-04-24
+notDetermined: false
 image: "/images/kalender/blokborrel-3.jpg"
 ---
 
@@ -9,4 +9,4 @@ Semesters? Leuk idee van de opleiding. Wij houden het liever bij blokken, want d
 
 We starten de avond met een ALV (algemene ledenvergadering) en gaan daarna gezellig borrelen, met genoeg te drinken en lekkere snacks.
 
-Deze ALV is speciaal, omdat we het kandidaat bestuur (onze kanbesjes) voor het komende schooljaar zullen instemmen. 
+Deze ALV is speciaal, omdat we het kandidaat bestuur (onze kanbesjes) voor het komende schooljaar zullen instemmen.

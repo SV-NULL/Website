@@ -5,6 +5,6 @@ notDetermined: false
 image: "/images/kalender/introweek.jpg"
 ---
 
-Als studievereniging organiseren wij leuke activiteiten tijdens de introweek voor de 1ste-jaars studenten. Echter zullen NULL leden ook voor enkele activiteiten uitgenodigd zijn. 
+Als studievereniging organiseren wij leuke activiteiten tijdens de introweek voor de 1ste-jaars studenten. Echter zullen NULL leden ook voor de beachborrel op vrijdag uitgenodigd zijn.
 
 We houden jullie op de hoogte!
