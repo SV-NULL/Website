@@ -14,8 +14,8 @@ export const commonFormatters = {
 
   contribution: (value: string): string => {
     const contributionMap: Record<string, string> = {
-      "10": "€10 - per schooljaar",
-      "30": "€30 - voor hele studie",
+      "15": "€15 - per schooljaar",
+      "40": "€40 - voor hele studie",
     };
     return contributionMap[value] || `€${value}`;
   },

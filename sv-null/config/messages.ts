@@ -16,7 +16,7 @@ export const WORD_LID_FORM_MESSAGES = {
   STUDENT_TITLE: "Studentinformatie",
   CONTRIBUTION_TITLE: "Contributie",
   CONTRIBUTION_DESCRIPTION:
-    "Lid worden van NULL kost €10 per schooljaar of €30 voor je hele studie. Je krijgt na inschrijving een betaalverzoek.",
+    "Lid worden van NULL kost €15 per schooljaar of €40 voor je hele studie. Je krijgt na inschrijving een betaalverzoek.",
   SUBMIT_BUTTON: "Verstuur aanvraag",
   SUBMITTING: "Versturen...",
 } as const;

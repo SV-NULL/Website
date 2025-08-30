@@ -44,8 +44,8 @@ export const FORM_FIELDS: Record<string, FormField[]> = {
       placeholder: "Kies je contributie",
       required: true,
       options: [
-        { value: "10", label: "€10 – per schooljaar" },
-        { value: "30", label: "€30 – voor hele studie" },
+        { value: "15", label: "€15 – per schooljaar" },
+        { value: "40", label: "€40 – voor hele studie" },
       ],
     },
     {
