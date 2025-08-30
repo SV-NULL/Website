@@ -62,34 +62,36 @@ const FormField = ({
   };
 
   return (
-    <div className={suffix ? "relative" : ""}>
-      {as === "input" && (
-        <input
-          {...commonProps}
-          type={type}
-          placeholder={placeholder}
-          className={suffix ? `${baseClassName} pr-32` : baseClassName}
-        />
-      )}
-      {as === "select" && (
-        <select {...commonProps}>
-          {placeholder && <option value="">{placeholder}</option>}
-          {children}
-        </select>
-      )}
-      {as === "textarea" && (
-        <textarea
-          {...commonProps}
-          placeholder={placeholder}
-          rows={rows}
-          className={`${baseClassName} w-full`}
-        />
-      )}
-      {suffix && (
-        <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">
-          {suffix}
-        </span>
-      )}
+    <div>
+      <div className={suffix ? "relative" : ""}>
+        {as === "input" && (
+          <input
+            {...commonProps}
+            type={type}
+            placeholder={placeholder}
+            className={suffix ? `${baseClassName} pr-32` : baseClassName}
+          />
+        )}
+        {as === "select" && (
+          <select {...commonProps}>
+            {placeholder && <option value="">{placeholder}</option>}
+            {children}
+          </select>
+        )}
+        {as === "textarea" && (
+          <textarea
+            {...commonProps}
+            placeholder={placeholder}
+            rows={rows}
+            className={`${baseClassName} w-full`}
+          />
+        )}
+        {suffix && (
+          <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">
+            {suffix}
+          </span>
+        )}
+      </div>
       {error && <p className="text-red-400 text-sm mt-1">{error}</p>}
     </div>
   );
