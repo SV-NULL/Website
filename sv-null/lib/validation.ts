@@ -41,3 +41,15 @@ export const contactSchema = z.object({
 });
 
 export type ContactData = z.infer<typeof contactSchema>;
+
+export const commissieApplicationSchema = z.object({
+  name: z.string().min(1, "Naam is verplicht"),
+  studentId: z.string().min(1, "Student ID is verplicht"),
+  motivation: z.string().min(1, "Motivatie is verplicht"),
+  commissieId: z.string().min(1, "Commissie ID is verplicht"),
+  commissieName: z.string().min(1, "Commissie naam is verplicht"),
+});
+
+export type CommissieApplicationData = z.infer<
+  typeof commissieApplicationSchema
+>;

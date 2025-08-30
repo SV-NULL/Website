@@ -25,3 +25,10 @@ export const PARTNER_WORDEN_FORM_MESSAGES = {
   SUBMIT_BUTTON: "Verstuur aanvraag",
   SUBMITTING: "Versturen...",
 } as const;
+
+export const COMMISSIE_FORM_MESSAGES = {
+  SUCCESS:
+    "Aanmelding succesvol verzonden. We nemen binnenkort contact met je op!",
+  SUBMIT_BUTTON: "Verstuur aanmelding",
+  SUBMITTING: "Versturen...",
+} as const;

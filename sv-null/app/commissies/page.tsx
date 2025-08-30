@@ -1,5 +1,5 @@
 import CTA from "@/components/CTA";
-import List from "@/components/list/List";
+import CommissieCard from "@/components/list/CommissieCard";
 import PageTitle from "@/components/PageTitle";
 import { getCommissies } from "@/utils/commisie";
 
@@ -12,10 +12,22 @@ export default function CommissiesPage() {
         title="Commissies"
         subtitle="Ontdek de verschillende commissies binnen SV. NULL en hun impact op onze vereniging."
       />
-      <List items={commissies} hasLine={false} basePath="commissies" />
+
+      <div className="py-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          {commissies.map((commissie) => (
+            <CommissieCard
+              key={commissie.id}
+              commissie={commissie}
+              hasLine={false}
+            />
+          ))}
+        </div>
+      </div>
+
       <CTA
         title="Lid worden van een commissie?"
-        text="Neem contact op met de voorzitter van de commissie via Whatsapp of Discord. Hopelijk tot snel!"
+        text="Kies een commissie die je interessant vindt en meld je aan via het formulier. We nemen snel contact met je op!"
       />
     </div>
   );

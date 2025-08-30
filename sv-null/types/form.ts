@@ -20,6 +20,7 @@ export interface FormField {
   suffix?: string;
   rows?: number;
   className?: string;
+  value?: string;
 }
 
 export interface FormSectionConfig {
