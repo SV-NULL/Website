@@ -1,14 +1,35 @@
 import PageTitle from "@/components/PageTitle";
 import WordLidForm from "@/components/word-lid/form";
+import { getDiscountByHash } from "@/config/discounts";
 import Link from "next/link";
 
-export default function WordLidPage() {
+interface WordLidPageProps {
+  searchParams: Promise<{ discount?: string }>;
+}
+
+export default async function WordLidPage({ searchParams }: WordLidPageProps) {
+  const { discount: discountParam } = await searchParams;
+  const discount = discountParam ? getDiscountByHash(discountParam) : null;
   return (
     <div className="px-8 max-w-4xl mx-auto text-white">
       <PageTitle
         title="Word lid"
         subtitle="Bekijk hoe je lid wordt van SV. NULL en wat je kunt verwachten."
       />
+
+      {discount && (
+        <div className="mb-6 p-4 bg-green-700 border border-green-600 rounded-lg">
+          <h3 className="font-semibold text-green-100 mb-2">
+            🎉 Kortingsactie actief!
+          </h3>
+          <p className="text-green-200">
+            <strong>{discount.name}:</strong> {discount.description}
+          </p>
+          <p className="text-green-100 font-medium mt-1">
+            Korting: {discount.amount}
+          </p>
+        </div>
+      )}
 
       <p className="mb-4 text-gray-300">
         Bij NULL maak je direct kennis met een hechte groep mede-ICT-studenten
@@ -31,7 +52,7 @@ export default function WordLidPage() {
         .
       </p>
 
-      <WordLidForm />
+      <WordLidForm discount={discount} />
     </div>
   );
 }

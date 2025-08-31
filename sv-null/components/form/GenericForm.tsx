@@ -73,6 +73,7 @@ const GenericForm = ({
               key={section.key}
               title={section.title}
               description={section.description}
+              extraContent={section.extraContent}
             >
               {renderFields(
                 section.fields,

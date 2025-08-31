@@ -13,7 +13,7 @@ export const membershipApplicationSchema = z.object({
   discord: z.string().optional(),
   studentId: z.string().min(1, "Student ID is verplicht"),
   startYear: z.string().min(1, "Startjaar is verplicht"),
-  contribution: z.enum(["10", "30"], {
+  contribution: z.enum(["15", "40"], {
     error: "Kies een geldige contributie",
   }),
   comments: z.string().optional(),
@@ -21,7 +21,13 @@ export const membershipApplicationSchema = z.object({
 
 export type MembershipApplicationData = z.infer<
   typeof membershipApplicationSchema
->;
+> & {
+  discount?: {
+    id: string;
+    name: string | null;
+    amount: string | null;
+  };
+};
 
 export const becomePartnerSchema = z.object({
   companyName: z.string().min(1, "Bedrijfsnaam is verplicht"),
