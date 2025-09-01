@@ -6,7 +6,7 @@ export const commissies: Commissie[] = [
   {
     id: "activiteiten-commissie",
     title: "Activiteiten Commissie",
-    subtitle: "?? leden",
+    subtitle: "3 leden",
     image: {
       src: "/images/commissies/logos/logo-blauw.png",
       alt: "Activiteiten commissie logo",
@@ -15,14 +15,19 @@ export const commissies: Commissie[] = [
     content: "De organisatoren van de activiteiten",
     members: [
       {
-        person: PERSONS["ONBEKEND"],
+        person: PERSONS["TIMO_DE_ZWAAN"],
         role: ROLES.VOORZITTER,
-        date: "01-09-2023",
+        date: "01-09-2025",
       },
       {
-        person: PERSONS["ONBEKEND"],
+        person: PERSONS["TWAN_MEURS"],
         role: ROLES.LID,
-        date: "01-09-2023",
+        date: "01-09-2025",
+      },
+      {
+        person: PERSONS["DENNIS_WEIJER"],
+        role: ROLES.LID,
+        date: "01-09-2025",
       },
     ],
   },
@@ -53,7 +58,7 @@ export const commissies: Commissie[] = [
   {
     id: "introweek-commissie",
     title: "Introweek Commissie",
-    subtitle: "?? leden",
+    subtitle: "7 leden",
     image: {
       src: "/images/commissies/logos/logo-rood.png",
       alt: "Introweek commissie logo",
@@ -62,21 +67,46 @@ export const commissies: Commissie[] = [
     content: "De bedenkers & organisatoren van de jaarlijkse introweek.",
     members: [
       {
-        person: PERSONS["ONBEKEND"],
+        person: PERSONS["TIMO_DE_ZWAAN"],
         role: ROLES.VOORZITTER,
-        date: "01-09-2023",
+        date: "01-09-2024",
       },
       {
-        person: PERSONS["ONBEKEND"],
+        person: PERSONS["DENNIS_WEIJER"],
         role: ROLES.LID,
-        date: "01-09-2023",
+        date: "01-09-2025",
+      },
+      {
+        person: PERSONS["ROBIN_HEIKAMP"],
+        role: ROLES.LID,
+        date: "01-09-2025",
+      },
+      {
+        person: PERSONS["ANNE_WIL_VAN_DE_BURGT"],
+        role: ROLES.LID,
+        date: "01-09-2025",
+      },
+      {
+        person: PERSONS["WILKE_VAN_DE_KAMP"],
+        role: ROLES.LID,
+        date: "01-09-2025",
+      },
+      {
+        person: PERSONS["TWAN_MEURS"],
+        role: ROLES.LID,
+        date: "01-09-2025",
+      },
+      {
+        person: PERSONS["EMMA_DE_HEER"],
+        role: ROLES.LID,
+        date: "01-09-2025",
       },
     ],
   },
   {
     id: "promotie-commissie",
     title: "Promotie Commissie",
-    subtitle: "4 leden",
+    subtitle: "5 leden",
     image: {
       src: "/images/commissies/logos/logo-paars.png",
       alt: "Promotie commissie logo",
@@ -88,6 +118,11 @@ export const commissies: Commissie[] = [
         person: PERSONS["EMMA_DE_HEER"],
         role: ROLES.VOORZITTER,
         date: "01-09-2022",
+      },
+      {
+        person: PERSONS["TRISTAN_VAN_OMMEREN"],
+        role: ROLES.LID,
+        date: "01-09-2025",
       },
       {
         person: PERSONS["WILKE_VAN_DE_KAMP"],
@@ -147,7 +182,7 @@ export const commissies: Commissie[] = [
   {
     id: "website-commissie",
     title: "Website Commissie",
-    subtitle: "9 leden",
+    subtitle: "5 leden",
     image: {
       src: "/images/commissies/logos/logo-groen.png",
       alt: "Website commissie logo",
@@ -156,9 +191,9 @@ export const commissies: Commissie[] = [
     content: "Het team achter de website",
     members: [
       {
-        person: PERSONS["MENNO_JAK"],
+        person: PERSONS["DENNIS_WEIJER"],
         role: ROLES.VOORZITTER,
-        date: "01-09-2023",
+        date: "01-03-2024",
       },
       {
         person: PERSONS["TWAN_MEURS"],
@@ -176,27 +211,7 @@ export const commissies: Commissie[] = [
         date: "01-09-2023",
       },
       {
-        person: PERSONS["MART_JAN_ROELEVELD"],
-        role: ROLES.LID,
-        date: "01-10-2023",
-      },
-      {
-        person: PERSONS["DENNIS_WEIJER"],
-        role: ROLES.LID,
-        date: "01-03-2024",
-      },
-      {
         person: PERSONS["ROBIN_HEIKAMP"],
-        role: ROLES.LID,
-        date: "01-09-2024",
-      },
-      {
-        person: PERSONS["DAAN_RAVENHORST"],
-        role: ROLES.LID,
-        date: "01-09-2024",
-      },
-      {
-        person: PERSONS["BEN_VOS"],
         role: ROLES.LID,
         date: "01-09-2024",
       },
