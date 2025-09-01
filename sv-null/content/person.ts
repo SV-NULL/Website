@@ -95,7 +95,7 @@ export const PERSONS: Record<string, Person> = {
   TRISTAN_VAN_OMMEREN: {
     name: "Tristan van Ommeren",
     image: {
-      src: "tristan-van-ommeren.jpg",
+      src: "tristan-van-ommeren.jpeg",
       alt: "Tristan van Ommeren",
     },
   },
