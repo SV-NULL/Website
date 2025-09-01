@@ -77,7 +77,14 @@ Systeem: ${system}
     let footer = "";
     if (template.footer) {
       const footerTitle = template.footer.title;
-      const steps = template.footer.steps
+
+      // Handle both static arrays and dynamic functions
+      const steps =
+        typeof template.footer.steps === "function"
+          ? template.footer.steps(data)
+          : template.footer.steps;
+
+      const stepsText = steps
         .map(
           (step, index) =>
             `${index + 1}. ${this.replacePlaceholders(step, data)}`
@@ -89,7 +96,7 @@ ${"=".repeat(60)}
 ${footerTitle}
 ${"=".repeat(footerTitle.length)}
 
-${steps}
+${stepsText}
         `;
 
       if (template.footer.note) {
@@ -148,7 +155,13 @@ ${steps}
 
     let footerHTML = "";
     if (template.footer) {
-      const stepsHTML = template.footer.steps
+      // Handle both static arrays and dynamic functions
+      const steps =
+        typeof template.footer.steps === "function"
+          ? template.footer.steps(data)
+          : template.footer.steps;
+
+      const stepsHTML = steps
         .map((step) => `<li>${this.replacePlaceholders(step, data)}</li>`)
         .join("");
 

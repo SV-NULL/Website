@@ -7,7 +7,23 @@ import { createFieldErrors } from "@/utils/validation";
 
 export async function submitMembershipApplication(formData: FormData) {
   const rawData = Object.fromEntries(formData.entries());
-  const validationResult = membershipApplicationSchema.safeParse(rawData);
+
+  const discountId = formData.get("discountId") as string | null;
+  const discountName = formData.get("discountName") as string | null;
+  const discountAmount = formData.get("discountAmount") as string | null;
+
+  const {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    discountId: _,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    discountName: __,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    discountAmount: ___,
+    ...dataForValidation
+  } = rawData;
+
+  const validationResult =
+    membershipApplicationSchema.safeParse(dataForValidation);
 
   if (!validationResult.success) {
     return {
@@ -18,7 +34,18 @@ export async function submitMembershipApplication(formData: FormData) {
   }
 
   try {
-    await emailService.sendMembershipApplication(validationResult.data);
+    const membershipData = {
+      ...validationResult.data,
+      discount: discountId
+        ? {
+            id: discountId,
+            name: discountName,
+            amount: discountAmount,
+          }
+        : undefined,
+    };
+
+    await emailService.sendMembershipApplication(membershipData);
     return { success: true };
   } catch (error) {
     console.error("Fout bij het verzenden van de e-mail:", error);

@@ -15,7 +15,7 @@ export interface EmailTemplate {
   sections: EmailSection[];
   footer?: {
     title: string;
-    steps: string[];
+    steps: string[] | ((data: any) => string[]);
     note?: string;
   };
   metadata?: {

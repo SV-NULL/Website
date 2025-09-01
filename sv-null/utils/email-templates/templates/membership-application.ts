@@ -45,6 +45,15 @@ export const membershipApplicationTemplate: EmailTemplate = {
           required: true,
           formatter: commonFormatters.contribution,
         },
+        {
+          key: "discount",
+          label: "Toegepaste korting",
+          required: false,
+          formatter: (discount) =>
+            discount
+              ? `${discount.name} (${discount.amount})`
+              : "Geen korting toegepast",
+        },
         { key: "comments", label: "Opmerkingen", required: false },
       ],
     },
@@ -52,13 +61,23 @@ export const membershipApplicationTemplate: EmailTemplate = {
 
   footer: {
     title: "VERVOLGSTAPPEN",
-    steps: [
-      "Controleer de bovenstaande gegevens op juistheid",
-      "Voeg het nieuwe lid toe aan de ledenlijst",
-      "Stuur een welkomstmail naar {email}",
-      "Verstuur een betaalverzoek van € {contribution}",
-      "Voeg toe aan relevante Discord kanalen (indien Discord username opgegeven)",
-    ],
+    steps: (data) => {
+      const baseSteps = [
+        "Controleer de bovenstaande gegevens op juistheid",
+        "Voeg het nieuwe lid toe aan de ledenlijst",
+        "Stuur een welkomstmail naar {email}",
+      ];
+
+      const paymentStep = data.discount
+        ? `Verstuur een betaalverzoek van € {contribution} minus de korting (${data.discount.amount})`
+        : "Verstuur een betaalverzoek van € {contribution}";
+
+      const finalSteps = [
+        "Voeg toe aan relevante Discord kanalen (indien Discord username opgegeven)",
+      ];
+
+      return [...baseSteps, paymentStep, ...finalSteps];
+    },
   },
 
   metadata: {

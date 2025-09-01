@@ -1,3 +1,4 @@
+import React from "react";
 import { ZodObject } from "zod";
 
 export interface SubmissionResult {
@@ -27,6 +28,7 @@ export interface FormSectionConfig {
   key: string;
   title: string;
   description?: string;
+  extraContent?: React.ReactNode;
   fields: FormField[];
 }
 

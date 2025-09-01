@@ -17,7 +17,7 @@ const DEFAULT_FROM = {
   name: "Studievereniging NULL",
   address: process.env.SMTP_USER!,
 };
-const DEFAULT_TO = "svnull@che.nl";
+const DEFAULT_TO = "info@dennisweijer.nl";
 
 class EmailService {
   private transporter;
