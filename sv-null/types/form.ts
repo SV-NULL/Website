@@ -22,6 +22,7 @@ export interface FormField {
   rows?: number;
   className?: string;
   value?: string;
+  description?: string;
 }
 
 export interface FormSectionConfig {

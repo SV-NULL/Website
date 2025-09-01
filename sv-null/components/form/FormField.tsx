@@ -13,6 +13,7 @@ type Props = {
   as?: "input" | "select" | "textarea";
   rows?: number;
   className?: string;
+  description?: string;
 };
 
 const FormField = ({
@@ -30,6 +31,7 @@ const FormField = ({
   as = "input",
   rows,
   className = "",
+  description,
 }: Props) => {
   const baseClassName = `form-input disabled:opacity-50 disabled:cursor-not-allowed ${
     error ? "border-red-500" : ""
@@ -93,6 +95,7 @@ const FormField = ({
         )}
       </div>
       {error && <p className="text-red-400 text-sm mt-1">{error}</p>}
+      {description && <p className="text-gray-400 text-sm mt-1">{description}</p>}
     </div>
   );
 };

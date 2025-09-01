@@ -37,6 +37,7 @@ export const renderFields = (
         as={field.as}
         rows={field.rows}
         className={field.className}
+        description={field.description}
       >
         {field.options?.map((option) => (
           <option key={option.value} value={option.value}>
