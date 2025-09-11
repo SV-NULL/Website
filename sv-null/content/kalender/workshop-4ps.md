@@ -1,7 +1,7 @@
 ---
 title: "Workshop 4PS"
-date: 2025-10-14
-notDetermined: false
+date: 2025-10-16
+notDetermined: true
 image: "/images/kalender/4ps-activiteit.jpg"
 ---
 
