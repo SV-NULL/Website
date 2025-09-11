@@ -6,13 +6,12 @@ const images = [
   "./images/home/1.jpg",
   "./images/home/2.jpg",
   "./images/home/3.jpg",
-  "./images/home/4.jpg",
+  "./noindex/4.jpg",
   "./images/home/5.jpg",
   "./images/home/6.jpg",
   "./images/home/7.jpg",
   "./images/home/8.jpg",
   "./images/home/9.jpg",
-
 ];
 
 export default function Gallery() {

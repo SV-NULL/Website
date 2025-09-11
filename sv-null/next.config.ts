@@ -8,4 +8,17 @@ module.exports = {
   images: {
     unoptimized: true,
   },
+  async headers() {
+    return [
+      {
+        source: "/noindex/:path*",
+        headers: [
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, noimageindex",
+          },
+        ],
+      },
+    ];
+  },
 };
