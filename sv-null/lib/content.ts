@@ -39,12 +39,6 @@ function loadActivityItems(folder: string): ActivityItem[] {
 }
 
 export function getCalendarItems(): ActivityItem[] {
-  return loadActivityItems("kalender")
-    .filter((item) => item.date && !Number.isNaN(Date.parse(item.date)))
-    .sort((a, b) => Date.parse(a.date!) - Date.parse(b.date!));
-}
-
-export function getCalendarItemsUpcoming(): ActivityItem[] {
   const startOfToday = new Date();
   startOfToday.setHours(0, 0, 0, 0);
 
