@@ -11,6 +11,7 @@ const ActivityCardContent = ({ activity }: Props) => {
       <ActivityCardMeta
         notDetermined={activity.notDetermined}
         date={activity.date}
+        dateAddition={activity.dateAddition}
       />
 
       <h3 className="mt-4 text-xl sm:text-2xl font-semibold underline underline-offset-12 decoration-yellow-400">

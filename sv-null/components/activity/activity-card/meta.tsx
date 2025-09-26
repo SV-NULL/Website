@@ -4,9 +4,10 @@ import { Calendar } from "lucide-react";
 type Props = {
   notDetermined?: boolean;
   date?: string;
+  dateAddition?: string;
 };
 
-const ActivityCardMeta = ({ notDetermined, date }: Props) => {
+const ActivityCardMeta = ({ notDetermined, date, dateAddition }: Props) => {
   return (
     <div className="flex flex-wrap gap-6 text-sm text-gray-300 items-center">
       <div className="flex items-center gap-2">
@@ -18,7 +19,8 @@ const ActivityCardMeta = ({ notDetermined, date }: Props) => {
             formatDate(date)
           ) : (
             "—"
-          )}
+          )}{" "}
+          {dateAddition && dateAddition}
         </span>
       </div>
     </div>

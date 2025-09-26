@@ -11,6 +11,7 @@ export interface ActivityItem {
   title: string;
   image?: string;
   date?: string;
+  dateAddition?: string;
   notDetermined?: boolean; // optional: show "TBD" in UI if true
   content: string;
 }
@@ -28,12 +29,9 @@ function loadActivityItems(folder: string): ActivityItem[] {
       const { data, content } = matter(fileContent);
 
       return {
-        title: data.title ?? filename.replace(/\.md$/, ""),
-        image: data.image ?? undefined,
-        date: data.date ?? undefined,
-        notDetermined:
-          data.notDetermined === true || data.notDetermined === "true",
-        content: content ?? "",
+        title: filename.replace(/\.md$/, ""),
+        content: content,
+        ...data,
       } as ActivityItem;
     });
 }
