@@ -1,6 +1,7 @@
 ---
 title: "Kerstborrel"
 date: 2025-12-20 # nog niet bekend
+dateAddition: "(eind december)"
 notDetermined: true
 image: "/images/kalender/kerstborrel.jpg"
 ---
