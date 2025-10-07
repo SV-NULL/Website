@@ -1,8 +1,8 @@
 ---
 title: "Workshop 4PS"
 date: 2025-10-16
-dateAddition: "(half oktober)"
-notDetermined: true
+dateAddition: "(14:30 - 17:00)"
+notDetermined: false
 image: "/images/kalender/4ps-activiteit.jpg"
 ---
 
