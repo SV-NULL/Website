@@ -13,6 +13,7 @@ export interface ActivityItem {
   date?: string;
   dateAddition?: string;
   notDetermined?: boolean; // optional: show "TBD" in UI if true
+  registerURL?: string;
   content: string;
 }
 

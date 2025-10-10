@@ -1,4 +1,5 @@
 import { ActivityItem } from "@/lib/content";
+import Link from "next/link";
 import ActivityCardMeta from "./meta";
 
 type Props = {
@@ -21,6 +22,21 @@ const ActivityCardContent = ({ activity }: Props) => {
       <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-line">
         {activity.content}
       </p>
+
+      {activity.registerURL && (
+        <Link
+          href={activity.registerURL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-block px-3 py-1.5 rounded-xl font-medium
+                      bg-yellow-400 text-black border-2 border-yellow-400
+                      hover:bg-transparent hover:text-yellow-400
+                      active:bg-transparent active:text-yellow-400
+                      transition-all duration-300"
+        >
+          Aanmelden
+        </Link>
+      )}
     </div>
   );
 };
