@@ -1,8 +1,7 @@
 ---
 title: "Herfst/winter bierproeverij"
 date: 2025-10-30
-dateAddition: "(eind oktober)"
-notDetermined: true
+notDetermined: false
 image: "/images/logo.png"
 ---
 
