@@ -11,9 +11,17 @@ export interface ActivityItem {
   title: string;
   image?: string;
   date?: string;
+  time?: string; // tijd van het event (bijv. "19:00 - 22:00")
   dateAddition?: string;
   notDetermined?: boolean; // optional: show "TBD" in UI if true
+  confirmed?: boolean; // true = definitief, false/undefined = nog niet zeker
+  location?: string; // locatie naam
+  locationUrl?: string; // Google Maps link
   registerURL?: string;
+  registerDeadline?: string; // deadline voor aanmelden
+  maxParticipants?: number; // max aantal deelnemers
+  cost?: string; // kosten (bijv. "Gratis", "€5 voor leden", "€10")
+  organizer?: string; // organiserende commissie
   content: string;
 }
 
@@ -38,17 +46,23 @@ function loadActivityItems(folder: string): ActivityItem[] {
 }
 
 export function getCalendarItems(): ActivityItem[] {
-  const startOfToday = new Date();
-  startOfToday.setHours(0, 0, 0, 0);
-
   return loadActivityItems("kalender")
-    .filter((item) => item.date && !Number.isNaN(Date.parse(item.date)))
-    .sort((a, b) => Date.parse(a.date!) - Date.parse(b.date!))
-    .filter((item) => Date.parse(item.date!) >= startOfToday.getTime());
+    .filter((item) => item.date && !Number.isNaN(Date.parse(item.date!)))
+    .sort((a, b) => Date.parse(a.date!) - Date.parse(b.date!));
 }
 
-export function getUpcomingCalendarItems(count: number): ActivityItem[] {
-  return getCalendarItems().slice(0, count);
+export function getUpcomingCalendarItems(count?: number): ActivityItem[] {
+  const now = new Date();
+  now.setHours(0, 0, 0, 0);
+
+  return getCalendarItems()
+    .filter((item) => {
+      if (!item.date) return false;
+      const itemDate = new Date(item.date);
+      itemDate.setHours(0, 0, 0, 0);
+      return itemDate >= now;
+    })
+    .slice(0, count);
 }
 
 //

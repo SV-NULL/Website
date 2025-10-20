@@ -2,6 +2,8 @@
 title: "3de blokborrel"
 date: 2026-04-24
 notDetermined: false
+confirmed: true
+cost: "Gratis voor leden, €6,90 voor niet-leden"
 image: "/images/kalender/blokborrel-3.jpg"
 ---
 

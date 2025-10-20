@@ -1,7 +1,7 @@
-import { getPartnerItems } from '@/lib/content';
-import PartnerFlippingCard from '@/components/PartnerFlippingCard';
-import CTA from '@/components/CTA';
-import PageTitle from '@/components/PageTitle';
+import CTA from "@/components/CTA";
+import PageTitle from "@/components/PageTitle";
+import PartnerFlippingCard from "@/components/PartnerFlippingCard";
+import { getPartnerItems } from "@/lib/content";
 
 export default function PartnersPage() {
   const items = getPartnerItems();
@@ -22,7 +22,7 @@ export default function PartnersPage() {
       <CTA
         title="Ook een partner worden?"
         text="Bekijk onze partnerpagina voor meer informatie over wat een partnerschap inhoudt en hoe we samen kunnen werken."
-        button={{ text: 'Bekijk de mogelijkheden', href: '/partner-worden' }}
+        button={{ text: "Bekijk de mogelijkheden", href: "/partner-worden" }}
       />
     </div>
   );

@@ -1,8 +1,12 @@
 ---
 title: "Kerstborrel"
 date: 2025-12-20 # nog niet bekend
-dateAddition: "(eind december)"
+dateAddition: "eind december"
 notDetermined: true
+confirmed: false
+cost: "Gratis voor de gehele opleiding (ook niet-leden)"
+location: "Christelijke Hogeschool Ede"
+locationUrl: "https://maps.app.goo.gl/NZMupSVUr77ABvYFA"
 image: "/images/kalender/kerstborrel.jpg"
 ---
 
