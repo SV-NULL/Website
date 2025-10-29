@@ -1,17 +1,21 @@
+"use client";
+
 import { ActivityItem } from "@/lib/content";
+import { useEffect, useState } from "react";
 import ActivityCard from "./activity-card";
 
-type Props = {
-  items: ActivityItem[];
-  limit?: number;
-};
+export default function ActivityGrid({ limit }: { limit?: number }) {
+  const [items, setItems] = useState<ActivityItem[]>([]);
 
-export default function ActivityGrid({ items, limit }: Props) {
-  const itemsWithLimit = limit ? items.slice(0, limit) : items;
+  useEffect(() => {
+    fetch("/api/activities")
+      .then((res) => res.json())
+      .then((data) => setItems(limit ? data.slice(0, limit) : data));
+  }, [limit]);
 
   return (
     <div className="mx-auto max-w-4xl space-y-20 sm:ml-4">
-      {itemsWithLimit.map((activity, i) => (
+      {items.map((activity, i) => (
         <ActivityCard key={`${activity.title}-${i}`} activity={activity} />
       ))}
     </div>

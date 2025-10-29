@@ -1,14 +1,12 @@
 import ActivityGrid from "@/components/activity/ActivityGrid";
 import Gallery from "@/components/Gallery";
 import RotatingText from "@/components/RotatingText";
-import { getPartnerItems, getUpcomingCalendarItems } from "@/lib/content";
+import { getPartnerItems } from "@/lib/content";
 import { BookOpen, RocketIcon, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function HomePage() {
-  const upcomingActivities = getUpcomingCalendarItems(2);
-
   const partners = getPartnerItems();
 
   return (
@@ -114,7 +112,7 @@ export default function HomePage() {
         <h2 className="text-center text-4xl font-bold text-yellow-400 mb-16">
           Komende activiteiten
         </h2>
-        <ActivityGrid items={upcomingActivities}></ActivityGrid>
+        <ActivityGrid limit={2} />
         <div className="text-center mt-12">
           <Link
             href="/kalender"

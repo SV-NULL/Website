@@ -1,11 +1,8 @@
 import ActivityGrid from "@/components/activity/ActivityGrid";
 import CTA from "@/components/CTA";
 import PageTitle from "@/components/PageTitle";
-import { getUpcomingCalendarItems } from "@/lib/content";
 
 export default function CalendarPage() {
-  const items = getUpcomingCalendarItems();
-
   return (
     <div className="mx-auto max-w-4xl px-8 space-y-4">
       <PageTitle
@@ -13,7 +10,7 @@ export default function CalendarPage() {
         subtitle="Bekijk onze aankomende activiteiten en evenementen en plan ze in je agenda!"
       />
 
-      <ActivityGrid items={items} />
+      <ActivityGrid />
 
       <CTA
         title="Ook een idee voor een activiteit?"
