@@ -103,7 +103,7 @@ export const bestuur: Bestuur[] = [
     title: "3de Bestuur",
     subtitle: "2025-2026",
     image: {
-      src: "/images/bestuur/3de-bestuur/3de-bestuur.png",
+      src: "/images/bestuur/3de-bestuur/3de-bestuur.jpg",
       alt: "3de Bestuur",
       isPriority: true,
     },
