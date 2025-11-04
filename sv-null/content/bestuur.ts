@@ -87,11 +87,6 @@ export const bestuur: Bestuur[] = [
         date: "2024-2025",
       },
       {
-        person: PERSONS["TWAN_MEURS"],
-        role: ROLES.INTERIM_PENNINGMEESTER,
-        date: "2024-2025",
-      },
-      {
         person: PERSONS["IRIS_REITSMA"],
         role: ROLES.PENNINGMEESTER,
         date: "2024-2025",
