@@ -6,6 +6,8 @@ notDetermined: false
 confirmed: true
 cost: "Gratis voor leden, €6,90 voor niet-leden"
 image: "/images/kalender/blokborrel-1.jpg"
+registerURL: "https://forms.office.com/e/CTxDd5yCFc"
+registerDeadline: 2025-11-13T22:59:00
 ---
 
 Semesters? Leuk idee van de opleiding. Wij houden het liever bij blokken, want die leveren vier keer per jaar een goed excuus voor een borrel op.
