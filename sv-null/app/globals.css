@@ -29,10 +29,10 @@ body {
 }
 .transform-style-preserve-3d {
   transform-style: preserve-3d;
-} 
+}
 
 ul {
-  list-style:circle;
+  list-style: circle;
   padding-left: 1.5rem;
   margin-top: 0.5rem;
 }
@@ -58,8 +58,15 @@ html {
 }
 
 @keyframes chevron-bounce {
-  0%, 100% { transform: translateY(0); color: #facc15; } /* geel */
-  50% { transform: translateY(5px); color: #f59e0b; } /* iets donkerder geel/oranje */
+  0%,
+  100% {
+    transform: translateY(0);
+    color: #facc15;
+  } /* geel */
+  50% {
+    transform: translateY(5px);
+    color: #f59e0b;
+  } /* iets donkerder geel/oranje */
 }
 
 .animate-chevron {
@@ -71,14 +78,20 @@ html {
 }
 
 @keyframes blink {
-  0%, 50% {
+  0%,
+  50% {
     opacity: 1;
   }
-  50.01%, 100% {
+  50.01%,
+  100% {
     opacity: 0;
   }
 }
 
 .animate-blink {
   animation: blink 1s step-start infinite;
+}
+
+.bestuur-image {
+  object-position: center 40%;
 }
