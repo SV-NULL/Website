@@ -72,23 +72,18 @@ export const bestuur: Bestuur[] = [
         date: "2024-2025",
       },
       {
-        person: PERSONS["ANNE_WIL_VAN_DE_BURGT"],
-        role: ROLES.SECRETARIS,
-        date: "2024-2025",
-      },
-      {
         person: PERSONS["DAAN_RAVENHORST"],
         role: ROLES.VICEVOORZITTER,
         date: "2024-2025",
       },
       {
-        person: PERSONS["WILKE_VAN_DE_KAMP"],
-        role: ROLES.PR,
+        person: PERSONS["ANNE_WIL_VAN_DE_BURGT"],
+        role: ROLES.SECRETARIS,
         date: "2024-2025",
       },
       {
-        person: PERSONS["TWAN_MEURS"],
-        role: ROLES.INTERIM_PENNINGMEESTER,
+        person: PERSONS["WILKE_VAN_DE_KAMP"],
+        role: ROLES.PR,
         date: "2024-2025",
       },
       {
