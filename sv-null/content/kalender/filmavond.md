@@ -5,7 +5,7 @@ time: "17:00 - 20:30"
 location: "Christelijke Hogeschool Ede (S1.050)"
 locationUrl: "https://maps.app.goo.gl/NZMupSVUr77ABvYFA"
 notDetermined: false
-confirmed: false
+confirmed: true
 cost: "Gratis"
 image: "/images/logo.png"
 registerURL: "https://forms.office.com/e/V4XX26U403"
