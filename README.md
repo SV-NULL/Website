@@ -71,9 +71,10 @@ Gebruik een one-off React pagina als:
 ## 🚀 Starten & Ontwikkelen
 
 1. Clone de repo
-2. `npm install`
-3. `npm run dev`
-4. Open [http://localhost:3000](http://localhost:3000)
+2. Navigeer naar `/sv-null` in je terminal
+3. `npm install`
+4. `npm run dev`
+5. Open [http://localhost:3000](http://localhost:3000)
 
 ### Scripts
 
