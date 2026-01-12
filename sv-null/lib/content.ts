@@ -200,8 +200,8 @@ function loadListItems(folder: string): ListItem[] {
 
 export function getBestuurItems(): ListItem[] {
   return loadListItems("bestuur").sort((a, b) => {
-    const dateA = new Date((a as any).startDate ?? 0);
-    const dateB = new Date((b as any).startDate ?? 0);
+    const dateA = new Date(a.startDate ?? 0);
+    const dateB = new Date(b.startDate ?? 0);
     return dateB.getTime() - dateA.getTime();
   });
 }

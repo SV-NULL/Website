@@ -41,13 +41,13 @@ export default async function VacatureDetailPage({
       </div>
       <Markdown
         components={{
-          h2: ({ node, ...props }) => (
+          h2: ({ node: _node, ...props }) => (
             <h2
               className="text-2xl font-bold text-white underline underline-offset-12 decoration-yellow-400 my-6"
               {...props}
             />
           ),
-          p: ({ node, ...props }) => (
+          p: ({ node: _node, ...props }) => (
             <p className="text-gray-300 leading-relaxed mb-4" {...props} />
           ),
         }}
