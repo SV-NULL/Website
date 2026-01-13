@@ -38,14 +38,14 @@ export default function PrivacyCookiesPage() {
             { title: "Cookies", icon: "🍪", href: "#cookies" },
             { title: "Contact", icon: "📞", href: "#contact" },
           ].map((item, index) => (
-            <a
+            <Link
               key={index}
               href={item.href}
               className="flex items-center gap-3 text-gray-400 hover:text-yellow-400 transition-colors duration-200 p-3 rounded-lg hover:bg-neutral-800/30"
             >
               <span className="text-xl">{item.icon}</span>
               <span className="font-medium">{item.title}</span>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

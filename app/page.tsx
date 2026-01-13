@@ -25,7 +25,7 @@ export default function HomePage() {
         </div>
 
         {/* Chevron onderaan */}
-        <a
+        <Link
           href="#next-section"
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center space-y-1"
         >
@@ -42,7 +42,7 @@ export default function HomePage() {
               d="M19 9l-7 7-7-7"
             />
           </svg>
-        </a>
+        </Link>
       </section>
 
       <section

@@ -7,6 +7,7 @@ import {
   MapPin,
   Users,
 } from "lucide-react";
+import Link from "next/link";
 
 type Props = {
   notDetermined?: boolean;
@@ -76,14 +77,14 @@ const ActivityCardMeta = ({
         <div className="flex items-start gap-2 text-sm text-gray-300">
           <MapPin className="w-4 h-4 text-yellow-400 flex-shrink-0 mt-0.5" />
           {locationUrl ? (
-            <a
+            <Link
               href={locationUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium hover:text-yellow-400 transition-colors underline"
             >
               {location}
-            </a>
+            </Link>
           ) : (
             <span className="font-medium">{location}</span>
           )}

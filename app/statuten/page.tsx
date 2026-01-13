@@ -8,6 +8,7 @@ import {
   UserCheck,
   Users,
 } from "lucide-react";
+import Link from "next/link";
 
 export default function StatutenPage() {
   return (
@@ -50,13 +51,13 @@ export default function StatutenPage() {
             "Art. 23 – Vereffening",
             "Art. 24 – Reglementen",
           ].map((item, index) => (
-            <a
+            <Link
               key={index}
               href={`#artikel-${index + 1}`}
               className="text-gray-400 hover:text-yellow-400 transition-colors duration-200 text-sm py-1 block"
             >
               {item}
-            </a>
+            </Link>
           ))}
         </div>
       </div>
