@@ -1,3 +1,4 @@
+import { CheckIcon } from "lucide-react";
 import Link from "next/link";
 import NextSteps from "./NextSteps";
 
@@ -12,19 +13,7 @@ const ThankYouLayout = ({ title = "Bedankt!", subtitle, steps }: Props) => {
     <div className="py-8 px-4 max-w-3xl mx-auto text-white text-center">
       <div className="mb-8">
         <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-          <svg
-            className="w-10 h-10 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={3}
-              d="M5 13l4 4L19 7"
-            />
-          </svg>
+          <CheckIcon className="w-10 h-10 text-white" />
         </div>
 
         <h1 className="text-4xl font-bold mb-4 text-green-400">{title}</h1>

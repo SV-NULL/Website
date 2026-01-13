@@ -2,7 +2,7 @@ import ActivityGrid from "@/components/activity/ActivityGrid";
 import Gallery from "@/components/Gallery";
 import RotatingText from "@/components/RotatingText";
 import { getPartnerItems } from "@/lib/content";
-import { BookOpen, RocketIcon, Users } from "lucide-react";
+import { BookOpen, ChevronDown, RocketIcon, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -29,19 +29,7 @@ export default function HomePage() {
           href="#next-section"
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center space-y-1"
         >
-          <svg
-            className="w-6 h-6 text-yellow-400 animate-chevron delay-200"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2}
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
+          <ChevronDown className="w-7 h-7 text-yellow-400 animate-chevron delay-200" />
         </Link>
       </section>
 
