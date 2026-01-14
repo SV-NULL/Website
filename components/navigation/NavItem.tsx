@@ -68,9 +68,11 @@ export function NavItem({ item }: Props) {
           className={`absolute left-0 top-full w-44 mt-2 bg-black text-white
                       shadow-lg ring-1 ring-neutral-700 rounded-md z-50
                       transform transition-all duration-300 ease-out
-                      ${open 
-                        ? "opacity-100 translate-y-0 pointer-events-auto" 
-                        : "opacity-0 -translate-y-4 pointer-events-none"}`}
+                      ${
+                        open
+                          ? "opacity-100 translate-y-0 pointer-events-auto"
+                          : "opacity-0 -translate-y-4 pointer-events-none"
+                      }`}
         >
           {item.sub.map((subItem, idx) => (
             <Link

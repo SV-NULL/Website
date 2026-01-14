@@ -14,8 +14,8 @@ export function loadMarkdownFiles<T>(
   mapper: (
     filename: string,
     data: Record<string, unknown>,
-    content: string
-  ) => T
+    content: string,
+  ) => T,
 ): T[] {
   const dir = path.join(process.cwd(), "content", folder);
   if (!fs.existsSync(dir)) return [];
@@ -42,7 +42,7 @@ export function loadMarkdownFiles<T>(
 export function loadMarkdownBySlug<T>(
   folder: string,
   slug: string,
-  mapper: (data: Record<string, unknown>, content: string, slug: string) => T
+  mapper: (data: Record<string, unknown>, content: string, slug: string) => T,
 ): T | null {
   const filePath = path.join(process.cwd(), "content", folder, `${slug}.md`);
   if (!fs.existsSync(filePath)) return null;

@@ -81,7 +81,7 @@ const GenericForm = ({
                 fieldErrors,
                 isSubmitting,
                 handleInputChange,
-                handleInputBlur
+                handleInputBlur,
               )}
             </FormSection>
           ))}
@@ -96,7 +96,7 @@ const GenericForm = ({
         fieldErrors,
         isSubmitting,
         handleInputChange,
-        handleInputBlur
+        handleInputBlur,
       );
     }
 

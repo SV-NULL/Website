@@ -12,7 +12,7 @@ import { loadMarkdownBySlug, loadMarkdownFiles } from "../loader";
 function mapToVacature(
   filename: string,
   data: Record<string, unknown>,
-  content: string
+  content: string,
 ): Vacature {
   const validatedData = VactureFrontmatterSchema.parse(data);
 
@@ -40,6 +40,6 @@ export function getVacatureItems(): Vacature[] {
  */
 export function getVacatureBySlug(slug: string): Vacature | null {
   return loadMarkdownBySlug("vacatures", slug, (data, content, slug) =>
-    mapToVacature(`${slug}.md`, data, content)
+    mapToVacature(`${slug}.md`, data, content),
   );
 }

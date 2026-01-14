@@ -4,7 +4,12 @@ export const FORM_FIELDS: Record<string, FormField[]> = {
   GENERAL: [
     { name: "firstName", placeholder: "Voornaam", required: true },
     { name: "lastName", placeholder: "Achternaam", required: true },
-    { name: "dateOfBirth", type: "date", required: true, description: "Vul hier je geboortedatum in" },
+    {
+      name: "dateOfBirth",
+      type: "date",
+      required: true,
+      description: "Vul hier je geboortedatum in",
+    },
     { name: "address", placeholder: "Adres", required: true },
     { name: "postalCode", placeholder: "Postcode", required: true },
     { name: "city", placeholder: "Woonplaats", required: true },
@@ -21,7 +26,8 @@ export const FORM_FIELDS: Record<string, FormField[]> = {
       placeholder: "Studentenmail",
       required: true,
       suffix: "@student.che.nl",
-      description: "Vul het eerste gedeelte van je studentenmail in (voor de @)",
+      description:
+        "Vul het eerste gedeelte van je studentenmail in (voor de @)",
     },
     {
       name: "startYear",

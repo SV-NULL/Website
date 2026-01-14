@@ -12,7 +12,7 @@ import { loadMarkdownFiles } from "../loader";
 function mapToActivityItem(
   _filename: string,
   data: Record<string, unknown>,
-  content: string
+  content: string,
 ): ActivityItem {
   const validatedData = ActivityItemFrontmatterSchema.parse(data);
 
@@ -30,10 +30,10 @@ function mapToActivityItem(
 export function getCalendarItems(): ActivityItem[] {
   return loadMarkdownFiles("kalender", mapToActivityItem)
     .filter(
-      (item) => item.date && !Number.isNaN(Date.parse(item.date.toString()))
+      (item) => item.date && !Number.isNaN(Date.parse(item.date.toString())),
     )
     .sort(
-      (a, b) => Date.parse(a.date!.toString()) - Date.parse(b.date!.toString())
+      (a, b) => Date.parse(a.date!.toString()) - Date.parse(b.date!.toString()),
     );
 }
 

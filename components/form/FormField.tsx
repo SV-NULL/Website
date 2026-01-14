@@ -40,7 +40,7 @@ const FormField = ({
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
+    >,
   ) => {
     onChange(name, e.target.value);
   };
@@ -48,7 +48,7 @@ const FormField = ({
   const handleBlur = (
     e: React.FocusEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
+    >,
   ) => {
     onBlur(name, e.target.value);
   };
@@ -95,7 +95,9 @@ const FormField = ({
         )}
       </div>
       {error && <p className="text-red-400 text-sm mt-1">{error}</p>}
-      {description && <p className="text-gray-400 text-sm mt-1">{description}</p>}
+      {description && (
+        <p className="text-gray-400 text-sm mt-1">{description}</p>
+      )}
     </div>
   );
 };

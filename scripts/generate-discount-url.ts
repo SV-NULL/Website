@@ -10,7 +10,7 @@ const baseUrl = process.argv[3] || "https://svnull.nl";
 
 if (!discountId) {
   console.log(
-    "Gebruik: npx tsx scripts/generate-discount-url.ts <discount-id> [base-url]"
+    "Gebruik: npx tsx scripts/generate-discount-url.ts <discount-id> [base-url]",
   );
   console.log("\nBeschikbare kortingen:");
   const today = new Date().toISOString().split("T")[0];
@@ -19,7 +19,7 @@ if (!discountId) {
     const isActive = today >= discount.startDate && today <= discount.endDate;
     const status = isActive ? "Actief" : "Inactief";
     console.log(
-      `- ${discount.id}: ${discount.name} (${status}, geldig van ${discount.startDate} tot ${discount.endDate})`
+      `- ${discount.id}: ${discount.name} (${status}, geldig van ${discount.startDate} tot ${discount.endDate})`,
     );
   });
   process.exit(1);
@@ -35,7 +35,7 @@ if (!discount) {
     const isActive = today >= discount.startDate && today <= discount.endDate;
     const status = isActive ? "Actief" : "Inactief";
     console.log(
-      `- ${discount.id}: ${discount.name} (${status}, geldig van ${discount.startDate} tot ${discount.endDate})`
+      `- ${discount.id}: ${discount.name} (${status}, geldig van ${discount.startDate} tot ${discount.endDate})`,
     );
   });
   process.exit(1);
@@ -46,7 +46,7 @@ const isActive = today >= discount.startDate && today <= discount.endDate;
 
 if (!isActive) {
   console.log(
-    `Waarschuwing: Korting '${discountId}' is momenteel niet actief!`
+    `Waarschuwing: Korting '${discountId}' is momenteel niet actief!`,
   );
   console.log(`Geldig van ${discount.startDate} tot ${discount.endDate}`);
 }
@@ -58,5 +58,5 @@ console.log(`Korting: ${discount.amount}`);
 console.log(`\nGegenereerde URL:`);
 console.log(url);
 console.log(
-  `\nJe kunt van deze URL een QR-code maken en deze gebruiken voor promotie.`
+  `\nJe kunt van deze URL een QR-code maken en deze gebruiken voor promotie.`,
 );

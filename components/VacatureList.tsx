@@ -11,7 +11,7 @@ export default function VacatureList({ vacatures }: { vacatures: Vacature[] }) {
   const router = useRouter();
 
   const filtered = vacatures.filter(
-    (v) => filter === "all" || v.type === filter
+    (v) => filter === "all" || v.type === filter,
   );
   const visible = filtered.slice(0, visibleCount);
 

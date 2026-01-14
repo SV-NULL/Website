@@ -4,7 +4,7 @@ import { EmailTemplateGenerator } from "./generator";
 export function generateEmail(
   template: EmailTemplate,
   data: EmailData,
-  format: "text" | "html" = "text"
+  format: "text" | "html" = "text",
 ): string {
   const generator = new EmailTemplateGenerator();
   return format === "html"

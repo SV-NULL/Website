@@ -12,7 +12,7 @@ import { loadMarkdownBySlug, loadMarkdownFiles } from "../loader";
 function mapToVakken(
   _filename: string,
   data: Record<string, unknown>,
-  _content: string
+  _content: string,
 ): Vakken {
   const validatedData = VakkenFrontmatterSchema.parse(data);
   return validatedData;
@@ -38,6 +38,6 @@ export function getVakkenItems(): { slug: string; data: Vakken }[] {
  */
 export function getVakkenBySlug(slug: string): Vakken | null {
   return loadMarkdownBySlug("vakken", slug, (data, content, slug) =>
-    mapToVakken(`${slug}.md`, data, content)
+    mapToVakken(`${slug}.md`, data, content),
   );
 }

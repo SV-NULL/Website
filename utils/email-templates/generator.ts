@@ -9,7 +9,7 @@ export class EmailTemplateGenerator {
   private formatValue(
     value: any,
     field: EmailField,
-    fallback: string = "Niet opgegeven"
+    fallback: string = "Niet opgegeven",
   ): string {
     if (value === null || value === undefined || value === "") {
       return field.required ? "[NIET INGEVULD]" : fallback;
@@ -87,7 +87,7 @@ Systeem: ${system}
       const stepsText = steps
         .map(
           (step, index) =>
-            `${index + 1}. ${this.replacePlaceholders(step, data)}`
+            `${index + 1}. ${this.replacePlaceholders(step, data)}`,
         )
         .join("\n");
 
@@ -132,8 +132,8 @@ ${stepsText}
               field.required && (!value || value === "")
                 ? '<em style="color: #dc2626;">[NIET INGEVULD]</em>'
                 : formattedValue === "Niet opgegeven"
-                ? '<em style="color: #6b7280;">Niet opgegeven</em>'
-                : formattedValue;
+                  ? '<em style="color: #6b7280;">Niet opgegeven</em>'
+                  : formattedValue;
 
             return `
           <div class="field">
@@ -173,7 +173,7 @@ ${stepsText}
             template.footer.note
               ? `<p><small>${this.replacePlaceholders(
                   template.footer.note,
-                  data
+                  data,
                 )}</small></p>`
               : ""
           }

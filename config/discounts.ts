@@ -48,7 +48,7 @@ export function getDiscountByHash(hash: string): Discount | null {
 
 export function generateDiscountUrl(
   discountId: string,
-  baseUrl: string = ""
+  baseUrl: string = "",
 ): string {
   const hash = generateDiscountHash(discountId);
   return `${baseUrl}/word-lid?discount=${hash}`;

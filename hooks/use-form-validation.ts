@@ -63,7 +63,7 @@ export function useFormValidation(schema: ZodObject) {
         validateField(name, value);
       }
     },
-    [validationState.touchedFields, validateField]
+    [validationState.touchedFields, validateField],
   );
 
   const handleInputBlur = useCallback(
@@ -71,7 +71,7 @@ export function useFormValidation(schema: ZodObject) {
       markFieldAsTouched(name);
       validateField(name, value);
     },
-    [markFieldAsTouched, validateField]
+    [markFieldAsTouched, validateField],
   );
 
   return {

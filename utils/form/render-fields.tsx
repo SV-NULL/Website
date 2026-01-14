@@ -7,7 +7,7 @@ export const renderFields = (
   fieldErrors: Record<string, string>,
   isSubmitting: boolean,
   handleInputChange: (name: string, value: string) => void,
-  handleInputBlur: (name: string, value: string) => void
+  handleInputBlur: (name: string, value: string) => void,
 ) => {
   return fields.map((field) => {
     if (field.type === "hidden") {

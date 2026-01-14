@@ -60,13 +60,16 @@ export default async function VakkenDetailPage({
   if (!vak) return notFound();
 
   // Group courses by semester
-  const coursesBySemester = vak.courses.reduce((acc, course) => {
-    if (!acc[course.semester]) {
-      acc[course.semester] = [];
-    }
-    acc[course.semester].push(course);
-    return acc;
-  }, {} as Record<number, typeof vak.courses>);
+  const coursesBySemester = vak.courses.reduce(
+    (acc, course) => {
+      if (!acc[course.semester]) {
+        acc[course.semester] = [];
+      }
+      acc[course.semester].push(course);
+      return acc;
+    },
+    {} as Record<number, typeof vak.courses>,
+  );
 
   // Sort semesters
   const sortedSemesters = Object.keys(coursesBySemester)
@@ -93,14 +96,17 @@ export default async function VakkenDetailPage({
           const semesterCourses = coursesBySemester[semesterNum];
 
           // Group courses by expertise within semester
-          const coursesByExpertise = semesterCourses.reduce((acc, course) => {
-            const expertise = course.expertise || "Algemeen";
-            if (!acc[expertise]) {
-              acc[expertise] = [];
-            }
-            acc[expertise].push(course);
-            return acc;
-          }, {} as Record<string, typeof semesterCourses>);
+          const coursesByExpertise = semesterCourses.reduce(
+            (acc, course) => {
+              const expertise = course.expertise || "Algemeen";
+              if (!acc[expertise]) {
+                acc[expertise] = [];
+              }
+              acc[expertise].push(course);
+              return acc;
+            },
+            {} as Record<string, typeof semesterCourses>,
+          );
 
           return (
             <section
@@ -167,7 +173,7 @@ export default async function VakkenDetailPage({
                         ))}
                       </div>
                     </div>
-                  )
+                  ),
                 )}
               </div>
             </section>

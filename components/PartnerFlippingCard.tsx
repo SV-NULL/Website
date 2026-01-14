@@ -34,7 +34,7 @@ export default function PartnerFlippingCard({
       <div
         className={clsx(
           "relative w-full h-full transition-transform duration-600 transform-style-preserve-3d will-change-transform",
-          flipped && "rotate-y-180"
+          flipped && "rotate-y-180",
         )}
       >
         <div className="absolute inset-0 backface-hidden rounded-lg overflow-hidden shadow-lg flex items-center justify-center bg-neutral-900 p-6">

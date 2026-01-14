@@ -11,7 +11,7 @@ import { loadMarkdownFiles } from "../loader";
 export function mapToPartner(
   _filename: string,
   data: Record<string, unknown>,
-  content: string
+  content: string,
 ): Partner {
   const validatedData = PartnerFrontmatterSchema.parse(data);
 

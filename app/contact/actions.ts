@@ -7,7 +7,7 @@ import { SubmissionResult } from "@/types/form";
 import { createFieldErrors } from "@/utils/validation";
 
 export async function submitContactForm(
-  formData: FormData
+  formData: FormData,
 ): Promise<SubmissionResult> {
   const rawData = Object.fromEntries(formData.entries());
   const validationResult = contactSchema.safeParse(rawData);
