@@ -13,11 +13,8 @@ export async function submitMembershipApplication(formData: FormData) {
   const discountAmount = formData.get("discountAmount") as string | null;
 
   const {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     discountId: _,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     discountName: __,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     discountAmount: ___,
     ...dataForValidation
   } = rawData;
