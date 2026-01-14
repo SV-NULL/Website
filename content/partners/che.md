@@ -1,7 +1,6 @@
 ---
 title: "Christelijke Hogeschool Ede"
-subtitle: 
-image: "/images/partners/che.png"
+image: { src: "/images/partners/che.png" }
 website: https://www.che.nl
 ---
 

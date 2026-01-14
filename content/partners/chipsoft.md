@@ -1,7 +1,6 @@
 ---
 title: "ChipSoft"
-subtitle: 
-image: "/images/partners/chipsoft.png"
+image: { src: "/images/partners/chipsoft.png" }
 website: https://www.chipsoft.com/nl-NL/
 ---
 

@@ -158,8 +158,8 @@ export default function HomePage() {
             {partners.map((partner, index) => (
               <div key={index} className="rounded-lg text-center group">
                 <Image
-                  src={partner.image}
-                  alt={partner.title}
+                  src={partner.image.src}
+                  alt={partner.image.alt || partner.title}
                   className="mx-auto mb-4 h-20 w-full object-contain 
                             transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-lg"
                   width={400}

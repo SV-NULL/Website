@@ -1,13 +1,13 @@
 "use client";
 
-import { PartnerItem } from "@/lib/content";
+import { Partner } from "@/types/partner";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 interface PartnerFlippingCardProps {
-  item: PartnerItem;
+  item: Partner;
 }
 
 export default function PartnerFlippingCard({
@@ -37,11 +37,10 @@ export default function PartnerFlippingCard({
           flipped && "rotate-y-180"
         )}
       >
-
         <div className="absolute inset-0 backface-hidden rounded-lg overflow-hidden shadow-lg flex items-center justify-center bg-neutral-900 p-6">
           <Image
-            src={item.image}
-            alt={item.title}
+            src={item.image.src}
+            alt={item.image.alt || item.title}
             className="max-w-full max-h-full object-contain"
             width={400}
             height={400}
@@ -69,7 +68,7 @@ export default function PartnerFlippingCard({
             >
               Bekijk website
             </Link>
-            )}
+          )}
         </div>
       </div>
     </div>

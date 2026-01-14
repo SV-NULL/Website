@@ -11,48 +11,47 @@ courses:
     name: Programming Data-driven Applications
     details: "Toelichting van het vak."
     resources:
-      - 1
-      - 2
-      - 3
+      - "1"
+      - "2"
+      - "3"
   - semester: 1
     expertise: ID
     name: Front-end Design & Development
     details: "Toelichting van het vak."
     resources:
-      - 1
-      - 2
-      - 3
+      - "1"
+      - "2"
+      - "3"
   - semester: 1
     expertise: BIT
     name: Organisatie & ICT in beeld
     details: "Toelichting van het vak."
     resources:
-      - 1
-      - 2
-      - 3
+      - "1"
+      - "2"
+      - "3"
   - semester: 2
     expertise: DEV
     name: Low-expertise Development met AI
     details: "Toelichting van het vak."
     resources:
-      - 1
-      - 2
-      - 3
+      - "1"
+      - "2"
+      - "3"
   - semester: 2
     expertise: ID
     name: User Experience Design
     details: "Toelichting van het vak."
     resources:
-      - 1
-      - 2
-      - 3
+      - "1"
+      - "2"
+      - "3"
   - semester: 2
     expertise: BIT
     name: Procesoptimalisatie en projectmatig werken
     details: "Toelichting van het vak."
     resources:
-      - 1
-      - 2
-      - 3
+      - "1"
+      - "2"
+      - "3"
 ---
-

@@ -1,6 +1,6 @@
 "use client";
 
-import { ActivityItem } from "@/lib/content";
+import { ActivityItem } from "@/types/calendar";
 import { useEffect, useState } from "react";
 import ActivityCard from "./activity-card";
 import ActivityCardSkeleton from "./activity-card/skeleton";
@@ -23,6 +23,8 @@ export default function ActivityGrid({ limit }: { limit?: number }) {
         setIsLoading(false);
       });
   }, [limit]);
+
+  console.log(items);
 
   return (
     <div className="mx-auto max-w-4xl space-y-20 sm:ml-4">

@@ -1,6 +1,8 @@
-import { Image } from "./image";
+import z from "zod";
+import { ImageFrontmatterSchema } from "./image";
 
-export type Person = {
-  name: string;
-  image: Image;
-};
+export const PersonFrontmatterSchema = z.object({
+  name: z.string(),
+  image: ImageFrontmatterSchema,
+});
+export type Person = z.infer<typeof PersonFrontmatterSchema>;

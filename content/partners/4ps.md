@@ -1,7 +1,6 @@
 ---
 title: "4PS"
-subtitle: 
-image: "/images/partners/4ps.png"
+image: { src: "/images/partners/4ps.png" }
 website: https://www.4ps.nl
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: "Knaek"
-subtitle: 
-image: "/images/partners/knaek.png"
+image: { src: "/images/partners/knaek.png" }
 website: https://www.knaek.nl
 ---
 

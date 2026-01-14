@@ -1,7 +1,6 @@
 ---
 title: "Infosupport"
-subtitle: 
-image: "/images/partners/infosupport.png"
+image: { src: "/images/partners/infosupport.png" }
 website: https://www.infosupport.nl
 ---
 

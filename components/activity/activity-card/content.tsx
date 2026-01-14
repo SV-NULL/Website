@@ -1,4 +1,4 @@
-import { ActivityItem } from "@/lib/content";
+import { ActivityItem } from "@/types/calendar";
 import { Calendar as CalendarIcon, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import ActivityCardMeta from "./meta";
@@ -51,7 +51,7 @@ const ActivityCardContent = ({ activity }: Props) => {
 
       {/* Aanmeldknop */}
       <div className="mt-5 flex flex-wrap gap-3">
-        {activity.registerURL && (
+        {activity.registerUrl && (
           <>
             {isRegistrationClosed ? (
               <div className="px-4 py-2 rounded-xl font-medium bg-gray-700 text-gray-400 border-2 border-gray-600 cursor-not-allowed">
@@ -59,7 +59,7 @@ const ActivityCardContent = ({ activity }: Props) => {
               </div>
             ) : (
               <Link
-                href={activity.registerURL}
+                href={activity.registerUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-xl font-medium

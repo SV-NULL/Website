@@ -12,7 +12,7 @@ import Link from "next/link";
 type Props = {
   notDetermined?: boolean;
   confirmed?: boolean;
-  date?: string;
+  date?: Date;
   time?: string;
   dateAddition?: string;
   location?: string;
@@ -54,7 +54,7 @@ const ActivityCardMeta = ({
             {notDetermined ? (
               <span className="font-medium">Datum nog niet bekend</span>
             ) : date ? (
-              <span className="font-medium">{formatDate(date)}</span>
+              <span className="font-medium">{formatDate(date.toString())}</span>
             ) : (
               "—"
             )}{" "}

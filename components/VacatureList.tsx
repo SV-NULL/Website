@@ -1,15 +1,11 @@
 "use client";
 import CTA from "@/components/CTA";
-import { VacatureItem } from "@/lib/content";
+import { Vacature } from "@/types/vacatures";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function VacatureList({
-  vacatures,
-}: {
-  vacatures: VacatureItem[];
-}) {
+export default function VacatureList({ vacatures }: { vacatures: Vacature[] }) {
   const [filter, setFilter] = useState<string>("all");
   const [visibleCount, setVisibleCount] = useState<number>(5);
   const router = useRouter();

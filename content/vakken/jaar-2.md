@@ -32,7 +32,6 @@ courses:
       - "2"
       - "3"
   - semester: 4
-    expertise: 
     name: "Waardenvolle ICT: Ethiek, duurzaamheid, veiligheid"
     details: "Toelichting van het vak."
     resources:
@@ -40,7 +39,6 @@ courses:
       - "2"
       - "3"
   - semester: 4
-    expertise:
     name: Individuele stage
     details: "Toelichting van het vak."
     resources:

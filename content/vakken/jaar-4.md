@@ -17,7 +17,6 @@ courses:
       - "2"
       - "3"
   - semester: 7
-    expertise: 
     name: Projectmanagement
     details: "Toelichting van het vak."
     resources:
@@ -26,14 +25,13 @@ courses:
       - "3"
   - semester: 8
     expertise: DEV, ID of BIT
-    name: Afstudeerstage 
+    name: Afstudeerstage
     details: "Toelichting van het vak."
     resources:
       - "1"
       - "2"
       - "3"
   - semester: 8
-    expertise: 
     name: Positioneren
     details: "Toelichting van het vak."
     resources:
@@ -42,4 +40,4 @@ courses:
       - "3"
 ---
 
-*Extra toelichting of links kun je hier plaatsen.*  
+_Extra toelichting of links kun je hier plaatsen._

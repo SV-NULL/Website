@@ -1,4 +1,4 @@
-import { ActivityItem } from "@/lib/content";
+import { ActivityItem } from "@/types/calendar";
 import ActivityCardContent from "./content";
 import ActivityCardImage from "./image";
 

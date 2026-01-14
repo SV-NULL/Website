@@ -54,11 +54,13 @@ export default async function VacatureDetailPage({
       >
         {vacature.content}
       </Markdown>
-      <CTA
-        title="Interesse?"
-        text={`Ben je enthousiast over deze vacature bij ${vacature.company}? Soliciteer nu!`}
-        button={{ text: "Soliciteren", href: vacature.applyUrl }}
-      />
+      {vacature.applyUrl && (
+        <CTA
+          title="Interesse?"
+          text={`Ben je enthousiast over deze vacature bij ${vacature.company}? Soliciteer nu!`}
+          button={{ text: "Soliciteren", href: vacature.applyUrl }}
+        />
+      )}
     </div>
   );
 }

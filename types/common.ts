@@ -1,12 +1,14 @@
+import z from "zod";
 import { Image } from "./image";
-import { Person } from "./person";
-import { Role } from "./roles";
+import { PersonFrontmatterSchema } from "./person";
+import { ROLES } from "./roles";
 
-export type Member = {
-  person: Person;
-  role: Role;
-  date: string;
-};
+export const MemberFrontmatterSchema = z.object({
+  person: PersonFrontmatterSchema,
+  role: z.enum(Object.values(ROLES)),
+  date: z.string(),
+});
+export type Member = z.infer<typeof MemberFrontmatterSchema>;
 
 export interface ListItem {
   id: string;

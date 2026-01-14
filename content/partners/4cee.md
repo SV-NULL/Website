@@ -1,7 +1,6 @@
 ---
 title: "4CEE"
-subtitle: 
-image: "/images/partners/4cee.png"
+image: { src: "/images/partners/4cee.png" }
 website: https://www.4cee.com
 ---
 
