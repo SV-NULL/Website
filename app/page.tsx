@@ -1,10 +1,12 @@
 import ActivityGrid from "@/components/activity/ActivityGrid";
+import ActivityGridSkeleton from "@/components/activity/ActivityGridSkeleton";
 import Gallery from "@/components/Gallery";
 import RotatingText from "@/components/RotatingText";
 import { getPartnerItems } from "@/lib/content";
 import { BookOpen, ChevronDown, RocketIcon, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 
 export default function HomePage() {
   const partners = getPartnerItems();
@@ -100,7 +102,9 @@ export default function HomePage() {
         <h2 className="text-center text-4xl font-bold text-yellow-400 mb-16">
           Komende activiteiten
         </h2>
-        <ActivityGrid limit={2} />
+        <Suspense fallback={<ActivityGridSkeleton limit={2} />}>
+          <ActivityGrid limit={2} />
+        </Suspense>
         <div className="text-center mt-12">
           <Link
             href="/kalender"
