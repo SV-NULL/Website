@@ -1,9 +1,16 @@
 ---
 title: "Open sollicitatie stageplaats"
 company: "ChipSoft"
-type: "bijbaan" # bijbaan | stage | full-time
+type: "Stage" # bijbaan | stage | full-time
 logo: "/images/partners/chipsoft.png"
 applyUrl: "https://www.chipsoft.com/nl-nl/werken-bij/solliciteren/?vacancyId=140"
+hours: "40 uur"
+location: "Amsterdam Heerenveen Hoogeveen"
+experience: "HBO / WO"
+education: "HBO / WO"
+companyPhone: "+31 20 4939 000"
+companyEmail: "werken@chipsoft.nl"
+companyAddress: "Orlyplein 10, 1043 DP Amsterdam"
 ---
 
 Op zoek naar een stage waar jouw werk direct bijdraagt aan echte zorgoplossingen?
