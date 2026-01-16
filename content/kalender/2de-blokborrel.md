@@ -1,9 +1,7 @@
 ---
 title: "2de blokborrel"
 date: 2026-02-06
-time: "20:30 - 00:00"
-notDetermined: false
-confirmed: false
+time: "20:00 - 00:00"
 cost: "Gratis voor leden, €6,90 voor niet-leden"
 image: "/images/kalender/blokborrel-2.jpg"
 ---
