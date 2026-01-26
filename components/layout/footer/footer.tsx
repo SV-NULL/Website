@@ -1,5 +1,5 @@
 import { contactInfo } from "@/config/contact";
-import { footerNavItems, footerSocalNavItems } from "@/config/navigation";
+import { footerNavItems, footerSocialNavItems } from "@/config/navigation";
 import { ChevronRight, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import ContactItem from "./contact-item";
@@ -11,7 +11,7 @@ export default function Footer() {
     <footer className="mt-16">
       <div className="max-w-4xl mx-auto p-8 grid grid-cols-1 sm:grid-cols-3 gap-8">
         <FooterSection title="Socials" className="flex space-x-4">
-          {footerSocalNavItems.map((item) => (
+          {footerSocialNavItems.map((item) => (
             <SocialLink
               key={item.href}
               href={item.href}

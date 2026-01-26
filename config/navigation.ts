@@ -48,7 +48,7 @@ export const footerNavItems: NavItem[] = [
   },
 ];
 
-export const footerSocalNavItems: SocialNavItem[] = [
+export const footerSocialNavItems: SocialNavItem[] = [
   {
     icon: Instagram,
     href: "https://www.instagram.com/s.v.null/",
