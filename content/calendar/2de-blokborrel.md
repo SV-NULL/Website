@@ -6,7 +6,7 @@ notDetermined: false
 confirmed: true
 cost: "Gratis voor leden, €6,90 voor niet-leden"
 image: "/images/kalender/blokborrel-2.jpg"
-registerUrl: "https://forms.office.com/"
+registerUrl: "https://forms.office.com/Pages/ResponsePage.aspx?id=SLXVD66jb0eIbw30DBlyk-h_ZAf0DnBCgAfVWWDesPZUNUFPQk40NVU0VkNaM0xPQ044Q1AzVVIyTi4u"
 registerDeadline: 2026-02-05T22:59:00
 ---
 
