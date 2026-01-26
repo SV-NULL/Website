@@ -1,2 +1,5 @@
 User-agent: *
 Disallow: /noindex/
+Allow: /
+
+Sitemap: https://svnull.nl/sitemap.xml
