@@ -1,8 +1,8 @@
 import { getUpcomingCalendarItems } from "@/lib/content";
 import ActivityCard from "./activity-card";
 
-export default async function ActivityGrid({ limit }: { limit?: number }) {
-  const items = await getUpcomingCalendarItems(limit);
+export default function ActivityGrid({ limit }: { limit?: number }) {
+  const items = getUpcomingCalendarItems(limit);
 
   return (
     <div className="mx-auto max-w-4xl space-y-20 sm:ml-4">
