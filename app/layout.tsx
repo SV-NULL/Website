@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   title: "SV. NULL",
   description:
     "De studievereniging voor HBO-ICT aan de Christelijke Hogeschool Ede (CHE)",
+  appleWebApp: {
+    title: "s.v. NULL",
+  },
 };
 
 export default function RootLayout({
