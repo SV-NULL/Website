@@ -1,4 +1,7 @@
+import { JsonLd } from "@/components/features/json-ld/json-ld";
 import PageTitle from "@/components/ui/page-title";
+import { siteConfig } from "@/config/site";
+import { constructMetadata } from "@/lib/seo";
 import {
   Building,
   Calendar,
@@ -9,13 +12,30 @@ import {
   Users,
 } from "lucide-react";
 import Link from "next/link";
+import { WebPage } from "schema-dts";
+
+export const metadata = constructMetadata({
+  title: "Statuten",
+  description:
+    "Lees hier de statuten van s.v. NULL. Deze bevatten de formele regels en richtlijnen die onze vereniging bestuurt.",
+});
 
 export default function StatutenPage() {
   return (
     <div className="container mx-auto px-4 lg:px-8">
+      <JsonLd<WebPage>
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Statuten",
+          description:
+            "Lees hier de statuten van s.v. NULL. Deze bevatten de formele regels en richtlijnen die onze vereniging bestuurt.",
+          url: `${siteConfig.url}/statuten`,
+        }}
+      />
       <PageTitle
         title="Statuten"
-        subtitle="Lees hier de statuten van SV. NULL. Deze bevatten de formele regels en richtlijnen die onze vereniging bestuurt."
+        subtitle="Lees hier de statuten van s.v. NULL. Deze bevatten de formele regels en richtlijnen die onze vereniging bestuurt."
       />
 
       {/* Table of Contents */}

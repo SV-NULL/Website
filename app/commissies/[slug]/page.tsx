@@ -1,12 +1,28 @@
+import { JsonLd } from "@/components/features/json-ld/json-ld";
 import Members from "@/components/features/members/members";
 import PageTitle from "@/components/ui/page-title";
+import { siteConfig } from "@/config/site";
 import { getCommitteeById } from "@/lib/content";
+import { constructMetadata } from "@/lib/seo";
+import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Organization } from "schema-dts";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const committee = getCommitteeById(slug);
+  if (!committee) return {};
+
+  return constructMetadata({
+    title: committee.title,
+    description: committee.content,
+  });
+}
 
 export default async function CommissieDetailPage({ params }: Props) {
   const { slug } = await params;
@@ -16,6 +32,20 @@ export default async function CommissieDetailPage({ params }: Props) {
 
   return (
     <div className="container mx-auto px-8 space-y-4">
+      <JsonLd<Organization>
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: committee.title,
+          description: committee.content,
+          url: `${siteConfig.url}/commissies/${slug}`,
+          member: committee.members?.map((member) => ({
+            "@type": "Person",
+            name: member.person.name,
+            jobTitle: member.role,
+          })),
+        }}
+      />
       <PageTitle title={committee.title} subtitle={committee.content} />
 
       {/* Aanmelden CTA */}

@@ -1,4 +1,7 @@
+import { JsonLd } from "@/components/features/json-ld/json-ld";
 import PageTitle from "@/components/ui/page-title";
+import { siteConfig } from "@/config/site";
+import { constructMetadata } from "@/lib/seo";
 import {
   Calendar,
   Cookie,
@@ -10,10 +13,27 @@ import {
   UserCheck,
 } from "lucide-react";
 import Link from "next/link";
+import { WebPage } from "schema-dts";
+
+export const metadata = constructMetadata({
+  title: "Privacy & Cookies",
+  description:
+    "Lees hier ons privacybeleid en cookiegebruik. Wij respecteren jouw privacy en zijn transparant over gegevensverzameling.",
+});
 
 export default function PrivacyCookiesPage() {
   return (
     <div className="container mx-auto px-4 lg:px-8">
+      <JsonLd<WebPage>
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Privacy & Cookies",
+          description:
+            "Lees hier ons privacybeleid en cookiegebruik. Wij respecteren jouw privacy en zijn transparant over gegevensverzameling.",
+          url: `${siteConfig.url}/privacy-cookies`,
+        }}
+      />
       <PageTitle
         title="Privacy & Cookies"
         subtitle="Lees hier ons privacybeleid en cookiegebruik. Wij respecteren jouw privacy en zijn transparant over gegevensverzameling."

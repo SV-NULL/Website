@@ -1,5 +1,8 @@
+import { JsonLd } from "@/components/features/json-ld/json-ld";
 import PageTitle from "@/components/ui/page-title";
+import { siteConfig } from "@/config/site";
 import { getVakkenBySlug } from "@/lib/content";
+import { constructMetadata } from "@/lib/seo";
 import {
   BookOpen,
   Calendar,
@@ -7,7 +10,9 @@ import {
   ChevronUp,
   Lightbulb,
 } from "lucide-react";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { CollectionPage } from "schema-dts";
 
 function CollapsibleResources({ resources }: { resources: string[] }) {
   return (
@@ -49,6 +54,21 @@ function CollapsibleResources({ resources }: { resources: string[] }) {
   );
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const vak = getVakkenBySlug(slug);
+  if (!vak) return {};
+
+  return constructMetadata({
+    title: vak.title,
+    description: `Dit studiejaar staat in het teken van: ${vak.subtitle}. ${vak.description}`,
+  });
+}
+
 export default async function VakkenDetailPage({
   params,
 }: {
@@ -77,6 +97,20 @@ export default async function VakkenDetailPage({
 
   return (
     <div className="container mx-auto px-4 lg:px-8">
+      <JsonLd<CollectionPage>
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: vak.title,
+          description: vak.description,
+          url: `${siteConfig.url}/vakken/${slug}`,
+          hasPart: vak.courses.map((course) => ({
+            "@type": "Course",
+            name: course.name,
+            description: course.details,
+          })),
+        }}
+      />
       <PageTitle
         title={vak.title}
         subtitle={"Dit studiejaar staat in het teken van: " + vak.subtitle}

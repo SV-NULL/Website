@@ -1,15 +1,35 @@
+import { JsonLd } from "@/components/features/json-ld/json-ld";
 import StudyYearCard from "@/components/features/subjects/study-year-card";
 import PageTitle from "@/components/ui/page-title";
+import { siteConfig } from "@/config/site";
 import { getVakkenItems } from "@/lib/content";
+import { constructMetadata } from "@/lib/seo";
 import { BookOpen, ExternalLink, GraduationCap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { CollectionPage } from "schema-dts";
+
+export const metadata = constructMetadata({
+  title: "Vakken",
+  description:
+    "Bekijk alle vakken die je krijgt tijdens je studie, met toelichting en tips van (oud)leden.",
+});
 
 export default function VakkenPage() {
   const vakken = getVakkenItems();
 
   return (
     <div className="container mx-auto px-4 lg:px-8">
+      <JsonLd<CollectionPage>
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Vakken",
+          description:
+            "Bekijk alle vakken die je krijgt tijdens je studie, met toelichting en tips van (oud)leden.",
+          url: `${siteConfig.url}/vakken`,
+        }}
+      />
       <PageTitle
         title="Vakken"
         subtitle="Bekijk alle vakken die je krijgt tijdens je studie, met toelichting en tips van (oud)leden."

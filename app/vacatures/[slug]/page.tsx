@@ -1,5 +1,7 @@
+import { JsonLd } from "@/components/features/json-ld/json-ld";
 import StickySidebar from "@/components/features/vacancies/sticky-sidebar";
 import { getVacatureBySlug, getVacatureItems } from "@/lib/content";
+import { constructMetadata } from "@/lib/seo";
 import {
   ArrowLeft,
   Briefcase,
@@ -14,13 +16,30 @@ import {
   MapPin,
   Phone,
 } from "lucide-react";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Markdown from "react-markdown";
+import { JobPosting } from "schema-dts";
 
 export async function generateStaticParams() {
   const items = getVacatureItems();
   return items.map((v) => ({ slug: v.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const vacature = getVacatureBySlug(slug);
+  if (!vacature) return {};
+
+  return constructMetadata({
+    title: `${vacature.title} bij ${vacature.company}`,
+    description: `Vacature voor ${vacature.title} bij ${vacature.company}. ${vacature.type}, ${vacature.hours}.`,
+  });
 }
 
 export default async function VacatureDetailPage({
@@ -41,7 +60,6 @@ export default async function VacatureDetailPage({
       </div>
     );
   }
-
   const MetadataRow = ({
     icon: Icon,
     label,
@@ -67,6 +85,42 @@ export default async function VacatureDetailPage({
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] -mt-6">
+      <JsonLd<JobPosting>
+        data={{
+          "@context": "https://schema.org",
+          "@type": "JobPosting",
+          title: vacature.title,
+          description: vacature.content,
+          datePosted: new Date().toISOString().split("T")[0],
+          validThrough: new Date(new Date().setMonth(new Date().getMonth() + 3))
+            .toISOString()
+            .split("T")[0],
+          employmentType: vacature.type,
+          hiringOrganization: {
+            "@type": "Organization",
+            name: vacature.company,
+            sameAs: vacature.applyUrl,
+            logo: vacature.logo,
+          },
+          jobLocation: {
+            "@type": "Place",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: vacature.location,
+              streetAddress: vacature.companyAddress,
+            },
+          },
+          baseSalary: {
+            "@type": "MonetaryAmount",
+            currency: "EUR",
+            value: {
+              "@type": "QuantitativeValue",
+              value: 0,
+              unitText: "MONTH",
+            },
+          },
+        }}
+      />
       {/* Top Navigation */}
       <div className="bg-neutral-900 border-b border-neutral-800">
         <div className="container mx-auto px-4 py-3">

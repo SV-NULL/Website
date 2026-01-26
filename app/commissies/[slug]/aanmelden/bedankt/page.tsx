@@ -2,9 +2,24 @@ import ThankYouLayout from "@/components/features/thank-you/thank-you-layout";
 import { getCommitteeById } from "@/lib/content";
 import { notFound } from "next/navigation";
 
+import { constructMetadata } from "@/lib/seo";
+import { Metadata } from "next";
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const committee = getCommitteeById(slug);
+  if (!committee) return {};
+
+  return constructMetadata({
+    title: `Bedankt voor je aanmelding - ${committee.title}`,
+    description: `Bedankt voor je aanmelding voor de ${committee.title} bij s.v. NULL.`,
+    noIndex: true,
+  });
+}
 
 export default async function CommissieAanmeldenBedanktPage({ params }: Props) {
   const { slug } = await params;

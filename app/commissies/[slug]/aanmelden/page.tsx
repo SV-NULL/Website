@@ -4,9 +4,24 @@ import { getCommitteeById } from "@/lib/content";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { constructMetadata } from "@/lib/seo";
+import { Metadata } from "next";
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const committee = getCommitteeById(slug);
+  if (!committee) return {};
+
+  return constructMetadata({
+    title: `Aanmelden voor ${committee.title}`,
+    description: `Meld je aan voor de ${committee.title} bij s.v. NULL.`,
+    noIndex: true,
+  });
+}
 
 export default async function CommitteeApplyPage({ params }: Props) {
   const { slug } = await params;

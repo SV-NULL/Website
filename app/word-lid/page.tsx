@@ -1,12 +1,22 @@
+import { JsonLd } from "@/components/features/json-ld/json-ld";
 import DiscountAlert from "@/components/features/member/discount-alert";
 import BecomeMemberForm from "@/components/features/member/form";
 import PageTitle from "@/components/ui/page-title";
 import { getDiscountByHash } from "@/config/discounts";
+import { siteConfig } from "@/config/site";
+import { constructMetadata } from "@/lib/seo";
 import Link from "next/link";
+import { WebPage } from "schema-dts";
 
 type Props = {
   searchParams: Promise<{ discount?: string }>;
 };
+
+export const metadata = constructMetadata({
+  title: "Word lid",
+  description:
+    "Bekijk hoe je lid wordt van s.v. NULL en wat je kunt verwachten. Meld je direct aan!",
+});
 
 export default async function WordLidPage({ searchParams }: Props) {
   const { discount: discountParam } = await searchParams;
@@ -14,9 +24,19 @@ export default async function WordLidPage({ searchParams }: Props) {
 
   return (
     <div className="px-8 max-w-4xl mx-auto text-white">
+      <JsonLd<WebPage>
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Word lid",
+          description:
+            "Bekijk hoe je lid wordt van s.v. NULL en wat je kunt verwachten. Meld je direct aan!",
+          url: `${siteConfig.url}/word-lid`,
+        }}
+      />
       <PageTitle
         title="Word lid"
-        subtitle="Bekijk hoe je lid wordt van SV. NULL en wat je kunt verwachten."
+        subtitle="Bekijk hoe je lid wordt van s.v. NULL en wat je kunt verwachten."
       />
 
       {discount && <DiscountAlert discount={discount} />}

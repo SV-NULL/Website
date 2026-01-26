@@ -1,8 +1,12 @@
 import FutureGoalCard from "@/components/features/about-us/future-goal-card";
 import InfoCard from "@/components/features/about-us/info-card";
 import SectionWrapper from "@/components/features/about-us/section-wrapper";
+import { JsonLd } from "@/components/features/json-ld/json-ld";
 import PageTitle from "@/components/ui/page-title";
+import { siteConfig } from "@/config/site";
+import { constructMetadata } from "@/lib/seo";
 import { BookOpen, Lightbulb, Target, Users } from "lucide-react";
+import { AboutPage } from "schema-dts";
 
 const pageData = {
   mission: {
@@ -63,12 +67,28 @@ const icons = {
   future: <Lightbulb className="h-8 w-8 text-yellow-400" />,
 };
 
+export const metadata = constructMetadata({
+  title: "Over ons",
+  description:
+    "Leer meer over de missie, visie, geschiedenis en toekomst van s.v. NULL.",
+});
+
 export default function OverOnsPage() {
   return (
     <div className="container mx-auto px-4 lg:px-8">
+      <JsonLd<AboutPage>
+        data={{
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          name: "Over ons",
+          description:
+            "Leer meer over de missie, visie, geschiedenis en toekomst van s.v. NULL.",
+          url: `${siteConfig.url}/over-ons`,
+        }}
+      />
       <PageTitle
         title="Over ons"
-        subtitle="Leer meer over de missie, visie, geschiedenis en toekomst van SV. NULL."
+        subtitle="Leer meer over de missie, visie, geschiedenis en toekomst van s.v. NULL."
       />
 
       <div className="grid md:grid-cols-2 gap-8 mb-16">

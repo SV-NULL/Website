@@ -1,6 +1,10 @@
+import { JsonLd } from "@/components/features/json-ld/json-ld";
 import PageTitle from "@/components/ui/page-title";
+import { siteConfig } from "@/config/site";
+import { constructMetadata } from "@/lib/seo";
 import { FileTextIcon } from "lucide-react";
 import Link from "next/link";
+import { CollectionPage } from "schema-dts";
 
 const documents = [
   {
@@ -25,9 +29,25 @@ const documents = [
   },
 ];
 
+export const metadata = constructMetadata({
+  title: "Verenigingsdocumenten",
+  description:
+    "Hieronder vind je belangrijke documenten zoals statuten, huisregels en het AVG‑beleid.",
+});
+
 export default function VerenigingsdocumentenPage() {
   return (
     <div className="container mx-auto px-8 space-y-4">
+      <JsonLd<CollectionPage>
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Verenigingsdocumenten",
+          description:
+            "Hieronder vind je belangrijke documenten zoals statuten, huisregels en het AVG‑beleid.",
+          url: `${siteConfig.url}/verenigingsdocumenten`,
+        }}
+      />
       <PageTitle
         title="Verenigings- documenten"
         subtitle="Hieronder vind je belangrijke documenten zoals statuten, huisregels en

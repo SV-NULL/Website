@@ -1,13 +1,30 @@
+import { JsonLd } from "@/components/features/json-ld/json-ld";
 import Members from "@/components/features/members/members";
+import { siteConfig } from "@/config/site";
 import { getBoardById } from "@/lib/content/repositories/boards";
+import { constructMetadata } from "@/lib/seo";
 import { ChevronLeft } from "lucide-react";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Organization } from "schema-dts";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const board = getBoardById(slug);
+  if (!board) return {};
+
+  return constructMetadata({
+    title: board.title,
+    description: `Studiejaar ${board.subtitle}. ${board.title} van s.v. NULL.`,
+    image: board.image.src,
+  });
+}
 
 export default async function BoardDetailPage({ params }: Props) {
   const { slug } = await params;
@@ -16,6 +33,21 @@ export default async function BoardDetailPage({ params }: Props) {
 
   return (
     <div className="min-h-screen">
+      <JsonLd<Organization>
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: board.title,
+          description: `Studiejaar ${board.subtitle}. ${board.title} van s.v. NULL.`,
+          url: `${siteConfig.url}/bestuur/${slug}`,
+          image: board.image.src,
+          member: board.members?.map((member) => ({
+            "@type": "Person",
+            name: member.person.name,
+            jobTitle: member.role,
+          })),
+        }}
+      />
       {/* Back Button */}
       <div className="container mx-auto px-8 pt-8">
         <Link

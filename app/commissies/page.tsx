@@ -1,16 +1,36 @@
 import CommitteeCard from "@/components/features/committees/committee-card";
+import { JsonLd } from "@/components/features/json-ld/json-ld";
 import CTA from "@/components/sections/cta";
 import PageTitle from "@/components/ui/page-title";
+import { siteConfig } from "@/config/site";
 import { getCommittees } from "@/lib/content";
+import { constructMetadata } from "@/lib/seo";
+import { CollectionPage } from "schema-dts";
+
+export const metadata = constructMetadata({
+  title: "Commissies",
+  description:
+    "Ontdek de verschillende commissies binnen s.v. NULL en hun impact op onze vereniging.",
+});
 
 export default function CommissiesPage() {
   const committees = getCommittees();
 
   return (
     <div className="container mx-auto px-8 space-y-4">
+      <JsonLd<CollectionPage>
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Commissies",
+          description:
+            "Ontdek de verschillende commissies binnen s.v. NULL en hun impact op onze vereniging.",
+          url: `${siteConfig.url}/commissies`,
+        }}
+      />
       <PageTitle
         title="Commissies"
-        subtitle="Ontdek de verschillende commissies binnen SV. NULL en hun impact op onze vereniging."
+        subtitle="Ontdek de verschillende commissies binnen s.v. NULL en hun impact op onze vereniging."
       />
 
       <div className="py-8">

@@ -1,5 +1,6 @@
 import Footer from "@/components/layout/footer/footer";
 import Navigation from "@/components/layout/navigation/navigation";
+import { constructMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import React from "react";
@@ -15,14 +16,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "SV. NULL",
-  description:
-    "De studievereniging voor HBO-ICT aan de Christelijke Hogeschool Ede (CHE)",
-  appleWebApp: {
-    title: "s.v. NULL",
-  },
-};
+export const metadata: Metadata = constructMetadata();
 
 export default function RootLayout({
   children,

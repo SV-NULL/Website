@@ -1,13 +1,33 @@
+import { JsonLd } from "@/components/features/json-ld/json-ld";
 import BecomePartnerForm from "@/components/features/partners/become-partner-form";
 import PageTitle from "@/components/ui/page-title";
+import { siteConfig } from "@/config/site";
+import { constructMetadata } from "@/lib/seo";
 import Link from "next/link";
+import { WebPage } from "schema-dts";
+
+export const metadata = constructMetadata({
+  title: "Partner worden",
+  description:
+    "Interesse in een samenwerking met s.v. NULL? We horen graag van je!",
+});
 
 export default function PartnerWordenPage() {
   return (
     <div className="px-8 max-w-4xl mx-auto text-white">
+      <JsonLd<WebPage>
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Partner worden",
+          description:
+            "Interesse in een samenwerking met s.v. NULL? We horen graag van je!",
+          url: `${siteConfig.url}/partner-worden`,
+        }}
+      />
       <PageTitle
-        title="Partner Worden"
-        subtitle="Interesse in een samenwerking met SV. NULL? We horen graag van je!"
+        title="Partner worden"
+        subtitle="Interesse in een samenwerking met s.v. NULL? We horen graag van je!"
       />
 
       <p className="text-gray-300 mb-6">

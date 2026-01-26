@@ -1,6 +1,10 @@
+import { JsonLd } from "@/components/features/json-ld/json-ld";
 import PageTitle from "@/components/ui/page-title";
+import { siteConfig } from "@/config/site";
+import { constructMetadata } from "@/lib/seo";
 import { AppWindow, BookOpenIcon, MailQuestionIcon } from "lucide-react";
 import Link from "next/link";
+import { WebPage } from "schema-dts";
 
 const blocks = [
   {
@@ -23,12 +27,28 @@ const blocks = [
   },
 ];
 
+export const metadata = constructMetadata({
+  title: "Studentenwelzijn",
+  description:
+    "Studentenwelzijn is de plek waar je als student aanklopt met je (hulp)vraag wat betreft je studie. Zij denken met je mee en koppelen je aan de juiste persoon of dienst.",
+});
+
 export default function StudentenwelzijnPage() {
   return (
     <div className="container mx-auto px-8 space-y-4">
+      <JsonLd<WebPage>
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Studentenwelzijn",
+          description:
+            "Studentenwelzijn is de plek waar je als student aanklopt met je (hulp)vraag wat betreft je studie. Zij denken met je mee en koppelen je aan de juiste persoon of dienst.",
+          url: `${siteConfig.url}/studentenwelzijn`,
+        }}
+      />
       <PageTitle
-        title="StudentenWelzijn"
-        subtitle="StudentenWelzijn is de plek waar je als student aanklopt met je (hulp)vraag wat betreft je studie. Zij denken met je mee en koppelen je aan de juiste persoon of dienst."
+        title="Studentenwelzijn"
+        subtitle="Studentenwelzijn is de plek waar je als student aanklopt met je (hulp)vraag wat betreft je studie. Zij denken met je mee en koppelen je aan de juiste persoon of dienst."
       />
       <section className="grid grid-cols-1 sm:grid-cols-3 gap-16">
         {blocks.map((b) => (

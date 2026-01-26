@@ -1,4 +1,11 @@
 import ThankYouLayout from "@/components/features/thank-you/thank-you-layout";
+import { constructMetadata } from "@/lib/seo";
+
+export const metadata = constructMetadata({
+  title: "Bedankt voor je aanmelding",
+  description: "Bedankt voor je aanmelding bij s.v. NULL. Welkom!",
+  noIndex: true,
+});
 
 const memberThankYouData = {
   subtitle: "Je aanmelding is succesvol verstuurd.",
