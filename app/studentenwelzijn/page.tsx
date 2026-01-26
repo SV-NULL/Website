@@ -1,6 +1,6 @@
 // File: app/opleiding/studentenwelzijn/page.tsx
 "use client";
-import PageTitle from "@/components/PageTitle";
+import PageTitle from "@/components/ui/page-title";
 import { AppWindow, BookOpenIcon, MailQuestionIcon } from "lucide-react";
 import Link from "next/link";
 

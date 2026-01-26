@@ -28,7 +28,7 @@ function mapToActivityItem(
  * @returns An array of ActivityItem objects sorted by date.
  */
 export function getCalendarItems(): ActivityItem[] {
-  return loadMarkdownFiles("kalender", mapToActivityItem)
+  return loadMarkdownFiles("calendar", mapToActivityItem)
     .filter(
       (item) => item.date && !Number.isNaN(Date.parse(item.date.toString())),
     )

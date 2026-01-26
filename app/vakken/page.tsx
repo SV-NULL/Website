@@ -1,4 +1,4 @@
-import PageTitle from "@/components/PageTitle";
+import PageTitle from "@/components/ui/page-title";
 import { getVakkenItems } from "@/lib/content";
 import { BookOpen, ExternalLink, GraduationCap } from "lucide-react";
 import Image from "next/image";

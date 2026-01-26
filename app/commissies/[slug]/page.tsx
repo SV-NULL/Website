@@ -1,6 +1,6 @@
-import Members from "@/components/bestuur/members/Members";
-import PageTitle from "@/components/PageTitle";
-import { getCommissieById } from "@/utils/commisie";
+import Members from "@/components/features/members/members";
+import PageTitle from "@/components/ui/page-title";
+import { getCommitteeById } from "@/lib/content";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -11,12 +11,12 @@ type Props = {
 export default async function CommissieDetailPage({ params }: Props) {
   const { slug } = await params;
 
-  const commissie = getCommissieById(slug);
-  if (!commissie) return notFound();
+  const committee = getCommitteeById(slug);
+  if (!committee) return notFound();
 
   return (
     <div className="container mx-auto px-8 space-y-4">
-      <PageTitle title={commissie.title} subtitle={commissie.content} />
+      <PageTitle title={committee.title} subtitle={committee.content} />
 
       {/* Aanmelden CTA */}
       <section className="bg-neutral-900 mt-16 p-6 rounded text-center space-y-2 max-w-2xl mx-auto">
@@ -24,11 +24,11 @@ export default async function CommissieDetailPage({ params }: Props) {
           Wil je lid worden van deze commissie?
         </h3>
         <p className="text-gray-300">
-          Sluit je aan bij de {commissie.title} en help mee met het organiseren
+          Sluit je aan bij de {committee.title} en help mee met het organiseren
           van toffe activiteiten!
         </p>
         <Link
-          href={`/commissies/${commissie.id}/aanmelden`}
+          href={`/commissies/${committee.id}/aanmelden`}
           className="mt-2 inline-block px-6 py-2.5 rounded-xl font-medium
                     bg-yellow-400 text-black border-2 border-yellow-400
                     hover:bg-transparent hover:text-yellow-400
@@ -39,9 +39,9 @@ export default async function CommissieDetailPage({ params }: Props) {
         </Link>
       </section>
 
-      {commissie.members && commissie.members.length > 0 && (
+      {committee.members && committee.members.length > 0 && (
         <Members
-          members={commissie.members}
+          members={committee.members}
           imageUrlPrefix="/images/commissies/leden/"
         />
       )}

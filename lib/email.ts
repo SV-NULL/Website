@@ -1,9 +1,9 @@
-import { generateEmail } from "@/utils/email-templates";
-import { commonFormatters } from "@/utils/email-templates/formatters";
-import { becomePartnerApplicationTemplate } from "@/utils/email-templates/templates/become-partner-application";
-import { commissieApplicationTemplate } from "@/utils/email-templates/templates/commissie-application";
-import { contactFormTemplate } from "@/utils/email-templates/templates/contact-form";
-import { membershipApplicationTemplate } from "@/utils/email-templates/templates/membership-application";
+import { becomePartnerApplicationTemplate } from "@/config/email-templates/become-partner-application";
+import { commissieApplicationTemplate } from "@/config/email-templates/commissie-application";
+import { contactFormTemplate } from "@/config/email-templates/contact-form";
+import { membershipApplicationTemplate } from "@/config/email-templates/membership-application";
+import { generateEmail } from "@/utils/email";
+import { commonFormatters } from "@/utils/email/formatters";
 import nodemailer from "nodemailer";
 import { MailOptions } from "nodemailer/lib/sendmail-transport";
 import {

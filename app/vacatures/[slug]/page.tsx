@@ -1,4 +1,4 @@
-import StickySidebar from "@/components/vacatures/StickySidebar";
+import StickySidebar from "@/components/features/vacancies/sticky-sidebar";
 import { getVacatureBySlug, getVacatureItems } from "@/lib/content";
 import {
   ArrowLeft,

@@ -1,5 +1,5 @@
-import Footer from "@/components/footer/Footer";
-import Navigation from "@/components/navigation/Navigation";
+import Footer from "@/components/layout/footer/footer";
+import Navigation from "@/components/layout/navigation/navigation";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import React from "react";

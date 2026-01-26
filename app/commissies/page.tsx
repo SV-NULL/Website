@@ -1,10 +1,10 @@
-import CTA from "@/components/CTA";
-import CommissieCard from "@/components/list/CommissieCard";
-import PageTitle from "@/components/PageTitle";
-import { getCommissies } from "@/utils/commisie";
+import CommitteeCard from "@/components/features/committees/committee-card";
+import CTA from "@/components/sections/cta";
+import PageTitle from "@/components/ui/page-title";
+import { getCommittees } from "@/lib/content";
 
 export default function CommissiesPage() {
-  const commissies = getCommissies();
+  const committees = getCommittees();
 
   return (
     <div className="container mx-auto px-8 space-y-4">
@@ -15,10 +15,10 @@ export default function CommissiesPage() {
 
       <div className="py-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {commissies.map((commissie) => (
-            <CommissieCard
-              key={commissie.id}
-              commissie={commissie}
+          {committees.map((committee) => (
+            <CommitteeCard
+              key={committee.id}
+              committee={committee}
               hasLine={false}
             />
           ))}

@@ -1,7 +1,7 @@
 // File: app/documents/page.tsx
 "use client";
 
-import PageTitle from "@/components/PageTitle";
+import PageTitle from "@/components/ui/page-title";
 import { FileTextIcon } from "lucide-react";
 import Link from "next/link";
 

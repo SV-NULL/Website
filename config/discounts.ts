@@ -2,7 +2,7 @@ export interface Discount {
   id: string;
   name: string;
   description: string;
-  amount: string; // Beschrijving zoals "5 euro korting" of "50% korting"
+  amount: string; // Description such as "5 euro discount" or "50% discount"
   startDate: string; // YYYY-MM-DD format
   endDate: string; // YYYY-MM-DD format
   createdAt: string;
@@ -21,7 +21,11 @@ export const DISCOUNTS: Discount[] = [
 ];
 
 export function generateDiscountHash(discountId: string): string {
-  const salt = "sv-null-discount-salt-2024"; // In productie zou dit een env variable moeten zijn
+  const salt = process.env.DISCOUNT_SALT;
+  if (!salt) {
+    throw new Error("DISCOUNT_SALT environment variable is not set");
+  }
+
   const combined = `${discountId}-${salt}`;
   const hash = Buffer.from(combined, "utf8").toString("base64url");
 
@@ -29,7 +33,11 @@ export function generateDiscountHash(discountId: string): string {
 }
 
 export function getDiscountByHash(hash: string): Discount | null {
-  const salt = "sv-null-discount-salt-2024";
+  const salt = process.env.DISCOUNT_SALT;
+  if (!salt) {
+    throw new Error("DISCOUNT_SALT environment variable is not set");
+  }
+
   const today = new Date().toISOString().split("T")[0];
 
   for (const discount of DISCOUNTS) {

@@ -29,7 +29,7 @@ function mapToVacature(
  * @returns An array of Vacature objects.
  */
 export function getVacatureItems(): Vacature[] {
-  return loadMarkdownFiles("vacatures", mapToVacature);
+  return loadMarkdownFiles("vacancies", mapToVacature);
 }
 
 /**
@@ -39,7 +39,7 @@ export function getVacatureItems(): Vacature[] {
  * @returns A Vacature object or null if not found.
  */
 export function getVacatureBySlug(slug: string): Vacature | null {
-  return loadMarkdownBySlug("vacatures", slug, (data, content, slug) =>
+  return loadMarkdownBySlug("vacancies", slug, (data, content, slug) =>
     mapToVacature(`${slug}.md`, data, content),
   );
 }

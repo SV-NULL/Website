@@ -1,9 +1,9 @@
-import PageTitle from "@/components/PageTitle";
-import VacatureList from "@/components/VacatureList";
+import VacancyList from "@/components/features/vacancies/vacancy-list";
+import PageTitle from "@/components/ui/page-title";
 import { getVacatureItems } from "@/lib/content";
 
-export default function VacaturesPage() {
-  const vacatures = getVacatureItems();
+export default function VacanciesPage() {
+  const vacancies = getVacatureItems();
 
   return (
     <div className="container mx-auto px-8 space-y-4">
@@ -12,7 +12,7 @@ export default function VacaturesPage() {
         subtitle="Bekijk openstaande vacatures van onze partners voor interessante functies en stages."
       />
 
-      <VacatureList vacatures={vacatures} />
+      <VacancyList vacancies={vacancies} />
     </div>
   );
 }

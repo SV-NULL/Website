@@ -24,7 +24,7 @@ function mapToVakken(
  * @return An array of objects containing slug and Vakken data.
  */
 export function getVakkenItems(): { slug: string; data: Vakken }[] {
-  return loadMarkdownFiles("vakken", (filename, data, content) => ({
+  return loadMarkdownFiles("subjects", (filename, data, content) => ({
     slug: filename.replace(/\.md$/, ""),
     data: mapToVakken(filename, data, content),
   }));
@@ -37,7 +37,7 @@ export function getVakkenItems(): { slug: string; data: Vakken }[] {
  * @return A Vakken object or null if not found.
  */
 export function getVakkenBySlug(slug: string): Vakken | null {
-  return loadMarkdownBySlug("vakken", slug, (data, content, slug) =>
+  return loadMarkdownBySlug("subjects", slug, (data, content, slug) =>
     mapToVakken(`${slug}.md`, data, content),
   );
 }

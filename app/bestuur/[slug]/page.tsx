@@ -1,5 +1,5 @@
-import Members from "@/components/bestuur/members/Members";
-import { getBestuurById } from "@/utils/bestuur";
+import Members from "@/components/features/members/members";
+import { getBoardById } from "@/lib/content/repositories/boards";
 import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,10 +9,10 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
-export default async function BestuurDetailPage({ params }: Props) {
+export default async function BoardDetailPage({ params }: Props) {
   const { slug } = await params;
-  const bestuur = getBestuurById(slug);
-  if (!bestuur) return notFound();
+  const board = getBoardById(slug);
+  if (!board) return notFound();
 
   return (
     <div className="min-h-screen">
@@ -31,10 +31,10 @@ export default async function BestuurDetailPage({ params }: Props) {
       {/* Hero Section met Bestuursfoto */}
       <div className="relative w-full h-[60vh] min-h-[400px] max-h-[600px] overflow-hidden mt-6">
         <Image
-          src={bestuur.image.src}
-          alt={bestuur.image.alt || bestuur.title}
+          src={board.image.src}
+          alt={board.image.alt || board.title}
           fill
-          priority={bestuur.image.isPriority}
+          priority={board.image.isPriority}
           className="object-cover bestuur-image"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/80" />
@@ -43,10 +43,10 @@ export default async function BestuurDetailPage({ params }: Props) {
         <div className="absolute inset-0 flex flex-col justify-end pb-12 md:pb-16">
           <div className="container mx-auto px-8">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-2">
-              {bestuur.title}
+              {board.title}
             </h1>
             <p className="text-xl md:text-2xl text-yellow-400 font-medium">
-              Studiejaar {bestuur.subtitle}
+              Studiejaar {board.subtitle}
             </p>
           </div>
         </div>
@@ -61,12 +61,12 @@ export default async function BestuurDetailPage({ params }: Props) {
                        prose-p:text-gray-300 prose-p:leading-relaxed
                        prose-strong:text-white prose-strong:font-semibold
                        prose-br:content-[''] prose-br:block prose-br:my-2"
-            dangerouslySetInnerHTML={{ __html: bestuur.content }}
+            dangerouslySetInnerHTML={{ __html: board.content }}
           />
         </div>
 
         {/* Bestuursleden Section */}
-        {bestuur.members && bestuur.members.length > 0 && (
+        {board.members && board.members.length > 0 && (
           <div className="space-y-8">
             <div className="text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -76,8 +76,8 @@ export default async function BestuurDetailPage({ params }: Props) {
             </div>
 
             <Members
-              members={bestuur.members}
-              imageUrlPrefix={`/images/bestuur/${bestuur.id}/`}
+              members={board.members}
+              imageUrlPrefix={`/images/bestuur/${board.id}/`}
             />
           </div>
         )}

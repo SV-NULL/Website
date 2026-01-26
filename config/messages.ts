@@ -11,7 +11,7 @@ export const CONTACT_FORM_MESSAGES = {
   SUBMITTING: "Versturen...",
 } as const;
 
-export const WORD_LID_FORM_MESSAGES = {
+export const BECOME_MEMBER_FORM_MESSAGES = {
   GENERAL_TITLE: "Algemene informatie",
   STUDENT_TITLE: "Studentinformatie",
   CONTRIBUTION_TITLE: "Contributie",
@@ -21,12 +21,12 @@ export const WORD_LID_FORM_MESSAGES = {
   SUBMITTING: "Versturen...",
 } as const;
 
-export const PARTNER_WORDEN_FORM_MESSAGES = {
+export const BECOME_PARTNER_FORM_MESSAGES = {
   SUBMIT_BUTTON: "Verstuur aanvraag",
   SUBMITTING: "Versturen...",
 } as const;
 
-export const COMMISSIE_FORM_MESSAGES = {
+export const COMMITTEE_FORM_MESSAGES = {
   SUCCESS:
     "Aanmelding succesvol verzonden. We nemen binnenkort contact met je op!",
   SUBMIT_BUTTON: "Verstuur aanmelding",

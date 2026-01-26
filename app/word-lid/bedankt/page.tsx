@@ -1,4 +1,4 @@
-import ThankYouLayout from "@/components/bedankt/ThankYouLayout";
+import ThankYouLayout from "@/components/features/thank-you/thank-you-layout";
 
 const memberThankYouData = {
   subtitle: "Je aanmelding is succesvol verstuurd.",

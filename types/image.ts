@@ -17,4 +17,5 @@ export type NavItem = {
 export type SocialNavItem = {
   icon: LucideIcon;
   href: string;
+  label: string;
 };

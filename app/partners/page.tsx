@@ -1,11 +1,11 @@
-import CTA from "@/components/CTA";
-import PageTitle from "@/components/PageTitle";
-import PartnerFlippingCard from "@/components/PartnerFlippingCard";
+import PartnerCard from "@/components/features/partners/partner-card";
+import CTA from "@/components/sections/cta";
+import PageTitle from "@/components/ui/page-title";
 import { getPartnerItems } from "@/lib/content";
 import Link from "next/link";
 
 export default function PartnersPage() {
-  const items = getPartnerItems();
+  const partners = getPartnerItems();
 
   return (
     <div className="mx-auto px-8 space-y-4 max-w-6xl">
@@ -15,8 +15,8 @@ export default function PartnersPage() {
       />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {items.map((it, i) => (
-          <PartnerFlippingCard key={i} item={it} />
+        {partners.map((partner, i) => (
+          <PartnerCard key={i} partner={partner} />
         ))}
         <Link
           href="/partner-worden"

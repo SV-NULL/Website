@@ -1,12 +1,20 @@
-import ActivityGrid from "@/components/activity/ActivityGrid";
-import ActivityGridSkeleton from "@/components/activity/ActivityGridSkeleton";
-import Gallery from "@/components/Gallery";
-import RotatingText from "@/components/RotatingText";
+import CalendarGrid from "@/components/features/calendar/calendar-grid";
+import Gallery from "@/components/features/home/gallery";
+import Typewriter from "@/components/ui/typewriter";
 import { getPartnerItems } from "@/lib/content";
 import { BookOpen, ChevronDown, RocketIcon, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Suspense } from "react";
+
+const WORDS = [
+  "HBO-ICT op de CHE",
+  "Community",
+  "Connectie met bedrijven",
+  "Borrels",
+  "Leerzame activiteiten",
+  "Commissies",
+  "Reizen",
+];
 
 export default function HomePage() {
   const partners = getPartnerItems();
@@ -22,7 +30,7 @@ export default function HomePage() {
           </h1>
 
           <div className="mt-6 inline-block overflow-hidden">
-            <RotatingText />
+            <Typewriter textBefore="Dé studievereniging voor" words={WORDS} />
           </div>
         </div>
 
@@ -102,9 +110,7 @@ export default function HomePage() {
         <h2 className="text-center text-4xl font-bold text-yellow-400 mb-16">
           Komende activiteiten
         </h2>
-        <Suspense fallback={<ActivityGridSkeleton limit={2} />}>
-          <ActivityGrid limit={2} />
-        </Suspense>
+        <CalendarGrid limit={2} />
         <div className="text-center mt-12">
           <Link
             href="/kalender"

@@ -1,7 +1,7 @@
-import FutureGoalCard from "@/components/over-ons/FutureGoalCard";
-import InfoCard from "@/components/over-ons/InfoCard";
-import SectionWrapper from "@/components/over-ons/SectionWrapper";
-import PageTitle from "@/components/PageTitle";
+import FutureGoalCard from "@/components/features/about-us/future-goal-card";
+import InfoCard from "@/components/features/about-us/info-card";
+import SectionWrapper from "@/components/features/about-us/section-wrapper";
+import PageTitle from "@/components/ui/page-title";
 import { BookOpen, Lightbulb, Target, Users } from "lucide-react";
 
 const pageData = {

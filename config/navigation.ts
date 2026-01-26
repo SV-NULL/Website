@@ -52,10 +52,12 @@ export const footerSocalNavItems: SocialNavItem[] = [
   {
     icon: Instagram,
     href: "https://www.instagram.com/s.v.null/",
+    label: "Instagram",
   },
   {
     icon: Linkedin,
     href: "https://www.linkedin.com/company/studievereniging-null",
+    label: "LinkedIn",
   },
-  { icon: Github, href: "https://github.com/SV-NULL" },
+  { icon: Github, href: "https://github.com/SV-NULL", label: "GitHub" },
 ];

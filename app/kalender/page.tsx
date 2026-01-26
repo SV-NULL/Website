@@ -1,8 +1,6 @@
-import ActivityGrid from "@/components/activity/ActivityGrid";
-import ActivityGridSkeleton from "@/components/activity/ActivityGridSkeleton";
-import CTA from "@/components/CTA";
-import PageTitle from "@/components/PageTitle";
-import { Suspense } from "react";
+import CalendarGrid from "@/components/features/calendar/calendar-grid";
+import CTA from "@/components/sections/cta";
+import PageTitle from "@/components/ui/page-title";
 
 export default function CalendarPage() {
   return (
@@ -11,11 +9,7 @@ export default function CalendarPage() {
         title="Kalender"
         subtitle="Bekijk onze aankomende activiteiten en evenementen en plan ze in je agenda!"
       />
-
-      <Suspense fallback={<ActivityGridSkeleton />}>
-        <ActivityGrid />
-      </Suspense>
-
+      <CalendarGrid />
       <CTA
         title="Ook een idee voor een activiteit?"
         text="Het bestuur is constant bezig met het organiseren van leuke activiteiten. Heb jij een leuk idee? Laat het ons weten!"

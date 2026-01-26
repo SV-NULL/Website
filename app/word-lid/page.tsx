@@ -1,5 +1,5 @@
-import PageTitle from "@/components/PageTitle";
-import WordLidForm from "@/components/word-lid/form";
+import BecomeMemberForm from "@/components/features/member/form";
+import PageTitle from "@/components/ui/page-title";
 import { getDiscountByHash } from "@/config/discounts";
 import Link from "next/link";
 
@@ -52,7 +52,7 @@ export default async function WordLidPage({ searchParams }: WordLidPageProps) {
         .
       </p>
 
-      <WordLidForm discount={discount} />
+      <BecomeMemberForm discount={discount} />
     </div>
   );
 }

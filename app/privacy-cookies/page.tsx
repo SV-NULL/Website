@@ -1,6 +1,6 @@
 "use client";
 
-import PageTitle from "@/components/PageTitle";
+import PageTitle from "@/components/ui/page-title";
 import {
   Calendar,
   Cookie,
