@@ -1,12 +1,6 @@
-"use client";
-
-import Form from "@/components/features/forms/form";
+import BecomePartnerForm from "@/components/features/partners/become-partner-form";
 import PageTitle from "@/components/ui/page-title";
-import { PARTNER_FORM_FIELDS } from "@/config/forms/partner";
-import { BECOME_PARTNER_FORM_MESSAGES } from "@/config/messages";
-import { becomePartnerSchema } from "@/lib/validation";
 import Link from "next/link";
-import { submitBecomePartnerApplication } from "./actions";
 
 export default function PartnerWordenPage() {
   return (
@@ -68,15 +62,7 @@ export default function PartnerWordenPage() {
         .
       </p>
 
-      <Form
-        fields={PARTNER_FORM_FIELDS.GENERAL}
-        validationSchema={becomePartnerSchema}
-        submitAction={submitBecomePartnerApplication}
-        onSuccess="redirect"
-        successRedirect="/partner-worden/bedankt"
-        submitButtonText={BECOME_PARTNER_FORM_MESSAGES.SUBMIT_BUTTON}
-        submittingText={BECOME_PARTNER_FORM_MESSAGES.SUBMITTING}
-      />
+      <BecomePartnerForm />
     </div>
   );
 }

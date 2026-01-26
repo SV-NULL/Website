@@ -1,5 +1,3 @@
-"use client";
-
 import PageTitle from "@/components/ui/page-title";
 import {
   Calendar,

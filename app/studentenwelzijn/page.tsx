@@ -1,31 +1,29 @@
-// File: app/opleiding/studentenwelzijn/page.tsx
-"use client";
 import PageTitle from "@/components/ui/page-title";
 import { AppWindow, BookOpenIcon, MailQuestionIcon } from "lucide-react";
 import Link from "next/link";
 
-export default function StudentenwelzijnPage() {
-  const blocks = [
-    {
-      title: "Informatie over StudentenWelzijn",
-      icon: <BookOpenIcon className="w-12 h-12" />,
-      href: "https://www.che.nl/studentenwelzijn",
-      description: "Persoonlijke studiebegeleiding, advies en hulp.",
-    },
-    {
-      title: "StudentenWelzijn portaal",
-      icon: <AppWindow className="w-12 h-12" />,
-      href: "https://chrhogeschoolede.sharepoint.com/sites/studentenwelzijn/SitePages/Studentenwelzijn.aspx?CT=1615088928511&OR=OWA-NT&CID=abb14343-ff05-e51e-afba-8bacd48bb718",
-      description: "Toegang tot portaal met hulpbronnen en contact.",
-    },
-    {
-      title: "Contact via e‑mail",
-      icon: <MailQuestionIcon className="w-12 h-12" />,
-      href: "mailto:studentenwelzijn@che.nl",
-      description: "Stuur een bericht naar hun direct emailadres.",
-    },
-  ];
+const blocks = [
+  {
+    title: "Informatie over StudentenWelzijn",
+    icon: <BookOpenIcon className="w-12 h-12" />,
+    href: "https://www.che.nl/studentenwelzijn",
+    description: "Persoonlijke studiebegeleiding, advies en hulp.",
+  },
+  {
+    title: "StudentenWelzijn portaal",
+    icon: <AppWindow className="w-12 h-12" />,
+    href: "https://chrhogeschoolede.sharepoint.com/sites/studentenwelzijn/SitePages/Studentenwelzijn.aspx?CT=1615088928511&OR=OWA-NT&CID=abb14343-ff05-e51e-afba-8bacd48bb718",
+    description: "Toegang tot portaal met hulpbronnen en contact.",
+  },
+  {
+    title: "Contact via e‑mail",
+    icon: <MailQuestionIcon className="w-12 h-12" />,
+    href: "mailto:studentenwelzijn@che.nl",
+    description: "Stuur een bericht naar hun direct emailadres.",
+  },
+];
 
+export default function StudentenwelzijnPage() {
   return (
     <div className="container mx-auto px-8 space-y-4">
       <PageTitle
