@@ -1,89 +1,122 @@
-# Studievereniging NULL Website
+# S.v. NULL website
 
-Deze repository bevat de website van Studievereniging NULL, gebouwd met **Next.js** (13+) en **TailwindCSS**. De site onderscheidt:
+The official website for **s.v. NULL**, the study association for ICT students at the Christian University of Applied Sciences Ede (CHE). This repository contains the source code for the website, built with modern web technologies to provide information about events, committees, partners, and the association board.
 
-1. **Pages gehost via Markdown + SSG**
-2. **One-off pagina’s** (hardcoded React/TSX)
+## 🚀 Tech stack
 
-## 📁 Mappenstructuur
+- **Framework:** [Next.js](https://nextjs.org/) (App router)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Linting & formatting:** ESLint, Prettier
+- **Git hooks:** Husky (pre-commit hooks)
+- **Commit convention:** CommitLint (Conventional Commits)
+- **Content management:** Markdown (`.md`) & static config
+
+## 🛠️ Getting started
+
+Follow these steps to set up the project locally on your machine.
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (LTS version recommended)
+- npm (comes with Node.js)
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/sv-null/website.git
+   cd website
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+3. **Environment variables:**
+   Copy the example environment file to create your local configuration.
+   ```bash
+   cp .env.example .env
+   ```
+   Note: open `.env` and fill in any required configuration strings if necessary.
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) with your browser to see the website.
+
+## 📁 Project structure
 
 ```
 / (root)
-├─ app/                # Next.js 13+ "app router"
-│  ├─ components/      # UI-componenten (CTA, cards, navbar, etc.)
-│  ├─ layout.tsx       # Algemene layout voor alle pagina's
-│  ├─ page.tsx         # Homepagina
-│  └─ ...              # Pagina’s (SGG of hardcoded)
-│
+├─ .github/            # CI/CD workflows
+├─ .husky/             # Git hooks (pre-commit, commit-msg)
+├─ app/                # Next.js app router pages and layouts
+├─ components/         # Resuable UI components
+│  ├─ features/        # Specific components per feature (e.g., calendar, partners)
+│  ├─ layout/          # Global layout components (Navbar, Footer)
+|  ├─ sections/        # Specific section components
+|  ├─ ui/              # Generic UI elements
+├─ config/             # Static configuration files (board members, menus, etc.)
 ├─ content/            # Markdown-content voor SSG-pagina’s
-│  ├─ bestuur/         # MD-bestanden voor besturen
-│  ├─ commissies/      # MD-bestanden voor commissies
-│  ├─ kalender/        # Activiteiten
-│  ├─ partners/        # Partnerinfo
-│  ├─ vacatures/       # Stage-/vacaturepagina’s
-│  └─ vakken/          # Jaar-1.md t/m Jaar-4.md (cursusdata)
-│
-├─ lib/                # Data-loaders en frontmatter-parsing
-│  └─ content.ts       # `getXXXItems()` en `getXXXBySlug()` functies
-│
-├─ public/             # Statische assets (afbeeldingen en documenten)
-│
-├─ styles/             # Globale styles en Tailwind-configuratie
-│  └─ globals.css      # Base styles + Tailwind imports
-│
-├─ tailwind.config.js  # TailwindCSS configuratie
-├─ next.config.js      # Next.js configuratie
-└─ package.json        # Dependencies en scripts
+│  ├─ calendar/        # Event descriptions
+│  ├─ partners/        # Partner descriptions
+│  └─ ...
+├─ hooks/              # Custom React hooks
+├─ lib/                # Utility libraries and content loaders
+├─ public/             # Static assets (images, PDFs)
+└─ types/              # TypeScript type definitions
 ```
 
-## ⚡ SSG-pagina’s via Markdown
+## 📝 Content management
 
-De volgende secties worden volledig opgebouwd via **Static Site Generation** door MD-bestanden in `/content`:
+This website uses a hybrid approach for content management:
 
-- **Bestuur**: `getBestuurItems()`, `getBestuurBySlug()`
-- **Commissies**: `getCommissieItems()`, `getCommissieBySlug()`
-- **Kalender**: `getCalendarItems()`, `getUpcomingCalendarItems()`
-- **Partners**: `getPartnerItems()`, `PartnerFlippingCard` voor presentatie
-- **Vacatures**: `getVacatureItems()`, `getVacatureBySlug()`
-- **Vakken**: `getVakkenItems()`, `getVakkenBySlug()`
+**1. Markdown content (`/content`)**
+Dynamic content such as **events (`/content/calendar`)**, **partners (`/content/partners`)**, and **vacancies** are stored as Markdown files.
 
-Plaats nieuwe content door een `.md`-bestand toe te voegen onder de overeenkomstige submap in `/content`.
+- To add an event, create a new `/.md` file in `/content/calendar/`.
+- Ensure the frontmatter (metadata at the top of the file) matches the required schema.
 
-## 📄 One-off Pagina’s
+**2. Static configuration (`/config`)**
+Structured data that rarely changes format is kept in TypeScript files in the `/config/` folder.
 
-Deze pagina’s worden niet via Markdown gegenereerd, maar in `app/` als individuele React-componenten:
+- **Committees:** edit `/config/committee.ts` to update committee info.
+- **Board members:** edit `/config/board.ts` or `/config/person.ts`.
+- **Navigation:** edit `/config/navigation.ts` to change menu items.
 
-- Home (`app/page.tsx`)
-- Over ons, Word lid, Contact, Studentenwelzijn, etc.
-- Vakken overzicht: `app/vakken/page.tsx`
-- Andere content die niet in de generieke SSG-flow past.
+## ✅ Code quality & contributing
 
-### Wanneer hardcoded?
+We enfore high code quality standards to keep the codebase clean and maintainable.
 
-Gebruik een one-off React pagina als:
+### **Commit Messages**
 
-- De layout en logica uniek zijn
-- Geen herhaalbare Markdown-structuur past
+We use **Conventional Commits**. Your commit messages must follow this format:
 
-## 🚀 Starten & Ontwikkelen
+- `feat: add new calendar component`
+- `fix: resolve typo in footer`
+- `style: update button padding`
+- etc
 
-1. Clone de repo
-2. `npm install`
-3. `npm run dev`
-4. Open [http://localhost:3000](http://localhost:3000)
+_The commit will be rejected by Husky if it does not follow this standard._
 
-### Scripts
+### Linting & formatting
 
-- `dev`: draait de development server
-- `build`: bouwt de site voor productie
-- `start`: serveert de productie-build
+Code is automatically checked before every commit. You can also run checks manually:
 
-## 🌐 Deployment
+```bash
+# Run ESLint
+npm run lint
 
-De main branch wordt automatisch gedeployed op Netlify. Bij elke push naar main wordt de site live bijgewerkt.
+# Check formatting with Prettier
+npm run format:check
 
-## 🛠️ Tips
+# Check TypeScript types
+npm run typecheck
 
-- **Nieuwe SSG-content**: voeg `.md` toe en rebuild
-- **Component library**: herbruik UI in `/app/components`
-- **Styling**: gebruik Tailwind-utility classes in JSX
+# Automatically fix Prettier formatting
+npm run format
+```
+
+## 📜 License
+
+This project is proprietary to s.v. NULL. Please see the [LICENSE](https://github.com/SV-NULL/Website?tab=MIT-1-ov-file#readme) file for more details.
