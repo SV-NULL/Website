@@ -152,37 +152,35 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-neutral-900 border-y border-neutral-800 py-12">
-        <div className="max-w-6xl mx-auto px-8 my-16">
-          <h2 className="text-4xl font-bold text-center mb-16">
+      <section className="py-24 container mx-auto px-4 max-w-7xl border-t border-neutral-800">
+        <div className="text-center mb-16">
+          <h2 className="text-2xl font-bold text-gray-400 uppercase tracking-widest mb-12">
             Onze partners
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center group/partners">
             {partners.map((partner, index) => (
-              <div key={index} className="rounded-lg text-center group">
+              <Link
+                key={index}
+                href={partner.website || "#"}
+                target="_blank"
+                className="group p-4 grayscale-0 group-hover/partners:grayscale hover:!grayscale-0 transition-all duration-300"
+              >
                 <Image
                   src={partner.image.src}
                   alt={partner.image.alt || partner.title}
-                  className="mx-auto mb-4 h-20 w-full object-contain 
-                            transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-lg"
-                  width={400}
-                  height={400}
+                  className="w-full h-12 object-contain transition-transform group-hover:scale-110"
+                  width={200}
+                  height={100}
                 />
-              </div>
+              </Link>
             ))}
-          </div>
-
-          <div className="text-center mt-12">
             <Link
               href="/partner-worden"
-              className="inline-block px-6 py-2.5 rounded-xl font-medium
-                        bg-yellow-400 text-black border-2 border-yellow-400
-                        hover:bg-transparent hover:text-yellow-400
-                        active:bg-transparent active:text-yellow-400
-                        transition-all duration-300"
+              className="flex flex-col items-center justify-center h-20 p-4 border-2 border-dashed border-neutral-700 rounded-xl text-gray-500 hover:text-yellow-400 hover:border-yellow-400 transition-all grayscale-0 group-hover/partners:grayscale hover:!grayscale-0"
             >
-              Ook partner worden?
+              <span className="text-sm font-bold">Uw logo hier?</span>
+              <span className="text-xs">Word partner</span>
             </Link>
           </div>
         </div>
