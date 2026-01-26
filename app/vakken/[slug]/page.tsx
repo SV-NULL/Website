@@ -9,7 +9,6 @@ import {
 } from "lucide-react";
 import { notFound } from "next/navigation";
 
-// Collapsible Resources Component
 function CollapsibleResources({ resources }: { resources: string[] }) {
   return (
     <details className="group bg-gradient-to-r from-yellow-400/5 to-transparent border border-yellow-400/20 rounded-lg overflow-hidden">

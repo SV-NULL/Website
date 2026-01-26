@@ -1,15 +1,17 @@
+import DiscountAlert from "@/components/features/member/discount-alert";
 import BecomeMemberForm from "@/components/features/member/form";
 import PageTitle from "@/components/ui/page-title";
 import { getDiscountByHash } from "@/config/discounts";
 import Link from "next/link";
 
-interface WordLidPageProps {
+type Props = {
   searchParams: Promise<{ discount?: string }>;
-}
+};
 
-export default async function WordLidPage({ searchParams }: WordLidPageProps) {
+export default async function WordLidPage({ searchParams }: Props) {
   const { discount: discountParam } = await searchParams;
   const discount = discountParam ? getDiscountByHash(discountParam) : null;
+
   return (
     <div className="px-8 max-w-4xl mx-auto text-white">
       <PageTitle
@@ -17,19 +19,7 @@ export default async function WordLidPage({ searchParams }: WordLidPageProps) {
         subtitle="Bekijk hoe je lid wordt van SV. NULL en wat je kunt verwachten."
       />
 
-      {discount && (
-        <div className="mb-6 p-4 bg-green-700 border border-green-600 rounded-lg">
-          <h3 className="font-semibold text-green-100 mb-2">
-            🎉 Kortingsactie actief!
-          </h3>
-          <p className="text-green-200">
-            <strong>{discount.name}:</strong> {discount.description}
-          </p>
-          <p className="text-green-100 font-medium mt-1">
-            Korting: {discount.amount}
-          </p>
-        </div>
-      )}
+      {discount && <DiscountAlert discount={discount} />}
 
       <p className="mb-4 text-gray-300">
         Bij NULL maak je direct kennis met een hechte groep mede-ICT-studenten
