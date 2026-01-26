@@ -1,3 +1,5 @@
+"use client";
+
 import { submitCommissieApplication } from "@/app/commissies/actions";
 import { COMMITTEE_FORM_FIELDS } from "@/config/forms/committee";
 import { COMMITTEE_FORM_MESSAGES } from "@/config/messages";
