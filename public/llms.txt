@@ -1,0 +1,20 @@
+# s.v. NULL
+
+Dé studievereniging voor HBO-ICT aan de Christelijke Hogeschool Ede (CHE).
+
+## Samenvatting
+
+s.v. NULL is de studievereniging voor HBO-ICT studenten aan de CHE. Wij streven ernaar studenten te verbinden door hun passie voor ICT, kennis te delen en een brug te slaan naar het bedrijfsleven. Daarnaast organiseren we gezellige en leerzame activiteiten.
+
+## Belangrijke Links
+
+- [Volledige documentatie (LLMs)](https://svnull.nl/llms-full.txt)
+- [Website](https://svnull.nl)
+- [Over ons](https://svnull.nl/over-ons)
+- [Activiteitenkalender](https://svnull.nl/kalender)
+- [Bestuur](https://svnull.nl/bestuur)
+- [Commissies](https://svnull.nl/commissies)
+- [Vacatures](https://svnull.nl/vacatures)
+- [Partners](https://svnull.nl/partners)
+- [Lid worden](https://svnull.nl/word-lid)
+- [Partner worden](https://svnull.nl/partner-worden)
