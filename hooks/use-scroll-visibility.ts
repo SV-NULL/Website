@@ -1,31 +1,35 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function useScrollVisibility(threshold = 80) {
   const [visible, setVisibile] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     let ticking = false;
 
     const handleScroll = () => {
-      if (ticking) return;
+      const currentScrollY = window.scrollY;
 
-      window.requestAnimationFrame(() => {
-        const currentScrollY = window.scrollY;
-        const isScrollingUp = currentScrollY < lastScrollY;
-        const isAboveThreshold = currentScrollY < threshold;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const isScrollingUp = currentScrollY < lastScrollY.current;
+          const isAboveThreshold = currentScrollY < threshold;
 
-        setVisibile(isScrollingUp || isAboveThreshold);
-        setLastScrollY(currentScrollY);
-      });
-      ticking = false;
+          setVisibile(isScrollingUp || isAboveThreshold);
+
+          lastScrollY.current = currentScrollY;
+          ticking = false;
+        });
+
+        ticking = true;
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY, threshold]);
+  }, [threshold]);
 
   return visible;
 }
