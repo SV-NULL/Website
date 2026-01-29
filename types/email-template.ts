@@ -2,7 +2,7 @@ export interface EmailField {
   key: string;
   label: string;
   required?: boolean;
-  formatter?: (value: any) => string;
+  formatter?: (value: unknown) => string;
 }
 
 export interface EmailSection {
@@ -11,11 +11,11 @@ export interface EmailSection {
 }
 
 export interface EmailTemplate {
-  subject: (data: any) => string;
+  subject: (data: unknown) => string;
   sections: EmailSection[];
   footer?: {
     title: string;
-    steps: string[] | ((data: any) => string[]);
+    steps: string[] | ((data: unknown) => string[]);
     note?: string;
   };
   metadata?: {
@@ -25,5 +25,5 @@ export interface EmailTemplate {
 }
 
 export interface EmailData {
-  [key: string]: any;
+  [key: string]: unknown;
 }
