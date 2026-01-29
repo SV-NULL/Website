@@ -1,4 +1,5 @@
 import { JsonLd } from "@/components/features/json-ld/json-ld";
+import MetadataRow from "@/components/features/vacancies/metadata-row";
 import StickySidebar from "@/components/features/vacancies/sticky-sidebar";
 import { getVacatureBySlug, getVacatureItems } from "@/lib/content";
 import { constructMetadata } from "@/lib/seo";
@@ -10,7 +11,6 @@ import {
   ExternalLink,
   Globe,
   GraduationCap,
-  LucideIcon,
   Mail,
   Map,
   MapPin,
@@ -60,28 +60,6 @@ export default async function VacatureDetailPage({
       </div>
     );
   }
-  const MetadataRow = ({
-    icon: Icon,
-    label,
-    value,
-  }: {
-    icon: LucideIcon;
-    label: string;
-    value?: string;
-  }) => {
-    if (!value) return null;
-    return (
-      <div className="flex items-start gap-4 py-3 border-b last:border-0 border-neutral-800">
-        <div className="p-2 bg-yellow-400/10 text-yellow-400 rounded-lg">
-          <Icon size={18} />
-        </div>
-        <div>
-          <p className="text-sm text-gray-400 font-medium">{label}</p>
-          <p className="text-white font-medium">{value}</p>
-        </div>
-      </div>
-    );
-  };
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] -mt-6">
