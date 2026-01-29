@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 export function useScrollVisibility(threshold = 80) {
-  const [visible, setVisibile] = useState(true);
+  const [visible, setVisible] = useState(true);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export function useScrollVisibility(threshold = 80) {
           const isScrollingUp = currentScrollY < lastScrollY.current;
           const isAboveThreshold = currentScrollY < threshold;
 
-          setVisibile(isScrollingUp || isAboveThreshold);
+          setVisible(isScrollingUp || isAboveThreshold);
 
           lastScrollY.current = currentScrollY;
           ticking = false;
