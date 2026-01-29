@@ -1,47 +1,51 @@
 export const commonFormatters = {
-  dutchDate: (dateString: string): string => {
+  dutchDate: (dateString: unknown): string => {
     try {
-      const date = new Date(dateString);
+      const date = new Date(dateString as string | number | Date);
       return date.toLocaleDateString("nl-NL", {
         day: "2-digit",
         month: "2-digit",
         year: "numeric",
       });
     } catch {
-      return dateString;
+      return String(dateString);
     }
   },
 
-  contribution: (value: string): string => {
+  contribution: (value: unknown): string => {
+    const stringValue = String(value);
     const contributionMap: Record<string, string> = {
       "15": "€15 - per schooljaar",
       "40": "€40 - voor hele studie",
     };
-    return contributionMap[value] || `€${value}`;
+    return contributionMap[stringValue] || `€${stringValue}`;
   },
 
-  phoneNumber: (value: string): string => {
-    const cleaned = value.replace(/\D/g, "");
+  phoneNumber: (value: unknown): string => {
+    const stringValue = String(value);
+    const cleaned = stringValue.replace(/\D/g, "");
     if (cleaned.length === 10) {
-      return cleaned.match(/.{1,2}/g)?.join(" ") ?? value;
+      return cleaned.match(/.{1,2}/g)?.join(" ") ?? stringValue;
     }
-    return value;
+    return stringValue;
   },
 
-  yesNo: (value: boolean | string): string => {
+  yesNo: (value: unknown): string => {
     if (typeof value === "boolean") {
       return value ? "Ja" : "Nee";
     }
-    return ["true", "1", "yes", "ja"].includes(value.toLowerCase())
-      ? "Ja"
-      : "Nee";
+    const stringValue = String(value).toLowerCase();
+    return ["true", "1", "yes", "ja"].includes(stringValue) ? "Ja" : "Nee";
   },
 
-  capitalize: (value: string): string => {
-    return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+  capitalize: (value: unknown): string => {
+    const stringValue = String(value);
+    return (
+      stringValue.charAt(0).toUpperCase() + stringValue.slice(1).toLowerCase()
+    );
   },
 
-  studentEmail: (studentId: string): string => {
+  studentEmail: (studentId: unknown): string => {
     return `${studentId}@student.che.nl`;
   },
 };

@@ -1,8 +1,16 @@
 import { EmailTemplate } from "@/types/email-template";
 import { commonFormatters } from "../../utils/email/formatters";
 
+interface PartnerData {
+  companyName: string;
+  [key: string]: unknown;
+}
+
 export const becomePartnerApplicationTemplate: EmailTemplate = {
-  subject: (data) => `Nieuwe partner aanvraag: ${data.companyName}`,
+  subject: (data) => {
+    const { companyName } = data as PartnerData;
+    return `Nieuwe partner aanvraag: ${companyName}`;
+  },
 
   sections: [
     {

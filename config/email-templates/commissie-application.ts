@@ -1,8 +1,16 @@
 import { EmailTemplate } from "@/types/email-template";
 
+interface CommissieData {
+  commissieName: string;
+  name: string;
+  [key: string]: unknown;
+}
+
 export const commissieApplicationTemplate: EmailTemplate = {
-  subject: (data) =>
-    `Nieuwe commissie aanmelding voor ${data.commissieName} van ${data.name}`,
+  subject: (data) => {
+    const { commissieName, name } = data as CommissieData;
+    return `Nieuwe commissie aanmelding voor ${commissieName} van ${name}`;
+  },
 
   sections: [
     {

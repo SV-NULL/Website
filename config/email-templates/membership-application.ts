@@ -1,8 +1,23 @@
 import { EmailTemplate } from "@/types/email-template";
 import { commonFormatters } from "../../utils/email/formatters";
 
+interface MembershipData {
+  firstName: string;
+  lastName: string;
+  email?: string;
+  contribution: string;
+  discount?: {
+    name: string;
+    amount: string;
+  };
+  [key: string]: unknown;
+}
+
 export const membershipApplicationTemplate: EmailTemplate = {
-  subject: (data) => `Nieuwe aanmelding: ${data.firstName} ${data.lastName}`,
+  subject: (data) => {
+    const { firstName, lastName } = data as MembershipData;
+    return `Nieuwe aanmelding: ${firstName} ${lastName}`;
+  },
 
   sections: [
     {
@@ -49,10 +64,12 @@ export const membershipApplicationTemplate: EmailTemplate = {
           key: "discount",
           label: "Toegepaste korting",
           required: false,
-          formatter: (discount) =>
-            discount
+          formatter: (value: unknown) => {
+            const discount = value as MembershipData["discount"];
+            return discount
               ? `${discount.name} (${discount.amount})`
-              : "Geen korting toegepast",
+              : "Geen korting toegepast";
+          },
         },
         { key: "comments", label: "Opmerkingen", required: false },
       ],
@@ -62,14 +79,16 @@ export const membershipApplicationTemplate: EmailTemplate = {
   footer: {
     title: "VERVOLGSTAPPEN",
     steps: (data) => {
+      const { discount, contribution } = data as MembershipData;
+
       const baseSteps = [
         "Controleer de bovenstaande gegevens op juistheid",
         "Voeg het nieuwe lid toe aan de ledenlijst",
         "Stuur een welkomstmail naar {email}",
       ];
 
-      const paymentStep = data.discount
-        ? `Verstuur een betaalverzoek van € {contribution} minus de korting (${data.discount.amount})`
+      const paymentStep = discount
+        ? `Verstuur een betaalverzoek van € ${contribution} minus de korting (${discount.amount})`
         : "Verstuur een betaalverzoek van € {contribution}";
 
       const finalSteps = [

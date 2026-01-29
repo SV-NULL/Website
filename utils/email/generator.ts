@@ -29,7 +29,8 @@ export class EmailTemplateGenerator {
 
   private replacePlaceholders(text: string, data: EmailData): string {
     return text.replace(/\{(\w+)\}/g, (match, key) => {
-      return data[key] || match;
+      const value = data[key];
+      return value !== undefined && value !== null ? String(value) : match;
     });
   }
 

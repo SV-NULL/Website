@@ -1,7 +1,15 @@
 import { EmailTemplate } from "@/types/email-template";
 
+interface ContactData {
+  name: string;
+  [key: string]: unknown;
+}
+
 export const contactFormTemplate: EmailTemplate = {
-  subject: (data) => `Nieuw contactformulier inzending van ${data.name}`,
+  subject: (data) => {
+    const { name } = data as ContactData;
+    return `Nieuw contactformulier inzending van ${name}`;
+  },
 
   sections: [
     {
