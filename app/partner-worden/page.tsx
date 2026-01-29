@@ -4,7 +4,7 @@ import PageTitle from "@/components/ui/page-title";
 import { siteConfig } from "@/config/site";
 import { constructMetadata } from "@/lib/seo";
 import Link from "next/link";
-import { WebPage } from "schema-dts";
+import { type WebPage } from "schema-dts";
 
 export const metadata = constructMetadata({
   title: "Partner worden",

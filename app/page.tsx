@@ -6,7 +6,7 @@ import HeroSection from "@/components/sections/home/hero-section";
 import OurPartnersSection from "@/components/sections/home/our-partners-section";
 import ValuesSection from "@/components/sections/home/values-section";
 import { siteConfig } from "@/config/site";
-import { WebSite } from "schema-dts";
+import { type WebSite } from "schema-dts";
 
 export default function HomePage() {
   return (

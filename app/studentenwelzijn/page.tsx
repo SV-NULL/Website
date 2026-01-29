@@ -4,7 +4,7 @@ import { siteConfig } from "@/config/site";
 import { constructMetadata } from "@/lib/seo";
 import { AppWindow, BookOpenIcon, MailQuestionIcon } from "lucide-react";
 import Link from "next/link";
-import { WebPage } from "schema-dts";
+import { type WebPage } from "schema-dts";
 
 const blocks = [
   {

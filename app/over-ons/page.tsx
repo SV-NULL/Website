@@ -6,7 +6,7 @@ import PageTitle from "@/components/ui/page-title";
 import { siteConfig } from "@/config/site";
 import { constructMetadata } from "@/lib/seo";
 import { BookOpen, Lightbulb, Target, Users } from "lucide-react";
-import { AboutPage } from "schema-dts";
+import { type AboutPage } from "schema-dts";
 
 const pageData = {
   mission: {

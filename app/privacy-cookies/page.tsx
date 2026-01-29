@@ -13,7 +13,7 @@ import {
   UserCheck,
 } from "lucide-react";
 import Link from "next/link";
-import { WebPage } from "schema-dts";
+import { type WebPage } from "schema-dts";
 
 export const metadata = constructMetadata({
   title: "Privacy & Cookies",

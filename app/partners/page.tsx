@@ -6,7 +6,7 @@ import { siteConfig } from "@/config/site";
 import { getPartnerItems } from "@/lib/content";
 import { constructMetadata } from "@/lib/seo";
 import Link from "next/link";
-import { CollectionPage } from "schema-dts";
+import { type CollectionPage } from "schema-dts";
 
 export const metadata = constructMetadata({
   title: "Partners",

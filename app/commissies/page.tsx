@@ -5,7 +5,7 @@ import PageTitle from "@/components/ui/page-title";
 import { siteConfig } from "@/config/site";
 import { getCommittees } from "@/lib/content";
 import { constructMetadata } from "@/lib/seo";
-import { CollectionPage } from "schema-dts";
+import { type CollectionPage } from "schema-dts";
 
 export const metadata = constructMetadata({
   title: "Commissies",

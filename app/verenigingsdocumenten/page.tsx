@@ -4,7 +4,7 @@ import { siteConfig } from "@/config/site";
 import { constructMetadata } from "@/lib/seo";
 import { FileTextIcon } from "lucide-react";
 import Link from "next/link";
-import { CollectionPage } from "schema-dts";
+import { type CollectionPage } from "schema-dts";
 
 const documents = [
   {

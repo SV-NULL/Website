@@ -8,7 +8,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Organization } from "schema-dts";
+import { type Organization } from "schema-dts";
 
 type Props = {
   params: Promise<{ slug: string }>;

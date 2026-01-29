@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { CollectionPage } from "schema-dts";
+import { type CollectionPage } from "schema-dts";
 
 function CollapsibleResources({ resources }: { resources: string[] }) {
   return (

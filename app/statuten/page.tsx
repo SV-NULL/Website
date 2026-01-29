@@ -12,7 +12,7 @@ import {
   Users,
 } from "lucide-react";
 import Link from "next/link";
-import { WebPage } from "schema-dts";
+import { type WebPage } from "schema-dts";
 
 export const metadata = constructMetadata({
   title: "Statuten",

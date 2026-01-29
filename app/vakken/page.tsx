@@ -7,7 +7,7 @@ import { constructMetadata } from "@/lib/seo";
 import { BookOpen, ExternalLink, GraduationCap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { CollectionPage } from "schema-dts";
+import { type CollectionPage } from "schema-dts";
 
 export const metadata = constructMetadata({
   title: "Vakken",
