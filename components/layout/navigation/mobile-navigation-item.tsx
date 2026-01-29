@@ -4,7 +4,7 @@ import { useActivePath } from "@/hooks/use-active-path";
 import { NavItem } from "@/types/image";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import Link from "next/link";
-import { useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 
 type Props = {
   item: NavItem;
@@ -16,9 +16,18 @@ type Props = {
 const MobileNavigationItem = ({ item, isOpen, isLast, onToggle }: Props) => {
   const { isActive } = useActivePath();
   const contentRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState<string | number>(0);
 
   const isParentActive =
     isActive(item.href) || item.sub?.some((s) => isActive(s.href));
+
+  useLayoutEffect(() => {
+    if (isOpen && contentRef.current) {
+      setHeight(contentRef.current.scrollHeight);
+    } else {
+      setHeight(0);
+    }
+  }, [isOpen]);
 
   if (!item.sub) {
     return (
@@ -49,7 +58,7 @@ const MobileNavigationItem = ({ item, isOpen, isLast, onToggle }: Props) => {
 
       <div
         ref={contentRef}
-        style={{ height: isOpen ? contentRef.current?.scrollHeight : 0 }}
+        style={{ height }}
         className="overflow-hidden transition-[height] duration-300 ease-in-out"
       >
         <div className="flex flex-col pb-2 pl-4">
