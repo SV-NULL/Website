@@ -18,8 +18,8 @@ export class EmailTemplateGenerator {
     if (field.formatter) {
       try {
         return field.formatter(value);
-      } catch (error) {
-        console.warn(`Formatter error for field ${field.key}:`, error);
+      } catch (_error) {
+        // If the formatter fails, fall back to the raw value without logging internal details
         return String(value);
       }
     }
@@ -36,7 +36,7 @@ export class EmailTemplateGenerator {
 
   private renderSection(section: EmailSection, data: EmailData): string {
     const title = section.title;
-    const seperator = "=".repeat(title.length);
+    const separator = "=".repeat(title.length);
 
     const fields = section.fields
       .map((field) => {
@@ -46,7 +46,7 @@ export class EmailTemplateGenerator {
       })
       .join("\n");
 
-    return `${title}\n${seperator}\n${fields}`;
+    return `${title}\n${separator}\n${fields}`;
   }
 
   generateText(template: EmailTemplate, data: EmailData): string {
@@ -92,13 +92,11 @@ Systeem: ${system}
         )
         .join("\n");
 
-      footer = `
-${"=".repeat(60)}
+      footer = `${"=".repeat(60)}
 ${footerTitle}
 ${"=".repeat(footerTitle.length)}
 
-${stepsText}
-        `;
+${stepsText}`;
 
       if (template.footer.note) {
         footer += `\n\n${this.replacePlaceholders(template.footer.note, data)}`;
