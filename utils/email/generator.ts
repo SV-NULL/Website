@@ -92,13 +92,11 @@ Systeem: ${system}
         )
         .join("\n");
 
-      footer = `
-${"=".repeat(60)}
+      footer = `${"=".repeat(60)}
 ${footerTitle}
 ${"=".repeat(footerTitle.length)}
 
-${stepsText}
-        `;
+${stepsText}`;
 
       if (template.footer.note) {
         footer += `\n\n${this.replacePlaceholders(template.footer.note, data)}`;
