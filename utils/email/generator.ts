@@ -36,7 +36,7 @@ export class EmailTemplateGenerator {
 
   private renderSection(section: EmailSection, data: EmailData): string {
     const title = section.title;
-    const seperator = "=".repeat(title.length);
+    const separator = "=".repeat(title.length);
 
     const fields = section.fields
       .map((field) => {
@@ -46,7 +46,7 @@ export class EmailTemplateGenerator {
       })
       .join("\n");
 
-    return `${title}\n${seperator}\n${fields}`;
+    return `${title}\n${separator}\n${fields}`;
   }
 
   generateText(template: EmailTemplate, data: EmailData): string {
