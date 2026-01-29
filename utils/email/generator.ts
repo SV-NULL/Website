@@ -18,8 +18,7 @@ export class EmailTemplateGenerator {
     if (field.formatter) {
       try {
         return field.formatter(value);
-      } catch (error) {
-        console.warn(`Formatter error for field ${field.key}:`, error);
+      } catch (_error) {
         return String(value);
       }
     }
