@@ -5,7 +5,7 @@ import { useScrollVisibility } from "@/hooks/use-scroll-visibility";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import HamburgerButton from "./hamburger-button";
 import MobileNavigationItem from "./mobile-navigation-item";
 import NavigationItem from "./navigation-item";
@@ -16,11 +16,13 @@ const Navigation = () => {
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMobileItem, setOpenMobileItem] = useState<string | null>(null);
+  const [lastPathname, setLastPathname] = useState(pathname);
 
-  useEffect(() => {
+  if (pathname !== lastPathname) {
     setMobileOpen(false);
     setOpenMobileItem(null);
-  }, [pathname]);
+    setLastPathname(pathname);
+  }
 
   return (
     <nav
