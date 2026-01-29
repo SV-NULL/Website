@@ -16,30 +16,33 @@ export function useFormValidation(schema: ZodObject) {
   });
   const [formValues, setFormValues] = useState<FormValues>({});
 
-  const validateField = useCallback((name: string, value: string) => {
-    const fieldData = { [name]: value };
-    const result = schema
-      .pick({ [name]: true } as Parameters<typeof schema.pick>[0])
-      .safeParse(fieldData);
+  const validateField = useCallback(
+    (name: string, value: string) => {
+      const fieldData = { [name]: value };
+      const result = schema
+        .pick({ [name]: true } as Parameters<typeof schema.pick>[0])
+        .safeParse(fieldData);
 
-    setValidationState((prev) => {
-      const newFieldErrors = { ...prev.fieldErrors };
+      setValidationState((prev) => {
+        const newFieldErrors = { ...prev.fieldErrors };
 
-      if (!result.success) {
-        const error = result.error.issues[0];
-        if (error) {
-          newFieldErrors[name] = error.message;
+        if (!result.success) {
+          const error = result.error.issues[0];
+          if (error) {
+            newFieldErrors[name] = error.message;
+          }
+        } else {
+          delete newFieldErrors[name];
         }
-      } else {
-        delete newFieldErrors[name];
-      }
 
-      return {
-        ...prev,
-        fieldErrors: newFieldErrors,
-      };
-    });
-  }, []);
+        return {
+          ...prev,
+          fieldErrors: newFieldErrors,
+        };
+      });
+    },
+    [schema],
+  );
 
   const markFieldAsTouched = useCallback((name: string) => {
     setValidationState((prev) => ({
