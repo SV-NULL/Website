@@ -6,6 +6,19 @@ interface PartnerData {
   [key: string]: unknown;
 }
 
+const packageLabels: Record<string, string> = {
+  klein: "Klein (€400/jaar)",
+  middel: "Middel (€750/jaar)",
+  groot: "Groot (€1100/jaar)",
+  hoofdsponsor: "Hoofdsponsor (€1800/jaar)",
+  "weet-niet": "Weet ik nog niet",
+};
+
+const meetingLabels: Record<string, string> = {
+  digital: "Digitaal koffietje",
+  info: "Stuur eerst maar meer info",
+};
+
 export const becomePartnerApplicationTemplate: EmailTemplate = {
   subject: (data) => {
     const { companyName } = data as PartnerData;
@@ -16,8 +29,8 @@ export const becomePartnerApplicationTemplate: EmailTemplate = {
     {
       title: "BEDRIJFSINFORMATIE",
       fields: [
+        { key: "name", label: "Naam", required: true },
         { key: "companyName", label: "Bedrijfsnaam", required: true },
-        { key: "contactPerson", label: "Contactpersoon", required: true },
         { key: "email", label: "E-mailadres", required: true },
         {
           key: "phone",
@@ -25,7 +38,25 @@ export const becomePartnerApplicationTemplate: EmailTemplate = {
           required: false,
           formatter: commonFormatters.phoneNumber,
         },
-        { key: "message", label: "Motivatie", required: true },
+      ],
+    },
+    {
+      title: "INTERESSE",
+      fields: [
+        {
+          key: "packageInterest",
+          label: "Geïnteresseerd in pakket",
+          required: true,
+          formatter: (value) =>
+            packageLabels[value as string] || (value as string),
+        },
+        {
+          key: "meetingPreference",
+          label: "Voorkeur kennismaking",
+          required: true,
+          formatter: (value) =>
+            meetingLabels[value as string] || (value as string),
+        },
       ],
     },
   ],

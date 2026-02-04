@@ -30,11 +30,14 @@ export type MembershipApplicationData = z.infer<
 };
 
 export const becomePartnerSchema = z.object({
+  name: z.string().min(1, "Naam is verplicht"),
   companyName: z.string().min(1, "Bedrijfsnaam is verplicht"),
-  contactPerson: z.string().min(1, "Contactpersoon is verplicht"),
   email: z.email("Ongeldig e-mailadres"),
   phone: z.string().optional(),
-  message: z.string().min(1, "Dit veld is verplicht"),
+  packageInterest: z.string().min(1, "Kies een pakket"),
+  meetingPreference: z.enum(["digital", "info"], {
+    error: "Maak een keuze",
+  }),
 });
 
 export type BecomePartnerData = z.infer<typeof becomePartnerSchema>;
