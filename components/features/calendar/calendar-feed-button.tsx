@@ -148,7 +148,7 @@ export default function CalendarFeedButton() {
                     <div className="mr-2 flex w-5 items-center justify-center">
                       <Image
                         src="/images/Apple_logo_black.svg"
-                        alt="Apple Agenda"
+                        alt="Apple Logo"
                         width={14}
                         height={14}
                       />
