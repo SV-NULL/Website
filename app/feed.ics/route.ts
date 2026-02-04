@@ -4,6 +4,7 @@ import ical, {
   ICalEventStatus,
   ICalEventTransparency,
 } from "ical-generator";
+import { DateTime } from "luxon";
 
 export const dynamic = "force-dynamic";
 
@@ -50,30 +51,39 @@ export async function GET() {
     }
     const title = prependText ? `${prependText} ${event.title}` : event.title;
 
-    const start = new Date(event.date);
+    let start = new Date(event.date);
     let end: Date | null = null;
     let allDay = true;
 
     if (event.time) {
       allDay = false;
+      const dateStrBase = event.date.toISOString().slice(0, 10);
       const times = event.time.split("-").map((t) => t.trim());
-      const [startH, startM] = times[0].split(":").map(Number);
+      const startTimeStr = times[0];
 
-      start.setHours(startH, startM);
+      const startDt = DateTime.fromFormat(
+        `${dateStrBase} ${startTimeStr}`,
+        "yyyy-MM-dd HH:mm",
+        { zone: "Europe/Amsterdam" },
+      );
+      start = startDt.toJSDate();
 
       if (times.length > 1) {
-        const [endH, endM] = times[1].split(":").map(Number);
-        end = new Date(start);
-        end.setHours(endH, endM);
+        const endTimeStr = times[1];
+        let endDt = DateTime.fromFormat(
+          `${dateStrBase} ${endTimeStr}`,
+          "yyyy-MM-dd HH:mm",
+          { zone: "Europe/Amsterdam" },
+        );
 
         // Handle crossing midnight
-        if (end < start) {
-          end.setDate(end.getDate() + 1);
+        if (endDt < startDt) {
+          endDt = endDt.plus({ days: 1 });
         }
+        end = endDt.toJSDate();
       } else {
         // Default 1 hour duration if no end time specified
-        end = new Date(start);
-        end.setHours(start.getHours() + 1);
+        end = startDt.plus({ hours: 1 }).toJSDate();
       }
     }
 
