@@ -8,7 +8,7 @@ import {
   Transition,
 } from "@headlessui/react";
 import { Rss, Copy, Check } from "lucide-react";
-import { Fragment, useState, useEffect} from "react";
+import { Fragment, useState, useEffect } from "react";
 import Image from "next/image";
 import { clsx } from "clsx";
 
