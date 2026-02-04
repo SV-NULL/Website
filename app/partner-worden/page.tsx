@@ -13,10 +13,18 @@ import { type WebPage } from "schema-dts";
 export const metadata = constructMetadata({
   title: "Partner worden | Verbind met IT-talent",
   description:
-    "Word partner van Studievereniging NULL en krijg direct toegang tot 70+ gemotiveerde HBO-ICT studenten. Bekijk onze sponsorpakketten.",
+    "Word partner van studievereniging NULL en krijg direct toegang tot 70+ gemotiveerde HBO-ICT studenten. Bekijk onze sponsorpakketten.",
 });
 
-export default function PartnerWordenPage() {
+type Props = {
+  searchParams: Promise<{
+    pakket?: string;
+  }>;
+};
+
+export default async function PartnerWordenPage({ searchParams }: Props) {
+  const { pakket } = await searchParams;
+
   return (
     <div className="-mt-32">
       <JsonLd<WebPage>
@@ -25,31 +33,17 @@ export default function PartnerWordenPage() {
           "@type": "WebPage",
           name: "Partner worden",
           description:
-            "Word partner van Studievereniging NULL en krijg direct toegang tot 70+ gemotiveerde HBO-ICT studenten.",
+            "Word partner van studievereniging NULL en krijg direct toegang tot 70+ gemotiveerde HBO-ICT studenten.",
           url: `${siteConfig.url}/partner-worden`,
         }}
       />
-
-      {/* Hero Section */}
       <PartnerHeroSection />
-
-      {/* Social Proof - Partner Logos */}
       <PartnerSocialProofSection />
-
-      {/* Benefits - What's in it for you */}
       <PartnerBenefitsSection />
-
-      {/* Success Story / Testimonial */}
       <PartnerSuccessStorySection />
-
-      {/* Packages / Pricing */}
       <PartnerPackagesSection />
-
-      {/* FAQ Section */}
       <PartnerFAQSection />
-
-      {/* Contact Form */}
-      <PartnerContactSection />
+      <PartnerContactSection pakket={pakket} />
     </div>
   );
 }

@@ -6,7 +6,6 @@ import { becomePartnerSchema } from "@/lib/validation";
 import { Download, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
 
 const PACKAGE_OPTIONS = [
@@ -20,9 +19,11 @@ const PACKAGE_OPTIONS = [
 
 const VALID_PACKAGES = ["klein", "middel", "groot", "hoofdsponsor"];
 
-const PartnerContactSection = () => {
-  const searchParams = useSearchParams();
+type Props = {
+  pakket?: string;
+};
 
+const PartnerContactSection = ({ pakket }: Props) => {
   const {
     isSubmitting,
     error,
@@ -42,7 +43,6 @@ const PartnerContactSection = () => {
   const previousPakket = React.useRef<string | null>(null);
 
   useEffect(() => {
-    const pakket = searchParams.get("pakket");
     if (
       pakket &&
       VALID_PACKAGES.includes(pakket) &&
@@ -51,7 +51,7 @@ const PartnerContactSection = () => {
       previousPakket.current = pakket;
       handleInputChange("packageInterest", pakket);
     }
-  }, [searchParams, handleInputChange]);
+  }, [pakket, handleInputChange]);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
