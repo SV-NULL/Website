@@ -1,19 +1,15 @@
-import { getCalendarItems } from "@/lib/content/repositories/calendar";
-import ical, {
-  ICalCalendarMethod,
-  ICalEventStatus,
-  ICalEventTransparency,
-} from "ical-generator";
-import { DateTime } from "luxon";
+import {getCalendarItems} from '@/lib/content/repositories/calendar';
+import ical, {ICalCalendarMethod, ICalEventStatus, ICalEventTransparency,} from 'ical-generator';
+import {DateTime} from 'luxon';
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 export async function GET() {
   const calendar = ical({
-    name: "s.v. NULL",
+    name: 's.v. NULL',
     method: ICalCalendarMethod.PUBLISH,
-    prodId: { company: "s.v. NULL", product: "Website" },
-    timezone: "Europe/Amsterdam",
+    prodId: {company: 's.v. NULL', product: 'Website'},
+    timezone: 'Europe/Amsterdam',
   });
 
   const events = getCalendarItems();
@@ -31,19 +27,26 @@ export async function GET() {
     // tentative tag from title.
     const isTentative = (!event.confirmed || !event.time) && !event.registerUrl;
     let dateStr;
+    let dateStrLong;
 
-    let prependText = isTentative ? "[Niet definitief] " : "";
+    let prependText = isTentative ? '[Niet definitief] ' : '';
     if (event.registerUrl) {
-      const deadline = event.registerDeadline
-        ? new Date(event.registerDeadline)
-        : null;
+      const deadline =
+          event.registerDeadline ? new Date(event.registerDeadline) : null;
 
       if (deadline && !isNaN(deadline.getTime())) {
-        const formatter = new Intl.DateTimeFormat("nl-NL", {
-          day: "numeric",
-          month: "short",
+        const formatter = new Intl.DateTimeFormat('nl-NL', {
+          day: 'numeric',
+          month: 'short',
         });
         dateStr = formatter.format(deadline);
+
+        const formatterLong = new Intl.DateTimeFormat('nl-NL', {
+          day: 'numeric',
+          month: 'long',
+        });
+        dateStrLong = formatterLong.format(deadline);
+
         prependText = `[Aanmelden voor ${dateStr}]`;
       } else {
         prependText = `[Aanmelden]`;
@@ -52,38 +55,38 @@ export async function GET() {
     const title = prependText ? `${prependText} ${event.title}` : event.title;
 
     let start = new Date(event.date);
-    let end: Date | null = null;
+    let end: Date|null = null;
     let allDay = true;
 
     if (event.time) {
       allDay = false;
       const dateStrBase = event.date.toISOString().slice(0, 10);
-      const times = event.time.split("-").map((t) => t.trim());
+      const times = event.time.split('-').map((t) => t.trim());
       const startTimeStr = times[0];
 
       const startDt = DateTime.fromFormat(
-        `${dateStrBase} ${startTimeStr}`,
-        "yyyy-MM-dd HH:mm",
-        { zone: "Europe/Amsterdam" },
+          `${dateStrBase} ${startTimeStr}`,
+          'yyyy-MM-dd HH:mm',
+          {zone: 'Europe/Amsterdam'},
       );
       start = startDt.toJSDate();
 
       if (times.length > 1) {
         const endTimeStr = times[1];
         let endDt = DateTime.fromFormat(
-          `${dateStrBase} ${endTimeStr}`,
-          "yyyy-MM-dd HH:mm",
-          { zone: "Europe/Amsterdam" },
+            `${dateStrBase} ${endTimeStr}`,
+            'yyyy-MM-dd HH:mm',
+            {zone: 'Europe/Amsterdam'},
         );
 
         // Handle crossing midnight
         if (endDt < startDt) {
-          endDt = endDt.plus({ days: 1 });
+          endDt = endDt.plus({days: 1});
         }
         end = endDt.toJSDate();
       } else {
         // Default 1 hour duration if no end time specified
-        end = startDt.plus({ hours: 1 }).toJSDate();
+        end = startDt.plus({hours: 1}).toJSDate();
       }
     }
 
@@ -94,8 +97,8 @@ export async function GET() {
       summary: title,
       description: event.content,
       location: event.location,
-      url:
-        event.registerUrl || event.locationUrl || `https://svnull.nl/kalender`, // Prioritize register URL, then
+      url: event.registerUrl || event.locationUrl ||
+          `https://svnull.nl/kalender`,  // Prioritize register URL, then
       // location, then detail page
     });
 
@@ -108,12 +111,12 @@ export async function GET() {
 
     // Add registration link to description
     if (event.registerUrl) {
-      if (dateStr) {
-        description = `Aanmelden kan tot voor ${dateStr}: ${
-          event.registerUrl
-        }\n\n${description}`;
+      if (dateStrLong) {
+        description = `Aanmelden kan tot voor ${dateStrLong}: ${
+            event.registerUrl}\n\n${description}`;
       } else {
-        description = `Aanmelden kan via: ${event.registerUrl}\n\n${description}`;
+        description =
+            `Aanmelden kan via: ${event.registerUrl}\n\n${description}`;
       }
     }
 
@@ -127,11 +130,11 @@ export async function GET() {
 
   return new Response(calendar.toString(), {
     headers: {
-      "Content-Type": "text/calendar; charset=utf-8",
-      "Content-Disposition": 'inline; filename="calendar.ics"',
-      "Cache-Control": "no-cache, no-store, must-revalidate",
-      Pragma: "no-cache",
-      Expires: "0",
+      'Content-Type': 'text/calendar; charset=utf-8',
+      'Content-Disposition': 'inline; filename="calendar.ics"',
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      Pragma: 'no-cache',
+      Expires: '0',
     },
   });
 }
