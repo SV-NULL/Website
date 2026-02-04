@@ -98,9 +98,13 @@ export async function GET() {
 
     // Add registration link to description
     if (event.registerUrl) {
-      description = `Aanmelden kan tot voor ${dateStr}: ${
-        event.registerUrl
-      }\n\n${description}`;
+      if (dateStr) {
+        description = `Aanmelden kan tot voor ${dateStr}: ${
+          event.registerUrl
+        }\n\n${description}`;
+      } else {
+        description = `Aanmelden kan via: ${event.registerUrl}\n\n${description}`;
+      }
     }
 
     // Attach location URL if possible.
