@@ -1,4 +1,5 @@
 import { ActivityItem, ActivityItemFrontmatterSchema } from "@/types/calendar";
+
 import { loadMarkdownFiles } from "../loader";
 
 /**
@@ -14,6 +15,11 @@ function mapToActivityItem(
   data: Record<string, unknown>,
   content: string,
 ): ActivityItem {
+  // Normalize registerURL to registerUrl to handle inconsistency in markdown
+  // files
+  if (data.registerURL && !data.registerUrl) {
+    data.registerUrl = data.registerURL;
+  }
   const validatedData = ActivityItemFrontmatterSchema.parse(data);
 
   return {
@@ -38,7 +44,8 @@ export function getCalendarItems(): ActivityItem[] {
 }
 
 /**
- * Retrieves and returns upcoming calendar activity items, optionally limited by count.
+ * Retrieves and returns upcoming calendar activity items, optionally limited by
+ * count.
  *
  * @param count Optional number to limit the number of upcoming items returned.
  * @returns An array of upcoming ActivityItem objects.
