@@ -16,6 +16,7 @@
     "@headlessui/react": "^2.2.4",
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
+    "ical-generator": "^10.0.0",
     "lucide-react": "^0.525.0",
     "next": "^16.1.6",
     "nodemailer": "^7.0.5",
