@@ -8,6 +8,16 @@ import { DateTime } from "luxon";
 
 export const dynamic = "force-dynamic";
 
+const dateFormatter = new Intl.DateTimeFormat("nl-NL", {
+  day: "numeric",
+  month: "short",
+});
+
+const dateFormatterLong = new Intl.DateTimeFormat("nl-NL", {
+  day: "numeric",
+  month: "long",
+});
+
 export async function GET() {
   const calendar = ical({
     name: "s.v. NULL",
@@ -19,44 +29,25 @@ export async function GET() {
   const events = getCalendarItems();
 
   events.forEach((event) => {
-    if (!event.date) return;
-    // If date is not determined (placeholder event), do not add to calendar
-    // feed
-    if (event.notDetermined) return;
+    if (!event.date || event.notDetermined) return;
 
-    // Tentative logic:
-    // 1. Explicitly flagged as not confirmed.
-    // 2. OR Time is missing (AND no registration URL is present).
-    // If registerUrl is present, we consider it definitive enough to drop the
-    // tentative tag from title.
     const isTentative = (!event.confirmed || !event.time) && !event.registerUrl;
-    let dateStr;
-    let dateStrLong;
 
-    let prependText = isTentative ? "[Niet definitief] " : "";
+    let prependText = "";
     if (event.registerUrl) {
       const deadline = event.registerDeadline
         ? new Date(event.registerDeadline)
         : null;
 
       if (deadline && !isNaN(deadline.getTime())) {
-        const formatter = new Intl.DateTimeFormat("nl-NL", {
-          day: "numeric",
-          month: "short",
-        });
-        dateStr = formatter.format(deadline);
-
-        const formatterLong = new Intl.DateTimeFormat("nl-NL", {
-          day: "numeric",
-          month: "long",
-        });
-        dateStrLong = formatterLong.format(deadline);
-
-        prependText = `[Aanmelden voor ${dateStr}]`;
+        prependText = `[Aanmelden voor ${dateFormatter.format(deadline)}]`;
       } else {
         prependText = `[Aanmelden]`;
       }
+    } else if (isTentative) {
+      prependText = `[Niet definitief]`;
     }
+
     const title = prependText ? `${prependText} ${event.title}` : event.title;
 
     let start = new Date(event.date);
@@ -66,8 +57,9 @@ export async function GET() {
     if (event.time) {
       allDay = false;
       const dateStrBase = event.date.toISOString().slice(0, 10);
-      const times = event.time.split("-").map((t) => t.trim());
-      const startTimeStr = times[0];
+      const [startTimeStr, endTimeStr] = event.time
+        .split("-")
+        .map((t) => t.trim());
 
       const startDt = DateTime.fromFormat(
         `${dateStrBase} ${startTimeStr}`,
@@ -76,61 +68,56 @@ export async function GET() {
       );
       start = startDt.toJSDate();
 
-      if (times.length > 1) {
-        const endTimeStr = times[1];
+      if (endTimeStr) {
         let endDt = DateTime.fromFormat(
           `${dateStrBase} ${endTimeStr}`,
           "yyyy-MM-dd HH:mm",
           { zone: "Europe/Amsterdam" },
         );
 
-        // Handle crossing midnight
         if (endDt < startDt) {
           endDt = endDt.plus({ days: 1 });
         }
         end = endDt.toJSDate();
       } else {
-        // Default 1 hour duration if no end time specified
         end = startDt.plus({ hours: 1 }).toJSDate();
       }
     }
 
+    let description = event.content;
+
+    if (event.registerUrl) {
+      const deadline = event.registerDeadline
+        ? new Date(event.registerDeadline)
+        : null;
+
+      const deadlineText =
+        deadline && !isNaN(deadline.getTime())
+          ? `Aanmelden kan tot voor ${dateFormatterLong.format(deadline)}: ${event.registerUrl}`
+          : `Aanmelden kan via: ${event.registerUrl}`;
+
+      description = `${deadlineText}\n\n${description}`;
+    }
+
+    if (event.locationUrl) {
+      description = `${description}\n\nLocatie: ${event.locationUrl}`;
+    }
+
     const icalEvent = calendar.createEvent({
-      start: start,
-      end: end,
-      allDay: allDay,
+      start,
+      end,
+      allDay,
       summary: title,
-      description: event.content,
+      description,
       location: event.location,
       url:
-        event.registerUrl || event.locationUrl || `https://svnull.nl/kalender`, // Prioritize register URL, then
-      // location, then detail page
+        event.registerUrl || event.locationUrl || `https://svnull.nl/kalender`,
     });
 
     if (isTentative) {
       icalEvent.status(ICalEventStatus.TENTATIVE);
       icalEvent.transparency(ICalEventTransparency.TRANSPARENT);
     }
-
-    let description = event.content;
-
-    // Add registration link to description
-    if (event.registerUrl) {
-      if (dateStrLong) {
-        description = `Aanmelden kan tot voor ${dateStrLong}: ${
-          event.registerUrl
-        }\n\n${description}`;
-      } else {
-        description = `Aanmelden kan via: ${event.registerUrl}\n\n${description}`;
-      }
-    }
-
-    // Attach location URL if possible.
-    if (event.locationUrl) {
-      description = `${description}\n\nLocatie: ${event.locationUrl}`;
-    }
-
-    icalEvent.description(description);
   });
 
   return new Response(calendar.toString(), {
