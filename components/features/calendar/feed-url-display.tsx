@@ -10,6 +10,9 @@ const FeedUrlDisplay = ({ feedUrl }: Props) => {
 
   return (
     <div className="p-2">
+      <span className="text-xs text-gray-600 pl-1.5">
+        Of; handmatig toevoegen:
+      </span>
       <div className="flex items-center gap-2 rounded-lg bg-gray-50 p-2 border border-gray-100">
         <span className="flex-1 truncate font-mono text-xs text-gray-600 select-all">
           {feedUrl || "Loading..."}
