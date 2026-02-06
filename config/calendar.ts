@@ -6,7 +6,7 @@ export const CALENDAR_CONFIG = {
 } as const;
 
 export const CALENDAR_PROVIDER_ICONS = {
-  GOOGLE: "/images/google-calendar.svg",
+  GOOGLE: "/images/google-calendar.png",
   OUTLOOK: "/images/outlook-calendar.png",
   APPLE: "/images/Apple_logo_black.svg",
 } as const;
