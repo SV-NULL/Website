@@ -30,7 +30,7 @@ export default function CalendarPage() {
         title="Kalender"
         subtitle="Bekijk onze aankomende activiteiten en evenementen en plan ze in je agenda!"
       />
-      <div className="flex justify-start sm:justify-end -mt-20 mb-10 relative z-20 w-full max-w-4xl mx-auto">
+      <div className="flex justify-start sm:justify-end -mt-20 mb-10 relative z-20 w-full">
         <CalendarFeedButton />
       </div>
       <CalendarGrid />
