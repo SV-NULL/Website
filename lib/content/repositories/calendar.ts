@@ -15,8 +15,6 @@ function mapToActivityItem(
   data: Record<string, unknown>,
   content: string,
 ): ActivityItem {
-  // Normalize registerURL to registerUrl to handle inconsistency in markdown
-  // files
   if (data.registerURL && !data.registerUrl) {
     data.registerUrl = data.registerURL;
   }

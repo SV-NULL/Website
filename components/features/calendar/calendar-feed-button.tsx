@@ -17,7 +17,6 @@ export default function CalendarFeedButton() {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    // Avoid synchronous set state causing hydration mismatch warning
     const timer = setTimeout(() => {
       setFeedUrl(`${window.location.origin}/feed.ics`);
     }, 0);
@@ -38,8 +37,6 @@ export default function CalendarFeedButton() {
           console.error("Failed to copy using Clipboard API", e);
         });
     } else {
-      // Fallback for non-secure contexts (http), such as access via local network
-      // ip during development. Localhost is considered secure, so Clipboard API should work there.
       const textArea = document.createElement("textarea");
       textArea.value = url;
       textArea.style.position = "fixed";
@@ -48,7 +45,7 @@ export default function CalendarFeedButton() {
       textArea.focus();
       textArea.select();
       try {
-        document.execCommand("copy"); // use deprecated execCommand in this case.
+        document.execCommand("copy");
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
       } catch (err) {
@@ -59,7 +56,6 @@ export default function CalendarFeedButton() {
   };
 
   const getGoogleUrl = () => {
-    // For google calendar pass feed URL as cid param
     const googleFeedUrl = feedUrl.replace(/^https?:\/\//, "webcal://");
     return `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(googleFeedUrl)}`;
   };
@@ -69,7 +65,6 @@ export default function CalendarFeedButton() {
   };
 
   const getWebCalUrl = () => {
-    // Apple/IOS/MacOS use webcal:// scheme to subscribe to calendars
     return feedUrl.replace(/^https?:\/\//, "webcal://");
   };
 

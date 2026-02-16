@@ -20,15 +20,8 @@ export async function GET() {
 
   events.forEach((event) => {
     if (!event.date) return;
-    // If date is not determined (placeholder event), do not add to calendar
-    // feed
     if (event.notDetermined) return;
 
-    // Tentative logic:
-    // 1. Explicitly flagged as not confirmed.
-    // 2. OR Time is missing (AND no registration URL is present).
-    // If registerUrl is present, we consider it definitive enough to drop the
-    // tentative tag from title.
     const isTentative = (!event.confirmed || !event.time) && !event.registerUrl;
     let dateStr;
     let dateStrLong;
@@ -84,13 +77,11 @@ export async function GET() {
           { zone: "Europe/Amsterdam" },
         );
 
-        // Handle crossing midnight
         if (endDt < startDt) {
           endDt = endDt.plus({ days: 1 });
         }
         end = endDt.toJSDate();
       } else {
-        // Default 1 hour duration if no end time specified
         end = startDt.plus({ hours: 1 }).toJSDate();
       }
     }
@@ -103,8 +94,7 @@ export async function GET() {
       description: event.content,
       location: event.location,
       url:
-        event.registerUrl || event.locationUrl || `https://svnull.nl/kalender`, // Prioritize register URL, then
-      // location, then detail page
+        event.registerUrl || event.locationUrl || `https://svnull.nl/kalender`,
     });
 
     if (isTentative) {
@@ -114,7 +104,6 @@ export async function GET() {
 
     let description = event.content;
 
-    // Add registration link to description
     if (event.registerUrl) {
       if (dateStrLong) {
         description = `Aanmelden kan tot voor ${dateStrLong}: ${
@@ -125,7 +114,6 @@ export async function GET() {
       }
     }
 
-    // Attach location URL if possible.
     if (event.locationUrl) {
       description = `${description}\n\nLocatie: ${event.locationUrl}`;
     }
