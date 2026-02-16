@@ -15,8 +15,11 @@ function mapToActivityItem(
   data: Record<string, unknown>,
   content: string,
 ): ActivityItem {
-  if (data.registerURL && !data.registerUrl) {
-    data.registerUrl = data.registerURL;
+  if (data.registerURL) {
+    if (!data.registerUrl) {
+      data.registerUrl = data.registerURL;
+    }
+    delete data.registerURL;
   }
   const validatedData = ActivityItemFrontmatterSchema.parse(data);
 
