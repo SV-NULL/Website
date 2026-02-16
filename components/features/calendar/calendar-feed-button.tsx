@@ -114,6 +114,7 @@ export default function CalendarFeedButton() {
                   <a
                     href={getOutlookUrl()}
                     target="_blank"
+                    rel="noreferrer"
                     className={clsx(
                       focus ? "bg-yellow-100 text-yellow-900" : "text-gray-900",
                       "group flex w-full items-center rounded-lg px-2 py-2 text-sm",
