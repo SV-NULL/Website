@@ -110,7 +110,7 @@ export async function GET() {
         icalEvent.transparency(ICalEventTransparency.TRANSPARENT);
       }
 
-      let description = event.content;
+      let description = event.content || "";
 
       if (event.registerUrl) {
         if (dateStrLong) {
