@@ -52,8 +52,8 @@ export async function GET() {
     }
     const title = prependText ? `${prependText} ${event.title}` : event.title;
 
-    let start = new Date(event.date);
-    let end: Date | null = null;
+    let start: Date | DateTime = new Date(event.date);
+    let end: Date | DateTime | null = null;
     let allDay = true;
 
     if (event.time) {
@@ -67,7 +67,7 @@ export async function GET() {
         "yyyy-MM-dd HH:mm",
         { zone: "Europe/Amsterdam" },
       );
-      start = startDt.toJSDate();
+      start = startDt;
 
       if (times.length > 1) {
         const endTimeStr = times[1];
@@ -80,9 +80,9 @@ export async function GET() {
         if (endDt < startDt) {
           endDt = endDt.plus({ days: 1 });
         }
-        end = endDt.toJSDate();
+        end = endDt;
       } else {
-        end = startDt.plus({ hours: 1 }).toJSDate();
+        end = startDt.plus({ hours: 1 });
       }
     }
 
@@ -95,6 +95,7 @@ export async function GET() {
       location: event.location,
       url:
         event.registerUrl || event.locationUrl || `https://svnull.nl/kalender`,
+      timezone: !allDay ? "Europe/Amsterdam" : undefined,
     });
 
     if (isTentative) {
