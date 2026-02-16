@@ -24,8 +24,8 @@ export async function GET() {
     if (event.notDetermined) return;
 
     const isTentative = (!event.confirmed || !event.time) && !event.registerUrl;
-    let dateStr;
-    let dateStrLong;
+    let dateStr: string | undefined;
+    let dateStrLong: string | undefined;
 
     let prependText = isTentative ? "[Niet definitief] " : "";
     if (event.registerUrl) {
