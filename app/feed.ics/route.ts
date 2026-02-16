@@ -28,7 +28,7 @@ export async function GET() {
       let dateStr: string | undefined;
       let dateStrLong: string | undefined;
 
-      let prependText = isTentative ? "[Niet definitief] " : "";
+      let titlePrefix = isTentative ? "[Niet definitief] " : "";
       if (event.registerUrl) {
         const deadline = event.registerDeadline
           ? new Date(event.registerDeadline)
@@ -47,12 +47,12 @@ export async function GET() {
           });
           dateStrLong = formatterLong.format(deadline);
 
-          prependText = `[Aanmelden voor ${dateStr}]`;
+          titlePrefix = `[Aanmelden voor ${dateStr}]`;
         } else {
-          prependText = `[Aanmelden]`;
+          titlePrefix = `[Aanmelden]`;
         }
       }
-      const title = prependText ? `${prependText} ${event.title}` : event.title;
+      const title = titlePrefix ? `${titlePrefix} ${event.title}` : event.title;
 
       let start = DateTime.fromJSDate(event.date);
       let end: DateTime | null = null;
