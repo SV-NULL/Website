@@ -1,3 +1,4 @@
+import { siteConfig } from "@/config/site";
 import { getCalendarItems } from "@/lib/content/repositories/calendar";
 import ical, {
   ICalCalendarMethod,
@@ -94,7 +95,7 @@ export async function GET() {
       description: event.content,
       location: event.location,
       url:
-        event.registerUrl || event.locationUrl || `https://svnull.nl/kalender`,
+        event.registerUrl || event.locationUrl || `${siteConfig.url}/kalender`,
       timezone: !allDay ? "Europe/Amsterdam" : undefined,
     });
 
