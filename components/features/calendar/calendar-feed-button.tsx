@@ -102,7 +102,7 @@ export default function CalendarFeedButton() {
                   >
                     <div className="mr-2 flex w-5 items-center justify-center">
                       <Image
-                        src="/images/google-calendar.svg"
+                        src="/images/google-calendar.png"
                         alt="Google Agenda"
                         width={18}
                         height={18}
