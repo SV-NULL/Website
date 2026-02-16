@@ -54,8 +54,8 @@ export async function GET() {
       }
       const title = prependText ? `${prependText} ${event.title}` : event.title;
 
-      let start: Date | DateTime = new Date(event.date);
-      let end: Date | DateTime | null = null;
+      let start = DateTime.fromJSDate(event.date);
+      let end: DateTime | null = null;
       let allDay = true;
 
       if (event.time) {
@@ -90,6 +90,10 @@ export async function GET() {
             }
           }
         }
+      }
+
+      if (allDay && !end) {
+        end = start.plus({ days: 1 });
       }
 
       const icalEvent = calendar.createEvent({
