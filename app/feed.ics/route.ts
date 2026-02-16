@@ -1,16 +1,20 @@
-import {siteConfig} from '@/config/site';
-import {getCalendarItems} from '@/lib/content/repositories/calendar';
-import ical, {ICalCalendarMethod, ICalEventStatus, ICalEventTransparency,} from 'ical-generator';
-import {DateTime} from 'luxon';
+import { siteConfig } from "@/config/site";
+import { getCalendarItems } from "@/lib/content/repositories/calendar";
+import ical, {
+  ICalCalendarMethod,
+  ICalEventStatus,
+  ICalEventTransparency,
+} from "ical-generator";
+import { DateTime } from "luxon";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   const calendar = ical({
-    name: 's.v. NULL',
+    name: "s.v. NULL",
     method: ICalCalendarMethod.PUBLISH,
-    prodId: {company: 's.v. NULL', product: 'Website'},
-    timezone: 'Europe/Amsterdam',
+    prodId: { company: "s.v. NULL", product: "Website" },
+    timezone: "Europe/Amsterdam",
   });
 
   const events = getCalendarItems();
@@ -23,21 +27,22 @@ export async function GET() {
     let dateStr;
     let dateStrLong;
 
-    let prependText = isTentative ? '[Niet definitief] ' : '';
+    let prependText = isTentative ? "[Niet definitief] " : "";
     if (event.registerUrl) {
-      const deadline =
-          event.registerDeadline ? new Date(event.registerDeadline) : null;
+      const deadline = event.registerDeadline
+        ? new Date(event.registerDeadline)
+        : null;
 
       if (deadline && !isNaN(deadline.getTime())) {
-        const formatter = new Intl.DateTimeFormat('nl-NL', {
-          day: 'numeric',
-          month: 'short',
+        const formatter = new Intl.DateTimeFormat("nl-NL", {
+          day: "numeric",
+          month: "short",
         });
         dateStr = formatter.format(deadline);
 
-        const formatterLong = new Intl.DateTimeFormat('nl-NL', {
-          day: 'numeric',
-          month: 'long',
+        const formatterLong = new Intl.DateTimeFormat("nl-NL", {
+          day: "numeric",
+          month: "long",
         });
         dateStrLong = formatterLong.format(deadline);
 
@@ -48,19 +53,19 @@ export async function GET() {
     }
     const title = prependText ? `${prependText} ${event.title}` : event.title;
 
-    let start: Date|DateTime = new Date(event.date);
-    let end: Date|DateTime|null = null;
+    let start: Date | DateTime = new Date(event.date);
+    let end: Date | DateTime | null = null;
     let allDay = true;
 
     if (event.time) {
       const dateStrBase = event.date.toISOString().slice(0, 10);
-      const times = event.time.split('-').map((t) => t.trim());
+      const times = event.time.split("-").map((t) => t.trim());
       const startTimeStr = times[0];
 
       const startDt = DateTime.fromFormat(
-          `${dateStrBase} ${startTimeStr}`,
-          'yyyy-MM-dd HH:mm',
-          {zone: 'Europe/Amsterdam'},
+        `${dateStrBase} ${startTimeStr}`,
+        "yyyy-MM-dd HH:mm",
+        { zone: "Europe/Amsterdam" },
       );
 
       if (startDt.isValid) {
@@ -70,19 +75,19 @@ export async function GET() {
         if (times.length > 1) {
           const endTimeStr = times[1];
           let endDt = DateTime.fromFormat(
-              `${dateStrBase} ${endTimeStr}`,
-              'yyyy-MM-dd HH:mm',
-              {zone: 'Europe/Amsterdam'},
+            `${dateStrBase} ${endTimeStr}`,
+            "yyyy-MM-dd HH:mm",
+            { zone: "Europe/Amsterdam" },
           );
 
           if (endDt.isValid) {
             if (endDt < startDt) {
-              endDt = endDt.plus({days: 1});
+              endDt = endDt.plus({ days: 1 });
             }
             end = endDt;
           }
         } else {
-          end = startDt.plus({hours: 1});
+          end = startDt.plus({ hours: 1 });
         }
       }
     }
@@ -92,11 +97,10 @@ export async function GET() {
       end: end,
       allDay: allDay,
       summary: title,
-      description: event.content,
       location: event.location,
-      url: event.registerUrl || event.locationUrl ||
-          `${siteConfig.url}/kalender`,
-      timezone: !allDay ? 'Europe/Amsterdam' : undefined,
+      url:
+        event.registerUrl || event.locationUrl || `${siteConfig.url}/kalender`,
+      timezone: !allDay ? "Europe/Amsterdam" : undefined,
     });
 
     if (isTentative) {
@@ -109,10 +113,10 @@ export async function GET() {
     if (event.registerUrl) {
       if (dateStrLong) {
         description = `Aanmelden kan tot voor ${dateStrLong}: ${
-            event.registerUrl}\n\n${description}`;
+          event.registerUrl
+        }\n\n${description}`;
       } else {
-        description =
-            `Aanmelden kan via: ${event.registerUrl}\n\n${description}`;
+        description = `Aanmelden kan via: ${event.registerUrl}\n\n${description}`;
       }
     }
 
@@ -125,11 +129,11 @@ export async function GET() {
 
   return new Response(calendar.toString(), {
     headers: {
-      'Content-Type': 'text/calendar; charset=utf-8',
-      'Content-Disposition': 'inline; filename="calendar.ics"',
-      'Cache-Control': 'no-cache, no-store, must-revalidate',
-      Pragma: 'no-cache',
-      Expires: '0',
+      "Content-Type": "text/calendar; charset=utf-8",
+      "Content-Disposition": 'inline; filename="calendar.ics"',
+      "Cache-Control": "no-cache, no-store, must-revalidate",
+      Pragma: "no-cache",
+      Expires: "0",
     },
   });
 }
