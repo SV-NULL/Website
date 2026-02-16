@@ -24,8 +24,7 @@ export async function GET() {
       if (!event.date) return;
       if (event.notDetermined) return;
 
-      const isTentative =
-        (!event.confirmed || !event.time) && !event.registerUrl;
+      const isTentative = !event.confirmed || !event.time;
       let dateStr: string | undefined;
       let dateStrLong: string | undefined;
 
