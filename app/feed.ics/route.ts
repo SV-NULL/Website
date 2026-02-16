@@ -71,6 +71,7 @@ export async function GET() {
       if (startDt.isValid) {
         allDay = false;
         start = startDt;
+        end = startDt.plus({ hours: 1 });
 
         if (times.length > 1) {
           const endTimeStr = times[1];
@@ -86,8 +87,6 @@ export async function GET() {
             }
             end = endDt;
           }
-        } else {
-          end = startDt.plus({ hours: 1 });
         }
       }
     }
