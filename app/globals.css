@@ -95,3 +95,40 @@ html {
 .bestuur-image {
   object-position: center 40%;
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover,
+.animate-marquee:focus-within {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    transform: none;
+    padding-right: 0;
+  }
+  .animate-marquee [aria-hidden="true"] {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .animate-marquee {
+    animation: marquee 5s linear infinite;
+  }
+}
