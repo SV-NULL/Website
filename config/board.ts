@@ -103,7 +103,10 @@ export const boards: Bestuur[] = [
       isPriority: true,
     },
     content: `
-        ~~
+        Waar al een mooie basis staat, willen wij verder doorbouwen. Als derde bestuur van sv.NULL richten we ons op het beter betrekken van onze leden en het verbinden richting het bedrijfsleven.
+        <br>
+        <br>
+        Door het goede werk van de vorige besturen, gaan we met enthousiasme voor een jaar vol met gezellige borrels en leerzame activiteiten!
     `,
     members: [
       {
