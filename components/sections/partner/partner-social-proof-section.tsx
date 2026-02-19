@@ -4,7 +4,6 @@ import Link from "next/link";
 
 const PartnerSocialProofSection = () => {
   const partners = getPartnerItems();
-  // Repeat partners enough times to fill ultra-wide screens - drastically increased to prevent gaps
   const extendedPartners = Array(20).fill(partners).flat();
 
   return (
@@ -19,7 +18,6 @@ const PartnerSocialProofSection = () => {
       </div>
 
       <div className="w-full relative flex overflow-x-hidden group [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-        {/* First Marquee Set */}
         <div className="flex shrink-0 animate-marquee items-center gap-16 md:gap-32 pr-16 md:pr-32 min-w-full max-w-none">
           {extendedPartners.map((partner, index) => (
             <Link
@@ -40,7 +38,6 @@ const PartnerSocialProofSection = () => {
           ))}
         </div>
 
-        {/* Second Marquee Set (Duplicate for Loop) */}
         <div
           className="flex shrink-0 animate-marquee items-center gap-16 md:gap-32 pr-16 md:pr-32 min-w-full max-w-none"
           aria-hidden="true"
