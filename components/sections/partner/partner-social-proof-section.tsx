@@ -12,7 +12,7 @@ const PartnerSocialProofSection = () => {
     >
       <div className="container mx-auto px-6 max-w-5xl">
         <h2 className="text-center text-lg font-semibold text-gray-400 uppercase tracking-widest mb-10">
-          Deze bedrijven gingen je al voor
+          Deze partners gingen je al voor
         </h2>
 
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
