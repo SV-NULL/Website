@@ -9,6 +9,7 @@ const PACKAGES = [
     value: "klein",
     price: "€400",
     period: "per jaar",
+    featureLabel: "Klein voordelen:",
     features: [
       "Logo op onze website (met link)",
       "Vermelding in jaarlijkse bedankpost op Instagram",
@@ -21,8 +22,8 @@ const PACKAGES = [
     value: "middel",
     price: "€750",
     period: "per jaar",
+    featureLabel: "Alles in klein, plus:",
     features: [
-      "Alles uit Klein",
       "1 activiteit per jaar (workshop, borrel of lunchlezing)",
       "2 vacatures per jaar plaatsen (website + Discord/Instagram story)",
       "Logo op 1 grote activiteitsposter",
@@ -35,8 +36,8 @@ const PACKAGES = [
     value: "groot",
     price: "€1100",
     period: "per jaar",
+    featureLabel: "Alles in middel, plus:",
     features: [
-      "Alles uit Middel",
       "1 extra activiteit per jaar (max. 1 per semester)",
       "Onbeperkt vacatures plaatsen (mits relevant)",
       "1 extra Instagram post per jaar",
@@ -50,8 +51,8 @@ const PACKAGES = [
     value: "hoofdsponsor",
     price: "€1800",
     period: "per jaar",
+    featureLabel: "Alles in groot, plus:",
     features: [
-      "Alles uit Groot",
       'Exclusieve titel: "Hoofdsponsor van Studievereniging NULL"',
       "Logo op alle posters en flyers",
       "Prominente plek op de website (bovenaan, groter logo)",
@@ -107,12 +108,12 @@ const PartnerPackagesSection = () => {
               }`}
             >
               {pkg.badge && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-yellow-400 text-black text-sm font-semibold rounded-full">
+                <div className="absolute -top-3 left-6 px-4 py-1 bg-yellow-400 text-black text-sm font-semibold rounded-full">
                   {pkg.badge}
                 </div>
               )}
 
-              <div className="text-center mb-6 pt-2">
+              <div className="mb-6 pt-2">
                 <h3
                   className={`text-xl font-bold mb-2 ${
                     pkg.highlighted ? "text-yellow-400" : "text-white"
@@ -120,7 +121,7 @@ const PartnerPackagesSection = () => {
                 >
                   {pkg.name}
                 </h3>
-                <div className="flex items-baseline justify-center gap-1">
+                <div className="flex items-baseline gap-1">
                   <span className="text-3xl font-bold text-white">
                     {pkg.price}
                   </span>
@@ -128,7 +129,11 @@ const PartnerPackagesSection = () => {
                 </div>
               </div>
 
-              <ul className="space-y-3 flex-1 mb-6">
+              <div className="text-sm font-medium text-gray-400 mb-3">
+                {pkg.featureLabel}
+              </div>
+
+              <ul className="space-y-3! flex-1 mb-6 p-0!">
                 {pkg.features.map((feature, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
