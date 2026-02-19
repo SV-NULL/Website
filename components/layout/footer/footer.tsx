@@ -59,7 +59,7 @@ export default function Footer() {
         </FooterSection>
       </div>
       <p className="text-center text-gray-500 py-4 ">
-        Copyright © 2025 Studievereniging NULL
+        Copyright © {new Date().getFullYear()} Studievereniging NULL
       </p>
     </footer>
   );
