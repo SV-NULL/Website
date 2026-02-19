@@ -70,18 +70,7 @@ const PartnerPackagesSection = () => {
   const router = useRouter();
 
   const handlePackageClick = (packageValue: string) => {
-    // Update URL with package parameter and scroll to contact
-    router.push(`/partner-worden?pakket=${packageValue}#contact`, {
-      scroll: false,
-    });
-
-    // Smooth scroll to contact section
-    setTimeout(() => {
-      const contactSection = document.getElementById("contact");
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 100);
+    router.push(`/partner-worden?pakket=${packageValue}#contact`);
   };
 
   return (

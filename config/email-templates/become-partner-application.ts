@@ -48,14 +48,18 @@ export const becomePartnerApplicationTemplate: EmailTemplate = {
           label: "Geïnteresseerd in pakket",
           required: true,
           formatter: (value) =>
-            packageLabels[value as string] || (value as string),
+            typeof value === "string"
+              ? packageLabels[value] || value
+              : String(value),
         },
         {
           key: "meetingPreference",
           label: "Voorkeur kennismaking",
           required: true,
           formatter: (value) =>
-            meetingLabels[value as string] || (value as string),
+            typeof value === "string"
+              ? meetingLabels[value] || value
+              : String(value),
         },
       ],
     },

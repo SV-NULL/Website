@@ -36,7 +36,7 @@ export const becomePartnerSchema = z.object({
   phone: z.string().optional(),
   packageInterest: z.string().min(1, "Kies een pakket"),
   meetingPreference: z.enum(["digital", "info"], {
-    error: "Maak een keuze",
+    error: "Kies hoe je wilt kennismaken",
   }),
 });
 

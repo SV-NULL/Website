@@ -231,10 +231,13 @@ const PartnerContactSection = ({ pakket }: Props) => {
                   )}
                 </div>
 
-                <div>
-                  <p className="text-gray-400 text-sm mb-3">
-                    Hoe wil je het liefst kennismaken? *
-                  </p>
+                <fieldset aria-describedby="meeting-error">
+                  <legend className="text-gray-400 text-sm mb-3">
+                    Hoe wil je het liefst kennismaken?{" "}
+                    <span aria-hidden="true">*</span>
+                    <span className="sr-only">(verplicht)</span>
+                  </legend>
+
                   <div className="flex flex-col sm:flex-row gap-4">
                     <label className="flex items-center gap-3 cursor-pointer group">
                       <input
@@ -244,10 +247,14 @@ const PartnerContactSection = ({ pakket }: Props) => {
                         checked={formValues.meetingPreference === "digital"}
                         onChange={onChange}
                         disabled={isSubmitting}
+                        required
                         className="w-4 h-4 accent-yellow-400"
                       />
                       <span className="text-white group-hover:text-yellow-400 transition-colors">
-                        Digitaal koffietje ☕
+                        Digitaal koffietje{" "}
+                        <span role="img" aria-label="koffie">
+                          ☕
+                        </span>
                       </span>
                     </label>
                     <label className="flex items-center gap-3 cursor-pointer group">
@@ -258,6 +265,7 @@ const PartnerContactSection = ({ pakket }: Props) => {
                         checked={formValues.meetingPreference === "info"}
                         onChange={onChange}
                         disabled={isSubmitting}
+                        required
                         className="w-4 h-4 accent-yellow-400"
                       />
                       <span className="text-white group-hover:text-yellow-400 transition-colors">
@@ -265,12 +273,17 @@ const PartnerContactSection = ({ pakket }: Props) => {
                       </span>
                     </label>
                   </div>
+
                   {fieldErrors.meetingPreference && (
-                    <p className="mt-2 text-sm text-red-400">
+                    <p
+                      id="meeting-error"
+                      className="mt-2 text-sm text-red-400"
+                      role="alert"
+                    >
                       {fieldErrors.meetingPreference}
                     </p>
                   )}
-                </div>
+                </fieldset>
 
                 <button
                   type="submit"
@@ -312,7 +325,7 @@ const PartnerContactSection = ({ pakket }: Props) => {
                 Vragen? Stuur een mailtje naar Timo. Hij helpt je graag verder!
               </p>
               <a
-                href="mailto:Svnull@che.nl"
+                href="mailto:svnull@che.nl"
                 className="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 transition-colors"
               >
                 <Mail className="w-4 h-4" />

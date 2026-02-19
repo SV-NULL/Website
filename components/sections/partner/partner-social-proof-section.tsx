@@ -16,9 +16,9 @@ const PartnerSocialProofSection = () => {
         </h2>
 
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-          {partners.map((partner, index) => (
+          {partners.map((partner) => (
             <Link
-              key={index}
+              key={partner.title}
               href={partner.website || "#"}
               target="_blank"
               rel="noopener noreferrer"

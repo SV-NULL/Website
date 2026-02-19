@@ -56,35 +56,46 @@ const PartnerFAQSection = () => {
         </div>
 
         <div className="space-y-4">
-          {FAQ_ITEMS.map((item, index) => (
-            <div
-              key={index}
-              className="border border-neutral-800 rounded-xl overflow-hidden transition-colors hover:border-neutral-700"
-            >
-              <button
-                onClick={() => toggleItem(index)}
-                className="w-full flex items-center justify-between p-5 text-left bg-neutral-900 hover:bg-neutral-800/50 transition-colors"
-              >
-                <span className="font-semibold text-white pr-4">
-                  {item.question}
-                </span>
-                <ChevronDown
-                  className={`w-5 h-5 text-yellow-400 flex-shrink-0 transition-transform duration-300 ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
+          {FAQ_ITEMS.map((item, index) => {
+            const panelId = `partner-faq-panel-${index}`;
+            const buttonId = `partner-faq-button-${index}`;
+
+            return (
               <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  openIndex === index ? "max-h-96" : "max-h-0"
-                }`}
+                key={index}
+                className="border border-neutral-800 rounded-xl overflow-hidden transition-colors hover:border-neutral-700"
               >
-                <p className="p-5 pt-0 text-gray-400 leading-relaxed">
-                  {item.answer}
-                </p>
+                <button
+                  id={buttonId}
+                  onClick={() => toggleItem(index)}
+                  className="w-full flex items-center justify-between p-5 text-left bg-neutral-900 hover:bg-neutral-800/50 transition-colors"
+                  aria-expanded={openIndex === index}
+                  aria-controls={panelId}
+                >
+                  <span className="font-semibold text-white pr-4">
+                    {item.question}
+                  </span>
+                  <ChevronDown
+                    className={`w-5 h-5 text-yellow-400 flex-shrink-0 transition-transform duration-300 ${
+                      openIndex === index ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                <div
+                  id={panelId}
+                  role="region"
+                  aria-labelledby={buttonId}
+                  className={`overflow-hidden transition-all duration-300 ${
+                    openIndex === index ? "max-h-96" : "max-h-0"
+                  }`}
+                >
+                  <p className="p-5 pt-0 text-gray-400 leading-relaxed">
+                    {item.answer}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

@@ -13,7 +13,7 @@ const PartnerSuccessStorySection = () => {
               <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-yellow-400/30">
                 <Image
                   src="/images/home/9.jpg"
-                  alt="Oud-lid NULL"
+                  alt="Tevreden oud-lid van studievereniging NULL"
                   fill
                   className="object-cover"
                 />
