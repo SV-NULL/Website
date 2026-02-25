@@ -22,16 +22,6 @@ export async function GET() {
       timezone: "Europe/Amsterdam",
     });
 
-    console.log(
-      getCalendarItems()
-        .filter((e) => e.date && !e.notDetermined)
-        .filter((e) => {
-          const eventDate = new Date(e.date!);
-          const now = new Date();
-          return eventDate >= new Date(now.getTime() - 24 * 60 * 60 * 1000);
-        }),
-    );
-
     getCalendarItems()
       .filter((e) => e.date && !e.notDetermined)
       .filter((e) => {
@@ -62,8 +52,6 @@ export async function GET() {
           icalEvent.transparency(ICalEventTransparency.TRANSPARENT);
         }
       });
-
-    console.log(calendar.toString());
 
     return new Response(calendar.toString(), {
       headers: {
