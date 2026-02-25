@@ -1,3 +1,4 @@
+import CalendarFeedButton from "@/components/features/calendar/calendar-feed-button";
 import CalendarGrid from "@/components/features/calendar/calendar-grid";
 import { JsonLd } from "@/components/features/json-ld/json-ld";
 import CTA from "@/components/sections/cta";
@@ -29,6 +30,9 @@ export default function CalendarPage() {
         title="Kalender"
         subtitle="Bekijk onze aankomende activiteiten en evenementen en plan ze in je agenda!"
       />
+      <div className="flex justify-start sm:justify-end -mt-20 mb-10 relative z-20 w-full">
+        <CalendarFeedButton />
+      </div>
       <CalendarGrid />
       <CTA
         title="Ook een idee voor een activiteit?"
