@@ -3,7 +3,25 @@ import { z } from "zod";
 export const membershipApplicationSchema = z.object({
   firstName: z.string().min(1, "Voornaam is verplicht"),
   lastName: z.string().min(1, "Achternaam is verplicht"),
-  dateOfBirth: z.string().min(1, "Geboortedatum is verplicht"),
+  dateOfBirth: z
+    .string()
+    .min(1, "Geboortedatum is verplicht")
+    .regex(
+      /^\d{4}-\d{2}-\d{2}$/,
+      "Geboortedatum moet in de vorm JJJJ-MM-DD zijn",
+    )
+    .refine((value) => {
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) {
+        return false;
+      }
+      const [year, month, day] = value.split("-").map(Number);
+      return (
+        date.getUTCFullYear() === year &&
+        date.getUTCMonth() + 1 === month &&
+        date.getUTCDate() === day
+      );
+    }, "Geboortedatum moet een geldige datum zijn"),
   address: z.string().min(1, "Adres is verplicht"),
   postalCode: z.string().regex(/^\d{4}\s?[A-Z]{2}$/i, "Ongeldige postcode"),
   city: z.string().min(1, "Woonplaats is verplicht"),
