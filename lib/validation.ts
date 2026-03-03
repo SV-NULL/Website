@@ -5,11 +5,15 @@ export const membershipApplicationSchema = z.object({
   lastName: z.string().min(1, "Achternaam is verplicht"),
   dateOfBirth: z.string().min(1, "Geboortedatum is verplicht"),
   address: z.string().min(1, "Adres is verplicht"),
-  postalCode: z.string().min(4, "Postcode moet minstens 4 karakters bevatten"),
+  postalCode: z.string().regex(/^\d{4}\s?[A-Z]{2}$/i, "Ongeldige postcode"),
   city: z.string().min(1, "Woonplaats is verplicht"),
   phoneNumber: z
     .string()
-    .min(10, "Telefoonnummer moet minstens 10 cijfers bevatten"),
+    .regex(/^[\d\s\-+()]+$/, "Telefoonnummer bevat ongeldige tekens")
+    .refine(
+      (value) => (value.match(/\d/g) || []).length >= 10,
+      "Telefoonnummer moet minimaal 10 cijfers bevatten",
+    ),
   discord: z.string().optional(),
   studentId: z.string().min(1, "Student ID is verplicht"),
   startYear: z.string().min(1, "Startjaar is verplicht"),
