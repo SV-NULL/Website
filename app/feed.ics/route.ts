@@ -13,6 +13,8 @@ import ical, {
 
 export const dynamic = "force-dynamic";
 
+const ONE_DAY_IN_MS = 24 * 60 * 60 * 1000;
+
 export async function GET() {
   try {
     const calendar = ical({
@@ -23,11 +25,11 @@ export async function GET() {
     });
 
     getCalendarItems()
-      .filter((e) => e.date && !e.notDetermined)
+      .filter((e) => e.date != null && !e.notDetermined)
       .filter((e) => {
         const eventDate = new Date(e.date!);
         const now = new Date();
-        return eventDate >= new Date(now.getTime() - 24 * 60 * 60 * 1000);
+        return eventDate >= new Date(now.getTime() - ONE_DAY_IN_MS);
       })
       .forEach((event) => {
         const isTentative = !event.confirmed || !event.time;
@@ -63,10 +65,20 @@ export async function GET() {
       },
     });
   } catch (error) {
-    console.error("Error generating ICS feed:", error);
-    return new Response(
-      "Er is een fout opgetreden bij het genereren van de agenda.",
-      { status: 500 },
-    );
+    const errorCode = "ICS_GENERATION_ERROR";
+    console.error(`[${errorCode}] Error generating ICS feed:`, error);
+
+    const body = JSON.stringify({
+      error: "An error occurred while generating the calendar feed.",
+      message_nl: "Er is een fout opgetreden bij het genereren van de agenda.",
+      code: errorCode,
+    });
+
+    return new Response(body, {
+      status: 500,
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+    });
   }
 }
