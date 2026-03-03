@@ -58,7 +58,7 @@ export default function Footer() {
           </address>
         </FooterSection>
       </div>
-      <p className="text-center text-gray-500 py-4 ">
+      <p className="text-center text-gray-500 py-4">
         Copyright © {new Date().getFullYear()} Studievereniging NULL
       </p>
     </footer>
