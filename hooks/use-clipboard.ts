@@ -13,7 +13,15 @@ export function useClipboard(timeout = 2000) {
 
   const copy = async (text: string) => {
     try {
-      await (navigator.clipboard.writeText(text) ?? fallbackCopy(text));
+      if (
+        typeof navigator !== "undefined" &&
+        navigator.clipboard &&
+        typeof navigator.clipboard.writeText === "function"
+      ) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        await fallbackCopy(text);
+      }
       setCopied(true);
       setTimeout(() => setCopied(false), timeout);
     } catch (e) {
