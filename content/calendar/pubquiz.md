@@ -7,7 +7,7 @@ confirmed: true
 cost: "Gratis"
 image: "/images/kalender/pubquiz-4cee.jpg"
 registerUrl: "https://forms.office.com/e/v4gtwUmygY"
-registerDeadline: 2026-03-25T23:59:00
+registerDeadline: 2026-03-23T23:59:00
 location: "4CEE"
 locationUrl: "https://maps.app.goo.gl/Y5cGf6UHCB1rvMh76"
 organizer: "4CEE"
