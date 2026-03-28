@@ -1,6 +1,6 @@
 ---
 title: "3de blokborrel"
-date: 2026-04-24
+date: 2026-05-08
 notDetermined: false
 confirmed: true
 cost: "Gratis voor leden, €6,90 voor niet-leden"

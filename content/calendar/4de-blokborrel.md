@@ -1,7 +1,7 @@
 ---
 title: "4de blokborrel"
 date: 2026-07-02
-notDetermined: false
+notDetermined: true
 confirmed: true
 cost: "Gratis voor leden, €6,90 voor niet-leden"
 image: "/images/kalender/blokborrel-4.jpg"
