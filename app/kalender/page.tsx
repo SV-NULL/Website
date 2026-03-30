@@ -7,6 +7,9 @@ import { siteConfig } from "@/config/site";
 import { constructMetadata } from "@/lib/seo";
 import { type WebPage } from "schema-dts";
 
+// Revalidate every hour so expired events/deadlines update automatically
+export const revalidate = 3600;
+
 export const metadata = constructMetadata({
   title: "Kalender",
   description:

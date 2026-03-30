@@ -8,6 +8,9 @@ import ValuesSection from "@/components/sections/home/values-section";
 import { siteConfig } from "@/config/site";
 import { type WebSite } from "schema-dts";
 
+// Revalidate every hour so the calendar preview stays current
+export const revalidate = 3600;
+
 export default function HomePage() {
   return (
     <main>
