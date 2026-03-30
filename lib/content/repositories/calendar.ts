@@ -1,6 +1,29 @@
 import { ActivityItem, ActivityItemFrontmatterSchema } from "@/types/calendar";
+import { DateTime } from "luxon";
 
 import { loadMarkdownFiles } from "../loader";
+
+/**
+ * Re-interprets a Date that was parsed as UTC by the YAML parser,
+ * treating its date/time components as Europe/Amsterdam local time instead.
+ *
+ * @param date A Date object whose UTC components represent Amsterdam local time.
+ * @returns A new Date object with the correct UTC epoch for the Amsterdam interpretation.
+ */
+function reinterpretAsAmsterdam(date: Date): Date {
+  const dt = DateTime.fromObject(
+    {
+      year: date.getUTCFullYear(),
+      month: date.getUTCMonth() + 1,
+      day: date.getUTCDate(),
+      hour: date.getUTCHours(),
+      minute: date.getUTCMinutes(),
+      second: date.getUTCSeconds(),
+    },
+    { zone: "Europe/Amsterdam" },
+  );
+  return dt.toJSDate();
+}
 
 /**
  * Maps markdown file data to an ActivityItem.
@@ -22,6 +45,13 @@ function mapToActivityItem(
     delete data.registerURL;
   }
   const validatedData = ActivityItemFrontmatterSchema.parse(data);
+
+  // Re-interpret datetime fields as Amsterdam timezone
+  if (validatedData.registerDeadline) {
+    validatedData.registerDeadline = reinterpretAsAmsterdam(
+      validatedData.registerDeadline,
+    );
+  }
 
   return {
     ...validatedData,

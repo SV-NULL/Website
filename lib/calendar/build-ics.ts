@@ -2,7 +2,7 @@ import { ActivityItem } from "@/types/calendar";
 import { DateTime } from "luxon";
 
 const nl = (opts: Intl.DateTimeFormatOptions) =>
-  new Intl.DateTimeFormat("nl-NL", opts);
+  new Intl.DateTimeFormat("nl-NL", { ...opts, timeZone: "Europe/Amsterdam" });
 
 /**
  * Builds the event title for the calendar feed, adding prefixes for tentative events and those with registration deadlines.

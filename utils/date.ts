@@ -7,5 +7,6 @@ export function formatDate(d: string) {
     day: "2-digit",
     month: "short",
     year: "numeric",
+    timeZone: "Europe/Amsterdam",
   });
 }
