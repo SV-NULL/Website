@@ -3,7 +3,7 @@ title: "3de blokborrel"
 date: 2026-05-08
 notDetermined: false
 confirmed: true
-cost: "Gratis voor leden, €6,90 voor niet-leden"
+cost: "€6,90 voor leden, €10 voor niet-leden"
 image: "/images/kalender/blokborrel-3.jpg"
 ---
 
