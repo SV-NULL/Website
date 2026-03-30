@@ -4,6 +4,7 @@ export const ActivityItemFrontmatterSchema = z.object({
   title: z.string(),
   image: z.string().optional(),
   date: z.date().optional(),
+  endDate: z.date().optional(),
   time: z.string().optional(),
   dateAddition: z.string().optional(),
   notDetermined: z.boolean().optional(),

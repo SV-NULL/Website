@@ -13,11 +13,12 @@ const CalendarCardContent = ({ activity }: Props) => {
     : false;
 
   return (
-    <div className="flex-1 p-6 min-h-[14rem] sm:min-h-[16rem] relative z-0">
+    <div className="flex-1 p-6 min-h-56 sm:min-h-64 relative z-0">
       <CalendarCardMeta
         notDetermined={activity.notDetermined}
         confirmed={activity.confirmed}
         date={activity.date}
+        endDate={activity.endDate}
         time={activity.time}
         dateAddition={activity.dateAddition}
         location={activity.location}

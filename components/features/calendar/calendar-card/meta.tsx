@@ -13,6 +13,7 @@ type Props = {
   notDetermined?: boolean;
   confirmed?: boolean;
   date?: Date;
+  endDate?: Date;
   time?: string;
   dateAddition?: string;
   location?: string;
@@ -26,6 +27,7 @@ const CalendarCardMeta = ({
   notDetermined,
   confirmed,
   date,
+  endDate,
   time,
   dateAddition,
   location,
@@ -49,12 +51,15 @@ const CalendarCardMeta = ({
       {/* Datum en tijd */}
       <div className="flex flex-wrap gap-4 text-sm text-gray-300">
         <div className="flex items-center gap-2">
-          <Calendar className="w-4 h-4 text-yellow-400 flex-shrink-0" />
+          <Calendar className="w-4 h-4 text-yellow-400 shrink-0" />
           <span>
             {notDetermined ? (
               <span className="font-medium">Datum nog niet bekend</span>
             ) : date ? (
-              <span className="font-medium">{formatDate(date.toString())}</span>
+              <span className="font-medium">
+                {formatDate(date.toString())}
+                {endDate && ` t/m ${formatDate(endDate.toString())}`}
+              </span>
             ) : (
               "—"
             )}{" "}
@@ -66,7 +71,7 @@ const CalendarCardMeta = ({
 
         {time && !notDetermined && (
           <div className="flex items-center gap-2">
-            <Clock className="w-4 h-4 text-yellow-400 flex-shrink-0" />
+            <Clock className="w-4 h-4 text-yellow-400 shrink-0" />
             <span className="font-medium">{time}</span>
           </div>
         )}
@@ -75,7 +80,7 @@ const CalendarCardMeta = ({
       {/* Locatie */}
       {location && (
         <div className="flex items-start gap-2 text-sm text-gray-300">
-          <MapPin className="w-4 h-4 text-yellow-400 flex-shrink-0 mt-0.5" />
+          <MapPin className="w-4 h-4 text-yellow-400 shrink-0 mt-0.5" />
           {locationUrl ? (
             <Link
               href={locationUrl}
@@ -95,14 +100,14 @@ const CalendarCardMeta = ({
       <div className="flex flex-wrap gap-4 text-sm text-gray-300">
         {cost && (
           <div className="flex items-center gap-2">
-            <Euro className="w-4 h-4 text-yellow-400 flex-shrink-0" />
+            <Euro className="w-4 h-4 text-yellow-400 shrink-0" />
             <span>{cost}</span>
           </div>
         )}
 
         {maxParticipants && (
           <div className="flex items-center gap-2">
-            <Users className="w-4 h-4 text-yellow-400 flex-shrink-0" />
+            <Users className="w-4 h-4 text-yellow-400 shrink-0" />
             <span>Max {maxParticipants} personen</span>
           </div>
         )}

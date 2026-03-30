@@ -68,35 +68,56 @@ export function parseEventTimes(event: ActivityItem): {
   allDay: boolean;
 } {
   const date = event.date!;
+  const endDate = event.endDate;
 
   if (!event.time) {
     const start = DateTime.fromJSDate(date);
-    return { start, end: start.plus({ days: 1 }), allDay: true };
+    const end = endDate
+      ? DateTime.fromJSDate(endDate).plus({ days: 1 })
+      : start.plus({ days: 1 });
+    return { start, end, allDay: true };
   }
 
-  const dateBase = date.toISOString().slice(0, 10);
-  const parse = (t: string) =>
-    DateTime.fromFormat(`${dateBase} ${t}`, "yyyy-MM-dd HH:mm", {
-      zone: "Europe/Amsterdam",
-    });
+  const parse = (t: string, baseDate: Date = date) =>
+    DateTime.fromFormat(
+      `${baseDate.toISOString().slice(0, 10)} ${t}`,
+      "yyyy-MM-dd HH:mm",
+      {
+        zone: "Europe/Amsterdam",
+      },
+    );
 
   const [startStr, endStr] = event.time.split("-").map((t) => t.trim());
   const start = parse(startStr);
 
   if (!start.isValid) {
     const fallbackStart = DateTime.fromJSDate(date);
+    const fallbackEnd = endDate
+      ? DateTime.fromJSDate(endDate).plus({ days: 1 })
+      : fallbackStart.plus({ days: 1 });
     return {
       start: fallbackStart,
-      end: fallbackStart.plus({ days: 1 }),
+      end: fallbackEnd,
       allDay: true,
     };
   }
 
-  let end = start.plus({ hours: 1 });
-  if (!endStr) return { start, end, allDay: false };
+  let end: DateTime = start.plus({ hours: 1 });
+  if (!endStr) {
+    if (endDate) {
+      end = parse(startStr, endDate).plus({ hours: 1 });
+    }
+    return { start, end, allDay: false };
+  }
 
-  let endDt = parse(endStr);
-  if (!endDt.isValid) return { start, end, allDay: false };
+  let endDt: DateTime = parse(endStr, endDate || date);
+  if (!endDt.isValid) {
+    if (endDate) {
+      endDt = parse(startStr, endDate).plus({ hours: 1 });
+      if (endDt.isValid) return { start, end: endDt, allDay: false };
+    }
+    return { start, end, allDay: false };
+  }
 
   if (endDt < start) endDt = endDt.plus({ days: 1 });
   end = endDt;
