@@ -1,6 +1,7 @@
 ---
 title: "3de blokborrel"
 date: 2026-05-08
+time: "20:00 - 00:00"
 notDetermined: false
 confirmed: true
 cost: "€6,90 voor leden, €10 voor niet-leden"
