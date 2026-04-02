@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+const studentIdSchema = z.string().min(1, "Student ID is verplicht");
+
 export const membershipApplicationSchema = z.object({
   firstName: z.string().min(1, "Voornaam is verplicht"),
   lastName: z.string().min(1, "Achternaam is verplicht"),
@@ -33,8 +35,15 @@ export const membershipApplicationSchema = z.object({
       "Telefoonnummer moet minimaal 10 cijfers bevatten",
     ),
   discord: z.string().optional(),
-  studentId: z.string().min(1, "Student ID is verplicht"),
-  startYear: z.string().min(1, "Startjaar is verplicht"),
+  studentId: studentIdSchema,
+  startYear: z
+    .string()
+    .regex(/^\d{4}$/, "Startjaar moet een jaartal van 4 cijfers zijn")
+    .refine((value) => {
+      const year = Number(value);
+      const currentYear = new Date().getFullYear();
+      return year >= 1900 && year <= currentYear;
+    }, "Startjaar moet een geldig jaartal zijn"),
   contribution: z.enum(["15", "40"], {
     error: "Kies een geldige contributie",
   }),
@@ -65,7 +74,7 @@ export const becomePartnerSchema = z.object({
 export type BecomePartnerData = z.infer<typeof becomePartnerSchema>;
 
 export const contactSchema = z.object({
-  name: z.string().min(3, "Naam is verplicht"),
+  name: z.string().min(3, "Naam moet minimaal 3 tekens bevatten"),
   email: z.email("Ongeldig e-mailadres"),
   subject: z.string().optional(),
   message: z.string().min(1, "Dit veld is verplicht"),
@@ -75,7 +84,7 @@ export type ContactData = z.infer<typeof contactSchema>;
 
 export const commissieApplicationSchema = z.object({
   name: z.string().min(1, "Naam is verplicht"),
-  studentId: z.string().min(1, "Student ID is verplicht"),
+  studentId: studentIdSchema,
   motivation: z.string().min(1, "Motivatie is verplicht"),
   commissieId: z.string().min(1, "Commissie ID is verplicht"),
   commissieName: z.string().min(1, "Commissie naam is verplicht"),
