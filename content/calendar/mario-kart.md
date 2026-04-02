@@ -7,6 +7,7 @@ notDetermined: false
 confirmed: true
 image: "/images/kalender/mario-kart-toernooi.png"
 registerDeadline: 2026-04-22T23:59:00
+registerUrl: "https://forms.office.com/e/r9HRMKfXk8"
 location: "Christelijke Hogeschool Ede"
 locationUrl: "https://maps.app.goo.gl/Pevu7JP3pnmLi2AZ8"
 ---

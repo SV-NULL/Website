@@ -7,6 +7,7 @@ notDetermined: false
 confirmed: true
 image: "/images/logo.png"
 registerDeadline: 2026-05-10T23:59:00
+registerUrl: "https://forms.office.com/e/8N5pBNV0n6"
 location: "ChipSoft Amsterdam"
 locationUrl: "https://maps.app.goo.gl/5z5NCJqibkKu92vM8"
 organizer: "ChipSoft"
