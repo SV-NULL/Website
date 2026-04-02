@@ -1,12 +1,12 @@
 ---
 title: "Mario Kart tournooi"
-date: 2026-05-28
+date: 2026-04-23
 time: "19:00 - 20:30"
 cost: "Gratis"
 notDetermined: false
 confirmed: true
 image: "/images/logo.png"
-registerDeadline: 2026-05-27T23:59:00
+registerDeadline: 2026-04-22T23:59:00
 location: "Christelijke Hogeschool Ede"
 locationUrl: "https://maps.app.goo.gl/Pevu7JP3pnmLi2AZ8"
 ---
