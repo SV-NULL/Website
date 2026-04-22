@@ -1,8 +1,12 @@
 import { ActivityItem } from "@/types/calendar";
+import { DEFAULT_LOCALE, DEFAULT_TIME_ZONE } from "@/utils/date";
 import { DateTime } from "luxon";
 
 const nl = (opts: Intl.DateTimeFormatOptions) =>
-  new Intl.DateTimeFormat("nl-NL", { ...opts, timeZone: "Europe/Amsterdam" });
+  new Intl.DateTimeFormat(DEFAULT_LOCALE, {
+    ...opts,
+    timeZone: DEFAULT_TIME_ZONE,
+  });
 
 /**
  * Builds the event title for the calendar feed, adding prefixes for tentative events and those with registration deadlines.
@@ -83,7 +87,7 @@ export function parseEventTimes(event: ActivityItem): {
       `${baseDate.toISOString().slice(0, 10)} ${t}`,
       "yyyy-MM-dd HH:mm",
       {
-        zone: "Europe/Amsterdam",
+        zone: DEFAULT_TIME_ZONE,
       },
     );
 

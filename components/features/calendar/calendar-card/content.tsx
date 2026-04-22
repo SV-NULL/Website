@@ -1,4 +1,5 @@
 import { ActivityItem } from "@/types/calendar";
+import { DEFAULT_LOCALE, DEFAULT_TIME_ZONE } from "@/utils/date";
 import { Calendar as CalendarIcon, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import CalendarCardMeta from "./meta";
@@ -41,12 +42,12 @@ const CalendarCardContent = ({ activity }: Props) => {
         <p className="mt-3 text-xs text-orange-300 flex items-center gap-1.5">
           <CalendarIcon className="w-3.5 h-3.5" />
           Aanmelden voor{" "}
-          {new Date(activity.registerDeadline).toLocaleDateString("nl-NL", {
+          {new Date(activity.registerDeadline).toLocaleDateString(DEFAULT_LOCALE, {
             day: "numeric",
             month: "long",
             hour: "2-digit",
             minute: "2-digit",
-            timeZone: "Europe/Amsterdam",
+            timeZone: DEFAULT_TIME_ZONE,
           })}
         </p>
       )}
