@@ -42,13 +42,16 @@ const CalendarCardContent = ({ activity }: Props) => {
         <p className="mt-3 text-xs text-orange-300 flex items-center gap-1.5">
           <CalendarIcon className="w-3.5 h-3.5" />
           Aanmelden voor{" "}
-          {new Date(activity.registerDeadline).toLocaleDateString(DEFAULT_LOCALE, {
-            day: "numeric",
-            month: "long",
-            hour: "2-digit",
-            minute: "2-digit",
-            timeZone: DEFAULT_TIME_ZONE,
-          })}
+          {new Date(activity.registerDeadline).toLocaleDateString(
+            DEFAULT_LOCALE,
+            {
+              day: "numeric",
+              month: "long",
+              hour: "2-digit",
+              minute: "2-digit",
+              timeZone: DEFAULT_TIME_ZONE,
+            },
+          )}
         </p>
       )}
 
