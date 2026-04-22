@@ -182,7 +182,7 @@ export const committees: Commissie[] = [
   {
     id: "website-commissie",
     title: "Website Commissie",
-    subtitle: "5 leden",
+    subtitle: "6 leden",
     image: {
       src: "/images/commissies/logos/logo-groen.png",
       alt: "Website commissie logo",
@@ -214,6 +214,11 @@ export const committees: Commissie[] = [
         person: PERSONS["ROBIN_HEIKAMP"],
         role: ROLES.LID,
         date: "01-09-2024",
+      },
+      {
+        person: PERSONS["TIM_WASSINK"],
+        role: ROLES.LID,
+        date: "01-01-2026",
       },
     ],
   },

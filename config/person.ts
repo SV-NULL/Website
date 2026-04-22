@@ -120,4 +120,11 @@ export const PERSONS: Record<string, Person> = {
       alt: "Mart-Jan Roeleveld",
     },
   },
+  TIM_WASSINK: {
+    name: "Tim Wassink",
+    image: {
+      src: "tim-wassink.jpg",
+      alt: "Tim Wassink",
+    },
+  },
 } as const;
