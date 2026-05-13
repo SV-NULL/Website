@@ -25,7 +25,9 @@ export async function GET() {
     });
 
     getCalendarItems()
-      .filter((e) => e.date !== null && e.date !== undefined && !e.notDetermined)
+      .filter(
+        (e) => e.date !== null && e.date !== undefined && !e.notDetermined,
+      )
       .filter((e) => {
         const eventDate = new Date(e.date!);
         const now = new Date();
