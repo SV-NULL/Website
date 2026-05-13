@@ -43,6 +43,10 @@ function fallbackCopy(text: string): Promise<void> {
     el.select();
     const ok = document.execCommand("copy");
     document.body.removeChild(el);
-    ok ? resolve() : reject(new Error("Fallback: Copy command failed"));
+    if (ok) {
+      resolve();
+    } else {
+      reject(new Error("Fallback: Copy command failed"));
+    }
   });
 }
