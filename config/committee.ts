@@ -1,4 +1,4 @@
-import { Commissie } from "@/types/commisie";
+import { Commissie } from "@/types/commissie";
 import { ROLES } from "@/types/roles";
 import { PERSONS } from "./person";
 

@@ -4,7 +4,7 @@ import { submitCommissieApplication } from "@/app/commissies/actions";
 import { COMMITTEE_FORM_FIELDS } from "@/config/forms/committee";
 import { COMMITTEE_FORM_MESSAGES } from "@/config/messages";
 import { commissieApplicationSchema } from "@/lib/validation";
-import { Commissie } from "@/types/commisie";
+import { Commissie } from "@/types/commissie";
 import { FormField } from "@/types/form";
 import Form from "../forms/form";
 
