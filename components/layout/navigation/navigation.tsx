@@ -30,7 +30,7 @@ const Navigation = () => {
     >
       <div className="container mx-auto px-8">
         <div className="flex items-center justify-between h-25">
-          <Link href="/" className="relative z-50 flex-shrink-0">
+          <Link href="/" className="relative z-50 shrink-0">
             <Image
               src="/images/logo-volledig.png"
               alt="Studievereniging NULL"
@@ -41,7 +41,7 @@ const Navigation = () => {
             />
           </Link>
 
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden xl:flex space-x-8">
             {navItems.map((item, i) => (
               <NavigationItem key={i} item={item} />
             ))}
@@ -55,7 +55,7 @@ const Navigation = () => {
       </div>
 
       <div
-        className={`md:hidden bg-black text-white border-t border-neutral-800 overflow-hidden transition-all duration-500 ease-in-out ${mobileOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"}`}
+        className={`xl:hidden bg-black text-white border-t border-neutral-800 overflow-hidden transition-all duration-500 ease-in-out ${mobileOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"}`}
       >
         <div className="px-4 pt-2 pb-3 space-y-1">
           {navItems.map((item, idx) => (

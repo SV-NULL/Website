@@ -10,8 +10,8 @@ const HamburgerButton = ({ isOpen, onClick }: Props) => {
   return (
     <button
       onClick={onClick}
-      className="relative w-8 h-8 flex items-center justify-center md:hidden z-50"
-      aria-label="Toggle mobile menu"
+      className="relative w-8 h-8 flex items-center justify-center xl:hidden z-50"
+      aria-label="Toggle navigatie menu"
       aria-expanded={isOpen}
     >
       <span
