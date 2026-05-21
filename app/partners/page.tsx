@@ -42,7 +42,7 @@ export default function PartnersPage() {
           href="/partner-worden"
           className="flex flex-col gap-1 items-center justify-center p-4 border-2 border-dashed border-neutral-700 rounded-xl text-gray-500 hover:text-yellow-400 hover:border-yellow-400 transition-all"
         >
-          <div className="text-sm font-bold">Uw logo hier?</div>
+          <div className="text-sm font-bold">Jullie logo hier?</div>
           <div className="text-xs">Word partner</div>
         </Link>
       </div>
