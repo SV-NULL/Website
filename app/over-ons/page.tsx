@@ -11,7 +11,7 @@ import { type AboutPage } from "schema-dts";
 const pageData = {
   mission: {
     title: "Missie",
-    text: `Het verbinden van kennis en kunde van "ICT"-studenten aan de te Ede gevestigde Christelijk Hogeschool Ede (CHE) - met het bedrijfsleven om daarbij kennis en vaardigheden uit te wisselen waaronder ook het opdoen van werkervaring, en het verrichten van al wat hiermee verband houdt of daartoe bedordelijk kan zijn.`,
+    text: `Het verbinden van kennis en kunde van "ICT"-studenten aan de te Ede gevestigde Christelijk Hogeschool Ede (CHE) - met het bedrijfsleven om daarbij kennis en vaardigheden uit te wisselen waaronder ook het opdoen van werkervaring, en het verrichten van al wat hiermee verband houdt of daartoe bevordelijk kan zijn.`,
   },
   vision: {
     title: "Visie",
