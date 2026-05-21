@@ -19,6 +19,7 @@ import {
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
 import { type JobPosting } from "schema-dts";
 
@@ -50,16 +51,7 @@ export default async function VacatureDetailPage({
   const { slug } = await params;
   const vacature = getVacatureBySlug(slug);
 
-  if (!vacature) {
-    return (
-      <div className="container mx-auto px-4 py-12 text-center">
-        <h1 className="text-2xl font-bold mb-4">Vacature niet gevonden</h1>
-        <Link href="/vacatures" className="text-yellow-500 hover:underline">
-          Terug naar vacatures
-        </Link>
-      </div>
-    );
-  }
+  if (!vacature) return notFound();
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] -mt-6">
