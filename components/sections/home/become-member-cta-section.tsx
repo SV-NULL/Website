@@ -10,7 +10,7 @@ const BecomeMemberCTASection = () => {
         Maak het beste van jouw studietijd!
       </h2>
       <p className="text-center">
-        Als lid van SV. NULL doe je mee aan toffe activiteiten, leer je
+        Als lid van s.v. NULL doe je mee aan toffe activiteiten, leer je
         bedrijven uit de IT-wereld kennen en maak je vrienden voor het leven.
         Van gezellige borrels tot inspirerende lezingen en leuke reizen: samen
         maken we van jouw studietijd een top tijd!

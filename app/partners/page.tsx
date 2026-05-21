@@ -31,7 +31,7 @@ export default function PartnersPage() {
       />
       <PageTitle
         title="Partners"
-        subtitle="Maak kennis met onze gewaardeerde partners die SV. NULL ondersteunen."
+        subtitle="Maak kennis met onze gewaardeerde partners die s.v. NULL ondersteunen."
       />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
