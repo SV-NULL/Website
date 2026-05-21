@@ -1,6 +1,6 @@
 import z from "zod";
 
-export const VactureFrontmatterSchema = z.object({
+export const VacatureFrontmatterSchema = z.object({
   title: z.string(),
   company: z.string(),
   type: z.string(),
@@ -14,7 +14,7 @@ export const VactureFrontmatterSchema = z.object({
   companyEmail: z.string().optional(),
   companyAddress: z.string().optional(),
 });
-export type Vacature = z.infer<typeof VactureFrontmatterSchema> & {
+export type Vacature = z.infer<typeof VacatureFrontmatterSchema> & {
   slug: string;
   content: string;
 };
