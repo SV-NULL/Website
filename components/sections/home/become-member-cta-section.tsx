@@ -5,7 +5,7 @@ const BecomeMemberCTASection = () => {
   return (
     <section className="relative max-w-4xl mx-auto my-32 px-8 text-center">
       <div className="absolute inset-0 bg-linear-to-b from-yellow-400/5 to-transparent rounded-3xl pointer-events-none" />
-      <div className="relative z-10">
+      <div className="relative z-10 py-4">
         <SectionBadge>Lid worden</SectionBadge>
         <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
           Maak het beste van{" "}
