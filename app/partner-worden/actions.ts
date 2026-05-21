@@ -24,7 +24,7 @@ export async function submitBecomePartnerApplication(formData: FormData) {
     console.error("Fout bij het verzenden van de e-mail:", error);
     return {
       success: false,
-      message: GENERIC_FORM_MESSAGES.INCORRECT_FORM_FIELDS,
+      message: GENERIC_FORM_MESSAGES.FORM_ERROR,
     };
   }
 }
