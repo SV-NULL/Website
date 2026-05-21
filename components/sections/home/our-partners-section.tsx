@@ -33,7 +33,7 @@ const OurPartnersSection = () => {
             href="/partner-worden"
             className="flex flex-col items-center justify-center h-20 p-4 border-2 border-dashed border-neutral-700 rounded-xl text-gray-500 hover:text-yellow-400 hover:border-yellow-400 transition-all grayscale-0 group-hover/partners:grayscale hover:!grayscale-0"
           >
-            <span className="text-sm font-bold">Uw logo hier?</span>
+            <span className="text-sm font-bold">Jullie logo hier?</span>
             <span className="text-xs">Word partner</span>
           </Link>
         </div>
