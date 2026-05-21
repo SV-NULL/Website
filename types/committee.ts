@@ -2,7 +2,7 @@ import z from "zod";
 import { MemberFrontmatterSchema } from "./common";
 import { ImageFrontmatterSchema } from "./image";
 
-export const CommissieFrontmatterSchema = z.object({
+export const CommitteeFrontmatterSchema = z.object({
   id: z.string(),
   title: z.string(),
   subtitle: z.string(),
@@ -12,6 +12,6 @@ export const CommissieFrontmatterSchema = z.object({
   openForSignup: z.boolean().default(true),
   members: MemberFrontmatterSchema.array().default([]),
 });
-export type Commissie = z.infer<typeof CommissieFrontmatterSchema> & {
+export type Committee = z.infer<typeof CommitteeFrontmatterSchema> & {
   content: string;
 };

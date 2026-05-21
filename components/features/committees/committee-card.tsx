@@ -1,10 +1,10 @@
-import { Commissie } from "@/types/commissie";
+import { Committee } from "@/types/committee";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
-  committee: Commissie;
+  committee: Committee;
   hasLine?: boolean;
 };
 

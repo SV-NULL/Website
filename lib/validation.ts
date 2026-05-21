@@ -82,14 +82,14 @@ export const contactSchema = z.object({
 
 export type ContactData = z.infer<typeof contactSchema>;
 
-export const commissieApplicationSchema = z.object({
+export const committeeApplicationSchema = z.object({
   name: z.string().min(1, "Naam is verplicht"),
   studentId: studentIdSchema,
   motivation: z.string().min(1, "Motivatie is verplicht"),
-  commissieId: z.string().min(1, "Commissie ID is verplicht"),
-  commissieName: z.string().min(1, "Commissie naam is verplicht"),
+  committeeId: z.string().min(1, "Commissie ID is verplicht"),
+  committeeName: z.string().min(1, "Commissie naam is verplicht"),
 });
 
-export type CommissieApplicationData = z.infer<
-  typeof commissieApplicationSchema
+export type CommitteeApplicationData = z.infer<
+  typeof committeeApplicationSchema
 >;

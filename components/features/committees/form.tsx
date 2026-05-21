@@ -1,15 +1,15 @@
 "use client";
 
-import { submitCommissieApplication } from "@/app/commissies/actions";
+import { submitCommitteeApplication } from "@/app/commissies/actions";
 import { COMMITTEE_FORM_FIELDS } from "@/config/forms/committee";
 import { COMMITTEE_FORM_MESSAGES } from "@/config/messages";
-import { commissieApplicationSchema } from "@/lib/validation";
-import { Commissie } from "@/types/commissie";
+import { committeeApplicationSchema } from "@/lib/validation";
+import { Committee } from "@/types/committee";
 import { FormField } from "@/types/form";
 import Form from "../forms/form";
 
 interface CommitteeApplicationFormProps {
-  committee: Commissie;
+  committee: Committee;
 }
 
 const CommitteeApplicationForm = ({
@@ -18,13 +18,13 @@ const CommitteeApplicationForm = ({
   const fieldsWithHiddenData: FormField[] = [
     ...COMMITTEE_FORM_FIELDS,
     {
-      name: "commissieId",
+      name: "committeeId",
       type: "hidden",
       value: committee.id,
       required: true,
     },
     {
-      name: "commissieName",
+      name: "committeeName",
       type: "hidden",
       value: committee.title,
       required: true,
@@ -34,8 +34,8 @@ const CommitteeApplicationForm = ({
   return (
     <Form
       fields={fieldsWithHiddenData}
-      validationSchema={commissieApplicationSchema}
-      submitAction={submitCommissieApplication}
+      validationSchema={committeeApplicationSchema}
+      submitAction={submitCommitteeApplication}
       onSuccess="redirect"
       successRedirect={`/commissies/${committee.id}/aanmelden/bedankt`}
       submitButtonText={COMMITTEE_FORM_MESSAGES.SUBMIT_BUTTON}

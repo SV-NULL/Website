@@ -1,8 +1,8 @@
-import { Commissie } from "@/types/commissie";
+import { Committee } from "@/types/committee";
 import { ROLES } from "@/types/roles";
 import { PERSONS } from "./person";
 
-export const committees: Commissie[] = [
+export const committees: Committee[] = [
   {
     id: "activiteiten-commissie",
     title: "Activiteiten Commissie",

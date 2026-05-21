@@ -2,15 +2,15 @@
 
 import { GENERIC_FORM_MESSAGES } from "@/config/messages";
 import { emailService } from "@/lib/email";
-import { commissieApplicationSchema } from "@/lib/validation";
+import { committeeApplicationSchema } from "@/lib/validation";
 import { SubmissionResult } from "@/types/form";
 import { createFieldErrors } from "@/utils/validation";
 
-export async function submitCommissieApplication(
+export async function submitCommitteeApplication(
   formData: FormData,
 ): Promise<SubmissionResult> {
   const rawData = Object.fromEntries(formData.entries());
-  const validationResult = commissieApplicationSchema.safeParse(rawData);
+  const validationResult = committeeApplicationSchema.safeParse(rawData);
 
   if (!validationResult.success) {
     return {
@@ -21,7 +21,7 @@ export async function submitCommissieApplication(
   }
 
   try {
-    await emailService.sendCommissieApplication(validationResult.data);
+    await emailService.sendCommitteeApplication(validationResult.data);
     return { success: true };
   } catch (error) {
     console.error("Fout bij het verzenden van de e-mail:", error);
