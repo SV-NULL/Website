@@ -2,28 +2,55 @@ import { FormField } from "@/types/form";
 
 export const FORM_FIELDS: Record<string, FormField[]> = {
   GENERAL: [
-    { name: "firstName", placeholder: "Voornaam", required: true },
-    { name: "lastName", placeholder: "Achternaam", required: true },
+    {
+      name: "firstName",
+      label: "Voornaam",
+      placeholder: "Jan",
+      required: true,
+    },
+    {
+      name: "lastName",
+      label: "Achternaam",
+      placeholder: "de Vries",
+      required: true,
+    },
     {
       name: "dateOfBirth",
+      label: "Geboortedatum",
       type: "date",
       required: true,
-      description: "Vul hier je geboortedatum in",
     },
-    { name: "address", placeholder: "Adres", required: true },
-    { name: "postalCode", placeholder: "Postcode", required: true },
-    { name: "city", placeholder: "Woonplaats", required: true },
-    { name: "phoneNumber", placeholder: "Telefoonnummer", required: true },
+    {
+      name: "address",
+      label: "Adres",
+      placeholder: "Straatnaam 1",
+      required: true,
+    },
+    {
+      name: "postalCode",
+      label: "Postcode",
+      placeholder: "1234 AB",
+      required: true,
+    },
+    { name: "city", label: "Woonplaats", placeholder: "Ede", required: true },
+    {
+      name: "phoneNumber",
+      label: "Telefoonnummer",
+      placeholder: "06 12345678",
+      required: true,
+    },
     {
       name: "discord",
-      placeholder: "Discord-username (optioneel)",
+      label: "Discord",
+      placeholder: "gebruikersnaam (optioneel)",
       required: false,
     },
   ],
   STUDENT: [
     {
       name: "studentId",
-      placeholder: "Studentenmail",
+      label: "Studentenmail",
+      placeholder: "jhdevries",
       required: true,
       suffix: "@student.che.nl",
       description:
@@ -31,8 +58,9 @@ export const FORM_FIELDS: Record<string, FormField[]> = {
     },
     {
       name: "startYear",
+      label: "Startjaar opleiding",
       as: "select" as const,
-      placeholder: "Startjaar van de opleiding",
+      placeholder: "Selecteer je startjaar",
       required: true,
       options: [
         { value: "2025", label: "2025" },
@@ -47,6 +75,7 @@ export const FORM_FIELDS: Record<string, FormField[]> = {
   CONTRIBUTION: [
     {
       name: "contribution",
+      label: "Contributie",
       as: "select" as const,
       placeholder: "Kies je contributie",
       required: true,
@@ -57,6 +86,7 @@ export const FORM_FIELDS: Record<string, FormField[]> = {
     },
     {
       name: "comments",
+      label: "Opmerkingen",
       as: "textarea" as const,
       placeholder: "Opmerkingen (optioneel)",
       required: false,

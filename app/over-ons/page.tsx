@@ -75,7 +75,7 @@ export const metadata = constructMetadata({
 
 export default function OverOnsPage() {
   return (
-    <div className="container mx-auto px-4 lg:px-8">
+    <div className="container mx-auto px-4 lg:px-8 pb-24">
       <JsonLd<AboutPage>
         data={{
           "@context": "https://schema.org",
@@ -105,7 +105,7 @@ export default function OverOnsPage() {
         title={pageData.history.title}
         gradientDirection="r"
       >
-        <h3 className="text-2xl font-bold text-yellow-400 mb-6">
+        <h3 className="text-2xl font-bold text-white mb-6">
           {pageData.history.subtitle}
         </h3>
         <div className="space-y-6 text-gray-300 leading-relaxed">
@@ -131,7 +131,7 @@ export default function OverOnsPage() {
         title={pageData.future.title}
         gradientDirection="l"
       >
-        <h3 className="text-2xl font-bold text-yellow-400 mb-6">
+        <h3 className="text-2xl font-bold text-white mb-6">
           {pageData.future.subtitle}
         </h3>
         <p className="text-gray-300 leading-relaxed mb-8">

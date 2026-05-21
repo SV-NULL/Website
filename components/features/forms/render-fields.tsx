@@ -25,6 +25,7 @@ export const renderFields = (
       <FormField
         key={field.name}
         name={field.name}
+        label={field.label}
         type={field.type || "text"}
         placeholder={field.placeholder}
         required={field.required}

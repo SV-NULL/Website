@@ -51,7 +51,7 @@ const CommitteeCard = ({ committee, hasLine = false }: Props) => {
             Meer info
           </Link>
           <Link
-            href={`/commissies/${committee.id}/aanmelden`}
+            href={`/commissies/${committee.id}#aanmelden`}
             className="flex-1 pointer-events-auto bg-yellow-400 hover:bg-yellow-300 text-black text-center py-2 px-3 rounded-lg text-sm font-medium transition-colors"
           >
             Aanmelden

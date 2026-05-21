@@ -1,5 +1,6 @@
 type Props = {
   name: string;
+  label?: string;
   type?: string;
   placeholder?: string;
   required?: boolean;
@@ -18,6 +19,7 @@ type Props = {
 
 const FormField = ({
   name,
+  label,
   type = "text",
   placeholder,
   required = false,
@@ -34,7 +36,7 @@ const FormField = ({
   description,
 }: Props) => {
   const baseClassName = `form-input disabled:opacity-50 disabled:cursor-not-allowed ${
-    error ? "border-red-500" : ""
+    error ? "border-red-500 focus:ring-red-400/50 focus:border-red-400/50" : ""
   } ${className}`;
 
   const handleChange = (
@@ -54,6 +56,7 @@ const FormField = ({
   };
 
   const commonProps = {
+    id: name,
     name,
     required,
     disabled,
@@ -65,13 +68,22 @@ const FormField = ({
 
   return (
     <div>
+      {label && (
+        <label
+          htmlFor={name}
+          className="block text-sm font-medium text-gray-300 mb-1.5"
+        >
+          {label}
+          {required && <span className="text-yellow-400 ml-1">*</span>}
+        </label>
+      )}
       <div className={suffix ? "relative" : ""}>
         {as === "input" && (
           <input
             {...commonProps}
             type={type}
             placeholder={placeholder}
-            className={suffix ? `${baseClassName} pr-32` : baseClassName}
+            className={suffix ? `${baseClassName} pr-36` : baseClassName}
           />
         )}
         {as === "select" && (
@@ -85,18 +97,18 @@ const FormField = ({
             {...commonProps}
             placeholder={placeholder}
             rows={rows}
-            className={`${baseClassName} w-full`}
+            className={`${baseClassName} w-full resize-none`}
           />
         )}
         {suffix && (
-          <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">
+          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-500 text-sm pointer-events-none">
             {suffix}
           </span>
         )}
       </div>
-      {error && <p className="text-red-400 text-sm mt-1">{error}</p>}
+      {error && <p className="text-red-400 text-sm mt-1.5">{error}</p>}
       {description && (
-        <p className="text-gray-400 text-sm mt-1">{description}</p>
+        <p className="text-gray-500 text-sm mt-1.5">{description}</p>
       )}
     </div>
   );

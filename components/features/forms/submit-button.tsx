@@ -13,15 +13,15 @@ const SubmitButton = ({
     <button
       type="submit"
       disabled={isSubmitting}
-      className="w-full bg-yellow-500 hover:bg-yellow-600 disabled:bg-gray-600 disabled:cursor-not-allowed text-black text-lg font-semibold py-3 rounded shadow mt-4 flex items-center justify-center space-x-2 transition-colors"
+      className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-yellow-400 text-black font-semibold tracking-wide border-2 border-yellow-400 hover:bg-transparent hover:text-yellow-400 active:bg-transparent active:text-yellow-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300 mt-4 shadow-[0_0_20px_rgba(250,204,21,0.15)] hover:shadow-[0_0_24px_rgba(250,204,21,0.25)] text-sm"
     >
       {isSubmitting ? (
         <>
-          <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
-          <span>{alternativeLoadingText || "Bezig met aanmelden..."}</span>
+          <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+          <span>{alternativeLoadingText ?? "Bezig met aanmelden..."}</span>
         </>
       ) : (
-        <span>{alternativeText || "Aanmelden"}</span>
+        <span>{alternativeText ?? "Aanmelden"}</span>
       )}
     </button>
   );
