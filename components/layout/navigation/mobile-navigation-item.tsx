@@ -19,7 +19,8 @@ const MobileNavigationItem = ({ item, isOpen, isLast, onToggle }: Props) => {
   const [height, setHeight] = useState<string | number>(0);
 
   const isParentActive =
-    isActive(item.href) || item.sub?.some((s) => isActive(s.href));
+    (item.href && isActive(item.href)) ||
+    item.sub?.some((s) => s.href && isActive(s.href));
 
   useLayoutEffect(() => {
     if (isOpen && contentRef.current) {
@@ -31,14 +32,14 @@ const MobileNavigationItem = ({ item, isOpen, isLast, onToggle }: Props) => {
 
   if (!item.sub) {
     return (
-      <Link
+      <NavLink
         href={item.href}
         className={`block px-3 py-3 text-lg font-medium ${isLast ? "" : "border-b border-neutral-800"} ${
-          isActive(item.href) ? "text-yellow-400" : "text-white"
+          item.href && isActive(item.href) ? "text-yellow-400" : "text-white"
         }`}
       >
         {item.name}
-      </Link>
+      </NavLink>
     );
   }
 
@@ -63,20 +64,42 @@ const MobileNavigationItem = ({ item, isOpen, isLast, onToggle }: Props) => {
       >
         <div className="flex flex-col pb-2 pl-4">
           {item.sub.map((sub, idx) => (
-            <Link
+            <NavLink
               key={idx}
               href={sub.href}
               className={`flex items-center py-2 text-sm ${
-                isActive(sub.href) ? "text-yellow-400" : "text-gray-400"
+                sub.href && isActive(sub.href)
+                  ? "text-yellow-400"
+                  : "text-gray-400"
               }`}
             >
               <ChevronRight className="w-4 h-4 mr-2" />
               {sub.name}
-            </Link>
+            </NavLink>
           ))}
         </div>
       </div>
     </div>
+  );
+};
+
+const NavLink = ({
+  href,
+  className,
+  children,
+}: {
+  href?: string;
+  className: string;
+  children: React.ReactNode;
+}) => {
+  if (!href) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <Link href={href} className={className}>
+      {children}
+    </Link>
   );
 };
 
