@@ -1,31 +1,41 @@
 "use client";
 
+import Button from "@/components/ui/button";
 import { useActivePath } from "@/hooks/use-active-path";
 import { NavItem } from "@/types/image";
 import { ChevronDown } from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
+import NavLink from "./nav-link";
 
 type Props = {
   item: NavItem;
 };
 
 const NavigationItem = ({ item }: Props) => {
-  const { isActive } = useActivePath();
+  const { isActive, isParentActive } = useActivePath();
   const [isOpen, setIsOpen] = useState(false);
 
-  const isParentActive =
-    isActive(item.href) || item.sub?.some((s) => isActive(s.href));
-
   const baseClasses = `px-3 py-2 transition-colors duration-200 focus:outline-none ${
-    isParentActive ? "text-yellow-400" : "hover:text-yellow-400"
+    isParentActive(item) ? "text-yellow-400" : "hover:text-yellow-400"
   }`;
+
+  if (item.type === "button") {
+    return (
+      <Button
+        href={item.href}
+        onClick={item.onClick}
+        className={item.className}
+      >
+        {item.name}
+      </Button>
+    );
+  }
 
   if (!item.sub) {
     return (
-      <Link href={item.href} className={baseClasses}>
+      <NavLink href={item.href} className={baseClasses}>
         {item.name}
-      </Link>
+      </NavLink>
     );
   }
 
@@ -56,13 +66,13 @@ const NavigationItem = ({ item }: Props) => {
       >
         <div className="bg-black border border-neutral-800 rounded-lg shadow-xl overflow-hidden">
           {item.sub.map((sub, idx) => (
-            <Link
+            <NavLink
               key={idx}
               href={sub.href}
-              className={`block px-4 py-2 text-sm transition-colors ${isActive(sub.href) ? "bg-neutral-800 text-yellow-400" : "text-white hover:bg-neutral-900 hover:text-yellow-400"}`}
+              className={`block px-4 py-2 text-sm transition-colors ${sub.href && isActive(sub.href) ? "bg-neutral-800 text-yellow-400" : "text-white hover:bg-neutral-900 hover:text-yellow-400"}`}
             >
               {sub.name}
-            </Link>
+            </NavLink>
           ))}
         </div>
       </div>

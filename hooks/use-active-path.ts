@@ -1,5 +1,6 @@
 "use client";
 
+import { NavItem } from "@/types/image";
 import { usePathname } from "next/navigation";
 import { useCallback } from "react";
 
@@ -11,5 +12,14 @@ export function useActivePath() {
     [pathname],
   );
 
-  return { isActive };
+  const isParentActive = (item: NavItem): boolean => {
+    if (item.type === "button") return false;
+    return (
+      ((!!item.href && isActive(item.href)) ||
+        item.sub?.some((s) => !!s.href && isActive(s.href))) ??
+      false
+    );
+  };
+
+  return { isActive, isParentActive };
 }

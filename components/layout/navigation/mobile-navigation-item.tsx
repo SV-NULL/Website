@@ -1,10 +1,11 @@
 "use client";
 
+import Button from "@/components/ui/button";
 import { useActivePath } from "@/hooks/use-active-path";
 import { NavItem } from "@/types/image";
 import { ChevronDown, ChevronRight } from "lucide-react";
-import Link from "next/link";
 import { useLayoutEffect, useRef, useState } from "react";
+import NavLink from "./nav-link";
 
 type Props = {
   item: NavItem;
@@ -14,12 +15,9 @@ type Props = {
 };
 
 const MobileNavigationItem = ({ item, isOpen, isLast, onToggle }: Props) => {
-  const { isActive } = useActivePath();
+  const { isActive, isParentActive } = useActivePath();
   const contentRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState<string | number>(0);
-
-  const isParentActive =
-    isActive(item.href) || item.sub?.some((s) => isActive(s.href));
 
   useLayoutEffect(() => {
     if (isOpen && contentRef.current) {
@@ -29,25 +27,39 @@ const MobileNavigationItem = ({ item, isOpen, isLast, onToggle }: Props) => {
     }
   }, [isOpen]);
 
+  const borderClass = isLast ? "" : "border-b border-neutral-800";
+
+  if (item.type === "button") {
+    return (
+      <Button
+        href={item.href}
+        onClick={item.onClick}
+        className={`mt-4 ${item.className}`}
+      >
+        {item.name}
+      </Button>
+    );
+  }
+
   if (!item.sub) {
     return (
-      <Link
+      <NavLink
         href={item.href}
-        className={`block px-3 py-3 text-lg font-medium ${isLast ? "" : "border-b border-neutral-800"} ${
-          isActive(item.href) ? "text-yellow-400" : "text-white"
+        className={`block px-3 py-3 text-lg font-medium ${borderClass} ${
+          item.href && isActive(item.href) ? "text-yellow-400" : "text-white"
         }`}
       >
         {item.name}
-      </Link>
+      </NavLink>
     );
   }
 
   return (
-    <div className={`${isLast ? "" : "border-b border-neutral-800"}`}>
+    <div className={borderClass}>
       <button
         onClick={onToggle}
         className={`flex justify-between items-center w-full px-3 py-3 text-lg font-medium ${
-          isParentActive ? "text-yellow-400" : "text-white"
+          isParentActive(item) ? "text-yellow-400" : "text-white"
         }`}
       >
         {item.name}
@@ -63,16 +75,18 @@ const MobileNavigationItem = ({ item, isOpen, isLast, onToggle }: Props) => {
       >
         <div className="flex flex-col pb-2 pl-4">
           {item.sub.map((sub, idx) => (
-            <Link
+            <NavLink
               key={idx}
               href={sub.href}
               className={`flex items-center py-2 text-sm ${
-                isActive(sub.href) ? "text-yellow-400" : "text-gray-400"
+                sub.href && isActive(sub.href)
+                  ? "text-yellow-400"
+                  : "text-gray-400"
               }`}
             >
               <ChevronRight className="w-4 h-4 mr-2" />
               {sub.name}
-            </Link>
+            </NavLink>
           ))}
         </div>
       </div>

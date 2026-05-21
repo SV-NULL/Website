@@ -2,6 +2,7 @@ import { contactInfo } from "@/config/contact";
 import { footerNavItems, footerSocialNavItems } from "@/config/navigation";
 import { ChevronRight, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
+import NavLink from "../navigation/nav-link";
 import ContactItem from "./contact-item";
 import FooterSection from "./footer-section";
 import SocialLink from "./social-link";
@@ -23,14 +24,14 @@ export default function Footer() {
 
         <FooterSection title="Informatie" className="space-y-3">
           {footerNavItems.map((item) => (
-            <Link
+            <NavLink
               key={item.href}
               href={item.href}
               className="flex items-center hover:text-yellow-400 active:text-yellow-400"
             >
               <ChevronRight className="w-5 h-5 mr-2" />
               {item.name}
-            </Link>
+            </NavLink>
           ))}
         </FooterSection>
 
