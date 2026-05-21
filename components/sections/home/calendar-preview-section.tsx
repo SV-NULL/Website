@@ -1,13 +1,12 @@
 import CalendarGrid from "@/components/features/calendar/calendar-grid";
 import Button from "@/components/ui/button";
+import SectionBadge from "@/components/ui/section-badge";
 
 const CalendarPreviewSection = () => {
   return (
-    <section className="max-w-4xl mx-auto my-24 px-8">
-      <p className="text-center text-yellow-600 text-xl sm:text-2xl">
-        Kalender
-      </p>
-      <h2 className="text-center text-4xl font-bold text-yellow-400 mb-16">
+    <section className="max-w-4xl mx-auto my-32 px-8">
+      <SectionBadge>Kalender</SectionBadge>
+      <h2 className="text-center text-4xl sm:text-5xl font-bold text-white mb-16">
         Komende activiteiten
       </h2>
       <CalendarGrid limit={2} />

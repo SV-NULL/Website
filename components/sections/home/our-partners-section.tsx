@@ -1,4 +1,5 @@
 import { getPartnerItems } from "@/lib/content";
+import Divider from "@/components/ui/divider";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,11 +7,15 @@ const OurPartnersSection = () => {
   const partners = getPartnerItems();
 
   return (
-    <section className="py-24 container mx-auto px-4 max-w-7xl border-t border-neutral-800">
+    <section className="py-24 container mx-auto px-4 max-w-7xl">
+      <Divider className="mb-24" />
       <div className="text-center mb-16">
-        <h2 className="text-2xl font-bold text-gray-400 uppercase tracking-widest mb-12">
+        <h2 className="text-xs font-bold text-yellow-400 uppercase tracking-widest mb-4">
           Onze partners
         </h2>
+        <p className="text-2xl font-bold text-white mb-12">
+          Samen sterker in de ICT-wereld
+        </p>
 
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center group/partners">
           {partners.map((partner, index) => (

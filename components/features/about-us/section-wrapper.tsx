@@ -13,8 +13,6 @@ const SectionWrapper = ({
   gradientDirection,
   children,
 }: Props) => {
-  const gradientClass = "from-neutral-900/50 to-neutral-800/30";
-
   return (
     <section className="mb-16">
       <div className="flex items-center gap-3 mb-8">
@@ -22,7 +20,7 @@ const SectionWrapper = ({
         <h2 className="text-4xl font-bold text-white">{title}</h2>
       </div>
       <div
-        className={`bg-gradient-to-${gradientDirection} ${gradientClass} border border-neutral-700 rounded-2xl p-8 lg:p-12`}
+        className={`bg-linear-to-${gradientDirection} from-neutral-900/70 to-neutral-800/40 border border-neutral-700/50 rounded-2xl p-8 lg:p-12 shadow-inner`}
       >
         {children}
       </div>
