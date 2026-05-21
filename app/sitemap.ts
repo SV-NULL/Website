@@ -2,8 +2,8 @@ import { siteConfig } from "@/config/site";
 import {
   getBoards,
   getCommittees,
+  getCourses,
   getVacatureItems,
-  getVakkenItems,
 } from "@/lib/content";
 import { MetadataRoute } from "next";
 
@@ -56,7 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  const subjects = getVakkenItems().map((subject) => ({
+  const subjects = getCourses().map((subject) => ({
     url: `${baseUrl}/vakken/${subject.slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,

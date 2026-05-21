@@ -17,4 +17,4 @@ export { getPartnerItems } from "./repositories/partners";
 export { getVacatureBySlug, getVacatureItems } from "./repositories/vacatures";
 
 // Subjects
-export { getVakkenBySlug, getVakkenItems } from "./repositories/vakken";
+export { getCourses, getCoursesBySlug } from "./repositories/courses";

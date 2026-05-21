@@ -1,7 +1,7 @@
 import { JsonLd } from "@/components/features/json-ld/json-ld";
 import PageTitle from "@/components/ui/page-title";
 import { siteConfig } from "@/config/site";
-import { getVakkenBySlug } from "@/lib/content";
+import { getCoursesBySlug } from "@/lib/content";
 import { constructMetadata } from "@/lib/seo";
 import { Lightbulb } from "lucide-react";
 import { Metadata } from "next";
@@ -14,12 +14,12 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const vak = getVakkenBySlug(slug);
-  if (!vak) return {};
+  const course = getCoursesBySlug(slug);
+  if (!course) return {};
 
   return constructMetadata({
-    title: vak.title,
-    description: `Dit studiejaar staat in het teken van: ${vak.subtitle}. ${vak.description}`,
+    title: course.title,
+    description: `Dit studiejaar staat in het teken van: ${course.subtitle}. ${course.description}`,
   });
 }
 
@@ -49,16 +49,16 @@ export default async function VakkenDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const vak = getVakkenBySlug(slug);
-  if (!vak) return notFound();
+  const course = getCoursesBySlug(slug);
+  if (!course) return notFound();
 
-  const coursesBySemester = vak.courses.reduce(
+  const coursesBySemester = course.courses.reduce(
     (acc, course) => {
       if (!acc[course.semester]) acc[course.semester] = [];
       acc[course.semester].push(course);
       return acc;
     },
-    {} as Record<number, typeof vak.courses>,
+    {} as Record<number, typeof course.courses>,
   );
 
   const sortedSemesters = Object.keys(coursesBySemester)
@@ -71,10 +71,10 @@ export default async function VakkenDetailPage({
         data={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: vak.title,
-          description: vak.description,
+          name: course.title,
+          description: course.description,
           url: `${siteConfig.url}/vakken/${slug}`,
-          hasPart: vak.courses.map((course) => ({
+          hasPart: course.courses.map((course) => ({
             "@type": "Course",
             name: course.name,
             description: course.details,
@@ -82,13 +82,13 @@ export default async function VakkenDetailPage({
         }}
       />
       <PageTitle
-        title={vak.title}
-        subtitle={"Dit studiejaar staat in het teken van: " + vak.subtitle}
+        title={course.title}
+        subtitle={"Dit studiejaar staat in het teken van: " + course.subtitle}
       />
 
       <div className="bg-linear-to-r from-neutral-900/70 to-neutral-800/40 border border-neutral-700/50 rounded-xl p-8 mb-12">
         <p className="text-gray-300 leading-relaxed text-lg">
-          {vak.description}
+          {course.description}
         </p>
       </div>
 
