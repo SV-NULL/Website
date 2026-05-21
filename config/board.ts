@@ -1,8 +1,8 @@
-import { Bestuur } from "@/types/bestuur";
+import { Board } from "@/types/bestuur";
 import { ROLES } from "@/types/roles";
 import { PERSONS } from "./person";
 
-export const boards: Bestuur[] = [
+export const boards: Board[] = [
   {
     id: "1ste-bestuur",
     title: "1ste Bestuur",

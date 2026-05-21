@@ -2,7 +2,7 @@ import z from "zod";
 import { MemberFrontmatterSchema } from "./common";
 import { ImageFrontmatterSchema } from "./image";
 
-export const BestuurFrontmatterSchema = z.object({
+export const BoardFrontmatterSchema = z.object({
   id: z.string(),
   title: z.string(),
   subtitle: z.string(),
@@ -10,6 +10,6 @@ export const BestuurFrontmatterSchema = z.object({
   startDate: z.coerce.date().optional(),
   members: MemberFrontmatterSchema.array().default([]),
 });
-export type Bestuur = z.infer<typeof BestuurFrontmatterSchema> & {
+export type Board = z.infer<typeof BoardFrontmatterSchema> & {
   content: string;
 };
