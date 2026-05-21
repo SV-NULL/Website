@@ -3,7 +3,7 @@ import {
   getBoards,
   getCommittees,
   getCourses,
-  getVacatureItems,
+  getVacancies,
 } from "@/lib/content";
 import { MetadataRoute } from "next";
 
@@ -49,7 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const vacancies = getVacatureItems().map((vacancy) => ({
+  const vacancies = getVacancies().map((vacancy) => ({
     url: `${baseUrl}/vacatures/${vacancy.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,

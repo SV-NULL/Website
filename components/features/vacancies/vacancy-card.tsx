@@ -1,9 +1,9 @@
-import { Vacature } from "@/types/vacatures";
+import { Vacancy } from "@/types/vacancy";
 import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
-  vacancy: Vacature;
+  vacancy: Vacancy;
 };
 
 const VacancyCard = ({ vacancy }: Props) => {

@@ -14,7 +14,7 @@ export { getCommitteeById, getCommittees } from "./repositories/committees";
 export { getPartnerItems } from "./repositories/partners";
 
 // Vacancies
-export { getVacatureBySlug, getVacatureItems } from "./repositories/vacatures";
+export { getVacancies, getVacancyBySlug } from "./repositories/vacancies";
 
 // Subjects
 export { getCourses, getCoursesBySlug } from "./repositories/courses";

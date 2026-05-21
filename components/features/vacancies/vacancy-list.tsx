@@ -1,13 +1,13 @@
 "use client";
 
 import CTA from "@/components/sections/cta";
-import { Vacature } from "@/types/vacatures";
+import { Vacancy } from "@/types/vacancy";
 import { useState } from "react";
 import FilterChips from "./filter-chips";
 import VacancyCard from "./vacancy-card";
 
 type Props = {
-  vacancies: Vacature[];
+  vacancies: Vacancy[];
 };
 
 export default function VacancyList({ vacancies }: Props) {

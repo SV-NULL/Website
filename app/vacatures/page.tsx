@@ -2,7 +2,7 @@ import { JsonLd } from "@/components/features/json-ld/json-ld";
 import VacancyList from "@/components/features/vacancies/vacancy-list";
 import PageTitle from "@/components/ui/page-title";
 import { siteConfig } from "@/config/site";
-import { getVacatureItems } from "@/lib/content";
+import { getVacancies } from "@/lib/content";
 import { constructMetadata } from "@/lib/seo";
 import { type CollectionPage } from "schema-dts";
 
@@ -13,7 +13,7 @@ export const metadata = constructMetadata({
 });
 
 export default function VacanciesPage() {
-  const vacancies = getVacatureItems();
+  const vacancies = getVacancies();
 
   return (
     <div className="container mx-auto px-8 space-y-4">

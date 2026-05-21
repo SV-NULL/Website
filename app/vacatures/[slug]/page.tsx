@@ -1,7 +1,7 @@
 import { JsonLd } from "@/components/features/json-ld/json-ld";
 import MetadataRow from "@/components/features/vacancies/metadata-row";
 import StickySidebar from "@/components/features/vacancies/sticky-sidebar";
-import { getVacatureBySlug, getVacatureItems } from "@/lib/content";
+import { getVacancies, getVacancyBySlug } from "@/lib/content";
 import { constructMetadata } from "@/lib/seo";
 import {
   ArrowLeft,
@@ -24,7 +24,7 @@ import Markdown from "react-markdown";
 import { type JobPosting } from "schema-dts";
 
 export async function generateStaticParams() {
-  const items = getVacatureItems();
+  const items = getVacancies();
   return items.map((v) => ({ slug: v.slug }));
 }
 
@@ -34,12 +34,12 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const vacature = getVacatureBySlug(slug);
-  if (!vacature) return {};
+  const vacancy = getVacancyBySlug(slug);
+  if (!vacancy) return {};
 
   return constructMetadata({
-    title: `${vacature.title} bij ${vacature.company}`,
-    description: `Vacature voor ${vacature.title} bij ${vacature.company}. ${vacature.type}, ${vacature.hours}.`,
+    title: `${vacancy.title} bij ${vacancy.company}`,
+    description: `Vacature voor ${vacancy.title} bij ${vacancy.company}. ${vacancy.type}, ${vacancy.hours}.`,
   });
 }
 
@@ -49,9 +49,9 @@ export default async function VacatureDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const vacature = getVacatureBySlug(slug);
+  const vacancy = getVacancyBySlug(slug);
 
-  if (!vacature) return notFound();
+  if (!vacancy) return notFound();
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] -mt-6">
@@ -59,25 +59,25 @@ export default async function VacatureDetailPage({
         data={{
           "@context": "https://schema.org",
           "@type": "JobPosting",
-          title: vacature.title,
-          description: vacature.content,
+          title: vacancy.title,
+          description: vacancy.content,
           datePosted: new Date().toISOString().split("T")[0],
           validThrough: new Date(new Date().setMonth(new Date().getMonth() + 3))
             .toISOString()
             .split("T")[0],
-          employmentType: vacature.type,
+          employmentType: vacancy.type,
           hiringOrganization: {
             "@type": "Organization",
-            name: vacature.company,
-            sameAs: vacature.applyUrl,
-            logo: vacature.logo,
+            name: vacancy.company,
+            sameAs: vacancy.applyUrl,
+            logo: vacancy.logo,
           },
           jobLocation: {
             "@type": "Place",
             address: {
               "@type": "PostalAddress",
-              addressLocality: vacature.location,
-              streetAddress: vacature.companyAddress,
+              addressLocality: vacancy.location,
+              streetAddress: vacancy.companyAddress,
             },
           },
           baseSalary: {
@@ -111,8 +111,8 @@ export default async function VacatureDetailPage({
             <div className="flex flex-col md:flex-row gap-6 md:items-center">
               <div className="relative w-20 h-20 md:w-24 md:h-24 bg-white rounded-xl shadow-sm p-4 flex items-center justify-center">
                 <Image
-                  src={vacature.logo}
-                  alt={vacature.company}
+                  src={vacancy.logo}
+                  alt={vacancy.company}
                   className="object-contain w-full h-full"
                   width={96}
                   height={96}
@@ -122,26 +122,26 @@ export default async function VacatureDetailPage({
                 <div className="flex flex-wrap items-center gap-3 text-sm font-medium text-gray-400">
                   <span className="flex items-center gap-1.5">
                     <Building2 size={14} className="flex-shrink-0" />
-                    {vacature.company}
+                    {vacancy.company}
                   </span>
-                  {vacature.location && (
+                  {vacancy.location && (
                     <>
                       <span className="w-1 h-1 rounded-full bg-neutral-700" />
                       <span className="flex items-center gap-1.5">
                         <MapPin size={14} className="flex-shrink-0" />
-                        {vacature.location}
+                        {vacancy.location}
                       </span>
                     </>
                   )}
                 </div>
                 <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
-                  {vacature.title}
+                  {vacancy.title}
                 </h1>
               </div>
             </div>
-            {vacature.applyUrl && (
+            {vacancy.applyUrl && (
               <a
-                href={vacature.applyUrl}
+                href={vacancy.applyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden md:inline-flex items-center gap-2 px-6 py-3 bg-yellow-400 text-black font-semibold rounded-xl hover:bg-yellow-300 transition-colors shadow-sm cursor-pointer"
@@ -223,7 +223,7 @@ export default async function VacatureDetailPage({
                   ),
                 }}
               >
-                {vacature.content}
+                {vacancy.content}
               </Markdown>
             </div>
           </div>
@@ -240,29 +240,29 @@ export default async function VacatureDetailPage({
                   <MetadataRow
                     icon={Briefcase}
                     label="Dienstverband"
-                    value={vacature.type}
+                    value={vacancy.type}
                   />
                   <MetadataRow
                     icon={Clock}
                     label="Uren per week"
-                    value={vacature.hours}
+                    value={vacancy.hours}
                   />
                   <MetadataRow
                     icon={GraduationCap}
                     label="Ervaring / Niveau"
-                    value={vacature.experience || vacature.education}
+                    value={vacancy.experience || vacancy.education}
                   />
                   <MetadataRow
                     icon={MapPin}
                     label="Locatie"
-                    value={vacature.location}
+                    value={vacancy.location}
                   />
                 </div>
 
                 {/* Mobile apply button */}
-                {vacature.applyUrl && (
+                {vacancy.applyUrl && (
                   <a
-                    href={vacature.applyUrl}
+                    href={vacancy.applyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-6 w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-yellow-400 text-black font-semibold rounded-xl hover:bg-yellow-300 transition-colors shadow-sm md:hidden"
@@ -276,31 +276,31 @@ export default async function VacatureDetailPage({
               {/* Box 2: Over Bedrijf */}
               <div className="bg-neutral-900 rounded-2xl border border-neutral-800 p-6">
                 <h3 className="text-lg font-bold text-white mb-6 pb-4 border-b border-neutral-800">
-                  Over {vacature.company}
+                  Over {vacancy.company}
                 </h3>
                 <div className="space-y-1">
                   {/* Website as metadata row if available */}
-                  {vacature.applyUrl && (
+                  {vacancy.applyUrl && (
                     <MetadataRow
                       icon={Globe}
                       label="Website"
-                      value={new URL(vacature.applyUrl).hostname}
+                      value={new URL(vacancy.applyUrl).hostname}
                     />
                   )}
                   <MetadataRow
                     icon={Phone}
                     label="Telefoon"
-                    value={vacature.companyPhone}
+                    value={vacancy.companyPhone}
                   />
                   <MetadataRow
                     icon={Mail}
                     label="E-mail"
-                    value={vacature.companyEmail}
+                    value={vacancy.companyEmail}
                   />
                   <MetadataRow
                     icon={Map}
                     label="Adres"
-                    value={vacature.companyAddress}
+                    value={vacancy.companyAddress}
                   />
                 </div>
               </div>
