@@ -4,8 +4,8 @@ import Button from "@/components/ui/button";
 import { useActivePath } from "@/hooks/use-active-path";
 import { NavItem } from "@/types/image";
 import { ChevronDown, ChevronRight } from "lucide-react";
-import Link from "next/link";
 import { useLayoutEffect, useRef, useState } from "react";
+import NavLink from "./nav-link";
 
 type Props = {
   item: NavItem;
@@ -15,14 +15,9 @@ type Props = {
 };
 
 const MobileNavigationItem = ({ item, isOpen, isLast, onToggle }: Props) => {
-  const { isActive } = useActivePath();
+  const { isActive, isParentActive } = useActivePath();
   const contentRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState<string | number>(0);
-
-  const isParentActive =
-    item.type !== "button" &&
-    ((item.href && isActive(item.href)) ||
-      item.sub?.some((s) => s.href && isActive(s.href)));
 
   useLayoutEffect(() => {
     if (isOpen && contentRef.current) {
@@ -31,6 +26,8 @@ const MobileNavigationItem = ({ item, isOpen, isLast, onToggle }: Props) => {
       setHeight(0);
     }
   }, [isOpen]);
+
+  const borderClass = isLast ? "" : "border-b border-neutral-800";
 
   if (item.type === "button") {
     return (
@@ -48,7 +45,7 @@ const MobileNavigationItem = ({ item, isOpen, isLast, onToggle }: Props) => {
     return (
       <NavLink
         href={item.href}
-        className={`block px-3 py-3 text-lg font-medium ${isLast ? "" : "border-b border-neutral-800"} ${
+        className={`block px-3 py-3 text-lg font-medium ${borderClass} ${
           item.href && isActive(item.href) ? "text-yellow-400" : "text-white"
         }`}
       >
@@ -58,11 +55,11 @@ const MobileNavigationItem = ({ item, isOpen, isLast, onToggle }: Props) => {
   }
 
   return (
-    <div className={`${isLast ? "" : "border-b border-neutral-800"}`}>
+    <div className={borderClass}>
       <button
         onClick={onToggle}
         className={`flex justify-between items-center w-full px-3 py-3 text-lg font-medium ${
-          isParentActive ? "text-yellow-400" : "text-white"
+          isParentActive(item) ? "text-yellow-400" : "text-white"
         }`}
       >
         {item.name}
@@ -94,26 +91,6 @@ const MobileNavigationItem = ({ item, isOpen, isLast, onToggle }: Props) => {
         </div>
       </div>
     </div>
-  );
-};
-
-const NavLink = ({
-  href,
-  className,
-  children,
-}: {
-  href?: string;
-  className: string;
-  children: React.ReactNode;
-}) => {
-  if (!href) {
-    return <div className={className}>{children}</div>;
-  }
-
-  return (
-    <Link href={href} className={className}>
-      {children}
-    </Link>
   );
 };
 

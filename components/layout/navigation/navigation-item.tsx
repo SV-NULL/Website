@@ -4,24 +4,19 @@ import Button from "@/components/ui/button";
 import { useActivePath } from "@/hooks/use-active-path";
 import { NavItem } from "@/types/image";
 import { ChevronDown } from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
+import NavLink from "./nav-link";
 
 type Props = {
   item: NavItem;
 };
 
 const NavigationItem = ({ item }: Props) => {
-  const { isActive } = useActivePath();
+  const { isActive, isParentActive } = useActivePath();
   const [isOpen, setIsOpen] = useState(false);
 
-  const isParentActive =
-    item.type !== "button" &&
-    ((item.href && isActive(item.href)) ||
-      item.sub?.some((s) => s.href && isActive(s.href)));
-
   const baseClasses = `px-3 py-2 transition-colors duration-200 focus:outline-none ${
-    isParentActive ? "text-yellow-400" : "hover:text-yellow-400"
+    isParentActive(item) ? "text-yellow-400" : "hover:text-yellow-400"
   }`;
 
   if (item.type === "button") {
@@ -82,26 +77,6 @@ const NavigationItem = ({ item }: Props) => {
         </div>
       </div>
     </div>
-  );
-};
-
-const NavLink = ({
-  href,
-  className,
-  children,
-}: {
-  href?: string;
-  className: string;
-  children: React.ReactNode;
-}) => {
-  if (!href) {
-    return <div className={className}>{children}</div>;
-  }
-
-  return (
-    <Link href={href} className={className}>
-      {children}
-    </Link>
   );
 };
 
