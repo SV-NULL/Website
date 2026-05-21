@@ -22,6 +22,8 @@ export const navItems: NavItem[] = [
     ],
   },
   { name: "Contact", href: "/contact" },
+  { name: "Lid worden", href: "/word-lid", type: "button", className: "mr-2" },
+  { name: "Partner worden", href: "/partner-worden", type: "button" },
 ];
 
 export const footerNavItems: NavItem[] = [

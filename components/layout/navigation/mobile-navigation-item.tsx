@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "@/components/ui/button";
 import { useActivePath } from "@/hooks/use-active-path";
 import { NavItem } from "@/types/image";
 import { ChevronDown, ChevronRight } from "lucide-react";
@@ -19,8 +20,9 @@ const MobileNavigationItem = ({ item, isOpen, isLast, onToggle }: Props) => {
   const [height, setHeight] = useState<string | number>(0);
 
   const isParentActive =
-    (item.href && isActive(item.href)) ||
-    item.sub?.some((s) => s.href && isActive(s.href));
+    item.type !== "button" &&
+    ((item.href && isActive(item.href)) ||
+      item.sub?.some((s) => s.href && isActive(s.href)));
 
   useLayoutEffect(() => {
     if (isOpen && contentRef.current) {
@@ -29,6 +31,18 @@ const MobileNavigationItem = ({ item, isOpen, isLast, onToggle }: Props) => {
       setHeight(0);
     }
   }, [isOpen]);
+
+  if (item.type === "button") {
+    return (
+      <Button
+        href={item.href}
+        onClick={item.onClick}
+        className={`mt-4 ${item.className}`}
+      >
+        {item.name}
+      </Button>
+    );
+  }
 
   if (!item.sub) {
     return (

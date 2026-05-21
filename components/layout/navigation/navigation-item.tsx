@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "@/components/ui/button";
 import { useActivePath } from "@/hooks/use-active-path";
 import { NavItem } from "@/types/image";
 import { ChevronDown } from "lucide-react";
@@ -15,12 +16,25 @@ const NavigationItem = ({ item }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const isParentActive =
-    (item.href && isActive(item.href)) ||
-    item.sub?.some((s) => s.href && isActive(s.href));
+    item.type !== "button" &&
+    ((item.href && isActive(item.href)) ||
+      item.sub?.some((s) => s.href && isActive(s.href)));
 
   const baseClasses = `px-3 py-2 transition-colors duration-200 focus:outline-none ${
     isParentActive ? "text-yellow-400" : "hover:text-yellow-400"
   }`;
+
+  if (item.type === "button") {
+    return (
+      <Button
+        href={item.href}
+        onClick={item.onClick}
+        className={item.className}
+      >
+        {item.name}
+      </Button>
+    );
+  }
 
   if (!item.sub) {
     return (
