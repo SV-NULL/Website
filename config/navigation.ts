@@ -1,4 +1,4 @@
-import { NavItem, SocialNavItem } from "@/types/image";
+import { NavItem, SocialNavItem } from "@/types/navigation";
 import { Github, Instagram, Linkedin } from "lucide-react";
 
 export const navItems: NavItem[] = [
