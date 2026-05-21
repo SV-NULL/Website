@@ -15,7 +15,8 @@ const NavigationItem = ({ item }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const isParentActive =
-    isActive(item.href) || item.sub?.some((s) => isActive(s.href));
+    (item.href && isActive(item.href)) ||
+    item.sub?.some((s) => s.href && isActive(s.href));
 
   const baseClasses = `px-3 py-2 transition-colors duration-200 focus:outline-none ${
     isParentActive ? "text-yellow-400" : "hover:text-yellow-400"
@@ -23,9 +24,9 @@ const NavigationItem = ({ item }: Props) => {
 
   if (!item.sub) {
     return (
-      <Link href={item.href} className={baseClasses}>
+      <NavLink href={item.href} className={baseClasses}>
         {item.name}
-      </Link>
+      </NavLink>
     );
   }
 
@@ -56,17 +57,37 @@ const NavigationItem = ({ item }: Props) => {
       >
         <div className="bg-black border border-neutral-800 rounded-lg shadow-xl overflow-hidden">
           {item.sub.map((sub, idx) => (
-            <Link
+            <NavLink
               key={idx}
               href={sub.href}
-              className={`block px-4 py-2 text-sm transition-colors ${isActive(sub.href) ? "bg-neutral-800 text-yellow-400" : "text-white hover:bg-neutral-900 hover:text-yellow-400"}`}
+              className={`block px-4 py-2 text-sm transition-colors ${sub.href && isActive(sub.href) ? "bg-neutral-800 text-yellow-400" : "text-white hover:bg-neutral-900 hover:text-yellow-400"}`}
             >
               {sub.name}
-            </Link>
+            </NavLink>
           ))}
         </div>
       </div>
     </div>
+  );
+};
+
+const NavLink = ({
+  href,
+  className,
+  children,
+}: {
+  href?: string;
+  className: string;
+  children: React.ReactNode;
+}) => {
+  if (!href) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <Link href={href} className={className}>
+      {children}
+    </Link>
   );
 };
 

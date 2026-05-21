@@ -10,7 +10,7 @@ export type Image = z.infer<typeof ImageFrontmatterSchema>;
 
 export type NavItem = {
   name: string;
-  href: string;
+  href?: string;
   sub?: NavItem[];
 };
 
