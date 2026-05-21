@@ -1,4 +1,4 @@
-import { Vacature, VactureFrontmatterSchema } from "@/types/vacatures";
+import { Vacature, VacatureFrontmatterSchema } from "@/types/vacatures";
 import { loadMarkdownBySlug, loadMarkdownFiles } from "../loader";
 
 /**
@@ -14,7 +14,7 @@ function mapToVacature(
   data: Record<string, unknown>,
   content: string,
 ): Vacature {
-  const validatedData = VactureFrontmatterSchema.parse(data);
+  const validatedData = VacatureFrontmatterSchema.parse(data);
 
   return {
     ...validatedData,
