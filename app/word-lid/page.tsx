@@ -1,6 +1,7 @@
 import { JsonLd } from "@/components/features/json-ld/json-ld";
 import DiscountAlert from "@/components/features/member/discount-alert";
 import BecomeMemberForm from "@/components/features/member/form";
+import PageContainer from "@/components/ui/page-container";
 import PageTitle from "@/components/ui/page-title";
 import { getDiscountByHash } from "@/config/discounts";
 import { siteConfig } from "@/config/site";
@@ -23,7 +24,7 @@ export default async function WordLidPage({ searchParams }: Props) {
   const discount = discountParam ? getDiscountByHash(discountParam) : null;
 
   return (
-    <div className="px-8 max-w-4xl mx-auto text-white">
+    <PageContainer className="text-white">
       <JsonLd<WebPage>
         data={{
           "@context": "https://schema.org",
@@ -69,6 +70,6 @@ export default async function WordLidPage({ searchParams }: Props) {
       </p>
 
       <BecomeMemberForm discount={discount} />
-    </div>
+    </PageContainer>
   );
 }

@@ -1,4 +1,5 @@
 import { JsonLd } from "@/components/features/json-ld/json-ld";
+import PageContainer from "@/components/ui/page-container";
 import PageTitle from "@/components/ui/page-title";
 import { siteConfig } from "@/config/site";
 import { constructMetadata } from "@/lib/seo";
@@ -38,7 +39,7 @@ function BulletItem({ children }: { children: React.ReactNode }) {
 
 export default function PrivacyCookiesPage() {
   return (
-    <div className="container mx-auto px-4 lg:px-8 max-w-4xl pb-24">
+    <PageContainer className="pb-24">
       <JsonLd<WebPage>
         data={{
           "@context": "https://schema.org",
@@ -197,6 +198,6 @@ export default function PrivacyCookiesPage() {
           aangepast, algemene voorwaarden toegevoegd.
         </p>
       </div>
-    </div>
+    </PageContainer>
   );
 }

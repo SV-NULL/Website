@@ -1,6 +1,7 @@
 import { JsonLd } from "@/components/features/json-ld/json-ld";
 import PartnerCard from "@/components/features/partners/partner-card";
 import CTA from "@/components/sections/cta";
+import PageContainer from "@/components/ui/page-container";
 import PageTitle from "@/components/ui/page-title";
 import { siteConfig } from "@/config/site";
 import { getPartnerItems } from "@/lib/content";
@@ -18,7 +19,7 @@ export default function PartnersPage() {
   const partners = getPartnerItems();
 
   return (
-    <div className="mx-auto px-8 space-y-4 max-w-6xl">
+    <PageContainer className="max-w-6xl space-y-4">
       <JsonLd<CollectionPage>
         data={{
           "@context": "https://schema.org",
@@ -52,6 +53,6 @@ export default function PartnersPage() {
         text="Bekijk onze partnerpagina voor meer informatie over wat een partnerschap inhoudt en hoe we samen kunnen werken."
         button={{ text: "Bekijk de mogelijkheden", href: "/partner-worden" }}
       />
-    </div>
+    </PageContainer>
   );
 }

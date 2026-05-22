@@ -2,6 +2,7 @@ import CalendarFeedButton from "@/components/features/calendar/calendar-feed-but
 import CalendarGrid from "@/components/features/calendar/calendar-grid";
 import { JsonLd } from "@/components/features/json-ld/json-ld";
 import CTA from "@/components/sections/cta";
+import PageContainer from "@/components/ui/page-container";
 import PageTitle from "@/components/ui/page-title";
 import { siteConfig } from "@/config/site";
 import { constructMetadata } from "@/lib/seo";
@@ -18,7 +19,7 @@ export const metadata = constructMetadata({
 
 export default function CalendarPage() {
   return (
-    <div className="mx-auto max-w-4xl px-8 space-y-4">
+    <PageContainer className="space-y-4">
       <JsonLd<WebPage>
         data={{
           "@context": "https://schema.org",
@@ -42,6 +43,6 @@ export default function CalendarPage() {
         text="Het bestuur is constant bezig met het organiseren van leuke activiteiten. Heb jij een leuk idee? Laat het ons weten!"
         className="mt-12"
       />
-    </div>
+    </PageContainer>
   );
 }

@@ -1,5 +1,6 @@
 import { JsonLd } from "@/components/features/json-ld/json-ld";
 import StudyYearCard from "@/components/features/subjects/study-year-card";
+import PageContainer from "@/components/ui/page-container";
 import PageTitle from "@/components/ui/page-title";
 import { siteConfig } from "@/config/site";
 import { getCourses } from "@/lib/content";
@@ -19,7 +20,7 @@ export default function VakkenPage() {
   const courses = getCourses();
 
   return (
-    <div className="container mx-auto px-4 lg:px-8">
+    <PageContainer>
       <JsonLd<CollectionPage>
         data={{
           "@context": "https://schema.org",
@@ -112,6 +113,6 @@ export default function VakkenPage() {
           ))}
         </div>
       </section>
-    </div>
+    </PageContainer>
   );
 }

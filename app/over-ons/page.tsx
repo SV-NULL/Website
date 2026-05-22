@@ -2,6 +2,7 @@ import FutureGoalCard from "@/components/features/about-us/future-goal-card";
 import InfoCard from "@/components/features/about-us/info-card";
 import SectionWrapper from "@/components/features/about-us/section-wrapper";
 import { JsonLd } from "@/components/features/json-ld/json-ld";
+import PageContainer from "@/components/ui/page-container";
 import PageTitle from "@/components/ui/page-title";
 import { siteConfig } from "@/config/site";
 import { constructMetadata } from "@/lib/seo";
@@ -75,7 +76,7 @@ export const metadata = constructMetadata({
 
 export default function OverOnsPage() {
   return (
-    <div className="container mx-auto px-4 lg:px-8 pb-24">
+    <PageContainer className="pb-24">
       <JsonLd<AboutPage>
         data={{
           "@context": "https://schema.org",
@@ -157,6 +158,6 @@ export default function OverOnsPage() {
           </p>
         </div>
       </SectionWrapper>
-    </div>
+    </PageContainer>
   );
 }
