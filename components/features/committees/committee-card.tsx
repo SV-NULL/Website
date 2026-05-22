@@ -1,10 +1,10 @@
-import { Commissie } from "@/types/commisie";
+import { Committee } from "@/types/committee";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
-  committee: Commissie;
+  committee: Committee;
   hasLine?: boolean;
 };
 
@@ -51,7 +51,7 @@ const CommitteeCard = ({ committee, hasLine = false }: Props) => {
             Meer info
           </Link>
           <Link
-            href={`/commissies/${committee.id}/aanmelden`}
+            href={`/commissies/${committee.id}#aanmelden`}
             className="flex-1 pointer-events-auto bg-yellow-400 hover:bg-yellow-300 text-black text-center py-2 px-3 rounded-lg text-sm font-medium transition-colors"
           >
             Aanmelden

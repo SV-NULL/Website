@@ -2,7 +2,7 @@
 
 import Button from "@/components/ui/button";
 import { useActivePath } from "@/hooks/use-active-path";
-import { NavItem } from "@/types/image";
+import { NavItem } from "@/types/navigation";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { useLayoutEffect, useRef, useState } from "react";
 import NavLink from "./nav-link";

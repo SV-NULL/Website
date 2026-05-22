@@ -2,7 +2,7 @@ import { JsonLd } from "@/components/features/json-ld/json-ld";
 import StudyYearCard from "@/components/features/subjects/study-year-card";
 import PageTitle from "@/components/ui/page-title";
 import { siteConfig } from "@/config/site";
-import { getVakkenItems } from "@/lib/content";
+import { getCourses } from "@/lib/content";
 import { constructMetadata } from "@/lib/seo";
 import { BookOpen, ExternalLink, GraduationCap } from "lucide-react";
 import Image from "next/image";
@@ -16,7 +16,7 @@ export const metadata = constructMetadata({
 });
 
 export default function VakkenPage() {
-  const vakken = getVakkenItems();
+  const courses = getCourses();
 
   return (
     <div className="container mx-auto px-4 lg:px-8">
@@ -102,7 +102,7 @@ export default function VakkenPage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {vakken.map(({ slug, data }) => (
+          {courses.map(({ slug, data }) => (
             <StudyYearCard
               key={slug}
               title={data.title}

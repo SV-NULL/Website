@@ -26,7 +26,7 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 bg-black border-b border-neutral-800 transition-transform duration-300 ${visible ? "translate-y-0" : "-translate-y-full"}`}
+      className={`fixed top-0 w-full z-50 bg-black/85 backdrop-blur-md border-b border-white/5 transition-transform duration-300 ${visible ? "translate-y-0" : "-translate-y-full"}`}
     >
       <div className="container mx-auto px-8">
         <div className="flex items-center justify-between h-25">

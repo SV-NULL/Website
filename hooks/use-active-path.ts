@@ -1,6 +1,6 @@
 "use client";
 
-import { NavItem } from "@/types/image";
+import { NavItem } from "@/types/navigation";
 import { usePathname } from "next/navigation";
 import { useCallback } from "react";
 

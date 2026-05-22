@@ -1,6 +1,6 @@
 import z from "zod";
 
-const coursesFrontmatterSchema = z.object({
+const courseFrontmatterSchema = z.object({
   semester: z.number().min(1).max(8),
   expertise: z.string().optional(),
   name: z.string(),
@@ -8,10 +8,10 @@ const coursesFrontmatterSchema = z.object({
   resources: z.array(z.string()).default([]),
 });
 
-export const VakkenFrontmatterSchema = z.object({
+export const CoursesFrontmatterSchema = z.object({
   title: z.string(),
   subtitle: z.string(),
   description: z.string(),
-  courses: coursesFrontmatterSchema.array().default([]),
+  courses: courseFrontmatterSchema.array().default([]),
 });
-export type Vakken = z.infer<typeof VakkenFrontmatterSchema>;
+export type Courses = z.infer<typeof CoursesFrontmatterSchema>;

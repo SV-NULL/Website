@@ -2,15 +2,7 @@ import { JsonLd } from "@/components/features/json-ld/json-ld";
 import PageTitle from "@/components/ui/page-title";
 import { siteConfig } from "@/config/site";
 import { constructMetadata } from "@/lib/seo";
-import {
-  Building,
-  Calendar,
-  Eye,
-  FileText,
-  Scale,
-  UserCheck,
-  Users,
-} from "lucide-react";
+import { Calendar } from "lucide-react";
 import Link from "next/link";
 import { type WebPage } from "schema-dts";
 
@@ -20,9 +12,51 @@ export const metadata = constructMetadata({
     "Lees hier de statuten van s.v. NULL. Deze bevatten de formele regels en richtlijnen die onze vereniging bestuurt.",
 });
 
+function ArticleHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex items-center gap-3 mb-6">
+      <div className="w-1 h-7 bg-yellow-400 rounded-full shrink-0" />
+      <h2 className="text-2xl font-bold text-white">{children}</h2>
+    </div>
+  );
+}
+
+const TOC_ITEMS = [
+  { label: "Art. 1 – Naam en zetel", href: "#artikel-1" },
+  { label: "Art. 2 – Doel", href: "#artikel-2" },
+  { label: "Art. 3 – Lidmaatschap", href: "#artikel-3" },
+  { label: "Art. 4 – Einde lidmaatschap", href: "#artikel-4" },
+  { label: "Art. 5 – Aspirant-leden", href: "#artikel-5" },
+  { label: "Art. 6 – Donateurs", href: "#artikel-6" },
+  { label: "Art. 7 – Contributie van de leden", href: "#artikel-7" },
+  { label: "Art. 8 – Bestuur: samenstelling", href: "#artikel-8" },
+  { label: "Art. 9 – Bestuur: einde functie", href: "#artikel-9" },
+  { label: "Art. 10 – Bestuur: vergadering", href: "#artikel-10" },
+  { label: "Art. 11 – Bestuur: leiding vergadering", href: "#artikel-11" },
+  { label: "Art. 12 – Bestuur: taken en bevoegdheden", href: "#artikel-12" },
+  { label: "Art. 13 – Vertegenwoordiging", href: "#artikel-13" },
+  { label: "Art. 14 – Verslaggeving en verantwoording", href: "#artikel-14" },
+  {
+    label: "Art. 15 – Algemene vergadering: bevoegdheid",
+    href: "#artikel-15",
+  },
+  { label: "Art. 16 – Algemene vergadering: oproeping", href: "#artikel-16" },
+  { label: "Art. 17 – Algemene vergadering: toegang", href: "#artikel-17" },
+  {
+    label: "Art. 18 – Algemene vergadering: besluitvorming",
+    href: "#artikel-18",
+  },
+  { label: "Art. 19 – Algemene vergadering: leiding", href: "#artikel-19" },
+  { label: "Art. 20 – Statutenwijziging", href: "#artikel-20" },
+  { label: "Art. 21 – Fusie, splitsing, omzetting", href: "#artikel-21" },
+  { label: "Art. 22 – Ontbinding", href: "#artikel-22" },
+  { label: "Art. 23 – Vereffening", href: "#artikel-23" },
+  { label: "Art. 24 – Reglementen", href: "#artikel-24" },
+];
+
 export default function StatutenPage() {
   return (
-    <div className="container mx-auto px-4 lg:px-8">
+    <div className="container mx-auto px-4 lg:px-8 max-w-4xl pb-24">
       <JsonLd<WebPage>
         data={{
           "@context": "https://schema.org",
@@ -38,64 +72,30 @@ export default function StatutenPage() {
         subtitle="Lees hier de statuten van s.v. NULL. Deze bevatten de formele regels en richtlijnen die onze vereniging bestuurt."
       />
 
-      {/* Table of Contents */}
-      <div className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-8 mb-12">
-        <div className="flex items-center gap-3 mb-6">
-          <FileText className="h-6 w-6 text-yellow-400" />
-          <h2 className="text-2xl font-bold text-white">Inhoudsopgave</h2>
-        </div>
-        <div className="grid grid-rows-8 grid-flow-col gap-x-6 gap-y-1">
-          {[
-            "Art. 1 – Naam en zetel",
-            "Art. 2 – Doel",
-            "Art. 3 – Lidmaatschap",
-            "Art. 4 – Einde lidmaatschap",
-            "Art. 5 – Aspirant-leden",
-            "Art. 6 – Donateurs",
-            "Art. 7 – Contributie van de leden",
-            "Art. 8 – Bestuur: samenstelling",
-            "Art. 9 – Bestuur: einde functie",
-            "Art. 10 – Bestuur: vergadering",
-            "Art. 11 – Bestuur: leiding vergadering",
-            "Art. 12 – Bestuur: taken en bevoegdheden",
-            "Art. 13 – Vertegenwoordiging",
-            "Art. 14 – Verslaggeving en verantwoording",
-            "Art. 15 – Algemene vergadering: bevoegdheid",
-            "Art. 16 – Algemene vergadering: oproeping",
-            "Art. 17 – Algemene vergadering: toegang",
-            "Art. 18 – Algemene vergadering: besluitvorming",
-            "Art. 19 – Algemene vergadering: leiding",
-            "Art. 20 – Statutenwijziging",
-            "Art. 21 – Fusie, splitsing, omzetting",
-            "Art. 22 – Ontbinding",
-            "Art. 23 – Vereffening",
-            "Art. 24 – Reglementen",
-          ].map((item, index) => (
+      {/* TOC */}
+      <nav className="bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 mb-12">
+        <p className="text-sm font-semibold text-gray-400 uppercase tracking-widest mb-4">
+          Inhoudsopgave
+        </p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-1">
+          {TOC_ITEMS.map((item) => (
             <Link
-              key={index}
-              href={`#artikel-${index + 1}`}
-              className="text-gray-400 hover:text-yellow-400 transition-colors duration-200 text-sm py-1 block"
+              key={item.href}
+              href={item.href}
+              className="flex items-center gap-2 text-gray-400 hover:text-yellow-400 transition-colors duration-200 py-1 group text-sm"
             >
-              {item}
+              <div className="w-1 h-1 rounded-full bg-neutral-600 group-hover:bg-yellow-400 transition-colors duration-200 shrink-0" />
+              {item.label}
             </Link>
           ))}
         </div>
-      </div>
+      </nav>
 
-      {/* Key Articles */}
-      <div className="space-y-8 mb-16">
+      <div className="space-y-12">
         {/* Artikel 1 */}
-        <section
-          id="artikel-1"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <div className="flex items-center gap-3 mb-6">
-            <Building className="h-6 w-6 text-yellow-400" />
-            <h2 className="text-2xl font-bold text-yellow-400">
-              Artikel 1 – Naam en zetel
-            </h2>
-          </div>
-          <div className="space-y-4 text-gray-300 leading-relaxed">
+        <section id="artikel-1">
+          <ArticleHeading>Artikel 1 – Naam en zetel</ArticleHeading>
+          <div className="space-y-4 text-gray-300 leading-relaxed pl-4">
             <p>
               De vereniging draagt de naam:{" "}
               <span className="text-white font-semibold">
@@ -110,69 +110,39 @@ export default function StatutenPage() {
         </section>
 
         {/* Artikel 2 */}
-        <section
-          id="artikel-2"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <div className="flex items-center gap-3 mb-6">
-            <Eye className="h-6 w-6 text-yellow-400" />
-            <h2 className="text-2xl font-bold text-yellow-400">
-              Artikel 2 – Doel
-            </h2>
-          </div>
-          <div className="text-gray-300 leading-relaxed bg-neutral-800/30 rounded-lg p-6">
+        <section id="artikel-2">
+          <ArticleHeading>Artikel 2 – Doel</ArticleHeading>
+          <div className="pl-4 text-gray-300 leading-relaxed">
             <p>
-              De vereniging heeft als doel: het{" "}
-              <span className="text-yellow-400 font-semibold">
-                verbinden van kennis en kunde
-              </span>{" "}
-              van &quot;ICT&quot;-studenten aan de te Ede gevestigde{" "}
-              <span className="text-white font-semibold">
-                Christelijke Hogeschool Ede (CHE)
-              </span>{" "}
-              - met adres Oude Kerkweg 100, 6717 JS Ede- met het bedrijfsleven
-              om daarbij kennis en vaardigheden uit te wisselen waaronder ook
-              het{" "}
-              <span className="text-yellow-400 font-semibold">
-                opdoen van werkervaring
-              </span>
-              , en het verrichten van al wat hiermee verband houdt of daartoe
-              bevorderlijk kan zijn.
+              De vereniging heeft als doel: het verbinden van kennis en kunde
+              van &quot;ICT&quot;-studenten aan de te Ede gevestigde
+              Christelijke Hogeschool Ede (CHE) - met adres Oude Kerkweg 100,
+              6717 JS Ede - met het bedrijfsleven om daarbij kennis en
+              vaardigheden uit te wisselen waaronder ook het opdoen van
+              werkervaring, en het verrichten van al wat hiermee verband houdt
+              of daartoe bevorderlijk kan zijn.
             </p>
           </div>
         </section>
 
         {/* Artikel 3 */}
-        <section
-          id="artikel-3"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <div className="flex items-center gap-3 mb-6">
-            <UserCheck className="h-6 w-6 text-yellow-400" />
-            <h2 className="text-2xl font-bold text-yellow-400">
-              Artikel 3 – Lidmaatschap
-            </h2>
-          </div>
-          <div className="space-y-4 text-gray-300 leading-relaxed">
-            <div className="bg-yellow-400/10 border border-yellow-400/30 rounded-lg p-6 mb-6">
-              <h3 className="text-yellow-400 font-semibold mb-2">
-                Wie kan lid worden?
-              </h3>
-              <p>
-                Natuurlijke personen die &quot;ICT&quot; student zijn aan de
-                CHE, die het doel en de statuten van de vereniging
-                onderschrijven en daadwerkelijk willen meewerken aan de
-                verenigingsactiviteiten.
-              </p>
-            </div>
-
-            <details className="group">
-              <summary className="cursor-pointer bg-neutral-800/30 p-4 rounded-lg hover:bg-neutral-800/50 transition-colors">
+        <section id="artikel-3">
+          <ArticleHeading>Artikel 3 – Lidmaatschap</ArticleHeading>
+          <div className="space-y-4 text-gray-300 leading-relaxed pl-4">
+            <p>
+              Lid van de vereniging kunnen zijn: natuurlijke personen die
+              &quot;ICT&quot; student zijn aan de CHE, die het doel en de
+              statuten van de vereniging onderschrijven en daadwerkelijk willen
+              meewerken aan de verenigingsactiviteiten.
+            </p>
+            <details className="group border border-neutral-700 rounded-lg overflow-hidden">
+              <summary className="flex items-center gap-3 px-5 py-4 cursor-pointer hover:bg-neutral-800/40 transition-colors duration-200 list-none">
+                <div className="w-3.5 h-3.5 border-r-2 border-b-2 border-neutral-500 group-open:border-yellow-400 rotate-45 group-open:-rotate-135 transition-transform duration-200 shrink-0" />
                 <span className="font-semibold text-white">
-                  Volledige lidmaatschapsvoorwaarden (klik om uit te klappen)
+                  Volledige lidmaatschapsvoorwaarden
                 </span>
               </summary>
-              <div className="mt-4 pl-4 border-l-2 border-yellow-400/30">
+              <div className="px-5 pb-5 pt-3 border-t border-neutral-700/60">
                 <ol className="list-decimal pl-6 space-y-3">
                   <li>
                     Lid van de vereniging kunnen zijn: natuurlijke personen die
@@ -221,15 +191,10 @@ export default function StatutenPage() {
           </div>
         </section>
 
-        {/* Artikel 4 - Einde lidmaatschap */}
-        <section
-          id="artikel-4"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <h2 className="text-2xl font-bold text-yellow-400 mb-6">
-            Artikel 4 – Einde lidmaatschap
-          </h2>
-          <div className="text-gray-300 leading-relaxed space-y-4">
+        {/* Artikel 4 */}
+        <section id="artikel-4">
+          <ArticleHeading>Artikel 4 – Einde lidmaatschap</ArticleHeading>
+          <div className="text-gray-300 leading-relaxed space-y-4 pl-4">
             <p>Het lidmaatschap eindigt door:</p>
             <ol className="list-decimal pl-6 space-y-2">
               <li>het overlijden van het lid;</li>
@@ -270,7 +235,7 @@ export default function StatutenPage() {
               door middel van een schriftelijk bericht aan het lid, met
               vermelding van de reden(en) van opzegging. Opzegging is mogelijk:
             </p>
-            <ul>
+            <ul className="list-disc pl-6 space-y-2">
               <li>
                 als een lid niet meer voldoet aan de statutaire vereisten voor
                 het lidmaatschap;
@@ -309,15 +274,10 @@ export default function StatutenPage() {
           </div>
         </section>
 
-        {/* Artikel 5 - Aspirant-leden */}
-        <section
-          id="artikel-5"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <h2 className="text-2xl font-bold text-yellow-400 mb-6">
-            Artikel 5 – Aspirant-leden
-          </h2>
-          <div className="text-gray-300 leading-relaxed space-y-4">
+        {/* Artikel 5 */}
+        <section id="artikel-5">
+          <ArticleHeading>Artikel 5 – Aspirant-leden</ArticleHeading>
+          <div className="text-gray-300 leading-relaxed pl-4">
             <ol className="list-decimal pl-6 space-y-3">
               <li>
                 De algemene vergadering kan besluiten tot het instellen van het
@@ -348,15 +308,10 @@ export default function StatutenPage() {
           </div>
         </section>
 
-        {/* Artikel 6 - Donateurs */}
-        <section
-          id="artikel-6"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <h2 className="text-2xl font-bold text-yellow-400 mb-6">
-            Artikel 6 – Donateurs
-          </h2>
-          <div className="text-gray-300 leading-relaxed space-y-4">
+        {/* Artikel 6 */}
+        <section id="artikel-6">
+          <ArticleHeading>Artikel 6 – Donateurs</ArticleHeading>
+          <div className="text-gray-300 leading-relaxed pl-4">
             <p>
               Donateurs zijn zij, die door het bestuur als zodanig zijn
               toegelaten. Er kunnen verschillende categorieën donateurs zijn.
@@ -374,15 +329,10 @@ export default function StatutenPage() {
           </div>
         </section>
 
-        {/* Artikel 7 - Contributie */}
-        <section
-          id="artikel-7"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <h2 className="text-2xl font-bold text-yellow-400 mb-6">
-            Artikel 7 – Contributie van de leden
-          </h2>
-          <div className="text-gray-300 leading-relaxed space-y-4">
+        {/* Artikel 7 */}
+        <section id="artikel-7">
+          <ArticleHeading>Artikel 7 – Contributie van de leden</ArticleHeading>
+          <div className="text-gray-300 leading-relaxed pl-4">
             <p>
               De leden betalen een jaarlijkse contributie, waarvan de hoogte
               wordt vastgesteld door de algemene vergadering. De leden kunnen
@@ -396,53 +346,31 @@ export default function StatutenPage() {
           </div>
         </section>
 
-        {/* Artikel 8 - Bestuur */}
-        <section
-          id="artikel-8"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <div className="flex items-center gap-3 mb-6">
-            <Users className="h-6 w-6 text-yellow-400" />
-            <h2 className="text-2xl font-bold text-yellow-400">
-              Artikel 8 – Bestuur: samenstelling
-            </h2>
-          </div>
-          <div className="text-gray-300 leading-relaxed">
-            <div className="bg-neutral-800/30 rounded-lg p-6 mb-4">
-              <p className="mb-4">
-                De vereniging wordt bestuurd door een bestuur dat bestaat uit
-                ten minste{" "}
-                <span className="text-yellow-400 font-semibold">
-                  drie natuurlijke personen
-                </span>
-                .
-              </p>
-              <div className="grid md:grid-cols-3 gap-4 mt-6">
-                <div className="bg-neutral-700/30 p-4 rounded-lg text-center">
-                  <h4 className="text-yellow-400 font-semibold mb-2">
-                    Voorzitter
-                  </h4>
-                  <p className="text-sm text-gray-400">(Praeses)</p>
-                </div>
-                <div className="bg-neutral-700/30 p-4 rounded-lg text-center">
-                  <h4 className="text-yellow-400 font-semibold mb-2">
-                    Secretaris
-                  </h4>
-                  <p className="text-sm text-gray-400">(Ab Actis)</p>
-                </div>
-                <div className="bg-neutral-700/30 p-4 rounded-lg text-center">
-                  <h4 className="text-yellow-400 font-semibold mb-2">
-                    Penningmeester
-                  </h4>
-                  <p className="text-sm text-gray-400">(Questor)</p>
-                </div>
+        {/* Artikel 8 */}
+        <section id="artikel-8">
+          <ArticleHeading>Artikel 8 – Bestuur: samenstelling</ArticleHeading>
+          <div className="text-gray-300 leading-relaxed space-y-4 pl-4">
+            <p>
+              De vereniging wordt bestuurd door een bestuur dat bestaat uit ten
+              minste drie natuurlijke personen. Het bestuur heeft een voorzitter
+              (praeses), secretaris (ab actis) en penningmeester (questor).
+            </p>
+            <div className="grid sm:grid-cols-3 gap-4 my-2">
+              <div className="bg-neutral-800/40 border border-neutral-700/60 rounded-lg p-4 text-center">
+                <p className="text-white font-semibold mb-1">Voorzitter</p>
+                <p className="text-sm text-gray-500">Praeses</p>
+              </div>
+              <div className="bg-neutral-800/40 border border-neutral-700/60 rounded-lg p-4 text-center">
+                <p className="text-white font-semibold mb-1">Secretaris</p>
+                <p className="text-sm text-gray-500">Ab Actis</p>
+              </div>
+              <div className="bg-neutral-800/40 border border-neutral-700/60 rounded-lg p-4 text-center">
+                <p className="text-white font-semibold mb-1">Penningmeester</p>
+                <p className="text-sm text-gray-500">Questor</p>
               </div>
             </div>
             <p>
-              De vereniging wordt bestuurd door een bestuur dat bestaat uit ten
-              minste drie natuurlijke personen. De algemene vergadering stelt
-              het aantal bestuursleden vast. Het bestuur heeft een voorzitter
-              (praeses), secretaris (ab actis) en penningmeester (questor). Het
+              De algemene vergadering stelt het aantal bestuursleden vast. Het
               bestuur voorziet zelf in de verdeling van de functies, tenzij de
               algemene vergadering zich het recht voorbehoudt de voorzitter te
               benoemen. De functies van secretaris en penningmeester kunnen in
@@ -471,7 +399,7 @@ export default function StatutenPage() {
               meegedeeld. De wissel van een nieuwe bestuurder vindt plaats op de
               laatste algemene ledenvergadering van het verenigingsjaar.
             </p>
-            <ol className="pt-2 list-decimal pl-6 space-y-2">
+            <ol className="list-decimal pl-6 space-y-2">
               <li>
                 Bestuurders worden benoemd voor een periode van ten hoogste één
                 jaar. Bestuurders treden af volgens een door het bestuur op te
@@ -487,15 +415,12 @@ export default function StatutenPage() {
           </div>
         </section>
 
-        {/* Artikel 9 - Bestuur einde functie */}
-        <section
-          id="artikel-9"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <h2 className="text-2xl font-bold text-yellow-400 mb-6">
+        {/* Artikel 9 */}
+        <section id="artikel-9">
+          <ArticleHeading>
             Artikel 9 – Bestuur: einde functie, schorsing
-          </h2>
-          <div className="text-gray-300 leading-relaxed space-y-4">
+          </ArticleHeading>
+          <div className="text-gray-300 leading-relaxed space-y-4 pl-4">
             <p>Een bestuurslidmaatschap eindigt:</p>
             <ol className="list-decimal pl-6 space-y-2">
               <li>door aftreden van een bestuurslid;</li>
@@ -539,15 +464,12 @@ export default function StatutenPage() {
           </div>
         </section>
 
-        {/* Artikel 10 - Bestuur vergadering */}
-        <section
-          id="artikel-10"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <h2 className="text-2xl font-bold text-yellow-400 mb-6">
+        {/* Artikel 10 */}
+        <section id="artikel-10">
+          <ArticleHeading>
             Artikel 10 – Bestuur: bijeenroeping, vergadering, besluitvorming
-          </h2>
-          <div className="text-gray-300 leading-relaxed space-y-4">
+          </ArticleHeading>
+          <div className="text-gray-300 leading-relaxed pl-4">
             <p>
               Iedere bestuurder is bevoegd een vergadering van het bestuur
               bijeen te roepen. De bijeenroeping van de vergaderingen van het
@@ -579,15 +501,12 @@ export default function StatutenPage() {
           </div>
         </section>
 
-        {/* Artikel 11 - Bestuur leiding vergadering */}
-        <section
-          id="artikel-11"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <h2 className="text-2xl font-bold text-yellow-400 mb-6">
+        {/* Artikel 11 */}
+        <section id="artikel-11">
+          <ArticleHeading>
             Artikel 11 – Bestuur: leiding van de vergadering, notulen
-          </h2>
-          <div className="text-gray-300 leading-relaxed space-y-4">
+          </ArticleHeading>
+          <div className="text-gray-300 leading-relaxed pl-4">
             <p>
               De voorzitter leidt de vergaderingen van het bestuur; bij zijn
               afwezigheid voorziet de vergadering zelf in haar leiding. De
@@ -624,15 +543,12 @@ export default function StatutenPage() {
           </div>
         </section>
 
-        {/* Artikel 12 - Bestuur taken */}
-        <section
-          id="artikel-12"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <h2 className="text-2xl font-bold text-yellow-400 mb-6">
+        {/* Artikel 12 */}
+        <section id="artikel-12">
+          <ArticleHeading>
             Artikel 12 – Bestuur: taken en bevoegdheden
-          </h2>
-          <div className="text-gray-300 leading-relaxed space-y-4">
+          </ArticleHeading>
+          <div className="text-gray-300 leading-relaxed space-y-4 pl-4">
             <p>
               Het bestuur is belast met het besturen van de vereniging. Iedere
               bestuurder is tegenover de vereniging verplicht tot een
@@ -668,15 +584,10 @@ export default function StatutenPage() {
           </div>
         </section>
 
-        {/* Artikel 13 - Vertegenwoordiging */}
-        <section
-          id="artikel-13"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <h2 className="text-2xl font-bold text-yellow-400 mb-6">
-            Artikel 13 – Vertegenwoordiging
-          </h2>
-          <div className="text-gray-300 leading-relaxed space-y-4">
+        {/* Artikel 13 */}
+        <section id="artikel-13">
+          <ArticleHeading>Artikel 13 – Vertegenwoordiging</ArticleHeading>
+          <div className="text-gray-300 leading-relaxed space-y-4 pl-4">
             <p>Tot vertegenwoordiging van de vereniging zijn bevoegd:</p>
             <ol className="list-decimal pl-6 space-y-2">
               <li>het gehele bestuur samen;</li>
@@ -700,15 +611,12 @@ export default function StatutenPage() {
           </div>
         </section>
 
-        {/* Artikel 14 - Verslaggeving */}
-        <section
-          id="artikel-14"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <h2 className="text-2xl font-bold text-yellow-400 mb-6">
+        {/* Artikel 14 */}
+        <section id="artikel-14">
+          <ArticleHeading>
             Artikel 14 – Verslaggeving en verantwoording
-          </h2>
-          <div className="text-gray-300 leading-relaxed space-y-4">
+          </ArticleHeading>
+          <div className="text-gray-300 leading-relaxed pl-4">
             <p>
               Het boekjaar van de vereniging loopt van één september tot en met
               éénendertig augustus. Het bestuur brengt op een algemene
@@ -749,71 +657,54 @@ export default function StatutenPage() {
           </div>
         </section>
 
-        {/* Artikel 15 - Algemene Vergadering */}
-        <section
-          id="artikel-15"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <div className="flex items-center gap-3 mb-6">
-            <Scale className="h-6 w-6 text-yellow-400" />
-            <h2 className="text-2xl font-bold text-yellow-400">
-              Artikel 15 – Algemene vergadering: bevoegdheid
-            </h2>
-          </div>
-          <div className="text-gray-300 leading-relaxed">
-            <div className="bg-neutral-800/30 rounded-lg p-6">
-              <p className="mb-4">
-                Aan de algemene vergadering komen in de vereniging{" "}
-                <span className="text-yellow-400 font-semibold">
-                  alle bevoegdheden toe
-                </span>
-                , die niet door de wet of de statuten aan het bestuur zijn
-                opgedragen. Jaarlijks, uiterlijk zes maanden na afloop van het
-                boekjaar, wordt een algemene vergadering – de jaarvergadering –
-                gehouden.
-              </p>
-
-              <div className="mt-6">
-                <h4 className="text-white font-semibold mb-3">
-                  Jaarvergadering behandelt o.a.:
-                </h4>
-                <ul className="list-disc pl-6 space-y-2 text-sm">
-                  <li>Bestuursverslag over het afgelopen boekjaar</li>
-                  <li>
-                    Voorstel tot het al of niet goedkeuren van de jaarstukken
-                    over het afgelopen boekjaar
-                  </li>
-                  <li>Voorstel tot verlenen van kwijting aan het bestuur</li>
-                  <li>
-                    De benoeming van de leden van de controlecommissie voor het
-                    nieuwe boekjaar
-                  </li>
-                  <li>
-                    De benoeming van bestuursleden als er in het bestuur
-                    vacatures bestaan
-                  </li>
-                  <li>
-                    Voorstellen van het bestuur of de leden, zoals aangekondigd
-                    bij de oproeping voor de vergadering. Uiterlijk één maand
-                    voor het verstrijken van het boekjaar, legt het bestuur aan
-                    de algemene vergadering de begroting voor het komende
-                    boekjaar ter goedkeuring voor
-                  </li>
-                </ul>
-              </div>
-            </div>
+        {/* Artikel 15 */}
+        <section id="artikel-15">
+          <ArticleHeading>
+            Artikel 15 – Algemene vergadering: bevoegdheid
+          </ArticleHeading>
+          <div className="text-gray-300 leading-relaxed space-y-4 pl-4">
+            <p>
+              Aan de algemene vergadering komen in de vereniging alle
+              bevoegdheden toe, die niet door de wet of de statuten aan het
+              bestuur zijn opgedragen. Jaarlijks, uiterlijk zes maanden na
+              afloop van het boekjaar, wordt een algemene vergadering – de
+              jaarvergadering – gehouden.
+            </p>
+            <p className="font-medium text-white">
+              De jaarvergadering behandelt onder andere:
+            </p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Bestuursverslag over het afgelopen boekjaar</li>
+              <li>
+                Voorstel tot het al of niet goedkeuren van de jaarstukken over
+                het afgelopen boekjaar
+              </li>
+              <li>Voorstel tot verlenen van kwijting aan het bestuur</li>
+              <li>
+                De benoeming van de leden van de controlecommissie voor het
+                nieuwe boekjaar
+              </li>
+              <li>
+                De benoeming van bestuursleden als er in het bestuur vacatures
+                bestaan
+              </li>
+              <li>
+                Voorstellen van het bestuur of de leden, zoals aangekondigd bij
+                de oproeping voor de vergadering. Uiterlijk één maand voor het
+                verstrijken van het boekjaar, legt het bestuur aan de algemene
+                vergadering de begroting voor het komende boekjaar ter
+                goedkeuring voor.
+              </li>
+            </ul>
           </div>
         </section>
 
-        {/* Artikel 16 - Algemene vergadering oproeping */}
-        <section
-          id="artikel-16"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <h2 className="text-2xl font-bold text-yellow-400 mb-6">
+        {/* Artikel 16 */}
+        <section id="artikel-16">
+          <ArticleHeading>
             Artikel 16 – Algemene vergadering: oproeping
-          </h2>
-          <div className="text-gray-300 leading-relaxed space-y-4">
+          </ArticleHeading>
+          <div className="text-gray-300 leading-relaxed space-y-4 pl-4">
             <p>
               De algemene vergadering wordt bijeengeroepen door het bestuur. Een
               aantal leden, samen bevoegd tot het uitbrengen van ten minste een
@@ -847,15 +738,12 @@ export default function StatutenPage() {
           </div>
         </section>
 
-        {/* Artikel 17 - Algemene vergadering toegang */}
-        <section
-          id="artikel-17"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <h2 className="text-2xl font-bold text-yellow-400 mb-6">
+        {/* Artikel 17 */}
+        <section id="artikel-17">
+          <ArticleHeading>
             Artikel 17 – Algemene vergadering: toegang en stemrecht
-          </h2>
-          <div className="text-gray-300 leading-relaxed space-y-4">
+          </ArticleHeading>
+          <div className="text-gray-300 leading-relaxed pl-4">
             <p>
               Toegang tot de algemene vergadering hebben alle niet-geschorste
               leden van het bestuur en van de vereniging. De vergadering kan
@@ -874,15 +762,12 @@ export default function StatutenPage() {
           </div>
         </section>
 
-        {/* Artikel 18 - Algemene vergadering besluitvorming */}
-        <section
-          id="artikel-18"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <h2 className="text-2xl font-bold text-yellow-400 mb-6">
+        {/* Artikel 18 */}
+        <section id="artikel-18">
+          <ArticleHeading>
             Artikel 18 – Algemene vergadering: besluitvorming
-          </h2>
-          <div className="text-gray-300 leading-relaxed space-y-4">
+          </ArticleHeading>
+          <div className="text-gray-300 leading-relaxed pl-4">
             <p>
               Voor zover in deze statuten niet anders is bepaald, wordt een
               besluit genomen met volstrekte meerderheid van stemmen van de in
@@ -932,15 +817,12 @@ export default function StatutenPage() {
           </div>
         </section>
 
-        {/* Artikel 19 - Algemene vergadering leiding */}
-        <section
-          id="artikel-19"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <h2 className="text-2xl font-bold text-yellow-400 mb-6">
+        {/* Artikel 19 */}
+        <section id="artikel-19">
+          <ArticleHeading>
             Artikel 19 – Algemene vergadering: leiding en notulen
-          </h2>
-          <div className="text-gray-300 leading-relaxed space-y-4">
+          </ArticleHeading>
+          <div className="text-gray-300 leading-relaxed pl-4">
             <p>
               Een algemene vergadering wordt geleid door de voorzitter van de
               vereniging. Ontbreekt de voorzitter, dan wijst het bestuur een
@@ -955,15 +837,10 @@ export default function StatutenPage() {
           </div>
         </section>
 
-        {/* Artikel 20 - Statutenwijziging */}
-        <section
-          id="artikel-20"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <h2 className="text-2xl font-bold text-yellow-400 mb-6">
-            Artikel 20 – Statutenwijziging
-          </h2>
-          <div className="text-gray-300 leading-relaxed space-y-4">
+        {/* Artikel 20 */}
+        <section id="artikel-20">
+          <ArticleHeading>Artikel 20 – Statutenwijziging</ArticleHeading>
+          <div className="text-gray-300 leading-relaxed pl-4">
             <p>
               De statuten van de vereniging kunnen worden gewijzigd door een
               besluit van de algemene vergadering. Wanneer aan de algemene
@@ -1000,15 +877,12 @@ export default function StatutenPage() {
           </div>
         </section>
 
-        {/* Artikel 21 - Fusie, splitsing, omzetting */}
-        <section
-          id="artikel-21"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <h2 className="text-2xl font-bold text-yellow-400 mb-6">
+        {/* Artikel 21 */}
+        <section id="artikel-21">
+          <ArticleHeading>
             Artikel 21 – Fusie, splitsing, omzetting
-          </h2>
-          <div className="text-gray-300 leading-relaxed space-y-4">
+          </ArticleHeading>
+          <div className="text-gray-300 leading-relaxed pl-4">
             <p>
               Op een besluit van de algemene vergadering tot fusie of splitsing
               in de zin van titel 7 van Boek 2 Burgerlijk Wetboek en op een
@@ -1021,15 +895,10 @@ export default function StatutenPage() {
           </div>
         </section>
 
-        {/* Artikel 22 - Ontbinding */}
-        <section
-          id="artikel-22"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <h2 className="text-2xl font-bold text-yellow-400 mb-6">
-            Artikel 22 – Ontbinding
-          </h2>
-          <div className="text-gray-300 leading-relaxed space-y-4">
+        {/* Artikel 22 */}
+        <section id="artikel-22">
+          <ArticleHeading>Artikel 22 – Ontbinding</ArticleHeading>
+          <div className="text-gray-300 leading-relaxed space-y-4 pl-4">
             <p>
               De vereniging kan worden ontbonden door een besluit van de
               algemene vergadering. Het in deze statuten bepaalde over een
@@ -1060,15 +929,10 @@ export default function StatutenPage() {
           </div>
         </section>
 
-        {/* Artikel 23 - Vereffening */}
-        <section
-          id="artikel-23"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <h2 className="text-2xl font-bold text-yellow-400 mb-6">
-            Artikel 23 – Vereffening
-          </h2>
-          <div className="text-gray-300 leading-relaxed space-y-4">
+        {/* Artikel 23 */}
+        <section id="artikel-23">
+          <ArticleHeading>Artikel 23 – Vereffening</ArticleHeading>
+          <div className="text-gray-300 leading-relaxed pl-4">
             <p>
               Het bestuur is belast met de vereffening van het vermogen van de
               vereniging, voor zover bij het ontbindingsbesluit geen ander
@@ -1078,8 +942,8 @@ export default function StatutenPage() {
               vereffening van haar vermogen nodig is. Gedurende de vereffening
               blijven de bepalingen van de statuten voor zoveel mogelijk en
               nodig van kracht. In stukken en aankondigingen die van de
-              vereniging uitgaan, moet ‘in liquidatie’ aan de naam van de
-              vereniging worden toegevoegd. Een batig saldo na vereffening
+              vereniging uitgaan, moet &apos;in liquidatie&apos; aan de naam van
+              de vereniging worden toegevoegd. Een batig saldo na vereffening
               krijgt een bestemming die zoveel mogelijk in overeenstemming is
               met het doel van de vereniging. Deze bestemming wordt vastgesteld
               bij het ontbindingsbesluit, of bij het ontbreken daarvan, door de
@@ -1092,15 +956,10 @@ export default function StatutenPage() {
           </div>
         </section>
 
-        {/* Artikel 24 - Reglementen */}
-        <section
-          id="artikel-24"
-          className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-8"
-        >
-          <h2 className="text-2xl font-bold text-yellow-400 mb-6">
-            Artikel 24 – Reglementen
-          </h2>
-          <div className="text-gray-300 leading-relaxed space-y-4">
+        {/* Artikel 24 */}
+        <section id="artikel-24">
+          <ArticleHeading>Artikel 24 – Reglementen</ArticleHeading>
+          <div className="text-gray-300 leading-relaxed pl-4">
             <p>
               De algemene vergadering kan een of meer reglementen vaststellen.
               Een reglement kan nadere regels geven over onder meer het
@@ -1114,11 +973,12 @@ export default function StatutenPage() {
         </section>
       </div>
 
-      <div className="flex items-center justify-center gap-3 pt-6 border-t border-neutral-700">
-        <Calendar className="h-5 w-5 text-gray-500" />
-        <span className="text-gray-500 text-sm">
-          Laatst gewijzigd op: 29 november 2022
-        </span>
+      {/* Last modified */}
+      <div className="mt-16 pt-8 border-t border-neutral-800 flex items-center gap-3 text-gray-500 text-sm">
+        <Calendar className="w-4 h-4 shrink-0" />
+        <p>
+          Vastgesteld op <span className="text-gray-400">29 november 2022</span>
+        </p>
       </div>
     </div>
   );

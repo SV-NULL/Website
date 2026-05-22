@@ -1,5 +1,5 @@
 import { becomePartnerApplicationTemplate } from "@/config/email-templates/become-partner-application";
-import { commissieApplicationTemplate } from "@/config/email-templates/commissie-application";
+import { committeeApplicationTemplate } from "@/config/email-templates/committee-application";
 import { contactFormTemplate } from "@/config/email-templates/contact-form";
 import { membershipApplicationTemplate } from "@/config/email-templates/membership-application";
 import { generateEmail } from "@/utils/email";
@@ -8,7 +8,7 @@ import nodemailer from "nodemailer";
 import { MailOptions } from "nodemailer/lib/sendmail-transport";
 import {
   BecomePartnerData,
-  CommissieApplicationData,
+  CommitteeApplicationData,
   ContactData,
   MembershipApplicationData,
 } from "./validation";
@@ -78,7 +78,7 @@ class EmailService {
     return this.transporter.sendMail(mailOptions);
   }
 
-  async sendCommissieApplication(data: CommissieApplicationData) {
+  async sendCommitteeApplication(data: CommitteeApplicationData) {
     const emailData = {
       ...data,
       email: commonFormatters.studentEmail(data.studentId),
@@ -87,9 +87,9 @@ class EmailService {
     const mailOptions: MailOptions = {
       from: DEFAULT_FROM,
       to: DEFAULT_TO,
-      subject: commissieApplicationTemplate.subject(emailData),
-      text: generateEmail(commissieApplicationTemplate, emailData, "text"),
-      html: generateEmail(commissieApplicationTemplate, emailData, "html"),
+      subject: committeeApplicationTemplate.subject(emailData),
+      text: generateEmail(committeeApplicationTemplate, emailData, "text"),
+      html: generateEmail(committeeApplicationTemplate, emailData, "html"),
       priority: "high",
     };
 

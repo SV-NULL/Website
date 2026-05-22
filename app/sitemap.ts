@@ -2,8 +2,8 @@ import { siteConfig } from "@/config/site";
 import {
   getBoards,
   getCommittees,
-  getVacatureItems,
-  getVakkenItems,
+  getCourses,
+  getVacancies,
 } from "@/lib/content";
 import { MetadataRoute } from "next";
 
@@ -49,14 +49,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const vacancies = getVacatureItems().map((vacancy) => ({
+  const vacancies = getVacancies().map((vacancy) => ({
     url: `${baseUrl}/vacatures/${vacancy.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.6,
   }));
 
-  const subjects = getVakkenItems().map((subject) => ({
+  const subjects = getCourses().map((subject) => ({
     url: `${baseUrl}/vakken/${subject.slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,

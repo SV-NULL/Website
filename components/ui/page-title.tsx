@@ -9,7 +9,7 @@ export default function PageTitle({ title, subtitle }: Props) {
       <div className="lg:max-w-4xl mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between">
         <div>
           <div
-            className="h-1 bg-yellow-400 mb-3 opacity-0"
+            className="h-1 bg-yellow-400 mb-3 rounded-full opacity-0 shadow-[0_0_12px_rgba(250,204,21,0.7)]"
             style={{
               width: "4rem",
               transform: "translateX(-40px)",
