@@ -110,6 +110,7 @@ const PartnerContactSection = ({ pakket }: Props) => {
                     </label>
                     <input
                       type="text"
+                      id="name"
                       name="name"
                       placeholder="Jouw naam *"
                       value={formValues.name || ""}
@@ -136,6 +137,7 @@ const PartnerContactSection = ({ pakket }: Props) => {
                     </label>
                     <input
                       type="text"
+                      id="companyName"
                       name="companyName"
                       placeholder="Bedrijfsnaam *"
                       value={formValues.companyName || ""}
@@ -164,6 +166,7 @@ const PartnerContactSection = ({ pakket }: Props) => {
                     </label>
                     <input
                       type="email"
+                      id="email"
                       name="email"
                       placeholder="E-mailadres *"
                       value={formValues.email || ""}
@@ -190,6 +193,7 @@ const PartnerContactSection = ({ pakket }: Props) => {
                     </label>
                     <input
                       type="tel"
+                      id="phone"
                       name="phone"
                       placeholder="Telefoonnummer (optioneel)"
                       value={formValues.phone || ""}
@@ -209,6 +213,7 @@ const PartnerContactSection = ({ pakket }: Props) => {
                     Welk pakket spreekt je het meeste aan?
                   </label>
                   <select
+                    id="packageInterest"
                     name="packageInterest"
                     value={formValues.packageInterest || ""}
                     onChange={onChange}
@@ -231,7 +236,10 @@ const PartnerContactSection = ({ pakket }: Props) => {
                   )}
                 </div>
 
-                <fieldset aria-describedby="meeting-error">
+                <fieldset
+                  id="meeting-fieldset"
+                  aria-describedby="meeting-error"
+                >
                   <legend className="text-gray-400 text-sm mb-3">
                     Hoe wil je het liefst kennismaken?{" "}
                     <span aria-hidden="true">*</span>
@@ -274,15 +282,14 @@ const PartnerContactSection = ({ pakket }: Props) => {
                     </label>
                   </div>
 
-                  {fieldErrors.meetingPreference && (
-                    <p
-                      id="meeting-error"
-                      className="mt-2 text-sm text-red-400"
-                      role="alert"
-                    >
-                      {fieldErrors.meetingPreference}
-                    </p>
-                  )}
+                  <p
+                    id="meeting-error"
+                    className="mt-2 text-sm text-red-400"
+                    role="alert"
+                    aria-live="polite"
+                  >
+                    {fieldErrors.meetingPreference ?? ""}
+                  </p>
                 </fieldset>
 
                 <button
