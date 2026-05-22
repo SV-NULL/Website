@@ -52,11 +52,17 @@ export default async function WordLidPage({ searchParams }: Props) {
 
       <p className="text-sm text-gray-400 mb-6">
         Met het versturen van dit formulier accepteer je onze{" "}
-        <Link href="/privacy-cookies" className="underline text-yellow-400">
+        <Link
+          href="/privacy-cookies#algemene-voorwaarden"
+          className="underline text-yellow-400"
+        >
           Algemene Voorwaarden
         </Link>{" "}
         en het{" "}
-        <Link href="/privacy-cookies" className="underline text-yellow-400">
+        <Link
+          href="/privacy-cookies#avg-beleid"
+          className="underline text-yellow-400"
+        >
           AVG-beleid
         </Link>
         .
