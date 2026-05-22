@@ -1,5 +1,6 @@
 import { JsonLd } from "@/components/features/json-ld/json-ld";
 import VacancyList from "@/components/features/vacancies/vacancy-list";
+import PageContainer from "@/components/ui/page-container";
 import PageTitle from "@/components/ui/page-title";
 import { siteConfig } from "@/config/site";
 import { getVacancies } from "@/lib/content";
@@ -16,7 +17,7 @@ export default function VacanciesPage() {
   const vacancies = getVacancies();
 
   return (
-    <div className="container mx-auto px-8 space-y-4">
+    <PageContainer className="space-y-4">
       <JsonLd<CollectionPage>
         data={{
           "@context": "https://schema.org",
@@ -33,6 +34,6 @@ export default function VacanciesPage() {
       />
 
       <VacancyList vacancies={vacancies} />
-    </div>
+    </PageContainer>
   );
 }

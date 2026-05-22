@@ -1,5 +1,6 @@
 import ContactForm from "@/components/features/contact/form";
 import { JsonLd } from "@/components/features/json-ld/json-ld";
+import PageContainer from "@/components/ui/page-container";
 import PageTitle from "@/components/ui/page-title";
 import { siteConfig } from "@/config/site";
 import { constructMetadata } from "@/lib/seo";
@@ -13,7 +14,7 @@ export const metadata = constructMetadata({
 
 export default function ContactPage() {
   return (
-    <div className="px-8 max-w-4xl mx-auto text-white">
+    <PageContainer className="text-white">
       <JsonLd<ContactPageSchema>
         data={{
           "@context": "https://schema.org",
@@ -38,6 +39,6 @@ export default function ContactPage() {
       </p>
 
       <ContactForm />
-    </div>
+    </PageContainer>
   );
 }

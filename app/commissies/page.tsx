@@ -1,6 +1,7 @@
 import CommitteeCard from "@/components/features/committees/committee-card";
 import { JsonLd } from "@/components/features/json-ld/json-ld";
 import CTA from "@/components/sections/cta";
+import PageContainer from "@/components/ui/page-container";
 import PageTitle from "@/components/ui/page-title";
 import { siteConfig } from "@/config/site";
 import { getCommittees } from "@/lib/content";
@@ -17,7 +18,7 @@ export default function CommissiesPage() {
   const committees = getCommittees();
 
   return (
-    <div className="container mx-auto px-8 space-y-4">
+    <PageContainer className="space-y-4">
       <JsonLd<CollectionPage>
         data={{
           "@context": "https://schema.org",
@@ -49,6 +50,6 @@ export default function CommissiesPage() {
         title="Lid worden van een commissie?"
         text="Kies een commissie die je interessant vindt en meld je aan via het formulier. We nemen snel contact met je op!"
       />
-    </div>
+    </PageContainer>
   );
 }

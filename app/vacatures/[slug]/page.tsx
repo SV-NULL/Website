@@ -1,6 +1,7 @@
 import { JsonLd } from "@/components/features/json-ld/json-ld";
 import MetadataRow from "@/components/features/vacancies/metadata-row";
 import StickySidebar from "@/components/features/vacancies/sticky-sidebar";
+import PageContainer from "@/components/ui/page-container";
 import { getVacancies, getVacancyBySlug } from "@/lib/content";
 import { constructMetadata } from "@/lib/seo";
 import {
@@ -54,7 +55,7 @@ export default async function VacatureDetailPage({
   if (!vacancy) return notFound();
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] -mt-6">
+    <div className="min-h-screen bg-background -mt-6">
       <JsonLd<JobPosting>
         data={{
           "@context": "https://schema.org",
@@ -93,7 +94,7 @@ export default async function VacatureDetailPage({
       />
       {/* Top Navigation */}
       <div className="bg-neutral-900 border-b border-neutral-800">
-        <div className="container mx-auto px-4 py-3">
+        <PageContainer className="py-3">
           <Link
             href="/vacatures"
             className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-yellow-400 transition-colors font-medium"
@@ -101,10 +102,10 @@ export default async function VacatureDetailPage({
             <ArrowLeft size={16} />
             Terug naar overzicht
           </Link>
-        </div>
+        </PageContainer>
       </div>
 
-      <div className="container mx-auto px-4 py-8 lg:py-12 max-w-7xl">
+      <PageContainer className="max-w-7xl py-8 lg:py-12">
         {/* Header Section */}
         <div className="bg-neutral-900 rounded-2xl border border-neutral-800 p-6 md:p-8 mb-8">
           <div className="flex flex-col md:flex-row gap-6 md:items-center justify-between">
@@ -307,7 +308,7 @@ export default async function VacatureDetailPage({
             </StickySidebar>
           </div>
         </div>
-      </div>
+      </PageContainer>
     </div>
   );
 }

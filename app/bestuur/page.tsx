@@ -1,6 +1,7 @@
 import BoardList from "@/components/features/boards/board-list";
 import { JsonLd } from "@/components/features/json-ld/json-ld";
 import CTA from "@/components/sections/cta";
+import PageContainer from "@/components/ui/page-container";
 import PageTitle from "@/components/ui/page-title";
 import { siteConfig } from "@/config/site";
 import { getBoards } from "@/lib/content";
@@ -17,7 +18,7 @@ export default function BestuurPage() {
   const boards = getBoards();
 
   return (
-    <div className="container mx-auto px-8 space-y-4">
+    <PageContainer className="space-y-4">
       <JsonLd<CollectionPage>
         data={{
           "@context": "https://schema.org",
@@ -37,6 +38,6 @@ export default function BestuurPage() {
         title="Word jij ons volgende bestuurslid?"
         text="Ben jij enthousiast, gemotiveerd en wil je je inzetten voor onze vereniging? We zijn altijd op zoek naar nieuwe bestuursleden! Halverwege het schooljaar starten we al met de werving van een nieuw bestuur. Houd de groepsapp en Discord in de gaten voor updates😄."
       />
-    </div>
+    </PageContainer>
   );
 }
