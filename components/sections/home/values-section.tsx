@@ -54,7 +54,7 @@ const ValuesSection = () => {
               className="group relative flex flex-col items-center text-center p-8 bg-neutral-900/50 border border-neutral-800 rounded-xl transition-colors duration-300 hover:scale-105 hover:border-yellow-400/30 hover:shadow-[0_0_40px_rgba(250,204,21,0.07)] overflow-hidden"
             >
               <div className="absolute inset-0 bg-linear-to-b from-yellow-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl pointer-events-none will-change-transform" />
-              <div className="relative z-10">
+              <div className="relative z-10 flex flex-col items-center">
                 {item.icon}
                 <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors duration-300">
                   {item.title}
