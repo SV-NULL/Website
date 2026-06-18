@@ -1,14 +1,18 @@
 ---
 title: "4de blokborrel"
-date: 2026-07-02
-notDetermined: true
+date: 2026-07-03
+time: "19:00 - 00:00"
+notDetermined: false
 confirmed: true
-cost: "€6,90 voor leden, €10 voor niet-leden"
+cost: "€10 en alleen voor leden"
+location: "Oude Diedenweg 16, Wageningen"
+locationUrl: "https://maps.app.goo.gl/mJYfk4njGFWFspCD9"
 image: "/images/kalender/blokborrel-4.jpg"
+registerUrl: "https://forms.office.com/e/ZLtkdNwLct"
 ---
 
-Semesters? Leuk idee van de opleiding. Wij houden het liever bij blokken, want die leveren vier keer per jaar een goed excuus voor een borrel op.
+Vrijdag 3 juli is het zover: de laatste ALV én de allerlaatste blokborrel van dit studiejaar. En omdat dit ook de laatste blokborrel bij Twan thuis is, kunnen we dat natuurlijk niet zomaar voorbij laten gaan.
 
-We starten de avond met een ALV (algemene ledenvergadering) en gaan daarna gezellig borrelen, met genoeg te drinken en lekkere snacks.
+We starten om 19:00 met de ALV. Die duurt ongeveer een uurtje. Vanaf 20:00 komt de frietkar en sluiten we het jaar goed af.
 
-Deze ALV is speciaal, omdat we het bestuur voor het komende schooljaar zullen instemmen.
+Voor €10 p.p. kun je onbeperkt friet en snacks halen. Drank is zoals altijd geregeld en de rest wordt betaald uit de verenigingspot.
